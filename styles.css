@@ -1,0 +1,940 @@
+/* font-family: 'Oswald', sans-serif;
+font-family: 'Public Sans', sans-serif;
+font-family: 'Roboto Condensed', sans-serif; */
+
+/* GLOBAL STYLES */
+html {
+    scroll-behavior: smooth;
+}
+
+h1,h2, h3, h4{
+    
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+a {
+    font-family: 'Roboto Condensed', sans-serif;    
+}
+
+.dark-text{
+    color:#0e124d
+}
+
+/* HEADER SECTION AND MENU */
+#dark-header{
+    background-color: #0e124d;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 0px;
+}
+
+.social-media{
+    margin: 0 7%;
+    display: flex;
+    gap:20px;
+    width: 9rem;
+    justify-content: center;
+}
+
+#menu-section{
+    position:fixed;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin: 0 7%;
+}
+
+/* HAMBURGER MENU FOR MOBILE DEVICES */
+.menu-toggle{
+    position:absolute;
+    top:2rem;
+    right:1rem;
+    display: none!important;
+    width: 50px;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 40px;
+    display: flex;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.menu-toggle:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-btn{
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition:all .5s ease-in-out;
+    height: 100%;
+}
+
+.menu-btn_burger{
+    width: 22px;
+    height: 2px;
+    background-color: #0e124d;
+    border-radius: 6px;
+    transition:all .5s ease-in-out
+}
+
+.menu-btn_burger::before,
+.menu-btn_burger::after{
+content: '';
+position: absolute;
+width: 22px;
+height: 2px;
+background: #0e124d;
+border-radius: 6px;
+transition: all .5s ease-in-out;
+}
+
+.menu-btn_burger::before{
+    transform: translateY(-7px);
+}
+
+.menu-btn_burger::after{
+    transform: translateY(7px);
+}
+
+/* ANIMATION BURGER ICON */
+.menu-btn.open .menu-btn_burger{
+    transform: translateX(-30px);
+    background:transparent;
+}
+
+.menu-btn.open .menu-btn_burger::before{
+    transform: rotate(45deg) translate(21px, -21px);
+}
+
+.menu-btn.open .menu-btn_burger::after{
+    transform: rotate(-45deg) translate(21px, 21px);
+}
+
+
+#ocw-logo {
+    width: 5.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a:visited, a:visited .fas {
+    color: white !important;
+  }
+
+  .matriculate-button a:visited {
+    color: #0e124d !important;
+    font-weight: bolder;
+    font-family: 'Oswald', sans-serif;
+  }
+  .matriculate-button a {
+    background-color: #D1FF4F;
+    color: #0e124d;
+    padding: 15px 5px 15px 25px;
+    text-decoration: none;
+    position: absolute;
+    left: 85%;
+    top:-10px;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+    transition: padding-left 0.3s ease-in-out;  /* Transition on left padding */
+    display: inline-flex;  /* To align items in a line */
+    align-items: center;  /* Align items vertically */
+    text-transform: uppercase;
+    width: 8.5rem;
+  }
+
+  
+/* Add styles for arrow inside button */
+.matriculate-button a::after {
+    content: "\f061";  /* Unicode for right arrow in FontAwesome */
+    font-family: "Font Awesome 5 Free";  /* Font family for FontAwesome */
+    font-weight: 900;  /* FontAwesome solid style */
+    opacity: 0;  /* Initially hidden */
+    margin-left: 0;  /* Initially no space */
+    transition: opacity 0.3s ease-in-out, margin-left 0.3s ease-in-out;  /* Smooth transition */
+}
+
+/* Styles for button and arrow on hover */
+.matriculate-button a:hover {
+    padding-left: 15px;  /* Expanded left padding */
+    padding-right: 15px;
+}
+
+.matriculate-button a:hover::after {
+    opacity: 1;  /* Make arrow visible */
+    margin-left: 10px;  /* Add space next to text */
+}
+  
+.menu-button{
+    padding: 10px 8px;   
+    overflow: hidden;
+}
+  /* Add or modify this CSS code for menu links */
+  .menu ul li a, .menu ul li a:visited {
+    color: #0e124d !important;  
+    text-decoration: none;  
+    font-size: 18px;
+}
+
+.menu .navbar-links{
+    display: flex;
+    list-style: none;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    padding:0;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Sticky Menu Styles */
+.menu-section-sticky {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-section-sticky .matriculate-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .menu-section-sticky .matriculate-button a {
+    top: 0;  
+    padding: 0 1rem;  
+    height: calc(100% - 2px);
+    line-height: normal;
+    color: #0e124d !important;
+    transition: top 0.5s ease-out;  
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-links .menu-button .menu-item-link {
+    font-family: 'Oswald', 'sans-serif';
+  }
+
+/* Section 1: Academy Info */
+.section-academy-info {
+    color: #0e124d;
+    padding: 98px 0 68px 0;
+    text-align: center;
+    position: relative;
+    height: 61vh;
+    z-index: 0;
+    background:linear-gradient(to right, rgba(209, 255, 79, 0.5), rgba(31, 255, 188, 0.5));  
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:right;
+    
+}
+
+.wave-separator {
+    position: absolute;
+    bottom: 0;  
+    left: 0;
+    width: 100%; 
+    height: 12%;   
+    fill: #ffffff; 
+    z-index: 1;   
+    margin-bottom: -4px;
+}
+
+.study-english{
+    background-image: url(./pics/studentocw.png);
+    height: 60vh; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+}
+
+.main-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.9rem;
+    margin: 0;
+}
+
+.sub-heading, .cta-button {
+    font-family: 'Public Sans', sans-serif;
+}
+
+/* CSS for Ripple Effect */
+@keyframes rippleAnim {
+    0% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 100%;
+    }
+  }
+  
+  .color-changing {
+    background: linear-gradient(45deg, #0e124d, #788669, #0e124d);
+    -webkit-background-clip: text;
+    background-size: 200% 200%;
+    color: transparent;
+    animation: rippleAnim 3s infinite;
+  }
+  
+  .color-changing span {
+    animation-delay: calc(var(--char-index) * 0.2s);
+  }
+
+.intro-container{
+    margin: 10px 7%;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    padding: 4% 0 0 0;
+    display: grid;
+    grid-template-columns: 5fr 7fr;  /* Two columns*/
+    grid-gap: 10px;  /* Gap between columns */
+}
+
+/* DECORATED MENU  */
+  .menu-item-link{
+    position:relative;
+    transition: all .5s;
+    padding: 5px 20px;
+  }
+
+  .menu-item-link:hover{
+    background-color: #D1FF4F;
+  }
+
+  .menu-item-link:hover:after{
+    opacity: 1;
+    top: -8;
+    right:-8px;
+  }
+
+
+/* Keyframes for zoom in effect */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8); 
+        opacity: 0; 
+    }
+    100% {
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+/* Applying the animation to .study-english-info */
+.study-english-info {
+    animation-name: zoomIn;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-out; 
+}
+
+/* Flex items */
+.study-english, .study-english-info {
+    flex: 1; /* each takes up equal space */
+    min-width: calc(50% - 10px); /* 50% of container width minus a little for padding */
+}
+
+
+/* SECOND SECTION - BENEFITS */
+.section-benefits{
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.cards-row{
+    margin: 0 7%;
+    text-align: center;
+    display: flex;
+    background-color: #FFFFFF;
+    place-items: center;
+    justify-content: center;
+    padding: 10px 0 100px 0;
+    cursor: pointer;
+}
+
+.svg-icon {
+    height: 80%;
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* CARD CSS RULES */
+.card{
+    position:relative;
+    width: 280px;
+    height: 310px;
+    background: #ffffff;
+    transition: all 0.5s ease-in-out; 
+    margin: 0 auto;
+}
+
+.card:hover{
+    position:relative;
+    width: 300px;
+    height: 350px;
+    background: #ffffff;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.card:hover {
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.face{
+    position: absolute;
+    top:0;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.face1{
+    padding: 20px;
+    text-align: center;
+    color: #0e124d;
+    background-color: #67b197;
+    align-items: center;
+}
+
+.face1 h2 {
+    margin-top:120px;
+}
+
+.face1 a{
+    display: inline-block;
+    margin-top:20px;
+    padding:5px 10px;
+    text-decoration:none;
+    color:#ffffff;
+    border:2px solid #013d4a;
+    text-transform: capitalize;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.face2{
+    padding: 20px;
+    background-color: #ffffff;
+    transition: 0.5s;
+}
+
+.face2 h2 {
+    font-size:120px;
+    color: #0e124d !important;
+    transition: 0.5s;
+    width: 160px;
+    height: 160px;
+}
+
+.content{
+    margin-top:75px;
+    
+}
+
+.semipersonalizadas{
+    display: block;
+}
+
+.card:hover .face2{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    top:20px;
+    left:50%;
+    transform: translateX(-45%);
+    background-color: #ffffff;
+    border: 2px solid #0e124d;
+    transition: all 0.4s ease-in-out;
+}
+
+.card:hover .face1{
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.card:hover .face .face2 h2{
+    color: #ffffff !important;
+    font-size: 32px;
+}
+
+.card:hover .face{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content h2, p {
+    color: #ffffff;
+    padding: 0 15px;
+   }
+
+#item-headline{
+    text-align: center;
+    text-transform: uppercase;
+    color: #0e124d;
+    font-family: 'Oswald', sans-serif;
+    margin-top:0px;
+    font-size: 1.5rem;
+    padding:12px 0 12px 0;
+
+}
+
+.second-separator{
+    position: absolute;
+    bottom:0;
+    left:0;
+    z-index: 0;
+    background: linear-gradient(to bottom, #e6ffa7,#ffffff);
+    transform: rotate(180deg);
+}
+
+/* Existing .card-container rules */
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 60px;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+/* Section 3: Lesson Modalities */
+.section-services {
+    background-color: #d1ff4f;
+    color: #0e124d;
+    padding: 20px 0 60px 0;
+    text-align: center;
+    background:linear-gradient(to bottom, rgba(209, 255, 79, 0.5), rgba(31, 255, 188, 0.5));  
+    margin-top:-2px;
+    overflow: hidden;
+}
+
+.third-separator{
+    position: absolute;
+    top:0;
+    left:0;
+    background: linear-gradient(to bottom, #92ffdb,#ffffff);
+}
+
+.service-container {
+    margin: 0 7%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:2.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    position: relative;
+    box-shadow: 0px 30px 30px rgb(0,0,0,0.5);
+    border-radius: 0 15px 0 15px;
+    min-width: 220px;  
+    margin: 0 auto;
+}
+
+.imgbox {
+    width: 18.6rem;
+    height: 16.2rem;
+    display: flex;  /* Added */
+    justify-content: center;  
+    align-items: center;  
+}
+
+.imgbox .img-item {
+    width: 95%;
+    height: 14.4rem;
+}
+
+.content-services {
+    position:absolute;
+    bottom:0px;
+    width: 80%;
+    height: 20%;
+    background-color:rgb(96, 199, 175,0.97);
+    Left:10%;
+    text-align: center;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    border-radius: 0 15px 0 15px;
+}
+
+.service-item:hover .content-services{
+    height: 100%;
+    width: 100%;
+    left:0%;
+}
+
+.read-more{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Oswald', 'sans serif';
+    padding: 8px;
+}
+
+.services-link{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.content-services p{
+    width: 80%;
+    margin: 10px auto;
+    font-size: 1rem;
+    transition: 0.5s;
+    color: #0e124d;
+} 
+
+.headline-services{
+    color:#ffffff;
+    text-transform: uppercase;
+}
+
+/* ACCORDION CSS */
+        /* CSS */
+
+        .section-faq{
+            background-color: #ffffff;
+            padding: 6rem 0 3rem 0;
+            position: relative;
+            margin-top: -1px;
+        }
+
+        .accordion {
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            transition: 0.4s;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .accordion, .panel {
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1), 
+                        0 5px 10px rgba(0, 0, 0, 0.1);  
+            
+            padding: 10px; 
+            border: none; 
+            background-color: #fff; 
+            width: 100%; /* full width */
+            transition: box-shadow 0.3s; 
+        }
+        
+        /* Enhance the shadow when the accordion is active for a "pressed" look */
+        .accordion.active{
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1), /* top shadow */
+                        0 2px 5px rgba(0, 0, 0, 0.1);  /* bottom shadow */
+            background: rgb(9, 186, 186,0.3);
+            transition: all 1s ease;
+        }
+        
+
+        /* Add a down arrow using pseudo-elements when the accordion is not active */
+.accordion::after {
+    content: '⌄'; 
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight:bolder;
+    color:#0e124d;
+}
+
+/* Add an up arrow when the accordion is active */
+.accordion.active::after {
+    content: '⌃'; /* This is an upward arrow symbol */
+}
+
+        .panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding-left: 15px;
+            color: #0e124d;
+        }
+
+        .panel p {
+            color:#0e124d;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .faq-container{
+            margin: 0 7%;
+            background-color: #ffffff;
+            overflow: hidden; /* hides any protruding shadows */
+          }
+
+        .faq-container .accordion {
+            font-family: 'Public Sans', sans-serif;
+            color:#0e124d;
+            font-weight:500;
+        }
+
+    
+        #footer{
+            background-color: #0e124d;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .footer-container{
+            margin: 0 7%;
+            display: flex;
+            align-items: top;
+            justify-content: space-around;
+            gap:0px;
+        }
+
+        .footer-box{
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-box ul li, a{
+            text-decoration: none;
+            list-style: none;
+            color:#ffffff;
+            font-family: 'Roboto Condensed', sans-serif;
+            padding: 4px 0 4px 0;
+        }
+
+        .footer-box ul {
+            display: flex;
+            flex-direction: column;
+            padding:0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copy-rights{
+            text-align: center;
+            margin: 0;
+            width: 100%;
+        }
+
+        .copy-rights p{
+            padding: 5px 0 5px 0;
+            color:#ffffff;
+            font-size: 14px;
+        }
+     
+          @media (min-width: 768px){
+            .menu-item-link:before{
+                content: '';
+                position: absolute;
+                bottom:0;
+                left:0;
+                width: 12px;
+                height: 12px;
+                border:3px solid #0e124d;
+                border-width: 0 0 3px 3px;
+                opacity: 0;
+                transition: all .5s ease-in-out;
+              }
+            
+              .menu-item-link:hover:before{
+                opacity: 1;
+                bottom: -8;
+                left:-8px;
+              }
+            
+            .menu-item-link:after{
+                content: '';
+                position: absolute;
+                top:0;
+                right:0;
+                width: 12px;
+                height: 12px;
+                border:3px solid #0e124d;
+                border-width:3px 3px  0 0;
+                opacity: 0;
+                transition: all .5s ease-in-out;
+              }
+
+              .section-faq #item-headline{
+                margin-top:30px;
+              }
+          }
+
+  /* MEDIA QUERIES FOR MOBILE DEVICES */
+  @media (max-width: 767px){
+    .matriculate-button{
+        display: none !important;
+    }
+    .menu-toggle{
+        top:1.2rem;
+        display: flex!important;
+    }
+
+    .navbar-links{
+        display: none;
+        flex-direction: row;
+        text-align: center;
+        width: 100%;
+        max-height: 0;  /* Initially hidden */
+        overflow: hidden;  /* Hide content */
+        transition: max-height 0.6s ease-in-out, opacity 1s ease-in-out;  /* Smooth transition */
+        opacity:1;
+    }
+    .menu-row{
+        flex-direction: column;
+        margin:0px;
+    }
+
+    .menu{
+        width:0%;
+        display: none;
+        background-color:#1fffbc;
+        box-shadow: 0px 3px 5px 0px #6b774ac4;
+    }
+
+    .menu.active{
+        width:100%;
+        display: block;
+        transition: all 1s ease-in-out;
+    }
+
+     .social-media{
+        display: block !important;
+    }
+
+    .social-media a{
+        margin:0 5px;
+    }
+
+    .navbar-links.active{
+        display: flex;
+        max-height: 300px; 
+        opacity: 1;
+    }
+
+    .menu-button{
+        width: 80%;
+    }
+
+    .menu-button:hover{
+        background-color: rgb(255, 255, 255,0.6);
+        transition: all 0.3 ease;
+    }
+
+    .main-heading {
+        font-size: 3.6rem!important;
+        margin: 0;
+    }
+    
+    .sub-heading, .cta-button {
+        font-size:18px!important;
+    }
+
+    .menu-item-link:hover{
+        background-color: transparent;
+        color: #d1ff4f !important;
+      }
+    
+      .study-english {
+        min-width: 100%; /* stack on top of each other */
+        height: 38vh; 
+        background-image: url(/pics/Woman\ pointing\ down.png);
+    }
+
+    .section-academy-info{
+        height: 34vh;
+        margin-bottom: 120px;
+    }
+
+    .section-academy-info .intro-container {
+        grid-template-columns: 1fr;  /* Single column */
+        grid-template-rows: auto auto;  /* Two rows */
+        text-align: center;
+    }
+          
+    .card-container {
+        flex-direction: column;  /* Vertical layout for small screens */
+        align-items: center;  /* Center align items vertically */
+    }
+
+    .section-benefits{
+        background-color: #67b197;
+        padding-top: 20px;
+        margin-top: 170px;
+    }
+
+    .face2{
+        background-color: #67b197 !important;
+    }
+    .cards-row{
+        background-color: #67b197 !important;
+    }
+    .face1{
+        background-color: #ffffff;
+    }
+
+    #beneficios{
+        color:#ffffff;
+    }
+
+    .content h2, p {
+        color: #0e124d;
+        padding: 0 15px;
+       }
+
+       .svg-icon {
+        height: 70%;
+        width: 75%;
+    }
+
+    .face{
+        border-radius: 1px;
+    }
+    .service-row{
+        flex-direction:column;
+        gap: 50px;
+    }
+
+    .second-separator{
+        display: none;
+    }
+}
+
