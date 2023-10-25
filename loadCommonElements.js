@@ -1,24 +1,25 @@
-// loadCommonElements.js
+// Function to load common elements
+function loadCommonElement(elementId, filePath, callback) {
+    fetch(filePath)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(elementId).innerHTML = data;
 
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('dark-header.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('dark-header-placeholder').innerHTML = data;
-        document.dispatchEvent(new Event('headerLoaded'));
-    });
+            // Execute the callback function if provided
+            if (callback) {
+                callback();
+            }
+        });
+}
 
-    fetch('menu-section.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('menu-section-placeholder').innerHTML = data;
-        document.dispatchEvent(new Event('menuLoaded'));
-    });
-
-    fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-        document.dispatchEvent(new Event('footerLoaded'));
-    });
+// Load common elements with callbacks
+loadCommonElement('dark-header', 'dark-header.html');
+loadCommonElement('menu-section', 'menu-section.html', function() {
+    initializeMenu(); // This function will be in app.js
+    initializeAppearance(); // This function will be in appearance.js
+});
+loadCommonElement('footer', 'footer.html');
+loadCommonElement('menu-section2', 'menu-section2.html', function() {
+    initializeMenu(); // This function will be in app.js
+    initializeAppearance(); // This function will be in appearance.js
 });

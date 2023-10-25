@@ -1,11 +1,14 @@
-const toggleButton = document.getElementsByClassName('menu-toggle')[0]
-const navbarLinks = document.getElementsByClassName('navbar-links')[0]
-const menuContainer = document.getElementsByClassName('menu')[0]
+function initializeMenu() {
+    const toggleButton = document.getElementsByClassName('menu-toggle')[0];
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+    const menuContainer = document.getElementsByClassName('menu')[0];
 
-toggleButton.addEventListener('click',()=>{
-    navbarLinks.classList.toggle('active')
-    menuContainer.classList.toggle('active')
-})
+    toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active');
+        menuContainer.classList.toggle('active');
+    });
+    console.log("Menu Function called")
+}
 
 
 

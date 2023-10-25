@@ -50,6 +50,13 @@ a {
     align-items: center;
 }
 
+#menu-section2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .menu-row{
     display: flex;
     justify-content: space-between;
@@ -187,9 +194,8 @@ a:visited, a:visited .fas {
 }
   
 .menu-button{
-    padding: 10px 8px;   
+    padding: 0 8px;   
     overflow: hidden;
-    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,6 +250,9 @@ a:visited, a:visited .fas {
 
   .navbar-links .menu-button .menu-item-link {
     font-family: 'Oswald', 'sans-serif';
+    padding: 10px 8px; 
+    min-width: 80px;
+    text-align: center;
   }
 
 /* Section 1: Academy Info */
@@ -301,11 +310,11 @@ a:visited, a:visited .fas {
   }
   
   .color-changing {
-    background: linear-gradient(45deg, #0e124d, #788669, #0e124d);
+    background: linear-gradient(45deg, #0e124d, #aaca7f, #0e124d);
     -webkit-background-clip: text;
     background-size: 200% 200%;
     color: transparent;
-    animation: rippleAnim 3s infinite;
+    animation: rippleAnim 2s infinite;
   }
   
   .color-changing span {
@@ -777,6 +786,27 @@ a:visited, a:visited .fas {
             font-size: 14px;
         }
      
+.course-description-section{
+    padding-top: 6rem;
+    text-align: center;
+}
+
+.course-description-container{
+    margin: 0 7%;
+    display: flex;
+    justify-content: center; 
+    gap:30px;
+    align-items: center;  
+    flex-wrap: wrap;
+}
+
+.course-description-card{
+    height: 50vh;
+    border: #0e124d solid 1px;
+    width: 300px;
+}
+
+
           @media (min-width: 768px){
             .menu-item-link:before{
                 content: '';
@@ -954,4 +984,3 @@ a:visited, a:visited .fas {
         display: none;
     }
 }
-

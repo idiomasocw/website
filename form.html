@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta Description -->
+    <meta name="description"
+        content="Desarrolla tu fluidez en inglés con nuestras clases semi-personalizadas de inglés conversacional. Aprende inglés de forma definitiva!">
+
+    <!-- Other Meta Tags -->
+    <meta name="keywords"
+        content="aprende ingles facil y rapido, clases de ingles, aprende ingles, curso de ingles online, ingles basico, hablar en inglés, estudiar ingles, curso de inglés,idiomas ocw, one culture world, OneCulture World">
+    <meta name="author" content="Idiomas OCW">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OneCulture World</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="dark-header">
+  
+    </header>
+
+    <!-- Logo and Menu Section -->
+   <nav id="menu-section2">
+    
+    </nav>  
+
+    <section class="form-container">
+        <h1>Matriculate</h1>
+        <!-- Add this inside your <section class="form-container"> -->
+<div id="progress-bar">
+    <div class="progress-section" id="progress1"></div>
+    <div class="progress-section" id="progress2"></div>
+    <div class="progress-section" id="progress3"></div>
+    <div class="progress-section" id="progress4"></div>
+  </div>
+  
+        <div class="form-row">
+        <form id="enrollment-form">
+
+            <!-- Section 1: Personal Information -->
+    <div id="section1">
+        <div class="input-group">
+        <label for="nombre">Nombre (*):</label>
+        <input placeholder="Nombre" type="text" id="nombre" name="nombre" required>
+    </div>
+    <div class="input-group">
+        <label for="email">Email (*):</label>
+        <input placeholder="Email" type="email" id="email" name="email" required>
+    </div>
+    <div class="input-group">
+        <label for="telefono">Telefono (*):</label>
+        
+            <select id="country-code" name="country-code">
+              <option value="+57" style="background-image: url(/pics/flags/colombia.png);">+57 Colombia</option>
+              <option value="+593" style="background-image: url(/pics/flags/ecuador.png);">+593</option>
+              <option value="+507" style="background-image: url(/pics/flags/panama.png);">+507 </option>
+              <option value="+51" style="background-image: url(/pics/flags/peru.png);">+51</option>
+              <option value="+54" style="background-image: url(/pics/flags/argentina.png);">+54</option>
+              <option value="+52" style="background-image: url(/pics/flags/mexico.png);">+52</option>
+              <option value="+58" style="background-image: url(/pics/flags/venezuela.png);">+58</option>
+              <option value="+56" style="background-image: url(/pics/flags/chile.png);">+56</option>
+            </select>
+            
+        <input placeholder="Whatsapp" id="telefono" name="telefono" required>
+        
+    </div>
+    <div class="input-group">
+        <label for="edad">Edad:</label>
+        <select id="edad" name="edad">
+          <option value="Menor de 16" selected disabled>Selecciona tu rango de edad</option>
+          <option value="16-25">Entre 16 y 25 años</option>
+          <option value="26-35">Entre 26 y 35 años</option>
+          <option value="35-45">Entre 35 y 45 años</option>
+          <option value="45-70">Entre de 45 y 70 años</option>
+        </select>
+    </div>
+        <p id="age-warning" class="hidden">La edad mínima es 16 años</p>
+      
+        <button type="button" class="button-next" id="next1"><img style="width: 10px;" src="svg/chevron-right-solid.svg" alt=""></button>
+      </div>
+    
+      <!-- Section 2: Mode Selection -->
+      <div id="section2" class="hidden">
+        <div class="navigation-buttons">
+            <button class="button-back" type="button" id="back1"><img style="width: 10px;" src="svg/chevron-left-solid.svg" alt=""></button>
+            <button class="button-next" type="button" id="next2"><img style="width: 10px;" src="svg/chevron-right-solid.svg" alt=""></button>
+        </div>
+        <h3>Modalidad deseada:</h3>
+        <div id="mode-options">
+            <div class="mode-option" id="private">
+                <img src="/pics/Private lessons.png" alt="Private Class">
+                <h3>Clases privadas</h3>
+            </div>
+            <div class="mode-option" id="semi-private">
+                <img src="/pics/Online Group Lessons.png" alt="Semi-Private Class">
+                <h3>Clases semi-personalizadas</h3>
+            </div>
+        </div>
+    </div>
+    
+      
+    
+      <!-- Section 3 for Private Classes -->
+    <div id="section3-private" class="hidden">
+        <h3>Días de la semana para Clases Privadas:</h3>
+        <div class="navigation-buttons">
+        <button class="button-back" type="button" id="back2-private"><img style="width: 10px;" src="svg/chevron-left-solid.svg" alt=""></button>
+        <button class="button-next" type="button" id="next3-private"><img style="width: 10px;" src="svg/chevron-right-solid.svg" alt=""></button>
+        </div>
+        <div class="schedule-selection">
+        <div class="time-wrapper">
+        <button type="button" class="weekday" id="Mon">Lunes</button>
+        <div id="time-Mon"></div>
+        </div>
+        <div class="time-wrapper">
+        <button type="button" class="weekday" id="Tue">Martes</button>
+        <div id="time-Tue"></div>
+        </div>
+        <div class="time-wrapper">
+        <button type="button" class="weekday" id="Wed">Miércoles</button>
+        <div id="time-Wed"></div>
+        </div>
+        <div class="time-wrapper">
+        <button type="button" class="weekday" id="Thu">Jueves</button>
+        <div id="time-Thu"></div>
+        </div>
+        <div class="time-wrapper">
+        <button type="button" class="weekday" id="Fri">Viernes</button>
+        <div id="time-Fri"></div>
+        </div>
+        </div>    
+      </div>
+      
+    
+      <!-- Section 3 for Semi-Private Classes -->
+    <div id="section3-semi-private" class="hidden">
+        <h3>Intensidad para Clases Semi-Personalizadas:</h3>
+        <div class="navigation-buttons">
+        <button class="button-back" type="button" id="back2-semi-private"><img style="width: 10px;" src="svg/chevron-left-solid.svg" alt=""></button>
+        <button class="button-next" type="button" id="next3-semi-private"><img style="width: 10px;" src="svg/chevron-right-solid.svg" alt=""></button>
+        </div>
+        <button type="button" class="intensity" id="twice">2 clases semanales</button>
+        <button type="button" class="intensity" id="thrice">3 clases semanales</button>
+        
+    
+        <div id="time-semi-private">
+    
+        </div>
+      </div>
+      
+      <!-- Section 4: Pricing -->
+    <div style="text-align: center;" id="section4" class="hidden">
+        <h3>Precio:</h3>
+        <p id="price"></p>
+      
+        <a href="https://www.idiomasocw.org/cursos/" id="pay-button" class="hidden">Pagar</a>
+        <button class="button-back" type="button" id="back3"><img style="width: 10px;" src="svg/chevron-left-solid.svg" alt=""></button>
+      </div>
+        </form>
+    </div>
+    </section>
+
+
+    <section id="footer">
+        <div class="footer-container">
+
+         
+        </div>
+    </section>
+
+    <script src="./loadCommonElements.js"></script>
+    <script src="./appearance.js"></script>
+    <script src="./app.js"></script>
+    <script src="/form.js"></script>
+</body>
+
+</html>

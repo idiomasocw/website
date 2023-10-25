@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
+function initializeAppearance() {
+
     const menuSection = document.querySelector("#menu-section");
     const matriculateButton = document.querySelector(".matriculate-button a");
 
@@ -46,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update last known scroll position
         lastKnownScrollPosition = scrollPosition;
     });
-});
+    console.log("Appearance Function called")
+
 
 
 /* HAMBURGER ICON ANIMATION */
@@ -65,3 +67,5 @@ menuBtn.addEventListener('click', ()=>{
     }
 });
 
+
+}
