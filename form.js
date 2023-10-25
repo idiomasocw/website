@@ -1,21 +1,33 @@
 // JavaScript for Section 1
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Initialize session storage
-    //sessionStorage.clear();
+const section1 = document.getElementById("section1");
+const section2 = document.getElementById("section2");
 
-    // Function to update the progress bar
-function updateProgressBar(sectionId) {
+// Function to update the progress bar
+function updateProgressBar(sectionId, next3Status = false) {
     // Reset all progress sections
     for (let i = 1; i <= 4; i++) {
       document.getElementById(`progress${i}`).classList.remove("active");
     }
-    
+
     // Activate up to the current section
     for (let i = 1; i <= sectionId; i++) {
       document.getElementById(`progress${i}`).classList.add("active");
     }
-  }
+
+    // Specific check for section 3 based on the 'Siguiente' button status
+    if (sectionId === 3) {
+      if (next3Status) {
+        document.getElementById("progress3").classList.add("active");
+      } else {
+        document.getElementById("progress3").classList.remove("active");
+      }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize session storage
+    //sessionStorage.clear();
     
     const next1Button = document.getElementById("next1");
     const ageSelect = document.getElementById("edad");
@@ -64,10 +76,12 @@ function checkAgeAndEnableButton() {
     if (next1Button.disabled) {
         next1Button.classList.remove('enabled');
         next1Button.classList.add('disabled');
-      } else {
+        updateProgressBar(1);  // Add this line to update the progress bar
+    } else {
         next1Button.classList.remove('disabled');
         next1Button.classList.add('enabled');
-      }
+        updateProgressBar(1);  // Add this line to update the progress bar
+    }
       
   }
   
@@ -115,8 +129,6 @@ function checkAgeAndEnableButton() {
   // JavaScript for Section 2
 
 // JavaScript for Section 2
-const section1 = document.getElementById("section1");
-const section2 = document.getElementById("section2");
 const next2Button = document.getElementById("next2");
 const back1Button = document.getElementById("back1");
 
@@ -144,6 +156,7 @@ if (selectedMode) {
 
   // New function: Checks if a mode option is selected and enables/disables the next2Button accordingly
 function checkAndEnableNext2Button() {
+    
     if (selectedMode) {
       next2Button.disabled = false;
     } else {
@@ -233,7 +246,7 @@ function checkSelectedTimes() {
     if (selectedDays.length !== 2 && selectedDays.length !== 3 && selectedDays.length !== 5) {
       enableButton = false;  // Set the variable to false if the condition is not met
     }
-  
+
     for (const day of selectedDays) {
       if (!selectedTimesPrivate[day]) {
         enableButton = false;  // Set the variable to false if the condition is not met
@@ -246,16 +259,15 @@ function checkSelectedTimes() {
     if (next3PrivateButton.disabled) {
       next3PrivateButton.classList.remove('enabled');
       next3PrivateButton.classList.add('disabled');
+      updateProgressBar(3, false);
     } else {
       next3PrivateButton.classList.remove('disabled');
       next3PrivateButton.classList.add('enabled');
+      updateProgressBar(3, true);
     }
     
     return enableButton;
 }
-
-  
-  
   
   // Function to toggle time selection for semi-private classes (New Function)
 // New Function to toggle time selection for semi-private classes
@@ -500,13 +512,15 @@ back3Button.addEventListener("click", function() {
 
 // Event listeners to show Section 4 and calculate the price
 document.getElementById("next3-private").addEventListener("click", function() {
-  calculatePrice();
+  calculatePrice();  
   section3Private.classList.add("hidden");
   section4.classList.remove("hidden");
+  updateProgressBar(4);
 });
 
 document.getElementById("next3-semi-private").addEventListener("click", function() {
   calculatePrice();
   section3SemiPrivate.classList.add("hidden");
   section4.classList.remove("hidden");
+  updateProgressBar(4);
 });
