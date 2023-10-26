@@ -4,31 +4,21 @@ const section1 = document.getElementById("section1");
 const section2 = document.getElementById("section2");
 
 // Function to update the progress bar
-function updateProgressBar(sectionId, next3Status = false) {
+function updateProgressBar(sectionId) {
     // Reset all progress sections
     for (let i = 1; i <= 4; i++) {
-      document.getElementById(`progress${i}`).classList.remove("active");
+        document.getElementById(`progress${i}`).classList.remove("active");
     }
-
-    // Activate up to the current section
-    for (let i = 1; i <= sectionId; i++) {
-      document.getElementById(`progress${i}`).classList.add("active");
-    }
-
-    // Specific check for section 3 based on the 'Siguiente' button status
-    if (sectionId === 3) {
-      if (next3Status) {
-        document.getElementById("progress3").classList.add("active");
-      } else {
-        document.getElementById("progress3").classList.remove("active");
-      }
-    }
+    // Activate only the current section
+    document.getElementById(`progress${sectionId}`).classList.add("active");
 }
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     // Initialize session storage
     //sessionStorage.clear();
-    
+    updateProgressBar(1);
     const next1Button = document.getElementById("next1");
     const ageSelect = document.getElementById("edad");
     next1Button.disabled = true;
@@ -259,11 +249,11 @@ function checkSelectedTimes() {
     if (next3PrivateButton.disabled) {
       next3PrivateButton.classList.remove('enabled');
       next3PrivateButton.classList.add('disabled');
-      updateProgressBar(3, false);
+      
     } else {
       next3PrivateButton.classList.remove('disabled');
       next3PrivateButton.classList.add('enabled');
-      updateProgressBar(3, true);
+      
     }
     
     return enableButton;
@@ -365,6 +355,7 @@ next3PrivateButton.addEventListener("click", function() {
   sessionStorage.setItem("selectedDays", JSON.stringify(selectedDays));
 
   // TODO: Show time selection popup and proceed to next section
+  updateProgressBar(4);
 });
 
 // Event listener for the "Ir atrás" button in Section 3 for Private Classes
@@ -372,6 +363,7 @@ back2PrivateButton.addEventListener("click", function() {
   // Show the previous section and hide the current one
   section2.classList.remove("hidden");
   section3Private.classList.add("hidden");
+  updateProgressBar(2);
 });
 
 // Event listener for the "Siguiente" button in Section 2 to show the appropriate Section 3
@@ -380,6 +372,7 @@ document.getElementById("next2").addEventListener("click", function() {
     section2.classList.add("hidden");
     if (mode === "private") {
       section3Private.classList.remove("hidden");
+      updateProgressBar(3);
     } else if (mode === "semi-private") {
       section3SemiPrivate.classList.remove("hidden");
       populateTimeOptionsSemiPrivate();  // New: populate the time options
@@ -441,6 +434,7 @@ back2SemiPrivateButton.addEventListener("click", function() {
   // Show the previous section and hide the current one
   section2.classList.remove("hidden");
   section3SemiPrivate.classList.add("hidden");
+  updateProgressBar(2);
 });
 
 // Event listener for the "Siguiente" button in Section 2 to show the appropriate Section 3
@@ -449,6 +443,7 @@ document.getElementById("next2").addEventListener("click", function() {
   section2.classList.add("hidden");
   if (mode === "semi-private") {
     section3SemiPrivate.classList.remove("hidden");
+    updateProgressBar(3);
   }
   // TODO: Implement for private classes
 });
@@ -505,8 +500,11 @@ back3Button.addEventListener("click", function() {
   section4.classList.add("hidden");
   if (mode === "private") {
     section3Private.classList.remove("hidden");
+    updateProgressBar(3);
+    
   } else if (mode === "semi-private") {
     section3SemiPrivate.classList.remove("hidden");
+    updateProgressBar(3);
   }
 });
 
