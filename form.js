@@ -13,7 +13,17 @@ function updateProgressBar(sectionId) {
     document.getElementById(`progress${sectionId}`).classList.add("active");
 }
 
-
+function updateButtonStatus(buttonId, condition) {
+    const buttonElement = document.getElementById(buttonId);
+    buttonElement.disabled = !condition;
+    if (buttonElement.disabled) {
+        buttonElement.classList.remove('enabled');
+        buttonElement.classList.add('disabled');
+    } else {
+        buttonElement.classList.remove('disabled');
+        buttonElement.classList.add('enabled');
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Initialize session storage
@@ -57,22 +67,7 @@ function updateSessionStorage(fieldName) {
   // Add this function to check the age and enable/disable the next button
 function checkAgeAndEnableButton() {
     const edadValue = document.getElementById("edad").value;
-    if (edadValue !== "Menor de 16") {
-      next1Button.disabled = false;
-    } else {
-      next1Button.disabled = true;
-    }
-
-    if (next1Button.disabled) {
-        next1Button.classList.remove('enabled');
-        next1Button.classList.add('disabled');
-        updateProgressBar(1);  // Add this line to update the progress bar
-    } else {
-        next1Button.classList.remove('disabled');
-        next1Button.classList.add('enabled');
-        updateProgressBar(1);  // Add this line to update the progress bar
-    }
-      
+    updateButtonStatus("next1", edadValue !== "Menor de 16");    
   }
   
   
@@ -145,21 +140,8 @@ if (selectedMode) {
   }
 
   // New function: Checks if a mode option is selected and enables/disables the next2Button accordingly
-function checkAndEnableNext2Button() {
-    
-    if (selectedMode) {
-      next2Button.disabled = false;
-    } else {
-      next2Button.disabled = true;
-    }
-    
-    if (next2Button.disabled) {
-      next2Button.classList.remove('enabled');
-      next2Button.classList.add('disabled');
-    } else {
-      next2Button.classList.remove('disabled');
-      next2Button.classList.add('enabled');
-    }
+function checkAndEnableNext2Button() {  
+    updateButtonStatus("next2", selectedMode);
   }
 
 // Add click event to each mode option
@@ -243,19 +225,7 @@ function checkSelectedTimes() {
         break;  // Exit the loop
       }
     }
-  
-    next3PrivateButton.disabled = !enableButton;  // Set the button's disabled property based on the variable
-  
-    if (next3PrivateButton.disabled) {
-      next3PrivateButton.classList.remove('enabled');
-      next3PrivateButton.classList.add('disabled');
-      
-    } else {
-      next3PrivateButton.classList.remove('disabled');
-      next3PrivateButton.classList.add('enabled');
-      
-    }
-    
+    updateButtonStatus("next3-private", enableButton);   
     return enableButton;
 }
   
@@ -393,14 +363,8 @@ next3SemiPrivateButton.disabled = true;
 checkSemiPrivateConditions();
 
 function checkSemiPrivateConditions() {
-    next3SemiPrivateButton.disabled = !(selectedIntensity && selectedTimeSemiPrivate);
-    if (next3SemiPrivateButton.disabled) {
-        next3SemiPrivateButton.classList.remove('enabled');
-        next3SemiPrivateButton.classList.add('disabled');
-      } else {
-        next3SemiPrivateButton.classList.remove('disabled');
-        next3SemiPrivateButton.classList.add('enabled');
-      }
+    updateButtonStatus("next3-semi-private", selectedIntensity && selectedTimeSemiPrivate);
+
   }
 
 // Function to toggle intensity selection
