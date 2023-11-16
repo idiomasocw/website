@@ -3,30 +3,388 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Meta Description -->
-    <meta name="description"
-        content="Desarrolla tu fluidez en inglés con nuestras clases semi-personalizadas de inglés conversacional. Aprende inglés de forma definitiva!">
-
-    <!-- Other Meta Tags -->
-    <meta name="keywords"
-        content="aprende ingles facil y rapido, clases de ingles, aprende ingles, curso de ingles online, ingles basico, hablar en inglés, estudiar ingles, curso de inglés,idiomas ocw, one culture world, OneCulture World">
-    <meta name="author" content="Idiomas OCW">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>OneCulture World</title>
+    <title>Cursos</title>
     <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="./build/css/intlTelInput.min.css">
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind&family=Montserrat:wght@800;900&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind&family=Montserrat:wght@800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-
+<body style="background-color: #f4f8f8;">
     <header id="dark-header">
-        <div class="social-media">
-            <a href="https://www.facebook.com/idiomasocw/" target="_blank" rel="noopener noreferrer"><i
+        <!-- This is header.html -->
+<div class="social-media">
+    <a href="https://www.facebook.com/idiomasocw/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/idiomasocw/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com/channel/UCW8lVGnaaC9zHlOWZfme1tA" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+    <a href="https://wa.me/573148489909" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+    </header>
+
+    <!-- Logo and Menu Section -->
+    <nav style="position: absolute;z-index: 2;" id="menu-section2">
+        <div class="menu-row">
+
+            <a href="/index.html">
+                <img id="ocw-logo" src="./pics/dark-logo.png" alt="Logo OneCulture World">
+            </a>
+        
+            <div class="menu-toggle">
+                <div class="menu-btn">
+                    <div class="menu-btn_burger"></div>
+                </div>
+            </div>
+        
+            <div class="menu">
+                <ul class="navbar-links">
+                    <li class="menu-button"><a class="menu-item-link" href="/index.html">
+                            Home</a></li>
+                    <li class="menu-button"><a class="menu-item-link" href="/cursos.html">
+                            Cursos</a></li>
+                    <li class="menu-button"><a class="menu-item-link" href="https://idiomas.onecultureworld.com/login">
+                            Login</a></li>
+                </ul>
+            </div>
+        
+        </div>
+
+    </nav>
+
+    <div class="parallax">
+        <svg class="wave-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 0 Q 50 100 100 0 L 100 100 L 0 100" fill="#f4f8f8"></path>
+        </svg>
+    </div>
+    
+    <div class="form-border">
+        <form id="registration-form" action="">
+        <div class="progressBarContainer">
+            <div style="height: 10px;" id="progress-bar">
+                <div class="progress-section" id="progress1"></div>
+                <div class="progress-section" id="progress2"></div>
+                <div class="progress-section" id="progress3"></div>
+                <div class="progress-section" id="progress4"></div>
+            </div>
+        </div>
+        <!-- Section 1: Personal Information -->
+        <div id="section1" class="form-container">
+            <h6 class="headline" id="registrate-ya">Registrate</h6>
+            <div class="form-infoContainer">
+                <!-- Name input -->
+                <div class="info-box">
+                    <label class="info-label">Nombre<span class="asterisk">*</span></label>
+                    <div class="input-container">
+                        <input id="firstName" name="firstName" type="text" placeholder="Nombre" required>
+                    </div>
+                </div>
+                <!-- Last Name input -->
+                <div class="info-box">
+                    <label class="info-label">Apellidos<span class="asterisk">*</span></label>
+                    <div class="input-container">
+                        <input id="lastName" name="lastName" type="text" placeholder="Apellidos" required>
+                    </div>
+                </div>
+                <!-- Email input -->
+                <div class="info-box">
+                    <label class="info-label">Email<span class="asterisk">*</span></label>
+                    <div class="input-container">
+                        <input id="email" name="email" type="text" placeholder="Email" required>
+                    </div>
+                </div>
+                <!-- Phone Number input -->
+                <div class="info-box">
+                    <label class="info-label">Teléfono<span class="asterisk">*</span></label>
+                    <div class="input-container">
+                        <input id="phone" name="phoneNumber" type="tel" placeholder="Whatsapp" required>
+                    </div>
+                </div>
+                <!-- Age Select -->
+                <div class="info-box">
+                    <label class="info-label">Edad<span class="asterisk">*</span></label>
+                    <div class="input-container ageBox">
+                        <select id="edad" name="edad" required>
+                            <option value="Menor de 16" selected >Selecciona tu rango de edad</option>
+                            <option value="16-25">Entre 16 y 25 años</option>
+                            <option value="26-35">Entre 26 y 35 años</option>
+                            <option value="35-45">Entre 35 y 45 años</option>
+                            <option value="45-70">Más de 45 años</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="button-next" id="next1"><i class="fa-solid fa-chevron-right"
+                    style="color: #17315e;"></i></button>
+        </div>
+
+        <!-- Section 2: Mode Selection -->
+        <div id="section2" class="hidden">
+            <div class="navigation-buttons">
+                <button class="button-back" type="button" id="back1"><i class="fa-solid fa-chevron-left"
+                    style="color: #17315e;"></i></button>
+                <button class="button-next" type="button" id="next2"><i class="fa-solid fa-chevron-right"
+                    style="color: #17315e;"></i></button>
+            </div>
+            <h3>Modalidades</h3>
+            <div id="mode-options">
+                <div class="mode-option" id="private">
+                    <img src="/svg/one-on-one.svg" alt="Private Class">
+                    <h3 class="nombre-modalidad">Clases privadas</h3>
+                </div>
+                <div class="mode-option" id="semi-private">
+                    <img src="/svg/semi-private.svg" alt="Semi-Private Class">
+                    <h3 class="nombre-modalidad">Clases semi-personalizadas</h3>
+                </div>
+                 <div class="mode-option" id="empresas">
+                    <img src="/svg/business-english.svg" alt="empresas">
+                    <h3 class="nombre-modalidad">Inglés para empresas</h3>
+                </div> 
+            </div>
+        </div>
+
+            <!-- Section 3 for Private Classes -->
+            <div id="section3-private" class="hidden">
+                <h3>Clases Privadas</h3>
+                <p>Elige 2, 3 o 5 dias de clase</p>
+                <div class="navigation-buttons">
+                  <button class="button-back" type="button" id="back2-private"><i class="fa-solid fa-chevron-left"
+                    style="color: #17315e;"></i></button>
+                  <button class="button-next" type="button" id="next3-private"><i class="fa-solid fa-chevron-right"
+                    style="color: #17315e;"></i></button>
+                </div>
+                <!-- Modal Structure -->
+                <div id="modal" class="modal">
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modal-time-options" class="modal-time-options">
+                      <!-- Time slots will be injected here -->
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="schedule-selection">
+                  <div class="time-wrapper">
+                    <button type="button" class="weekday" id="Mon">Lunes</button>
+                    <div id="time-Mon"></div>
+                  </div>
+                  <div class="time-wrapper">
+                    <button type="button" class="weekday" id="Tue">Martes</button>
+                    <div id="time-Tue"></div>
+                  </div>
+                  <div class="time-wrapper">
+                    <button type="button" class="weekday" id="Wed">Miércoles</button>
+                    <div id="time-Wed"></div>
+                  </div>
+                  <div class="time-wrapper">
+                    <button type="button" class="weekday" id="Thu">Jueves</button>
+                    <div id="time-Thu"></div>
+                  </div>
+                  <div class="time-wrapper">
+                    <button type="button" class="weekday" id="Fri">Viernes</button>
+                    <div id="time-Fri"></div>
+                  </div>
+                </div>
+              </div>
+
+
+        <!-- Section 3 for Semi-Private Classes -->
+        <div id="section3-semi-private" class="hidden">
+            <h3>Clases Semi-Personalizadas</h3>
+            <p>Elige intensidad y horario</p>
+            <div class="navigation-buttons">
+                <button class="button-back" type="button" id="back2-semi-private"><i class="fa-solid fa-chevron-left"
+                    style="color: #17315e;"></i></button>
+                <button class="button-next" type="button" id="next3-semi-private"><i class="fa-solid fa-chevron-right"
+                    style="color: #17315e;"></i></button>
+            </div>
+            <div style="margin: auto;display: flex;justify-content: center;" class="intensidad-semi-private">
+            <button type="button" class="intensity" id="twice">2 clases semanales</button>
+            <button type="button" class="intensity" id="thrice">3 clases semanales</button>
+        </div>
+
+            <div id="time-semi-private">
+
+            </div>
+        </div>
+
+<!-- Section 3 for Empresas -->
+<div id="section3-empresas" class="hidden">
+    <h3>Inglés para Empresas</h3>
+    <div class="info-empresa">
+        <label for="employee-count">¿Cuál es el nombre de la empresa?</label>
+        <input id="companyName" name="companyName" type="text" placeholder="Nombre de la Empresa" required>   
+    <label for="employee-count">¿Cuántos empleados tiene tu empresa?</label>
+    <select id="employee-count">
+        <option value="sin-seleccionar" selected disabled>Selecciona el número de empleados</option>
+        <option value="less-15">Menos de 15 personas</option>
+        <option value="15-50">Entre 15 y 50 personas</option>
+        <option value="51-200">Entre 50 y 200 personas</option>
+        <option value="200-500">Entre 200 y 500 personas</option>
+        <option value="more-500">Más de 500 personas</option>
+    </select></div>
+    <div class="navigation-buttons">
+        <button class="button-back" type="button" id="back2-empresas"><i class="fa-solid fa-chevron-left" style="color: #17315e;"></i></button>
+        <button class="button-next" type="button" id="next3-empresas"><i class="fa-solid fa-chevron-right" style="color: #17315e;"></i></button>
+    </div>
+</div>
+
+        <!-- Section 4: Pricing -->
+        <div id="section4" class="hidden">
+            <h3 id="form-final-price">Valor de la mensualidad</h3>
+            <p id="price"></p>
+
+            <a href="https://www.idiomasocw.org/cursos/" id="pay-button" class="hidden">Matricularse</a>
+            <button class="button-back" type="button" id="back3"><i class="fa-solid fa-chevron-left"
+                style="color: #17315e;"></i></button>
+        </div>
+
+        <!-- Section 4 for Empresas -->
+<div id="section4-empresas" class="hidden">
+    
+    <div class="enviar-solicitud-empresa">
+    <h3>Solicita tu descuento</h3>
+    <p>Una vez envíes este formulario, nos pondremos en contacto contigo para brindarte información sobre el descuento especial que tenemos.</p>
+    <button type="button" id="send-form-empresas">Enviar</button></div>
+    <button class="button-back" type="button" id="back3-empresas"><i class="fa-solid fa-chevron-left" style="color: #17315e;"></i></button>
+</div>
+
+    </form></div>
+<section class="course-description-section1">
+    <div id="private-lessons" class="course-description-card">
+        <div class="course-description-items">
+          <h2>Clases privadas</h2>
+          <div class="course-feature">
+            <i class="fas fa-clock"></i>
+            <span>Clases en vivo de 55 minutos con docentes certificados.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-laptop"></i>
+            <span>Acceso a plataforma educativa con actividades interactivas. Test de nivelación gratuito.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Horarios flexibles con clases en vivo de Lunes a Viernes de 6:00 a.m a 9:00 p.m.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-user-friends"></i>
+            <span>Acompañamiento uno a uno basado en tus objetivos.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Sin pagos adicionales ni clausulas de permanencia.</span>
+          </div>
+        </div>
+        <div class="course-pricing">
+          <div class="price-option">
+            <span>2 lecciones / semana</span>
+            <span class="price">$280.000</span>
+          </div>
+          <div class="price-option">
+            <span>3 lecciones / semana</span>
+            <span class="price">$396.000</span>
+          </div>
+          <div class="price-option">
+            <span>5 lecciones / semana</span>
+            <span class="price">$620.000</span>
+          </div>
+        </div>
+
+      </div>
+    
+      <div id="semi-personalized" class="course-description-card">
+        <div class="course-description-items">
+          <h2>Clases Grupales</h2>
+          <div class="course-feature">
+            <i class="fas fa-clock"></i>
+            <span>Clases en vivo de 55 minutos con docentes certificados.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-laptop"></i>
+            <span>Acceso a plataforma educativa con actividades interactivas. Test de nivelación gratuito.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Horarios flexibles con clases en vivo de 6:00 a.m a 9:00 p.m. los Lunes, Miercoles, y Viernes, o los Martes y los Jueves.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-user-friends"></i>
+            <span>Acompañamiento semi-personalizada para ayudarte a alcanzar tus objectivos comunicativos en corto tiempo.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Sin pagos adicionales ni clausulas de permanencia.</span>
+          </div>
+        </div>
+        <div class="course-pricing">
+          <div class="price-option">
+            <span>2 lecciones / semana</span>
+            <span class="price">$165.000</span>
+          </div>
+          <div class="price-option">
+            <span>3 lecciones / semana</span>
+            <span class="price">$240.000</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="english-for-business" class="course-description-card">
+        <div class="course-description-items">
+          <h2>Inglés para empresas</h2>
+          <div class="course-feature">
+            <i class="fas fa-clock"></i>
+            <span>Clases en vivo de 55 minutos con docentes certificados.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-laptop"></i>
+            <span>Acceso a plataforma educativa con actividades interactivas. Test de nivelación gratuito para sus empleados.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Horarios flexibles con clases en vivo de Lunes a Viernes de 6:00 a.m a 9:00 p.m.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-user-friends"></i>
+            <span>Máximo 8 estudiantes por grupo conversacional. Todos del mismo nivel.</span>
+          </div>
+          <div class="course-feature">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Sin pagos adicionales ni clausulas de permanencia.</span>
+          </div>
+        </div>
+        <div class="course-pricing">
+          <div class="price-option"><a href="#registration-form">
+            <span>Completa el formulario</span><br>
+            <span style="font-family: 'Oswald', sans-serif;color:#17315e" class="price">OBTEN TU DESCUENTO</span></a>
+          </div>
+        </div>
+      </div>
+      <svg class="wave-separator-cursos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M0 0 Q 50 100 100 0 L 100 100 L 0 100" fill="#0e124d"></path>
+    </svg>
+    </section>
+
+    <section id="footer">
+        <div class="footer-container">
+
+            <div class="footer-box"><ul>
+                <li>Niveles</li>
+                <li>Examen de nivelación</li>
+            </ul></div>
+            <div class="footer-box"><ul>
+                <li>Terminos y condiciones</li>
+                <li>Politicas de privacidad</li>
+            </ul>
+            <div class="social-media">
+                <a href="https://www.facebook.com/idiomasocw/" target="_blank" rel="noopener noreferrer"><i
                     class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/idiomasocw/" target="_blank" rel="noopener noreferrer"><i
                     class="fab fa-instagram"></i></a>
@@ -34,41 +392,36 @@
                 rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
             <a href="https://wa.me/573148489909" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-whatsapp"></i></a>
-
-        </div>
-    </header>
-
-    <!-- Logo and Menu Section -->
-    <nav id="menu-section">
-
-    </nav>
-
-    <section class="course-description-section">
-        <h2>Cursos</h2>
-        <div class="course-description-container">
-            <div class="course-description-card"></div>
-            <div class="course-description-card"></div>
-            <div class="course-description-card"></div>
-        </div>
+                </div>
+            </div>
+            
+                    </div>
+                    <div class="copy-rights">
+                        <p>© 2023 - Idiomas OCW </p>            
+                    </div>
     </section>
 
-
-    <section id="footer">
-        <div class="footer-container">
-
-<div class="footer-box"><ul>
- 
-</div>
-
-        </div>
-        <div class="copy-rights">
-            <p>© 2023 - Idiomas OCW </p>            
-        </div>
-    </section>
-
-    <script src="./loadCommonElements.js"></script>
-    <script src="./appearance.js"></script>
-    <script src="./app.js"></script>
+    <script src="/app.js"></script>
+    <script src="/form.js"></script>
+    <script src="./build/js/intlTelInput.min.js"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            initialCountry: "co"
+        });
+    </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the URL contains a hash
+    if(window.location.hash) {
+        // Scroll to the element with the ID from the URL hash
+        const section = document.querySelector(window.location.hash);
+        if(section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+</script>
 </body>
 
 </html>

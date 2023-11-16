@@ -26,92 +26,89 @@ function updateButtonStatus(buttonId, condition) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Initialize session storage
-    //sessionStorage.clear();
     updateProgressBar(1);
     const next1Button = document.getElementById("next1");
     const ageSelect = document.getElementById("edad");
     next1Button.disabled = true;
-    const ageWarning = document.getElementById("age-warning");
 
-      // Load saved data from session storage to populate the form fields
-  const nombre = sessionStorage.getItem("nombre");
-  const email = sessionStorage.getItem("email");
-  const telefono = sessionStorage.getItem("telefono");
-  const edad = sessionStorage.getItem("edad");
+    // Load saved data from session storage to populate the form fields
+    const firstName = sessionStorage.getItem("firstName");
+    const lastName = sessionStorage.getItem("lastName"); // Retrieve last name
+    const email = sessionStorage.getItem("email");
+    const phone = sessionStorage.getItem("phone");
+    const edad = sessionStorage.getItem("edad");
 
-  if (nombre) document.getElementById("nombre").value = nombre;
-  if (email) document.getElementById("email").value = email;
-  if (telefono) document.getElementById("telefono").value = telefono;
-  if (edad) {
-    document.getElementById("edad").value = edad;
-    checkAgeAndEnableButton(); // Call the function here
-  }
-  
-  // Function to update session storage when a form field changes
-function updateSessionStorage(fieldName) {
-    const fieldValue = document.getElementById(fieldName).value;
-    sessionStorage.setItem(fieldName, fieldValue);
-  }
-  
-  // Add event listeners to update session storage
-  document.getElementById("nombre").addEventListener("input", () => updateSessionStorage("nombre"));
-  document.getElementById("email").addEventListener("input", () => updateSessionStorage("email"));
-  document.getElementById("telefono").addEventListener("input", () => updateSessionStorage("telefono"));
-  document.getElementById("edad").addEventListener("change", () => {
-    updateSessionStorage("edad");
-    checkAgeAndEnableButton(); // Also check the age when it changes
-  });
-  
+    if (firstName) document.getElementById("firstName").value = firstName;
+    if (lastName) document.getElementById("lastName").value = lastName; // Populate last name
+    if (email) document.getElementById("email").value = email;
+    if (phone) document.getElementById("phone").value = phone;
+    if (edad) {
+        document.getElementById("edad").value = edad;
+        checkFieldsAndEnableButton(); // Call the function here
+    }
 
-  // Add this function to check the age and enable/disable the next button
-function checkAgeAndEnableButton() {
-    const edadValue = document.getElementById("edad").value;
-    updateButtonStatus("next1", edadValue !== "Menor de 16");    
-  }
-  
-  
-    // Event listener for the "Siguiente" button in Section 1
-    next1Button.addEventListener("click", function() {
-      const nombre = document.getElementById("nombre").value;
-      const email = document.getElementById("email").value;
-      const telefono = document.getElementById("telefono").value;
-      const edad = ageSelect.value;
-  
-      if (!nombre || !email || !telefono) {
-        alert("Por favor completa todos los campos requeridos.");
-        return;
-      }
-  
-      if (edad === "Menor de 16") {
-        alert("La edad mínima es 16 años");
-        return;
-      }
-        
-      // Save data to session storage
-      sessionStorage.setItem("nombre", nombre);
-      sessionStorage.setItem("email", email);
-      sessionStorage.setItem("telefono", telefono);
-      sessionStorage.setItem("edad", edad);
-  
-      // Proceed to next section
-      section1.classList.add("hidden");
-      section2.classList.remove("hidden");
-      updateProgressBar(2);
+    // Function to update session storage when a form field changes
+    function updateSessionStorage(fieldName) {
+        const fieldValue = document.getElementById(fieldName).value;
+        sessionStorage.setItem(fieldName, fieldValue);
+    }
+
+    // Add event listeners to update session storage
+    document.getElementById("firstName").addEventListener("input", () => updateSessionStorage("firstName"));
+    document.getElementById("lastName").addEventListener("input", () => updateSessionStorage("lastName")); // Added line for lastName
+    document.getElementById("email").addEventListener("input", () => updateSessionStorage("email"));
+    document.getElementById("phone").addEventListener("input", () => updateSessionStorage("phone"));
+    document.getElementById("edad").addEventListener("change", () => {
+        updateSessionStorage("edad");
+        checkFieldsAndEnableButton(); // Also check the fields when it changes
     });
+
+    // Function to check the form fields and enable/disable the next button
+    function checkFieldsAndEnableButton() {
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value; // Added variable for lastName
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const edadValue = document.getElementById("edad").value;
+        const allFieldsFilled = firstName && lastName && email && phone && edadValue !== "Menor de 16";
+        updateButtonStatus("next1", allFieldsFilled);
+    }
+
+    // Call the checkFieldsAndEnableButton function whenever any input is changed
+    document.getElementById("firstName").addEventListener("input", checkFieldsAndEnableButton);
+    document.getElementById("lastName").addEventListener("input", checkFieldsAndEnableButton); // Added event listener for lastName
+    document.getElementById("email").addEventListener("input", checkFieldsAndEnableButton);
+    document.getElementById("phone").addEventListener("input", checkFieldsAndEnableButton);
+    document.getElementById("edad").addEventListener("change", checkFieldsAndEnableButton);
+
+    // Initialize the check on page load
+    checkFieldsAndEnableButton();
+
+    // Event listener for the "next" button in Section 1
+    next1Button.addEventListener("click", function() {
+        // Proceed to next section
+        section1.classList.add("hidden");
+        section2.classList.remove("hidden");
+        updateProgressBar(2);
+
+        // Save data to session storage
+        updateSessionStorage("firstName");
+        updateSessionStorage("lastName"); // Added line for lastName
+        updateSessionStorage("email");
+        updateSessionStorage("phone");
+        updateSessionStorage("edad");
+    });
+
     ageSelect.addEventListener("change", function() {
         if (this.value === "Menor de 16") {
-          alert("La edad mínima es 16 años");
-          next1Button.disabled = true;
+            alert("La edad mínima es 16 años");
+            next1Button.disabled = true;
         } else {
-          next1Button.disabled = false;
+            next1Button.disabled = false;
         }
-      });
-  });
-  
+    });
+});
 
-
-  // JavaScript for Section 2
 
 // JavaScript for Section 2
 const next2Button = document.getElementById("next2");
@@ -144,30 +141,97 @@ function checkAndEnableNext2Button() {
     updateButtonStatus("next2", selectedMode);
   }
 
+// Function to check if there's existing data for a given modality
+function hasExistingDataForModality(modality) {
+  if (modality === 'private') {
+      return sessionStorage.getItem('selectedDays') || sessionStorage.getItem('selectedTimesPrivate');
+  } else if (modality === 'semi-private') {
+      return sessionStorage.getItem('selectedIntensity') || sessionStorage.getItem('selectedTimeSemiPrivate');
+  } else if (modality === 'empresas') {
+      return sessionStorage.getItem('companyName') || sessionStorage.getItem('employeeCount');
+  }
+  return false;
+}
+
+  
+// Function to clear session storage data and update UI for a given modality
+function clearSessionStorageForModality(modality) {
+    if (modality === 'private') {
+      // Clear session storage for private classes
+      sessionStorage.removeItem('selectedDays');
+      sessionStorage.removeItem('selectedTimesPrivate');
+  
+      // Reset UI and selectedDays array for private classes
+      selectedDays.length = 0; // Reset the array
+      weekdays.forEach(weekday => {
+        weekday.classList.remove('selected');
+        const timeDivId = `time-${weekday.id}`;
+        const timeDiv = document.getElementById(timeDivId);
+        if (timeDiv) {
+          timeDiv.innerHTML = '';
+        }
+      });
+  
+    } else if (modality === 'semi-private') {
+      // Clear session storage for semi-private classes
+      sessionStorage.removeItem('selectedIntensity');
+      sessionStorage.removeItem('selectedTimeSemiPrivate');
+  
+      // Reset UI for semi-private classes
+      intensities.forEach(intensity => intensity.classList.remove('selected'));
+      const selectedTimeButton = document.querySelector("#time-semi-private .time-button.selected");
+      if (selectedTimeButton) {
+        selectedTimeButton.classList.remove("selected");
+      }
+    }
+    if (modality === 'empresas') {
+      // Clear session storage for empresas
+      sessionStorage.removeItem('companyName');
+      sessionStorage.removeItem('employeeCount');
+             // Reset UI for empresas
+             const companyNameInput = document.getElementById("companyName");
+             const employeeCountSelect = document.getElementById("employee-count");
+             if (companyNameInput) companyNameInput.value = '';
+             if (employeeCountSelect) employeeCountSelect.value = '';
+  }
+  } 
+
+  const modalityNames = {
+    'private': 'clases privadas',
+    'semi-private': 'clases semi-personalizadas',
+    'empresas': 'empresas' // Translation or descriptor for "empresas"
+};
+  
 // Add click event to each mode option
 modeOptions.forEach(option => {
   option.addEventListener('click', function() {
-    // Remove 'selected' class from all options
-    modeOptions.forEach(opt => opt.classList.remove('selected'));
-    
-    // Add 'selected' class to clicked option
-    this.classList.add('selected');
-    
-    // Update selected mode
-    selectedMode = this.id;
-    
-    // Update session storage
-    sessionStorage.setItem("mode", selectedMode);
-    
-    // Enable the next button
-    next2Button.disabled = false;
-
-    checkAndEnableNext2Button();
+      const newMode = this.id;
+      const otherModes = ['private', 'semi-private', 'empresas'].filter(m => m !== newMode);
       
+      for (const mode of otherModes) {
+          if (hasExistingDataForModality(mode)) {
+              const modeSpanish = modalityNames[mode] || 'empresas'; // default to 'empresas' if not found
+              const confirmMessage = `Si haces click en "ok", la información que has completado en la modalidad "${modeSpanish}" será borrada. ¿Deseas continuar?`;
+              if (!confirm(confirmMessage)) {
+                  return; // If user cancels, don't change the mode
+              }
+              clearSessionStorageForModality(mode);
+          }
+      }
+
+      // Update the mode
+      selectedMode = newMode;
+      sessionStorage.setItem("mode", selectedMode);
+      
+      // Update UI
+      modeOptions.forEach(opt => opt.classList.remove('selected'));
+      this.classList.add('selected');
+      checkAndEnableNext2Button();
   });
 });
-// New code: End
 
+  
+// Section 2: End
 
 
 // JavaScript for Section 3 for Private Classes
@@ -180,8 +244,19 @@ const selectedDays = [];
 const timeOptionsPrivate = document.getElementById("time-options-private");
 const selectedTimesPrivate = {};
 let selectedTimeSemiPrivate = "";
+let lastClickedDay = null;
 next3PrivateButton.disabled = true; 
 checkSelectedTimes();
+
+// Event Listener to close button
+const closeButton = document.querySelector(".close");
+if (closeButton) {
+  closeButton.addEventListener('click', function() {
+    sessionStorage.setItem("modalClosedBySelection", "false"); // Set flag when close button is clicked
+    closeModal();
+  });
+}
+
 
 // New Function to generate time options
 function generateTimeOptions() {
@@ -229,8 +304,7 @@ function checkSelectedTimes() {
     return enableButton;
 }
   
-  // Function to toggle time selection for semi-private classes (New Function)
-// New Function to toggle time selection for semi-private classes
+// Function to toggle time selection for semi-private classes
 function toggleTimeSemiPrivate(time, buttonElement) {
     const previouslySelected = document.querySelector("#time-semi-private .time-button.selected");
     if (previouslySelected) {
@@ -244,8 +318,12 @@ function toggleTimeSemiPrivate(time, buttonElement) {
       selectedTimeSemiPrivate = time;
       buttonElement.classList.add("selected");
     }
-    checkSemiPrivateConditions();    
+    checkSemiPrivateConditions();
+  
+    // Save the selected time to session storage
+    sessionStorage.setItem("selectedTimeSemiPrivate", selectedTimeSemiPrivate);
   }
+  
   
 // New Function to populate time options for semi-private classes
 function populateTimeOptionsSemiPrivate() {
@@ -262,25 +340,20 @@ function populateTimeOptionsSemiPrivate() {
 // Existing Function to toggle weekday selection with modifications
 function toggleWeekday(event) {
     const day = event.target.id;
+    lastClickedDay = day; // Set the last clicked day
+  
     const index = selectedDays.indexOf(day);
-    const timeDiv = document.getElementById(`time-${day}`);
-    if (index > -1) {
-      selectedDays.splice(index, 1);
-      event.target.classList.remove("selected");
-      timeDiv.innerHTML = "";  // Clear the time options
-      delete selectedTimesPrivate[day]; // Remove the time for the unselected day
-    } else {
+    if (index === -1) {
       selectedDays.push(day);
       event.target.classList.add("selected");
-      timeDiv.innerHTML = generateTimeOptions();  // Add the time options
     }
-
-    // Update session storage instantly
+  
+    // Update session storage
     sessionStorage.setItem("selectedDays", JSON.stringify(selectedDays));
     sessionStorage.setItem("selectedTimesPrivate", JSON.stringify(selectedTimesPrivate));
     
     checkSelectedTimes();
-}
+  }
 
 // New Function to toggle time selection for private classes
 function toggleTime(time, buttonElement) {
@@ -347,9 +420,111 @@ document.getElementById("next2").addEventListener("click", function() {
       section3SemiPrivate.classList.remove("hidden");
       populateTimeOptionsSemiPrivate();  // New: populate the time options
     }
+    else if (mode === "empresas") {
+        section3Empresas.classList.remove("hidden");
+        updateProgressBar(3);
+    }
   });
   
+/*Code for modal logic */
+// Function to open modal with time slots
+function openModalWithTimes(day) {
+    const modalContent = `
+        <h3>Elige el horario de tu conveniencia</h3>
+        <i class="fas fa-trash" onclick="trashCanCloseModal()" style="cursor:pointer;"></i>
+        ` + generateTimeOptions(day);
+  
+    // Populate the modal with the heading and time slots
+    document.getElementById('modal-time-options').innerHTML = modalContent;
+  
+    // Display the modal
+    document.getElementById('modal').style.display = 'block';
+}
 
+// Function to handle the trash can icon click, similar to the X closeButton
+function trashCanCloseModal() {
+    sessionStorage.setItem("modalClosedBySelection", "false");
+    closeModal();
+}
+  
+
+// Function to generate time options with columns and rows
+function generateTimeOptions(day) {
+  let options = '<div class="time-options-grid">';
+  for (let i = 6; i <= 20; i++) {
+    const time = `${i}:00 - ${i + 1}:00`;
+    options += `<button type="button" class="time-button" onclick="selectTime('${day}', '${time}')">${time}</button>`;
+  }
+  options += '</div>';
+  return options;
+}
+
+// Function to handle the selection of a time slot
+function selectTime(day, time) {
+  // Set the selected time for the given day
+  selectedTimesPrivate[day] = time;
+
+  // Update the display for the selected day
+  const timeDiv = document.getElementById(`time-${day}`);
+  timeDiv.innerHTML = `<div class="selected-time">${time}</div>`;
+
+  // Update session storage
+  sessionStorage.setItem("selectedTimesPrivate", JSON.stringify(selectedTimesPrivate));
+
+  // Re-evaluate the button status
+  checkSelectedTimes(); // ADD THIS LINE
+
+  // Close the modal
+  sessionStorage.setItem("modalClosedBySelection", "true"); // Set flag
+  closeModal();
+}
+
+// Function to close the modal
+function closeModal() {
+    if (sessionStorage.getItem("modalClosedBySelection") === "false" && lastClickedDay) {
+      // Find the corresponding DOM element for the day
+      const dayElement = document.getElementById(lastClickedDay);
+      if (dayElement) {
+        dayElement.classList.remove("selected");
+      }
+  
+      // Remove the corresponding day from selectedDays
+      const dayIndex = selectedDays.indexOf(lastClickedDay);
+      if (dayIndex > -1) {
+        selectedDays.splice(dayIndex, 1);
+      }
+  
+      // Remove the corresponding time from selectedTimesPrivate
+      if (selectedTimesPrivate[lastClickedDay]) {
+        delete selectedTimesPrivate[lastClickedDay];
+  
+        // Find and clear the time display element for the day
+        const timeDisplayElement = document.getElementById(`time-${lastClickedDay}`);
+        if (timeDisplayElement) {
+          timeDisplayElement.innerHTML = '';
+        }
+      }
+  
+      // Update session storage after modifications
+      sessionStorage.setItem("selectedDays", JSON.stringify(selectedDays));
+      sessionStorage.setItem("selectedTimesPrivate", JSON.stringify(selectedTimesPrivate));
+  
+      // Reset the last clicked day
+      lastClickedDay = null;
+    }
+  
+    // Reset the flag and close the modal
+    sessionStorage.removeItem("modalClosedBySelection");
+    document.getElementById('modal').style.display = 'none';
+    // Call checkSelectedTimes to validate conditions for enabling the "next" button
+    checkSelectedTimes();
+  }
+  
+  
+// Function to populate time options when a day is clicked
+weekdays.forEach(button => button.addEventListener("click", function(event) {
+  openModalWithTimes(event.target.id); // Call the function to open the modal
+}));
 
 // JavaScript for Section 3 for Semi-Private Classes
 
@@ -369,11 +544,14 @@ function checkSemiPrivateConditions() {
 
 // Function to toggle intensity selection
 function toggleIntensity(event) {
-  selectedIntensity = event.target.id;
-  intensities.forEach(button => button.classList.remove("selected"));
-  event.target.classList.add("selected");
-  checkSemiPrivateConditions();
-}
+    selectedIntensity = event.target.id;
+    intensities.forEach(button => button.classList.remove("selected"));
+    event.target.classList.add("selected");
+    checkSemiPrivateConditions();
+  
+    // Save the selected intensity to session storage
+    sessionStorage.setItem("selectedIntensity", selectedIntensity);
+  }  
 
 // Add event listeners for intensity buttons
 intensities.forEach(button => button.addEventListener("click", toggleIntensity));
@@ -401,15 +579,98 @@ back2SemiPrivateButton.addEventListener("click", function() {
   updateProgressBar(2);
 });
 
+function restoreSelectedTimeSemiPrivate() {
+    const storedTime = sessionStorage.getItem("selectedTimeSemiPrivate");
+    if (storedTime) {
+      selectedTimeSemiPrivate = storedTime;
+      const timeButtons = document.querySelectorAll("#time-semi-private .time-button");
+      timeButtons.forEach(button => {
+        if (button.textContent === storedTime) {
+          button.classList.add("selected");
+        }
+      });
+    }
+  }
+  
+
 // Event listener for the "Siguiente" button in Section 2 to show the appropriate Section 3
 document.getElementById("next2").addEventListener("click", function() {
-  const mode = sessionStorage.getItem("mode");
-  section2.classList.add("hidden");
-  if (mode === "semi-private") {
-    section3SemiPrivate.classList.remove("hidden");
-    updateProgressBar(3);
+    const mode = sessionStorage.getItem("mode");
+    section2.classList.add("hidden");
+    if (mode === "semi-private") {
+      section3SemiPrivate.classList.remove("hidden");
+      updateProgressBar(3);
+      restoreSelectedTimeSemiPrivate(); // Restore the selected time
+    }
+    // TODO: Implement for private classes
+  });
+
+  const section3Empresas = document.getElementById("section3-empresas");
+const next3EmpresasButton = document.getElementById("next3-empresas");
+const back2EmpresasButton = document.getElementById("back2-empresas");
+const companyNameInput = document.getElementById("companyName");
+const employeeCountSelect = document.getElementById("employee-count");
+next3EmpresasButton.disabled = true;
+
+// Function to check whether both inputs are filled
+function checkEmpresasConditions() {
+  const isCompanyNameFilled = companyNameInput.value.trim() !== "";
+  const isEmployeeCountSelected = employeeCountSelect.value !== "";
+
+  // Set the disabled attribute based on conditions
+  next3EmpresasButton.disabled = !(isCompanyNameFilled && isEmployeeCountSelected);
+
+  // Update classes based on the disabled state
+  if (next3EmpresasButton.disabled) {
+      next3EmpresasButton.classList.remove('enabled');
+      next3EmpresasButton.classList.add('disabled');
+  } else {
+      next3EmpresasButton.classList.remove('disabled');
+      next3EmpresasButton.classList.add('enabled');
   }
-  // TODO: Implement for private classes
+}
+
+
+
+// Event listeners for the inputs
+companyNameInput.addEventListener("input", () => {
+  sessionStorage.setItem("companyName", companyNameInput.value);
+  checkEmpresasConditions();
+});
+
+employeeCountSelect.addEventListener("change", () => {
+  sessionStorage.setItem("employeeCount", employeeCountSelect.value);
+  checkEmpresasConditions();
+});
+
+
+// Restore the values from session storage if they exist
+const storedCompanyName = sessionStorage.getItem("companyName");
+const storedEmployeeCount = sessionStorage.getItem("employeeCount");
+
+if (storedCompanyName) {
+    companyNameInput.value = storedCompanyName;
+}
+if (storedEmployeeCount) {
+    employeeCountSelect.value = storedEmployeeCount;
+}
+
+// Check conditions on page load
+checkEmpresasConditions();
+
+
+next3EmpresasButton.addEventListener("click", function() {
+  // Proceed to next section (Section 4 for empresas)
+  section3Empresas.classList.add("hidden");
+  section4Empresas.classList.remove("hidden");
+  updateProgressBar(4);
+});
+
+back2EmpresasButton.addEventListener("click", function() {
+    // Go back to Section 2
+    section3Empresas.classList.add("hidden");
+    section2.classList.remove("hidden");
+    updateProgressBar(2);
 });
 
 
@@ -429,22 +690,22 @@ function calculatePrice() {
     if (mode === "private") {
       const selectedDays = JSON.parse(sessionStorage.getItem("selectedDays"));
       if (selectedDays.length === 2) {
-        price = 255000;
+        price = 280000;
         paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48faa1018b605e48380dff";  // Set the URL for 2 days in private lessons
       } else if (selectedDays.length === 3) {
-        price = 373000;
+        price = 396000;
         paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48fa5a018b605c40770db0";  // Set the URL for 3 days in private lessons
       } else if (selectedDays.length === 5) {
-        price = 600000;
+        price = 620000;
         paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48fa5a018b605b01a20daf";  // Set the URL for 5 days in private lessons
       }
     } else if (mode === "semi-private") {
       const selectedIntensity = sessionStorage.getItem("selectedIntensity");
       if (selectedIntensity === "twice") {
-        price = 152000;
+        price = 160000;
         paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48faa1018b6060107b0e00";  // Set the URL for 2 days in semi-private lessons
       } else if (selectedIntensity === "thrice") {
-        price = 230000;
+        price = 238000;
         paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48fa3b018b605f45cb0d80";  // Set the URL for 3 days in semi-private lessons
       }
     }
@@ -485,4 +746,15 @@ document.getElementById("next3-semi-private").addEventListener("click", function
   section3SemiPrivate.classList.add("hidden");
   section4.classList.remove("hidden");
   updateProgressBar(4);
+});
+
+
+const section4Empresas = document.getElementById("section4-empresas");
+const back3EmpresasButton = document.getElementById("back3-empresas");
+
+back3EmpresasButton.addEventListener("click", function() {
+    // Go back to Section 3 for empresas
+    section4Empresas.classList.add("hidden");
+    section3Empresas.classList.remove("hidden");
+    updateProgressBar(3);
 });

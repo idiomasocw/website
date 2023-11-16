@@ -1,25 +1,24 @@
-function initializeAppearance() {
+
 
     const menuSection = document.querySelector("#menu-section");
     const matriculateButton = document.querySelector(".matriculate-button a");
 
     // Initialize to the intended starting position
-    matriculateButton.style.top = "-10px";
-    matriculateButton.style.marginTop = "-10px";
-    
-    let lastKnownScrollPosition = 0;
-    let shouldShowMenu = true;
-
-    window.addEventListener("scroll", function() {
-        let scrollPosition = window.scrollY;
+    if (matriculateButton) {
+        // Initialize to the intended starting position
+        matriculateButton.style.top = "-10px";
+        matriculateButton.style.marginTop = "-10px";
+        
+        window.addEventListener("scroll", function() {
+            let scrollPosition = window.scrollY;
         
         // Add sticky class and adjust top position
-        if (scrollPosition > 50 && scrollPosition < 500) {
+        if (scrollPosition > 50 && scrollPosition < 1500) {
             shouldShowMenu = true;
             menuSection.classList.add("menu-section-sticky");
         } 
         // Condition to hide the menu after 800px
-        else if (scrollPosition >= 500) {
+        else if (scrollPosition >= 1500) {
             shouldShowMenu = false;
             menuSection.classList.remove("menu-section-sticky");
         }
@@ -32,40 +31,38 @@ function initializeAppearance() {
             matriculateButton.style.marginTop = "-10px";  // Restore initial margin-top
         } 
         // Show the sticky menu when scrolling down from the top
-        else if (scrollPosition > 0 && scrollPosition < 50) {
-            menuSection.classList.add("menu-section-sticky");
-            matriculateButton.style.top = "0";  // Final position
-            matriculateButton.style.marginTop = "0";  // Remove negative margin
+        if (scrollPosition === 0 || (scrollPosition > 0 && scrollPosition < 50)) {
+            matriculateButton.style.top = (scrollPosition === 0) ? "-10px" : "0";
+            matriculateButton.style.marginTop = (scrollPosition === 0) ? "-10px" : "0";
         }
-        
-        if (shouldShowMenu) {
-            menuSection.style.display = "flex";  // Show the menu-section
-        } else {
-            menuSection.style.display = "none";  // Hide the menu-section
-        }
-
-        // Update last known scroll position
-        lastKnownScrollPosition = scrollPosition;
     });
-    console.log("Appearance Function called")
+}
 
+let lastKnownScrollPosition = 0;
+let shouldShowMenu = true;
 
-
-/* HAMBURGER ICON ANIMATION */
-const menuBtn = document.querySelector('.menu-btn');
-let menuOpen = false;
-
-menuBtn.addEventListener('click', ()=>{
-    if (!menuOpen){
-        menuBtn.classList.add('open');
-        menuOpen = true;
+window.addEventListener("scroll", function() {
+    let scrollPosition = window.scrollY;
+    
+    // Add or remove sticky class based on scroll position
+    if (scrollPosition > 50 && scrollPosition < 1500) {
+        shouldShowMenu = true;
+        menuSection.classList.add("menu-section-sticky");
+    } else if (scrollPosition >= 1500) {
+        shouldShowMenu = false;
+        menuSection.classList.remove("menu-section-sticky");
     }
 
-    else{
-        menuBtn.classList.remove('open');
-        menuOpen = false;
+    // Toggle display of the menu section based on scroll position
+    if (shouldShowMenu) {
+        menuSection.style.display = "flex";
+    } else {
+        menuSection.style.display = "none";
     }
+
+    // Update last known scroll position
+    lastKnownScrollPosition = scrollPosition;
 });
 
+console.log("Appearance Function called");
 
-}
