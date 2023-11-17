@@ -676,6 +676,7 @@ nav a:visited, nav a:visited .fas {
 
 .allEnglishLevels{
     padding: 2% 0;
+    margin: auto;
 }
 
 .levels img{
@@ -1289,6 +1290,10 @@ background: #ffffff;
     background:linear-gradient(to bottom, #857ebf, #494f78);
     padding: 1rem;
     border-radius: 8px;
+}
+
+.levels img{
+    width: 30px;
 }
 
 .section-faq{
