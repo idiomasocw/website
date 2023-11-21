@@ -1,4 +1,11 @@
 
+#menu-section2{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*CSS STYLES FOR THE FORM*/
 .form-border {
   width: fit-content;
   margin: 0 auto;
@@ -439,6 +446,8 @@ grid-template-rows: repeat(5, 1fr); /* Creates 5 rows */
 gap: 10px; /* Space between buttons */
 }
 
+/*END CSS STYLES FOR THE FORM*/
+
 .nombre-modalidad{
   font-size: 0.8rem;
   max-width: 110px;
@@ -518,6 +527,16 @@ gap: 10px; /* Space between buttons */
   position: relative;
 }
 
+.wave-separator {
+  position: absolute;
+  bottom: 0;  
+  left: 0;
+  width: 100%; 
+  height: 14%;   
+  fill: #ffffff; 
+  z-index: 1;   
+  margin-bottom: -4px;
+}
 
 .wave-separator-cursos {
   position: absolute;
@@ -530,6 +549,231 @@ gap: 10px; /* Space between buttons */
   margin-bottom: -3px;
 }
 /* End of parallax section */
+
+/* new css styles for the course description */
+.course-description-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  height: 100vh;
+}
+
+.course-description-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  
+  width: 100%;
+  padding: 0 7%;
+}
+
+.course-description-card {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10px;
+  padding: 4rem;
+  border-radius: 0 8px 8px 8px; /* Optional for rounded corners */
+  
+  background-color:#f4f8f8;
+  color:#0e124d;
+  position: relative;
+}
+
+
+.course-description-card h2 {
+  text-align: left;
+  color: #0e124d; /* Adjust the color to match your design */
+  text-transform: uppercase;
+  font-size: 3rem;
+  margin: 0;
+  padding: 2% 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.course-description-items{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.course-feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.course-feature i {
+  margin-right: 10px;
+}
+
+.course-pricing {
+display: flex;
+flex-direction: column;
+
+justify-content: space-around;
+}
+
+.price-option {
+  background-color: #D1FF4F; 
+  padding: 10px;
+  text-align: center;
+  color:#0e124d;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.price-option .price{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.program-name{
+  padding: 0 0px 0 6%;
+}
+/* You might need to adjust the font-size and colors based on your design */
+
+/* End of new css styles for the course description */
+
+
+/* Porgram-navigation */
+
+
+/* .icon img{
+  width: 25%;
+}
+
+.course-navigation>ul{
+    list-style: none;
+    margin:0;
+    display: flex;
+    padding: 0;
+    align-items:end;
+}
+
+.course-navigation>ul>li{
+    padding:1rem;
+    margin:0 4px;
+    width: 33%;
+    border: #0e124d solid 1px;
+    border-radius: 40px 40px 0 0;
+}
+
+.navigation{
+  width: 400px;
+  position: relative;
+  height: 70px;
+  background-color: #0e124d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.navigation ul{
+  display: flex;
+  width: 350px;
+}
+
+.navigation ul li{
+  position: relative;
+  list-style: none;
+  width: 105px;
+  height: 70px;
+  z-index: 1;
+}
+
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navigation ul li a .icon{
+  position: relative;
+  display: block;
+  line-height: 75px;
+  transform: 0.5s;
+}
+
+.navigation ul li.active a .icon{
+  transform: translateY(-50%);
+  transition: all 0.5s ease-in-out;
+}
+
+.navigation ul li a .text {
+  position: absolute;
+  color: var(--clr);
+  font-weight: 400;
+  font-size: 0.80em;
+  transition: 0.5s;
+  opacity: 0;
+  transform:translateY(20px)
+}
+
+.navigation ul li.active a .text {
+  opacity: 1;
+  transform: translateY(15px);
+}
+
+.indicator{
+  position: absolute;
+  top:-70%;
+  left: 14%;
+  width: 70px;
+  height: 70px;
+  background: #0000ff;
+  border-radius: 50%;
+  border: 6px solid var(--clr);
+  transition: 0.5s;
+}
+
+.indicator::before{
+  content: '';
+  position: absolute;
+  background: transparent;
+  top:62%;
+  left:-19px;
+  height: 20px;
+  width: 20px;
+  border-top-right-radius:20px;
+  box-shadow: 0px -10px 0 0 var(--clr);
+}
+
+.indicator::after{
+  content: '';
+  position: absolute;
+  background: transparent;
+  top:62%;
+  right:-19px;
+  height: 20px;
+  width: 20px;
+  border-top-left-radius:20px;
+  box-shadow: 0px -10px 0 0 var(--clr);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(14% * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(104px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(70px * 3));
+} */
+/* End-program-navigation */
+
+
 @media only screen and (max-width: 600px) { /* Adjusts for devices with a width of 600px or less */
   .form-infoContainer {
     grid-template-columns: 1fr; /* Makes all .info-box elements take full width and stack vertically */
@@ -582,4 +826,29 @@ gap: 10px; /* Space between buttons */
     #section1{
       min-width:290px ;
     }
+    .course-description-section{
+      padding-top: 1rem;
+  }
+  .course-description-card{
+    grid-template-columns: 1fr;
+}
+
+.course-pricing {
+  gap:5px;
+  justify-content: center;
+  height: fit-content;
+}
+
+.price-option{
+  display: flex;
+  flex-direction: column;
+}
+
+.course-price-name{  
+  width: 100%;
+/*     display: flex;
+  flex-direction: row; */
+  display: grid;
+  grid-template-columns: 1fr;
+}
 }
