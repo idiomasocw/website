@@ -806,6 +806,7 @@ nav a:visited, nav a:visited .fas {
             padding:0;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
 
         .copy-rights{

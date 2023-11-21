@@ -24,10 +24,10 @@ function updateButtonStatus(buttonId, condition) {
         buttonElement.classList.add('enabled');
     }
 }
-
+const next1Button = document.getElementById("next1");
 document.addEventListener("DOMContentLoaded", function() {
     updateProgressBar(1);
-    const next1Button = document.getElementById("next1");
+    
     const ageSelect = document.getElementById("edad");
     next1Button.disabled = true;
 
@@ -758,3 +758,60 @@ back3EmpresasButton.addEventListener("click", function() {
     section3Empresas.classList.remove("hidden");
     updateProgressBar(3);
 });
+
+//Functionality that gathers all data from session storage and sends it to the server and then clears session storage
+
+document.getElementById('send-form-empresas').addEventListener('click', submitForm);
+document.getElementById('pay-button').addEventListener('click', submitForm);
+
+async function submitForm(event) {
+    event.preventDefault();
+    // Retrieve all keys from session storage
+    let formData = {};
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        formData[key] = sessionStorage.getItem(key);
+    }
+
+    // Send data to server
+    try {
+      const response = await fetch('/api/submit-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+      });
+  
+      const responseText = await response.text();
+  
+      if (response.ok) {
+          console.log(responseText);
+          alert(responseText); // Show success message
+          sessionStorage.clear();
+          resetFormUI();
+      } else {
+          console.error('Form submission failed:', responseText);
+          alert(responseText); // Show error message from server
+      }
+  } catch (error) {
+      console.error('Error in submitting form:', error);
+      alert('An error occurred. Please try again.');
+  }
+  
+}
+
+// Function to reset the form UI for a new entry
+function resetFormUI() {
+  // Reset the form fields
+  document.getElementById("registration-form").reset();
+
+  // Reset the UI elements
+  // Example: Set the first section visible and others hidden
+  section1.classList.remove("hidden");
+  section2.classList.add("hidden");
+  section4.classList.add("hidden");
+  checkFieldsAndEnableButton()
+  // ... similar for other sections ...
+
+  // Reset the progress bar to the first section
+  updateProgressBar(1);
+}
