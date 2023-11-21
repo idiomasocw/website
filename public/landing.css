@@ -124,7 +124,7 @@ font-family: 'Montserrat', sans-serif;
     background-position:right;
 
     /* new styles for parallax */
-    background-image: url("./pics/parallax8.png");
+    background-image: url("./pics/landing-parallax.png");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -748,6 +748,10 @@ background: #ffffff;
 
 .section-faq{
     padding: 1em 0 3em 0;
+}
+
+.section-academy-info{
+    background-image: url("./pics/landing-parallax-mobile.png");
 }
 
 }

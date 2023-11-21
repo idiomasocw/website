@@ -470,7 +470,7 @@ gap: 10px; /* Space between buttons */
 
 /* Parallax section */
 .parallax {
-  background-image: url("./pics/parallax-cursos6.png");
+  background-image: url("./pics/cursos-parallax.png");
   min-height: 580px; 
   background-attachment: fixed;
   background-position: center;
@@ -512,7 +512,7 @@ gap: 10px; /* Space between buttons */
 }
 
 #semi-personalized{
-  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/Artboard10.png);
+  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-UHD.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -675,7 +675,7 @@ justify-content: space-around;
 
   .parallax {
     /* The image used */
-    background-image: url("./pics/parallax-cursos7-mini.png");}
+    background-image: url("./pics/cursos-parallax-mobile.png");}
 
     #section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
       min-width: 340px;
@@ -693,6 +693,9 @@ justify-content: space-around;
     padding: 2rem;
 }
 
+.course-description-card h2{
+  text-align: center;
+}
 .course-pricing {
   gap:5px;
   justify-content: center;
@@ -710,5 +713,13 @@ justify-content: space-around;
   flex-direction: row; */
   display: grid;
   grid-template-columns: 1fr;
+}
+
+#semi-personalized{
+  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 }

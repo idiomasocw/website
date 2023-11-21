@@ -87,7 +87,7 @@ span{
     list-style: none;
     color:#ffffff;
     font-family: 'Roboto Condensed', sans-serif;
-    padding: 4px 0 4px 0;
+    padding: 0.25em 0 0.25em 0;
 }
 
 .footer-box ul {
@@ -108,7 +108,7 @@ span{
 .copy-rights p{
     padding: 5px 0 5px 0;
     color:#f7f8fd;
-    font-size: 14px;
+    font-size: 0.875em;
 }
 
 .menu ul li a, .menu ul li a:visited {
@@ -278,10 +278,12 @@ nav a:visited, nav a:visited .fas {
         flex-direction: column;
         margin:0px;
         align-items: center;
+        justify-content: center;
     }
     #ocw-logo {
         width: 4.4rem;
         margin: auto;
+        margin:0.7rem 0;
     }
 
     .menu{
@@ -303,7 +305,7 @@ nav a:visited, nav a:visited .fas {
     }
 
     .social-media a{
-        margin:0 5px;
+        margin:0 0.313em;
     }
 
     .navbar-links.active{
