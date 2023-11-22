@@ -175,7 +175,7 @@ font-family: 'Montserrat', sans-serif;
     -webkit-background-clip: text;
     background-size: 200% 200%;
     color: transparent;
-    animation: rippleAnim 2s ease-in-out;
+    /* animation: rippleAnim 2s ease-in-out; */
   }
   
   .color-changing span {
