@@ -246,11 +246,13 @@ transition: all .5s ease-in-out;
 
 
 #ocw-logo {
-    width: 70%;
+    width: 5.38em;
+    height: 3.7em;
     display: flex;
     align-items: center;
     justify-content: center;
     padding:12% 0;
+    box-sizing: content-box;
 }
 
 nav a:visited, nav a:visited .fas {
@@ -282,6 +284,7 @@ nav a:visited, nav a:visited .fas {
     }
     #ocw-logo {
         width: 4.4rem;
+        height: 3.5em;
         margin: auto;
         margin:0.7rem 0;
     }

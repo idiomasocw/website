@@ -495,7 +495,8 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .levels img{
-    width: 3.2em;
+    width: 3.2rem;
+    height: 3.2rem;
 }
 
 /* ACCORDION CSS */
@@ -651,7 +652,7 @@ font-family: 'Montserrat', sans-serif;
       .study-english {
         min-width: 100%; /* stack on top of each other */
         height: 38vh; 
-        background-image: url(/pics/Woman\ pointing\ down.png);
+        background-image: url(./pics/woman-pointing-down.png);
     }
 
     .section-academy-info{
@@ -743,7 +744,8 @@ background: #ffffff;
 }
 
 .levels img{
-    width: 30px;
+    width: 1.9rem;
+    height: 1.9rem;
 }
 
 .section-faq{
