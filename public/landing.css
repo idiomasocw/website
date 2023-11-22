@@ -394,7 +394,7 @@ font-family: 'Montserrat', sans-serif;
 
 .imgbox .img-item {
     width: 95%;
-    height: 14.4rem;
+    height: auto;
 }
 
 .content-services {
