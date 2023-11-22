@@ -23,6 +23,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 
+<style>
+    /* Section 1: Academy Info - Common Styles */
+    .section-academy-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #857ebf, #494f78);
+    z-index: -1; /* Place the gradient behind the content */
+  }
+
+    .section-academy-info {
+        color: #0e124d;
+        padding: 98px 0 68px 0;
+        text-align: center;
+        position: relative;
+        height: 61vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        /* Fallback PNG image for desktop */
+        background-image: url("./pics/landing-parallax.png");
+    }
+
+    /* WebP Support for Desktop - Only Change the Background Image */
+    @supports (background-image: url("./pics/landing-parallax.webp")) {
+        .section-academy-info {
+            background-image: url("./pics/landing-parallax.webp");
+        }
+    }
+
+    .study-english{
+    background-image: url("./pics/studentocw.png");
+    height: 60vh; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+}
+
+/* WebP Support for Desktop - Only Change the Background Image */
+@supports (background-image: url("./pics/studentocw.webp")) {
+    .study-english{
+    background-image: url("./pics/studentocw.webp");
+        }
+    }
+
+    /* Styles for Mobile Devices */
+    @media (max-width: 600px) {
+        .section-academy-info {
+            /* Fallback PNG image for mobile */
+            background-image: url("./pics/landing-parallax-mobile.png");
+            height: 34vh;
+        margin-bottom: 7.5em;
+        }
+
+        /* WebP Support for Mobile */
+        @supports (background-image: url("./pics/landing-parallax-mobile.webp")) {
+            .section-academy-info {
+                background-image: url("./pics/landing-parallax-mobile.webp");
+            }
+        }
+
+        .study-english {
+            min-width: 100%; /* stack on top of each other */
+            height: 38vh; 
+            background-image: url("./pics/woman-pointing-down.png");
+        }
+
+        /* WebP Support for .study-english */
+        @supports (background-image: url("./pics/woman-pointing-down.webp")) {
+            .study-english {
+                background-image: url("./pics/woman-pointing-down.webp");
+            }
+        }
+    }
+</style>
+
 <body>
 
     <header id="dark-header">
