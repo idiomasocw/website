@@ -482,6 +482,13 @@ gap: 10px; /* Space between buttons */
   overflow: hidden;
 }
 
+    /* WebP Support for Desktop - Only Change the Background Image */
+    @supports (background-image: url("./pics/cursos-parallax.webp")) {
+      .parallax {
+        background-image: url("./pics/cursos-parallax.webp");
+      }
+  }
+
 /* Pseudo-element for gradient background */
 .parallax::before {
   content: '';
@@ -523,6 +530,13 @@ gap: 10px; /* Space between buttons */
   position: relative;
   z-index: -2;
 }
+
+    /* WebP Support for Desktop - Only Change the Background Image */
+    @supports (background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-UHD.webp)) {
+      #semi-personalized {
+        background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-UHD.webp);
+      }
+  }
 
 .course-description-section1{
   padding-bottom: 2rem;
@@ -677,7 +691,16 @@ justify-content: space-around;
 
   .parallax {
     /* The image used */
-    background-image: url("./pics/cursos-parallax-mobile.png");}
+    background-image: url("./pics/cursos-parallax-mobile.png");
+  }
+
+      /* WebP Support for Mobile - Only Change the Background Image */
+      @supports (background-image: url("./pics/cursos-parallax-mobile.webp")) {
+        .parallax {
+          background-image: url("./pics/cursos-parallax-mobile.webp");
+        }
+    }
+  
 
     #section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
       min-width: 340px;
@@ -724,4 +747,12 @@ justify-content: space-around;
   background-position: center;
   background-attachment: fixed;
 }
+
+      /* WebP Support for Mobile - Only Change the Background Image */
+      @supports (background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.webp)) {
+        #semi-personalized {
+          background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.webp);
+        }
+    }
+
 }

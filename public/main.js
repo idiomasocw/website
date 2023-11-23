@@ -7,7 +7,7 @@
         navbarLinks.classList.toggle('active');
         menuContainer.classList.toggle('active');
     });
-    console.log("Menu Function called")
+    
 
     /* HAMBURGER ICON ANIMATION */
 const menuBtn = document.querySelector('.menu-btn');
@@ -45,7 +45,7 @@ for (var i = 0; i < acc.length; i++) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
-    let isMobile = window.innerWidth < 868; // Adjust this value based on your design's mobile breakpoint
+    let isMobile = window.innerWidth < 768; // Adjust this value based on your design's mobile breakpoint
 
     const isInViewport = (el) => {
         const rect = el.getBoundingClientRect();

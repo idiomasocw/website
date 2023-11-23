@@ -64,5 +64,4 @@ window.addEventListener("scroll", function() {
     lastKnownScrollPosition = scrollPosition;
 });
 
-console.log("Appearance Function called");
 
