@@ -281,6 +281,8 @@ nav a:visited, nav a:visited .fas {
         margin:0px;
         align-items: center;
         justify-content: center;
+        z-index: 5;
+        position: relative;
     }
     #ocw-logo {
         width: 4.4rem;

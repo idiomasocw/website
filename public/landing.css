@@ -65,7 +65,15 @@ font-family: 'Montserrat', sans-serif;
     opacity: 1;  /* Make arrow visible */
     margin-left: 10px;  /* Add space next to text */
 }
-  
+
+.matriculate-button-mobile{
+    display: none;
+    background-color:#d1ff4f;
+    color:var(--dark);
+    font-weight: bold;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
 
   /* Add or modify this CSS code for menu links */
 
@@ -597,6 +605,19 @@ font-family: 'Montserrat', sans-serif;
 
     .matriculate-button{
         display: none !important;
+    }
+
+    .matriculate-button-mobile{
+        position: absolute;
+        display: flex;
+        z-index: 2;
+        bottom: 2.3%;
+        left: 50%;  
+        transform: translateX(-50%);
+        justify-content: center;
+        align-items: center;
+        font-family: 'Oswald', sans-serif;
+        padding:1rem;
     }
 
     .main-heading {
