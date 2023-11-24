@@ -143,6 +143,7 @@ font-family: 'Montserrat', sans-serif;
     background: linear-gradient(45deg, #1fffbc,#d1ff4f, #0e124d);
     -webkit-background-clip: text;
     background-size: 200% 200%;
+    background-clip: text;
     color: transparent;
     /* animation: rippleAnim 2s ease-in-out; */
   }
@@ -687,8 +688,10 @@ font-family: 'Montserrat', sans-serif;
   .color-changing {
     background: linear-gradient(45deg, #0e124d,#A697E6,#7b86e8);
     -webkit-background-clip: text;
-
+    background-clip: text;
+  color: transparent;
   }
+
   .section-services {
     background-color: #d1ff4f;
     color: #0e124d;
