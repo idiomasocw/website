@@ -1,3 +1,10 @@
+:root{
+  --Bckpurple1:#857ebfbe;
+  --Bckpurple2:#494f78ad;
+  --alternative-yellow:#d0ff4fd3;
+  --alternative-blue:#4f7492dd;
+  --alternative-blue2:#4f7492f7;
+}
 
 #menu-section2{
   width: 100%;
@@ -202,7 +209,7 @@ form h3{
   width: 15px; /* Small circle size */
   height: 15px; /* Small circle size */
   border-radius: 50%; /* Makes it a circle */
-  background-color: #d7dad6; /* Gray color, change as needed */
+  background-color: var(--Bckpurple1); /* Gray color, change as needed */
   margin: 0 5px; /* Spacing between circles */
 }
 
@@ -472,7 +479,8 @@ gap: 10px; /* Space between buttons */
 
 /* Parallax section */
 .parallax {
-  background-image: url("./pics/cursos-parallax.png");
+  /* background-image: url("./pics/cursos-parallax.png"); */
+  background-image: url("./pics/Descuento-min.png");
   min-height: 580px; 
   background-attachment: fixed;
   background-position: center;
@@ -483,9 +491,9 @@ gap: 10px; /* Space between buttons */
 }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background-image: url("./pics/cursos-parallax.webp")) {
+    @supports (background-image: url("./pics/Descuento.webp")) {
       .parallax {
-        background-image: url("./pics/cursos-parallax.webp");
+        background-image: url("./pics/Descuento.webp");
       }
   }
 
@@ -521,7 +529,7 @@ gap: 10px; /* Space between buttons */
 }
 
 #semi-personalized{
-  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-UHD.png);
+  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-discount-min.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -532,9 +540,9 @@ gap: 10px; /* Space between buttons */
 }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-UHD.webp)) {
+    @supports (background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-discount.webp)) {
       #semi-personalized {
-        background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-UHD.webp);
+        background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue2)40%,var(--alternative-blue)100%),url(./pics/semi-privadas-discount.webp);
         background-attachment: fixed;
       }
   }
@@ -692,13 +700,15 @@ justify-content: space-around;
 
   .parallax {
     /* The image used */
-    background-image: url("./pics/cursos-parallax-mobile.png");
+    /* background-image: url("./pics/cursos-parallax-mobile.png"); */
+    background-image: url("./pics/Descuento-mobile-min.png");
   }
 
       /* WebP Support for Mobile - Only Change the Background Image */
-      @supports (background-image: url("./pics/cursos-parallax-mobile.webp")) {
+      @supports (background-image: url("./pics/Descuento-mobile.webp")) {
         .parallax {
-          background-image: url("./pics/cursos-parallax-mobile.webp");
+          /* background-image: url("./pics/cursos-parallax-mobile.webp"); */
+          background-image: url("./pics/Descuento-mobile.webp");
         }
     }
   
@@ -742,7 +752,8 @@ justify-content: space-around;
 }
 
 #semi-personalized{
-  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.png);
+/*   background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.png);*/  
+  background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue)40%, var(--alternative-blue2)100%),url(./pics/semi-personalized-mobile-min.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -750,9 +761,11 @@ justify-content: space-around;
 }
 
       /* WebP Support for Mobile - Only Change the Background Image */
-      @supports (background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.webp)) {
+      @supports (background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue)40%, var(--alternative-blue2)100%),url(./pics/semi-personalized-mobile.webp)) {
         #semi-personalized {
-          background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.webp);
+          /* background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-personalized-mobile.png); */
+          background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue)40%, var(--alternative-blue2)100%),url(./pics/semi-personalized-mobile.webp);
+          background-attachment: fixed;
         }
     }
 
