@@ -349,4 +349,9 @@ nav a:visited, nav a:visited .fas {
         color: #0e124d !important;
       }
 
+      .word-of-the-day-link{
+        padding:0.1rem;
+        font-size: 0.6rem;
+    }
+
 }
