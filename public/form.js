@@ -2,6 +2,7 @@
 
 const section1 = document.getElementById("section1");
 const section2 = document.getElementById("section2");
+const section4Empresas = document.getElementById("section4-empresas");
 
 // Function to update the progress bar
 function updateProgressBar(sectionId) {
@@ -749,7 +750,7 @@ document.getElementById("next3-semi-private").addEventListener("click", function
 });
 
 
-const section4Empresas = document.getElementById("section4-empresas");
+
 const back3EmpresasButton = document.getElementById("back3-empresas");
 
 back3EmpresasButton.addEventListener("click", function() {
@@ -780,11 +781,13 @@ async function submitForm(event) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
       });
-  
+      
+      console.log('Full response:', response);
       const responseText = await response.text();
+
   
       if (response.ok) {
-          console.log(responseText);
+        console.log('Form submission successful:', responseText);
           alert(responseText); // Show success message
           sessionStorage.clear();
           resetFormUI();
@@ -808,9 +811,11 @@ function resetFormUI() {
   // Example: Set the first section visible and others hidden
   section1.classList.remove("hidden");
   section2.classList.add("hidden");
+  section3Private.classList.add("hidden"); // Add this line to hide section3Private
+  section3SemiPrivate.classList.add("hidden"); // Add this line to hide section3SemiPrivate
+  section3Empresas.classList.add("hidden"); // Add this line to hide section3Empresas
   section4.classList.add("hidden");
-  checkFieldsAndEnableButton()
-  // ... similar for other sections ...
+  section4Empresas.classList.add("hidden");
 
   // Reset the progress bar to the first section
   updateProgressBar(1);

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="wordOfTheDay.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <title>Word of the day</title>
+</head>
+<body>
+    <header id="dark-header">
+        <!-- This is header.html -->
+<div class="social-media">
+    <a href="https://www.facebook.com/idiomasocw/" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/idiomasocw/" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com/channel/UCW8lVGnaaC9zHlOWZfme1tA" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Youtube"><i class="fab fa-youtube"></i></a>
+    <a href="https://wa.me/573148489909" target="_blank" rel="noopener noreferrer" aria-label="Contactanos via Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+    </header>
+
+    <!-- Logo and Menu Section -->
+    <nav id="menu-section">
+        <div class="menu-row">
+
+            <a href="/index.html">
+                <img id="ocw-logo" src="./pics/dark-logo.png" alt="Logo OneCulture World">
+            </a>
+        
+            <div class="menu-toggle">
+                <div class="menu-btn">
+                    <div class="menu-btn_burger"></div>
+                </div>
+            </div>
+        
+            <div class="menu">
+                <ul class="navbar-links">
+                    <li class="menu-button"><a class="menu-item-link" href="/index.html">
+                            Home</a></li>
+                    <li class="menu-button"><a class="menu-item-link" href="/cursos.html">
+                            Cursos</a></li>
+                    <li class="menu-button"><a class="menu-item-link" href="https://idiomas.onecultureworld.com/login">
+                            Login</a></li>
+                </ul>
+            </div>
+        
+            <div class="matriculate-button">
+                <a href="/cursos.html">Matricúlate ya</a>
+            </div>
+        </div>
+
+    </nav>
+    <div class="word-of-the-day-container">
+        <h1 class="word">{{word}}</h1>
+        <div class="classification">
+            <span class="category">{{category}}</span>
+            <span class="level">{{level}}</span>
+        </div>
+        <div class="semantics">
+            <span class="synonym"><strong>Synonym:</strong> {{synonym}}</span>
+            <span class="explanation"><strong>Explanation:</strong> {{explanation}}</span>
+            <span class="example"><strong class="exampleLabel">Example:</strong> {{example}}</span>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
+    <script src="./appearance.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

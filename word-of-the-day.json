@@ -1,0 +1,361 @@
+[
+    {
+        "id":"1",
+        "word": "A hot potato",
+        "category": "Idiom",
+        "synonym": "Controversial issue",
+        "explanation": "A topic or issue that is widely disputed and discussed.",
+        "example": "Climate change has become a hot potato in recent years.",
+        "level": "B2"
+    },
+    {   "id":"2",
+        "word": "A penny for your thoughts",
+        "category": "Idiom",
+        "synonym": "What are you thinking?",
+        "explanation": "A way of asking what someone is thinking.",
+        "example": "You've been quiet all evening. A penny for your thoughts?",
+        "level": "B1"
+    },
+    {
+        "id":"3",
+        "word": "Above board",
+        "category": "Adjective",
+        "synonym": "Honest, straightforward",
+        "explanation": "Legitimate, honest, and open.",
+        "example": "All the dealings of the company are above board.",
+        "level": "C1"
+    },
+    {
+        "id":"4",
+        "word": "Absent-minded",
+        "category": "Adjective",
+        "synonym": "Forgetful, inattentive",
+        "explanation": "Someone who often forgets things or does not pay attention to what's happening around them.",
+        "example": "Kathe is so absent-minded. She always forgets her appointments and even her own birthday.",
+        "level": "B1"
+    },
+    {
+        "id":"5",
+        "word": "Accidentally on purpose",
+        "category": "Adverb",
+        "synonym": "Deliberately",
+        "explanation": "An action that is said to be accidental, but was actually intentional.",
+        "example": "I think she lost my number accidentally on purpose.",
+        "level": "B2"
+    },
+    {
+        "id":"6",
+        "word": "Account for",
+        "category": "Phrasal verb",
+        "synonym": "Explain, justify",
+        "explanation": "To explain or justify something.",
+        "example": "He couldn't account for his absence from the meeting.",
+        "level": "C1"
+    },
+    {
+        "id":"7",
+        "word": "Achilles' heel",
+        "category": "Noun",
+        "synonym": "Weakness",
+        "explanation": "A person's main weakness.",
+        "example": "His inability to delegate was his Achilles' heel.",
+        "level": "B2"
+    },
+    {
+        "id":"8",
+        "word": "Acid test",
+        "category": "Noun",
+        "synonym": "Definitive test",
+        "explanation": "A test that definitively proves whether something is true or false.",
+        "example": "The acid test for the product will be whether people actually buy it.",
+        "level": "C1"
+    },
+    {
+        "id":"9",
+        "word": "Across the board",
+        "category": "Adverb",
+        "synonym": "Universally",
+        "explanation": "Including everyone or everything.",
+        "example": "The company has implemented cost-cutting measures across the board.",
+        "level": "B2"
+    },
+    {
+        "id":"10",
+        "word": "Act of God",
+        "category": "Noun",
+        "synonym": "Natural disaster",
+        "explanation": "An event that is caused by nature and cannot be prevented by humans.",
+        "example": "The insurance does not cover damage caused by acts of God such as floods or earthquakes.",
+        "level": "B1"
+    },
+    {
+        "id":"11",
+        "word": "Add fuel to the fire",
+        "category": "Idiom",
+        "synonym": "Worsen the situation",
+        "explanation": "To make a problem or conflict worse.",
+        "example": "By arguing back, he was just adding fuel to the fire.",
+        "level": "B1"
+    },
+    {
+        "id":"12",
+        "word": "Against the clock",
+        "category": "Idiom",
+        "synonym": "Rushed, in a hurry",
+        "explanation": "To do something as fast as possible and try to finish it before a certain time.",
+        "example": "We were working against the clock to finish the project on time.",
+        "level": "B2"
+    },
+    {
+        "id":"13",
+        "word": "All ears",
+        "category": "Idiom",
+        "synonym": "Fully attentive",
+        "explanation": "Listening carefully and with full attention.",
+        "example": "I'm all ears, tell me about your day.",
+        "level": "A2"
+    },
+    {
+        "id":"14",
+        "word": "All thumbs",
+        "category": "Idiom",
+        "synonym": "Clumsy",
+        "explanation": "Clumsy or awkward.",
+        "example": "I'm all thumbs today, I've already broken two glasses.",
+        "level": "B1"
+    },
+    {
+        "id":"15",
+        "word": "Apple of one's eye",
+        "category": "Idiom",
+        "synonym": "Cherished, treasured",
+        "explanation": "Someone who is very precious or dear to someone.",
+        "example": "Her grandson is the apple of her eye.",
+        "level": "B2"
+    },
+    {"id":"16",
+        "word": "At the drop of a hat",
+        "category": "Idiom",
+        "synonym": "Immediately",
+        "explanation": "Without any hesitation; instantly.",
+        "example": "I'd quit my job at the drop of a hat if I didn't have a family to support.",
+        "level": "B1"
+    },
+    {
+        "id":"17",
+        "word": "At the end of one's tether",
+        "category": "Idiom",
+        "synonym": "At one's limit",
+        "explanation": "Having no patience, endurance, or resources left.",
+        "example": "After two hours of hearing the children argue, their mother was at the end of her tether.",
+        "level": "C1"
+    },
+    {
+        "id":"18",
+        "word": "Axe to grind",
+        "category": "Idiom",
+        "synonym": "Personal interest",
+        "explanation": "Having a selfish motive in the background.",
+        "example": "He has an axe to grind with the boss, that's why he's working overtime.",
+        "level": "B2"
+    },
+    {
+        "id":"19",
+        "word": "Airing dirty laundry",
+        "category": "Idiom",
+        "synonym": "Discuss private matters",
+        "explanation": "Discussing or arguing about personal problems in public.",
+        "example": "I wish you wouldn't air our dirty laundry in public like that.",
+        "level": "C1"
+    },
+    {
+        "id":"20",
+        "word": "All bark and no bite",
+        "category": "Idiom",
+        "synonym": "Full of big talk",
+        "explanation": "Someone who talks tough but really isn't.",
+        "example": "Don't worry about his threats, he's all bark and no bite.",
+        "level": "B1"
+    },
+    {
+        "id":"21",
+        "word": "All in a day's work",
+        "category": "Idiom",
+        "synonym": "Normal routine",
+        "explanation": "Something that is not unusual; part of the normal routine.",
+        "example": "Saving lives is all in a day's work for a firefighter.",
+        "level": "B1"
+    },
+    {
+        "id":"22",
+        "word": "All over the map",
+        "category": "Idiom",
+        "synonym": "Disorganized",
+        "explanation": "Not focused or organized; covering a wide range of different things.",
+        "example": "His study notes were all over the map and hard to follow.",
+        "level": "B2"
+    },
+    {
+        "id":"23",
+        "word": "All that glitters is not gold",
+        "category": "Proverb",
+        "synonym": "Appearances can be deceptive",
+        "explanation": "Things that look valuable or true might not actually be so.",
+        "example": "She thought the glamorous life of an actress would be amazing, but she soon realized that all that glitters is not gold.",
+        "level": "B1"
+    },
+    {
+        "id":"24",
+        "word": "An arm and a leg",
+        "category": "Idiom",
+        "synonym": "Very expensive",
+        "explanation": "A large amount of money.",
+        "example": "This dress is nice, but it costs an arm and a leg.",
+        "level": "A2"
+    },
+    {
+        "id":"25",
+        "word": "An old flame",
+        "category": "Idiom",
+        "synonym": "Ex-lover",
+        "explanation": "Someone with whom one had a romantic relationship in the past.",
+        "example": "I ran into an old flame at the grocery store today.",
+        "level": "B2"
+    },
+    {
+        "id":"26",
+        "word": "Apple of discord",
+        "category": "Idiom",
+        "synonym": "Point of conflict",
+        "explanation": "An object or topic that causes anger, arguments, or disagreement.",
+        "example": "The property was the apple of discord between the two brothers.",
+        "level": "C1"
+    },
+    {
+        "id":"27",
+        "word": "At a crossroads",
+        "category": "Idiom",
+        "synonym": "At a decision point",
+        "explanation": "At a point where a crucial decision must be made.",
+        "example": "After college, I was at a crossroads—I had to decide which career path to take.",
+        "level": "B1"
+    },
+    {
+        "id":"28",
+        "word": "At one's wit's end",
+        "category": "Idiom",
+        "synonym": "Desperate",
+        "explanation": "So worried, confused, or annoyed that you do not know what to do next.",
+        "example": "I'm at my wit's end with this problem. I can't figure it out.",
+        "level": "B2"
+    },
+    {
+        "id":"29",
+        "word": "At the crack of dawn",
+        "category": "Idiom",
+        "synonym": "Very early in the morning",
+        "explanation": "Very early in the morning, when the sun is just starting to rise.",
+        "example": "She woke up at the crack of dawn to start her journey.",
+        "level": "A2"
+    },
+    {
+        "id":"30",
+        "word": "At the drop of a dime",
+        "category": "Idiom",
+        "synonym": "Immediately",
+        "explanation": "Without any hesitation; instantly.",
+        "example": "He was always ready to help his friends at the drop of a dime.",
+        "level": "B1"
+    },
+
+    {
+        "id":"31",
+        "word": "A piece of cake",
+        "category": "Idiom",
+        "synonym": "Easy task",
+        "explanation": "Something that is very easy to do.",
+        "example": "The test was a piece of cake.",
+        "level": "A1"
+    },
+    {
+        "id":"32",
+        "word": "All day long",
+        "category": "Adverb",
+        "synonym": "The entire day",
+        "explanation": "During the entire day.",
+        "example": "I've been studying all day long.",
+        "level": "A1"
+    },
+    {
+        "id":"33",
+        "word": "All of a sudden",
+        "category": "Adverb",
+        "synonym": "Suddenly",
+        "explanation": "Unexpectedly and quickly.",
+        "example": "All of a sudden, it started raining.",
+        "level": "A2"
+    },
+    {
+        "id":"34",
+        "word": "As soon as possible",
+        "category": "Adverb",
+        "synonym": "ASAP",
+        "explanation": "As quickly as it can be done.",
+        "example": "Please finish your homework as soon as possible.",
+        "level": "A1"
+    },
+    {
+        "id":"35",
+        "word": "At the moment",
+        "category": "Adverb",
+        "synonym": "Currently",
+        "explanation": "Right now.",
+        "example": "I'm busy at the moment.",
+        "level": "A1"
+    },
+    {
+        "id":"36",
+        "word": "A lot of",
+        "category": "Determiner",
+        "synonym": "Many",
+        "explanation": "A large number or amount of.",
+        "example": "I have a lot of friends.",
+        "level": "A1"
+    },
+    {
+        "id":"37",
+        "word": "A little bit",
+        "category": "Adverb",
+        "synonym": "Slightly",
+        "explanation": "To a small degree.",
+        "example": "I'm a little bit tired.",
+        "level": "A1"
+    },
+    {
+        "id":"38",
+        "word": "After school",
+        "category": "Adverb",
+        "synonym": "Post-school",
+        "explanation": "The time period following the end of school for the day.",
+        "example": "I play football after school.",
+        "level": "A2"
+    },
+    {
+        "id":"39",
+        "word": "All the time",
+        "category": "Adverb",
+        "synonym": "Always",
+        "explanation": "Continuously or constantly.",
+        "example": "I think about you all the time.",
+        "level": "A1"
+    },
+    {
+        "id":"40",
+        "word": "As well as",
+        "category": "Conjunction",
+        "synonym": "In addition to",
+        "explanation": "In addition; and also.",
+        "example": "I like playing football as well as basketball.",
+        "level": "B1"
+    }
+]

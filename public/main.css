@@ -47,10 +47,25 @@ span{
     text-align: center;
     font-size: 1rem;
     padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    gap: 4rem;
+}
+.word-of-the-day-link{
+    color: white;
+    display: block;
+    margin: auto;
+    padding:0.4rem;
+}
+
+.word-of-the-day-link:hover{
+    border: #D1FF4F 1px solid;
+    border-radius: 5px;
 }
 
 .social-media{
-    margin: 0 7%;
     display: flex;
     gap:1.2em;
     width: 9em;
