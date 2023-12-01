@@ -52,6 +52,7 @@ span{
     justify-content: space-between;
     padding: 0 7%;
     gap: 4rem;
+    height: 2.2rem;
 }
 .word-of-the-day-link{
     color: white;
