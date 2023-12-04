@@ -14,60 +14,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>OneCulture World</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <style>
+.menu-row {
+    display: flex;
+    justify-content: space-between; /* Align items to the start */
+    align-items: center;
+    width: auto;
+    position: relative;
+    gap: 20px; /* Add a gap to create space between menu items */
+}
+
+.matriculate-button {
+    display: none;
+}
+
+    </style>
 </head>
 
 <body>
 
-    <header id="dark-header">
-        <!-- This is header.html -->
-        <div class="social-media">
-            <a href="https://www.facebook.com/idiomasocw/" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/idiomasocw/" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCW8lVGnaaC9zHlOWZfme1tA" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Youtube"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/573148489909" target="_blank" rel="noopener noreferrer" aria-label="Contactanos via Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-
-    </header>
-
-    <!-- Logo and Menu Section -->
-    <nav style="position: relative;" id="menu-section">
-        <div class="menu-row">
-
-            <a href="/index.html">
-                <img id="ocw-logo" src="./pics/dark-logo.png" alt="Logo OneCulture World">
-            </a>
-        
-            <div class="menu-toggle">
-                <div class="menu-btn">
-                    <div class="menu-btn_burger"></div>
-                </div>
-            </div>
-        
-            <div class="menu">
-                <ul class="navbar-links">
-                    <li class="menu-button"><a class="menu-item-link" href="/index.html">
-                            Home</a></li>
-                    <li class="menu-button"><a class="menu-item-link" href="/cursos.html">
-                            Cursos</a></li>
-                    <li class="menu-button"><a class="menu-item-link" href="https://idiomas.onecultureworld.com/login">
-                            Login</a></li>
-                </ul>
-            </div>
-        
-            <div class="matriculate-button">
-                <a href="/cursos.html">Matricúlate ya</a>
-            </div>
-        </div>
-
-    </nav>
-
+    <%- include('partials/header') %>
+    <%- include('partials/menu') %>
 
     <!-- Section 1: Academy Info -->
 <section style="padding: 0 7%;" class="condiciones-del">
@@ -88,34 +63,10 @@
        
         ONECULTURE WORLD se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
 </section>
+  
+<%- include('partials/footer') %>
 
-<section id="footer">
-    <div class="footer-container">
-
-        <div class="footer-box"><ul>
-            <a href="./cursos.html" target="_blank" rel="noopener noreferrer"><li>Registro</li></a>
-            <a href="https://exam.onecultureworld.com/" target="_blank" rel="noopener noreferrer"><li>Examen de nivelación</li></a>
-        </ul></div>
-        <div class="footer-box"><ul>
-            <a href="./terminos-y-condiciones.html" target="_blank" rel="noopener noreferrer"><li>Terminos y condiciones</li></a>
-            <a href="./privacidad.html" target="_blank" rel="noopener noreferrer"><li>Politicas de privacidad</li></a>
-        </ul>
-        <div class="social-media">
-            <a href="https://www.facebook.com/idiomasocw/" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/idiomasocw/" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCW8lVGnaaC9zHlOWZfme1tA" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Youtube"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/573148489909" target="_blank" rel="noopener noreferrer" aria-label="Contactanos via Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-        </div>
-        
-                </div>
-                <div class="copy-rights">
-                    <p>© 2023 - Idiomas OCW </p>            
-                </div>
-</section>    
-    
-    <script src="./appearance.js"></script>
-    <script src="./main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

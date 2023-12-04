@@ -491,9 +491,9 @@ gap: 10px; /* Space between buttons */
 }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background-image: url("./pics/Descuento.webp")) {
+    @supports (background-image: url("/pics/Descuento.webp")) {
       .parallax {
-        background-image: url("./pics/Descuento.webp");
+        background-image: url("/pics/Descuento.webp");
       }
   }
 

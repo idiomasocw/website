@@ -3,12 +3,16 @@ const path = require('path');
 const app = express();
 require('dotenv').config();
 
+// Set up EJS view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 // Require additional modules for security and rate limiting
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 const mailchimpRoutes = require('./routes/mailchimpRoutes');
-const getWordOfTheDayHtml = require('./wordOfTheDay');
+const getWordOfTheDay = require('./wordOfTheDay');
 
 // Apply security enhancements with Helmet, disabling CSP
 app.use(helmet({
@@ -24,51 +28,45 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter); // Apply the rate limiter only to your API routes
 
-// Redirect middleware for old .html URLs
-app.get('*.html', (req, res) => {
-  const newPath = req.path.slice(0, -5); // Remove .html extension
-  res.redirect(301, newPath);
-});
+// Serve static files
+app.use(express.static('public'));
 
-// Serve static files without .html extension
-app.use(express.static('public', {
-  extensions: ['html']
-}));
-
-// Home page route
+// Routes to render EJS templates
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.render('index');
+});
+app.get('/cursos', (req, res) => {
+  res.render('cursos');
 });
 
-// Optionally, redirect from '/index.html' to '/'
-app.get('/index.html', (req, res) => {
-  res.redirect(301, '/');
+app.get('/terminos-y-condiciones', (req, res) => {
+  res.render('terminos-y-condiciones');
+});
+app.get('/privacidad', (req, res) => {
+  res.render('privacidad');
+});
+app.get('/thankyou', (req, res) => {
+  res.render('thankyou');
 });
 
-// Parse JSON request bodies
+app.get('/word-of-the-day', (req, res) => {
+  const wordData = getWordOfTheDay(); // Get the word data
+  res.render('wordOfTheDay', { word: wordData }); // Pass the data to the EJS template
+});
+
 app.use(express.json());
 
 // Prefix routes with '/api'
 app.use('/api', mailchimpRoutes);
 
-// Word of the Day route
-app.get('/word-of-the-day', (req, res) => {
-  res.send(getWordOfTheDayHtml());
-});
-
-// Route for "Thank You" page
-app.get('/thankyou', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'thankyou'));
-});
-
 // 404 Error Handling
 app.use((req, res, next) => {
-  res.status(404).send('Page not found');
+  res.status(404).render('404'); // Render a 404.ejs page if you have one, or send a 404 message
 });
 
 // General Error Handling
 app.use((error, req, res, next) => {
-  console.error(error);
+  console.error(error.stack);
   res.status(500).send('Internal Server Error');
 });
 

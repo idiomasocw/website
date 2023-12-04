@@ -1,0 +1,176 @@
+html{
+    font-size: 16px;
+}
+body{
+    background-color: #0d2634;
+    height: 100vh;
+
+}
+
+#menu-section{
+    background-color: white;
+}
+
+.menu-row{
+    width: auto;
+}
+
+.matriculate-button a:visited {
+    color: #0e124d !important;
+    font-weight: bolder;
+    font-family: 'Oswald', sans-serif;
+  }
+  .matriculate-button a {
+    background-color: #D1FF4F;
+    color: #0e124d;
+    padding: 15px 5px 15px 25px;
+    position: absolute;
+    left: 85%;
+    top:-10px;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+    transition: padding-left 0.3s ease-in-out;  /* Transition on left padding */
+    display: inline-flex;  /* To align items in a line */
+    align-items: center;  /* Align items vertically */
+    text-transform: uppercase;
+    width: 8.5rem;
+  }
+
+  
+/* Add styles for arrow inside button */
+.matriculate-button a::after {
+    content: "\f061";  /* Unicode for right arrow in FontAwesome */
+    font-family: "Font Awesome 5 Free";  /* Font family for FontAwesome */
+    font-weight: 900;  /* FontAwesome solid style */
+    opacity: 0;  /* Initially hidden */
+    margin-left: 0;  /* Initially no space */
+    transition: opacity 0.3s ease-in-out, margin-left 0.3s ease-in-out;  /* Smooth transition */
+}
+
+/* Styles for button and arrow on hover */
+.matriculate-button a:hover {
+    padding-left: 15px;  /* Expanded left padding */
+    padding-right: 15px;
+}
+
+.matriculate-button a:hover::after {
+    opacity: 1;  /* Make arrow visible */
+    margin-left: 10px;  /* Add space next to text */
+}
+
+.matriculate-button-mobile{
+    display: none;
+    background-color:#d1ff4f;
+    color:var(--dark);
+    font-weight: bold;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+.word-of-the-day-container{
+    padding: 0rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 6rem;
+    text-align: center;
+}
+
+h1{
+    color: #edd1b0;
+    font-size: 4rem;
+    text-shadow: black 2px 3px 2px;
+font-family: 'Shadows Into Light', cursive;
+text-align: center
+}
+
+.classification{
+    display: flex;
+    flex-direction: row;
+    color: #f0f8ff;
+    gap: 0.5em;
+    font-family: 'Hind', sans-serif;
+    box-shadow: black 1px 2px 4px;
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 1rem auto;
+}
+
+.semantics{
+    display: flex;
+    flex-direction: column;
+    color: aliceblue;
+    font-size: 1.5rem;
+    font-family: 'Hind', sans-serif;
+}
+
+
+.example{
+    border: 1px solid white;
+    color:aliceblue;
+    text-align: center;
+    padding: 1em;
+    min-width: 60vw;
+    max-width: 80vw;
+    margin: 1.5rem 0 1.5rem 0;
+    box-shadow: 5px 5px 15px #080d1c;
+}
+
+
+
+@media (max-width: 600px){
+    .word-of-the-day-container{
+        padding: 0rem 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 6rem;
+        text-align: center;
+    }
+    
+    h1{
+        color: #edd1b0;
+        font-size: 4rem;
+        text-shadow: black 2px 3px 2px;
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center
+    }
+    
+    .classification{
+        display: flex;
+        flex-direction: row;
+        color: #f0f8ff;
+        gap: 0.5em;
+        font-family: 'Hind', sans-serif;
+        box-shadow: black 1px 2px 4px;
+        padding: 0.5em 1em;
+        margin-bottom: 1em;
+        justify-content: center;
+        max-width: fit-content;
+        margin: 1rem auto;
+    }
+    
+    .semantics{
+        display: flex;
+        flex-direction: column;
+        color: aliceblue;
+        font-size: 1.5rem;
+        font-family: 'Hind', sans-serif;
+    }
+    
+    
+    .example{
+        border: 1px solid white;
+        color:aliceblue;
+        text-align: center;
+        padding: 1em;
+        min-width: 60vw;
+        max-width: 80vw;
+        margin: 1.5rem 0 1.5rem 0;
+        box-shadow: 5px 5px 15px #080d1c;
+    }
+    
+}

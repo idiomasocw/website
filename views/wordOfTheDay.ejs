@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/wordOfTheDay.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <title>Word of the day</title>
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <!-- Logo and Menu Section -->
+    <%- include('partials/menu') %>
+
+    <div class="word-of-the-day-container">
+        <h1><%= word.word %></h1>
+        <div class="classification">
+            <p><%= word.category %></p>
+            <p>Level: <%= word.level %></p>
+        </div>
+        <div class="semantics">
+            <p>Synonym: <%= word.synonym %></p>
+            <p>Explanation: <%= word.explanation %></p>
+            <p>Example: <%= word.example %></p>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
+    <!-- <script src="/js/appearance.js"></script> -->
+    <script src="/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
