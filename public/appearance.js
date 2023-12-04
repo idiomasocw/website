@@ -65,3 +65,21 @@ window.addEventListener("scroll", function() {
 });
 
 
+/* Reposition 'matriculate ya' button index when seen from a cellphone */
+document.addEventListener('scroll', function() {
+    // Get the button element
+    var button = document.querySelector('.matriculate-button-mobile');
+
+    // Calculate the distance from the top of the document to the button
+    var buttonTop = button.getBoundingClientRect().top;
+
+    // Convert 5rem to pixels (assuming the user has a default font-size of 16px)
+    var remInPixels = parseFloat(getComputedStyle(document.documentElement).fontSize) * 5;
+
+    // Check if the button is within 5rem of the top of the viewport
+    if (buttonTop <= remInPixels) {
+        button.style.zIndex = 1;
+    } else {
+        button.style.zIndex = 2;
+    }
+});

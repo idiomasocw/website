@@ -121,7 +121,7 @@
     <nav id="menu-section">
         <div class="menu-row">
 
-            <a href="/index.html">
+            <a href="/">
                 <img id="ocw-logo" src="./pics/dark-logo.png" alt="Logo OneCulture World">
             </a>
         
@@ -133,7 +133,7 @@
         
             <div class="menu">
                 <ul class="navbar-links">
-                    <li class="menu-button"><a class="menu-item-link" href="/index.html">
+                    <li class="menu-button"><a class="menu-item-link" href="/">
                             Home</a></li>
                     <li class="menu-button"><a class="menu-item-link" href="/cursos.html">
                             Cursos</a></li>
@@ -345,26 +345,6 @@
                         <p>© 2023 - Idiomas OCW </p>            
                     </div>
     </section>    
-    <script>
-        document.addEventListener('scroll', function() {
-    // Get the button element
-    var button = document.querySelector('.matriculate-button-mobile');
-
-    // Calculate the distance from the top of the document to the button
-    var buttonTop = button.getBoundingClientRect().top;
-
-    // Convert 5rem to pixels (assuming the user has a default font-size of 16px)
-    var remInPixels = parseFloat(getComputedStyle(document.documentElement).fontSize) * 5;
-
-    // Check if the button is within 5rem of the top of the viewport
-    if (buttonTop <= remInPixels) {
-        button.style.zIndex = 1;
-    } else {
-        button.style.zIndex = 2;
-    }
-});
-
-    </script>
     
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
     <script src="./appearance.js"></script>

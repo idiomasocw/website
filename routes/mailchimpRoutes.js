@@ -1,4 +1,3 @@
-const mailchimp = require('@mailchimp/mailchimp_marketing');
 const express = require('express');
 const router = express.Router();
 const mailchimpController = require('../controllers/mailchimpController');
