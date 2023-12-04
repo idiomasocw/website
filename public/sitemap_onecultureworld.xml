@@ -6,9 +6,14 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://onecultureworld.com/cursos.html</loc>
+    <loc>https://onecultureworld.com/cursos</loc>
     <priority>1.0</priority>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://onecultureworld.com/word-of-the-day</loc>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://exam.onecultureworld.com/</loc>
