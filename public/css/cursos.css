@@ -709,7 +709,7 @@ justify-content: space-around;
         .parallax {
           /* background-image: url("./pics/cursos-parallax-mobile.webp"); */
           background-image: url("/pics/Descuento-mobile.webp");
-          background-size: cover;
+          background-size:cover;
           background-position: center;
         }
     }
