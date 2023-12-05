@@ -172,5 +172,9 @@ text-align: center
         margin: 1.5rem 0 1.5rem 0;
         box-shadow: 5px 5px 15px #080d1c;
     }
+
+    .matriculate-button{
+        display: none;
+    }
     
 }
