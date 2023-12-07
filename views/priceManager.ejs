@@ -105,7 +105,7 @@
                 row.querySelector('.discounted-price').textContent = discount ? `Discounted: $${discountedPrice}` : '';
             });
 
-            fetch('/price&discount-manager', {
+            fetch('/priceDiscountManager', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updatedPricing)
