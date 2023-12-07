@@ -90,7 +90,7 @@ span{
 
 .word-of-the-day-link{
     color: white;
-    display: block;
+    /* display: block; */
     margin: auto;
     padding:0.4rem;
     transform: translate(-50%, 0%);
@@ -280,6 +280,16 @@ nav a:visited, nav a:visited .fas {
 
 
 @media (max-width: 600px){
+
+    #dark-header{
+        width: 100%;
+        display: flex;
+        gap:1rem;
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+        align-items: center;
+    }
     .menu-toggle{
         top:1.2rem;
         display: flex!important;
@@ -356,6 +366,7 @@ nav a:visited, nav a:visited .fas {
       .word-of-the-day-link{
         padding:0.1rem;
         font-size: 0.6rem;
+        transform: translate(-0%, 0%);
     }
 
 }

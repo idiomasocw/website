@@ -733,6 +733,7 @@ justify-content: space-around;
 
 .course-description-card h2{
   text-align: center;
+  font-size: 2.5rem;
 }
 .course-pricing {
   gap:5px;
