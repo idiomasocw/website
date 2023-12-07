@@ -4,6 +4,8 @@ const fs = require('fs');
 const app = express();
 require('dotenv').config();
 
+console.log("Starting server...");
+
 // Set up EJS view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -31,12 +33,20 @@ app.use('/api', limiter);
 app.use(express.static('public'));
 
 // Routes for EJS templates
-app.get('/', (req, res) => { res.render('index'); });
+app.get('/', (req, res) => { 
+  console.log("Accessing the home page");
+  res.render('index'); 
+});
 
-// Read pricing data and pass it to cursos.ejs
 app.get('/cursos', (req, res) => {
-  const pricingData = JSON.parse(fs.readFileSync(path.join(__dirname, 'pricing.json'), 'utf-8'));
-  res.render('cursos', { pricing: pricingData });
+  console.log("Accessing the cursos page");
+  try {
+    const pricingData = JSON.parse(fs.readFileSync(path.join(__dirname, 'pricing.json'), 'utf-8'));
+    res.render('cursos', { pricing: pricingData });
+  } catch (error) {
+    console.error("Error reading pricing.json for cursos page:", error);
+    res.status(500).send("Error loading cursos page");
+  }
 });
 
 app.get('/terminos-y-condiciones', (req, res) => { res.render('terminos-y-condiciones'); });
@@ -55,9 +65,10 @@ app.use('/api', mailchimpRoutes);
 
 // Pricing manager routes - Modified to read pricing data
 app.get('/priceDiscountManager', (req, res) => {
+  console.log("Accessing the priceDiscountManager page");
   fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
     if (err) {
-      console.error("Error reading pricing file:", err);
+      console.error("Error reading pricing file for priceDiscountManager page:", err);
       return res.status(500).send("Error loading pricing information");
     }
     const pricing = JSON.parse(data);
@@ -66,17 +77,26 @@ app.get('/priceDiscountManager', (req, res) => {
 });
 
 app.post('/priceDiscountManager', express.urlencoded({ extended: true }), (req, res) => {
-  const newPricing = req.body;
-  fs.writeFileSync(path.join(__dirname, 'pricing.json'), JSON.stringify(newPricing, null, 2));
-  res.redirect('/priceDiscountManager');
+  console.log("Posting data to priceDiscountManager");
+  try {
+    const newPricing = req.body;
+    fs.writeFileSync(path.join(__dirname, 'pricing.json'), JSON.stringify(newPricing, null, 2));
+    res.redirect('/priceDiscountManager');
+  } catch (error) {
+    console.error("Error writing to pricing.json from priceDiscountManager:", error);
+    res.status(500).send("Error updating pricing information");
+  }
 });
 
 // 404 Error Handling
-app.use((req, res, next) => { res.status(404).render('404'); });
+app.use((req, res, next) => { 
+  console.log("404 Error - Page not found: ", req.originalUrl);
+  res.status(404).render('404'); 
+});
 
 // General Error Handling
 app.use((error, req, res, next) => {
-  console.error(error.stack);
+  console.error("General error:", error.stack);
   res.status(500).send('Internal Server Error');
 });
 
