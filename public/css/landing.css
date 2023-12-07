@@ -203,8 +203,8 @@ font-family: 'Montserrat', sans-serif;
     background-color: #f4f8f8;
     place-items: center;
     justify-content: center;
-/*     padding: 10px 0 100px 0;
- */    cursor: pointer;
+    padding: 10px 0 100px 0;
+    cursor: pointer;
 }
 
 .svg-icon {
@@ -218,8 +218,8 @@ font-family: 'Montserrat', sans-serif;
 /* CARD CSS RULES */
 .card{
     position:relative;
-    width: 280px;
-    height: 310px;
+    width: 290px;
+    height: 320px;
     background: var(--light);
     transition: all 0.5s ease-in-out; 
     margin: 0 auto;
@@ -228,8 +228,8 @@ font-family: 'Montserrat', sans-serif;
 .card.hover-effect, .card:hover {
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
     position:relative;
-    width: 300px;
-    height: 350px;
+    width: 290px;
+    height: 320px;
     background: var(--light);
     transition: all 0.5s ease-in-out;
 }
@@ -295,12 +295,12 @@ font-family: 'Montserrat', sans-serif;
 
 
 .card.hover-effect .face2, .card:hover .face2{
-    height: 5em;
-    width: 5em;
+    height: 4.2em;
+    width: 4.2em;
     border-radius: 50%;
     top:1.25em;
     left:50%;
-    transform: translateX(-45%);
+    transform: translateX(-50%);
     background-color: var(--light);
     border: 2px solid #0e124d;
     transition: all 0.4s ease-in-out;
@@ -696,6 +696,12 @@ font-family: 'Montserrat', sans-serif;
     .second-separator{
         display: none;
     }
+
+    .card{
+        
+        max-width: 250px;
+    }
+    
 
   .color-changing {
     background: linear-gradient(45deg, #0e124d,#A697E6,#7b86e8);
