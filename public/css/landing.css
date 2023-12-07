@@ -708,6 +708,11 @@ font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
 
+.imgbox .img-item {
+    width: 12.4rem;
+    height: auto;
+}
+
 .third-separator{
     position: absolute;
     top:0;
