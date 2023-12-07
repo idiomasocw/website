@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/cursos', (req, res) => {
-  console.log("Accessing the cursos page");
   try {
     const pricingData = JSON.parse(fs.readFileSync(path.join(__dirname, 'pricing.json'), 'utf-8'));
     res.render('cursos', { pricing: pricingData });

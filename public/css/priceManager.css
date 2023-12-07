@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+.toggle-switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap:0.4rem;
+}
+.price-row .price-input {
+    width: 70px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.price-row .discount-input{
+    width: 2rem;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.discounted-price{
+    text-align: center;
+}
+
+.disabled {
+    color: grey;
+}
+.edit-mode {
+    color: black;
+}

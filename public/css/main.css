@@ -57,7 +57,7 @@ span{
 .social-media{
     display: flex;
     gap:1.2em;
-    width: 9em;
+    width: fit-content;
     justify-content: center;
     font-size: 1.2em;
 }
@@ -329,7 +329,8 @@ nav a:visited, nav a:visited .fas {
     }
 
     .social-media a{
-        margin:0 0.313em;
+         margin:0 0.3em;
+         padding: 0.15em 0 0.15em 0;
     }
 
     .navbar-links.active{

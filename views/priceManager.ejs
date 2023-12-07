@@ -5,44 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Manager</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .toggle-switch {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .price-row input {
-            width: 70px;
-            padding: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        .disabled {
-            color: grey;
-        }
-        .edit-mode {
-            color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/priceManager.css">
+   
 </head>
 <body>
     <div class="container">
@@ -56,55 +20,74 @@
                 <div class="price-row disabled" id="<%= course + '-' + plan %>">
                     <span><%= course.replace(/([A-Z])/g, ' $1').trim() %> - <%= plan.replace(/_/g, ' ') %>:</span>
                     <input type="text" class="price-input" value="<%= pricing[course][plan].originalPrice %>" disabled>
-                    <input type="text" class="discount-input" placeholder="Discount (%)" disabled>
-                    <span class="discounted-price"></span>
+                    <input type="text" class="discount-input" value="<%= pricing[course][plan].discountPercentage %>" placeholder="Discount (%)" disabled>
+                    <span class="discounted-price"><%= pricing[course][plan].discountPrice ? 'Discounted: $' + pricing[course][plan].discountPrice : '' %></span>
                 </div>
             <% } %>
         <% } %>
+        
     </div>
 
     <script>
         const editModeToggle = document.getElementById('editModeToggle');
         const toggleIcon = document.getElementById('toggleIcon');
         const priceRows = document.querySelectorAll('.price-row');
-        const priceInputs = document.querySelectorAll('.price-input');
-        const discountInputs = document.querySelectorAll('.discount-input');
-
+    
+        function calculateAndDisplayDiscount() {
+            priceRows.forEach(row => {
+                const originalPriceInput = row.querySelector('.price-input');
+                const discountInput = row.querySelector('.discount-input');
+                const discountedPriceSpan = row.querySelector('.discounted-price');
+    
+                const originalPrice = parseInt(originalPriceInput.value);
+                const discountPercentage = parseInt(discountInput.value);
+                const discountedPrice = discountPercentage ? originalPrice - (originalPrice * discountPercentage / 100) : null;
+    
+                discountedPriceSpan.textContent = discountedPrice ? `Discounted: $${discountedPrice}` : '';
+            });
+        }
+    
+        // Initial calculation and display of discounts
+        calculateAndDisplayDiscount();
+    
         editModeToggle.addEventListener('change', function() {
             if (this.checked) {
                 toggleIcon.classList.replace('fa-toggle-off', 'fa-toggle-on');
                 priceRows.forEach(row => row.classList.replace('disabled', 'edit-mode'));
-                priceInputs.forEach(input => input.disabled = false);
-                discountInputs.forEach(input => input.disabled = false);
+                priceRows.forEach(row => {
+                    row.querySelector('.price-input').disabled = false;
+                    row.querySelector('.discount-input').disabled = false;
+                });
             } else {
                 toggleIcon.classList.replace('fa-toggle-on', 'fa-toggle-off');
-                priceRows.forEach(row => row.classList.replace('edit-mode', 'disabled'));
-                priceInputs.forEach(input => input.disabled = true);
-                discountInputs.forEach(input => input.disabled = true);
+                priceRows.forEach(row => {
+                    row.classList.replace('edit-mode', 'disabled');
+                    row.querySelector('.price-input').disabled = true;
+                    row.querySelector('.discount-input').disabled = true;
+                });
                 updatePricing();
             }
         });
-
+    
         function updatePricing() {
             const updatedPricing = {};
             priceRows.forEach(row => {
                 const courseId = row.id.split('-')[0];
                 const planId = row.id.split('-')[1];
-                const originalPrice = row.querySelector('.price-input').value;
-                const discount = row.querySelector('.discount-input').value;
-                const discountedPrice = discount ? originalPrice - (originalPrice * discount / 100) : originalPrice;
-
+                const originalPrice = parseInt(row.querySelector('.price-input').value);
+                const discountPercentage = parseInt(row.querySelector('.discount-input').value);
+                const discountedPrice = discountPercentage ? originalPrice - (originalPrice * discountPercentage / 100) : null;
+    
                 if (!updatedPricing[courseId]) {
                     updatedPricing[courseId] = {};
                 }
                 updatedPricing[courseId][planId] = {
-                    originalPrice: parseInt(originalPrice),
-                    discountPrice: discount ? parseInt(discountedPrice) : null
+                    originalPrice: originalPrice,
+                    discountPrice: discountedPrice,
+                    discountPercentage: discountPercentage
                 };
-
-                row.querySelector('.discounted-price').textContent = discount ? `Discounted: $${discountedPrice}` : '';
             });
-
+    
             fetch('/priceDiscountManager', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -112,18 +95,17 @@
             }).then(response => response.json()).then(data => {
                 if (data.success) {
                     alert('Prices updated successfully!');
+                    calculateAndDisplayDiscount();
                 }
             });
         }
-
-        discountInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                const originalPrice = this.parentElement.querySelector('.price-input').value;
-                const discount = this.value;
-                const discountedPrice = discount ? originalPrice - (originalPrice * discount / 100) : originalPrice;
-                this.parentElement.querySelector('.discounted-price').textContent = discount ? `Discounted: $${discountedPrice}` : '';
+    
+        priceRows.forEach(row => {
+            row.querySelector('.discount-input').addEventListener('input', function() {
+                calculateAndDisplayDiscount();
             });
         });
     </script>
+    
 </body>
 </html>

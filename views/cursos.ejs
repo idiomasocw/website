@@ -253,18 +253,23 @@
           </div>
         </div>
         <div class="course-pricing">
-          <div class="price-option">
-              <span>2 lecciones / semana</span>
-              <span class="price"><%= pricing.privateLessons["2_lessons"].discountPrice || pricing.privateLessons["2_lessons"].originalPrice %></span>
-          </div>
-          <div class="price-option">
-              <span>3 lecciones / semana</span>
-              <span class="price"><%= pricing.privateLessons["3_lessons"].discountPrice || pricing.privateLessons["3_lessons"].originalPrice %></span>
-          </div>
-          <div class="price-option">
-              <span>5 lecciones / semana</span>
-              <span class="price"><%= pricing.privateLessons["5_lessons"].discountPrice || pricing.privateLessons["5_lessons"].originalPrice %></span>
-          </div>
+          <% Object.keys(pricing.privateLessons).forEach(plan => {
+              const priceInfo = pricing.privateLessons[plan];
+          %>
+              <div class="price-option">
+                  <span><%= plan.replace(/_/g, ' ') %></span>
+                  <% if (priceInfo.discountPrice) { %>
+                      <span class="price original-price" style="text-decoration: line-through; color: red;">
+                          $<%= priceInfo.originalPrice %>
+                      </span>
+                      <span class="price discount-price">
+                          $<%= priceInfo.discountPrice %>
+                      </span>
+                  <% } else { %>
+                      <span class="price">$<%= priceInfo.originalPrice %></span>
+                  <% } %>
+              </div>
+          <% }); %>
       </div>
 
       </div>
@@ -294,15 +299,24 @@
           </div>
         </div>
         <div class="course-pricing">
-          <div class="price-option">
-              <span>2 lecciones / semana</span>
-              <span class="price"><%= pricing.semiPrivateLessons["2_lessons"].discountPrice || pricing.semiPrivateLessons["2_lessons"].originalPrice %></span>
-          </div>
-          <div class="price-option">
-              <span>3 lecciones / semana</span>
-              <span class="price"><%= pricing.semiPrivateLessons["3_lessons"].discountPrice || pricing.semiPrivateLessons["3_lessons"].originalPrice %></span>
-          </div>
-      </div>
+            <% Object.keys(pricing.semiPrivateLessons).forEach(plan => {
+                const priceInfo = pricing.semiPrivateLessons[plan];
+            %>
+                <div class="price-option">
+                    <span><%= plan.replace(/_/g, ' ') %></span>
+                    <% if (priceInfo.discountPrice) { %>
+                        <span class="price original-price" style="text-decoration: line-through; color: red;">
+                            $<%= priceInfo.originalPrice %>
+                        </span>
+                        <span class="price discount-price">
+                            $<%= priceInfo.discountPrice %>
+                        </span>
+                    <% } else { %>
+                        <span class="price">$<%= priceInfo.originalPrice %></span>
+                    <% } %>
+                </div>
+            <% }); %>
+        </div>
 
       </div>
 
