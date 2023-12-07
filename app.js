@@ -54,7 +54,7 @@ app.use(express.json());
 app.use('/api', mailchimpRoutes);
 
 // Pricing manager routes - Modified to read pricing data
-app.get('/price&discount-manager', (req, res) => {
+app.get('/priceDiscountManager', (req, res) => {
   fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
     if (err) {
       console.error("Error reading pricing file:", err);
@@ -65,10 +65,10 @@ app.get('/price&discount-manager', (req, res) => {
   });
 });
 
-app.post('/price&discount-manager', express.urlencoded({ extended: true }), (req, res) => {
+app.post('/priceDiscountManager', express.urlencoded({ extended: true }), (req, res) => {
   const newPricing = req.body;
   fs.writeFileSync(path.join(__dirname, 'pricing.json'), JSON.stringify(newPricing, null, 2));
-  res.redirect('/price&discount-manager');
+  res.redirect('/priceDiscountManager');
 });
 
 // 404 Error Handling
