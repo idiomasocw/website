@@ -202,8 +202,8 @@ font-family: 'Montserrat', sans-serif;
     background-color: #f4f8f8;
     place-items: center;
     justify-content: center;
-    padding: 10px 0 100px 0;
-    cursor: pointer;
+/*     padding: 10px 0 100px 0;
+ */    cursor: pointer;
 }
 
 .svg-icon {
@@ -655,6 +655,7 @@ font-family: 'Montserrat', sans-serif;
     .cards-row{
         background-color: #abaaea !important;
     }
+
     .face1{
         background-color: #f7f8fd;
     }
@@ -667,6 +668,10 @@ font-family: 'Montserrat', sans-serif;
         color: #0e124d;
         padding: 0 15px;
        }
+
+    .content p{
+        font-size: 0.8rem;
+    }
 
        .svg-icon {
         height: 70%;
