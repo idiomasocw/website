@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Manager</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/priceManager.css">
    
 </head>
 <body>
+    <header>
+        <!-- Add this where you want the logout icon to appear -->
+<a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </header>
     <div class="container">
         <div class="toggle-switch">
             <span>Edit Mode: </span>
@@ -18,7 +22,7 @@
         <% for (let course in pricing) { %>
             <% for (let plan in pricing[course]) { %>
                 <div class="price-row disabled" id="<%= course + '-' + plan %>">
-                    <span><%= course.replace(/([A-Z])/g, ' $1').trim() %> - <%= plan.replace(/_/g, ' ') %>:</span>
+                    <span class="service-name"><%= course.replace(/([A-Z])/g, ' $1').trim() %> - <%= plan.replace(/_/g, ' ') %>:</span>
                     <input type="text" class="price-input" value="<%= pricing[course][plan].originalPrice %>" disabled>
                     <input type="text" class="discount-input" value="<%= pricing[course][plan].discountPercentage %>" placeholder="Discount (%)" disabled>
                     <span class="discounted-price"><%= pricing[course][plan].discountPrice ? 'Discounted: $' + pricing[course][plan].discountPrice : '' %></span>
@@ -105,6 +109,34 @@
                 calculateAndDisplayDiscount();
             });
         });
+
+/* Automatic logout after 22 minutes of inactivity */
+let logoutTimer, warningTimer;
+const INACTIVITY_TIME = 20 * 60 * 1000; // 20 minutes
+const WARNING_TIME = 2 * 60 * 1000; // 2 minutes
+
+function resetLogoutTimer() {
+    clearTimeout(logoutTimer);
+    clearTimeout(warningTimer);
+    logoutTimer = setTimeout(() => {
+        warningTimer = setTimeout(() => {
+            window.location.href = '/logout'; // Redirect to logout
+        }, WARNING_TIME);
+
+        // Show warning and redirect if user clicks "OK"
+        const userAcknowledged = confirm("Hemos notado que posiblemente no estás acá, así que procederemos a cerrar sesión en 2 minutos.");
+        if (userAcknowledged) {
+            clearTimeout(warningTimer);
+            window.location.href = '/logout'; // Redirect to logout
+        }
+    }, INACTIVITY_TIME - WARNING_TIME);
+}
+
+// Reset the timer on user activity
+window.onload = resetLogoutTimer;
+document.onmousemove = resetLogoutTimer;
+document.onkeypress = resetLogoutTimer;
+
     </script>
     
 </body>

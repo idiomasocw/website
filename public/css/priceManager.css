@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     padding: 20px;
@@ -22,6 +22,7 @@ body {
     align-items: center;
     margin-bottom: 10px;
     gap:0.4rem;
+    flex-wrap: wrap;
 }
 .price-row .price-input {
     width: 70px;
@@ -46,4 +47,63 @@ body {
 }
 .edit-mode {
     color: black;
+}
+ */
+
+ .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.price-row {
+    display: grid;
+    grid-template-columns: 1fr; /* One column layout for mobile */
+    grid-template-rows: auto auto; /* Two rows for mobile */
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.price-row span, .price-row input, .price-row .discounted-price {
+    display: block; /* Ensure they take the full width on mobile */
+}
+
+@media (min-width: 600px) {
+    .price-row {
+        grid-template-columns: 3fr 2fr 1fr 2fr; /* Adjust as necessary for desktop */
+        grid-template-rows: auto; /* One row for desktop */
+        align-items: center;
+    }
+
+    .price-row span { 
+        display: inline; /* Allow elements to be in line on desktop */
+    }
+
+    .price-row .price-input, 
+    .price-row .discount-input, 
+    .price-row .discounted-price {
+        display: inline-block; /* Align side by side on desktop */
+        width: auto; /* Auto width on desktop */
+        margin-right: 10px; /* Spacing between inputs */
+    }
+}
+
+/* Additional styles for aesthetics (optional) */
+.price-input, .discount-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.discounted-price {
+    padding: 8px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.service-name {
+    font-weight: bold;
 }

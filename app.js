@@ -1,15 +1,27 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const session = require('express-session');
 const app = express();
-require('dotenv').config();
+const moodleAPI = require('./controllers/moodleAPI'); // Ensure this module is set up
 
-console.log("Starting server...");
+
+
+console.log(process.env.MOODLE_URL);
 
 // Set up EJS view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('trust proxy', 1);
+
+// Session Configuration
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: 'auto' }
+}));
 
 // Additional modules for security and rate limiting
 const helmet = require('helmet');
@@ -18,7 +30,7 @@ const rateLimit = require('express-rate-limit');
 const mailchimpRoutes = require('./routes/mailchimpRoutes');
 const getWordOfTheDay = require('./wordOfTheDay');
 
-// Security enhancements with Helmet, disabling CSP
+// Security enhancements with Helmet
 app.use(helmet({ contentSecurityPolicy: false }));
 
 // Rate limiting
@@ -33,10 +45,39 @@ app.use('/api', limiter);
 // Serve static files
 app.use(express.static('public'));
 
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: true }));
+
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+
+// Login Route
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+// Handle Login Post Request
+// Handle Login Post Request
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const token = await moodleAPI.getUserToken(username, password);
+    if (token && (username === 'admin' || username === 'diego')) {
+      req.session.isAdmin = true;
+      res.redirect('/priceDiscountManager');
+    } else {
+      res.render('login', { error: "Invalid credentials or not an admin." });
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    res.render('login', { error: "Credenciales inválidas. Ingresa credenciales de administrador para poder iniciar sesión." });
+  }
+});
+
+
 // Routes for EJS templates
-app.get('/', (req, res) => { 
-  console.log("Accessing the home page");
-  res.render('index'); 
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
 app.get('/cursos', (req, res) => {
@@ -49,31 +90,37 @@ app.get('/cursos', (req, res) => {
   }
 });
 
-app.get('/terminos-y-condiciones', (req, res) => { res.render('terminos-y-condiciones'); });
-app.get('/privacidad', (req, res) => { res.render('privacidad'); });
-app.get('/thankyou', (req, res) => { res.render('thankyou'); });
+app.get('/terminos-y-condiciones', (req, res) => {
+  res.render('terminos-y-condiciones');
+});
+
+app.get('/privacidad', (req, res) => {
+  res.render('privacidad');
+});
+
+app.get('/thankyou', (req, res) => {
+  res.render('thankyou');
+});
 
 app.get('/word-of-the-day', (req, res) => {
   const wordData = getWordOfTheDay(); 
   res.render('wordOfTheDay', { word: wordData });
 });
 
-app.use(express.json());
-
-// Prefix routes with '/api'
-app.use('/api', mailchimpRoutes);
-
-// Pricing manager routes - Modified to read pricing data
+// Pricing manager route with session check
 app.get('/priceDiscountManager', (req, res) => {
-  console.log("Accessing the priceDiscountManager page");
-  fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
-    if (err) {
-      console.error("Error reading pricing file for priceDiscountManager page:", err);
-      return res.status(500).send("Error loading pricing information");
-    }
-    const pricing = JSON.parse(data);
-    res.render('priceManager', { pricing });
-  });
+  if (req.session.isAdmin) {
+    fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
+      if (err) {
+        console.error("Error reading pricing file for priceDiscountManager page:", err);
+        return res.status(500).send("Error loading pricing information");
+      }
+      const pricing = JSON.parse(data);
+      res.render('priceManager', { pricing });
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.post('/priceDiscountManager', express.urlencoded({ extended: true }), (req, res) => {
@@ -87,6 +134,21 @@ app.post('/priceDiscountManager', express.urlencoded({ extended: true }), (req, 
     res.status(500).send("Error updating pricing information");
   }
 });
+
+// Logout Route
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+      if(err) {
+          console.error("Error in logging out:", err);
+          return res.status(500).send('Error during logout');
+      }
+      res.redirect('/login');
+  });
+});
+
+
+// Prefix routes with '/api'
+app.use('/api', mailchimpRoutes);
 
 // 404 Error Handling
 app.use((req, res, next) => { 
