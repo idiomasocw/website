@@ -19,6 +19,10 @@
         
                 </div>
                 <div class="copy-rights">
-                    <p>© 2023 - Idiomas OCW </p>            
+                    <p>© <span id="current-year"></span> - Idiomas OCW </p>            
                 </div>
-</section>  
+            </section>
+            
+            <script>
+                document.getElementById('current-year').textContent = new Date().getFullYear();
+            </script>

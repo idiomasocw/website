@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const mailchimpController = require('../controllers/mailchimpController');
+const IntegrationManager = require('../services/integrationManager');
 
 router.post('/submit-form', async (req, res) => {
     try {
         const formData = req.body;
-        const result = await mailchimpController.addOrUpdateContactToMailchimp(formData);
+        const result = await IntegrationManager.handleMailchimpIntegration(formData);
 
         if (result.success) {
             res.status(200).send(result.message);

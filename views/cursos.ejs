@@ -206,15 +206,28 @@
     </div>
 </div>
 
-        <!-- Section 4: Pricing -->
-        <div id="section4" class="hidden">
-            <h3 id="form-final-price">Valor de la mensualidad</h3>
-            <p id="price"></p>
+<!-- Section 4: Pricing -->
+<div id="section4" class="hidden">
+  <h3 id="form-final-price">Valor de la mensualidad</h3>
+  <p id="price"></p>
+  <% if (userPriceInfo) { %>
+      <% if (userPriceInfo.discountPrice) { %>
+          <p class="price original-price" style="text-decoration: line-through; color: red;">
+              $<%= userPriceInfo.originalPrice %>
+          </p>
+          <p class="price discount-price">
+              $<%= userPriceInfo.discountPrice %>
+          </p>
+      <% } else { %>
+          <p class="price">$<%= userPriceInfo.originalPrice %></p>
+      <% } %>
+  <% } %>
 
-            <a href="#" id="pay-button" class="hidden">Registrarse</a>
-            <button class="button-back" type="button" id="back3"><i class="fa-solid fa-chevron-left"
-                style="color: #17315e;"></i></button>
-        </div>
+  <a href="#" id="pay-button" class="hidden">Registrarse</a>
+  <button class="button-back" type="button" id="back3"><i class="fa-solid fa-chevron-left"
+      style="color: #17315e;"></i></button>
+</div>
+
 
         <!-- Section 4 for Empresas -->
 <div id="section4-empresas" class="hidden">
@@ -357,6 +370,8 @@
     </section>
 
     <%- include('partials/footer') %>
+
+
 
     <script src="/js/main.js"></script>
     <script src="/js/form.js"></script>

@@ -3,7 +3,7 @@ const fetch = require('node-fetch'); // Ensure node-fetch is installed
 const MOODLE_URL = process.env.MOODLE_URL;  // Base URL of your Moodle installation
 const MOODLE_SERVICE = 'moodle_mobile_app'; // Default service for mobile app
 
-console.log(process.env.MOODLE_URL);
+
 /**
  * Fetch user token from Moodle
  * @param {string} username - Moodle username

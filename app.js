@@ -7,9 +7,6 @@ const app = express();
 const moodleAPI = require('./controllers/moodleAPI'); // Ensure this module is set up
 
 
-
-console.log(process.env.MOODLE_URL);
-
 // Set up EJS view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -79,11 +76,32 @@ app.post('/login', async (req, res) => {
 app.get('/', (req, res) => {
   res.render('index');
 });
+//New API endpoint to send pricing data
+app.get('/api/pricing', (req, res) => {
+  fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
+      if (err) {
+          console.error("Error reading pricing.json:", err);
+          return res.status(500).json({ error: 'Internal server error' });
+      }
+      res.json(JSON.parse(data));
+  });
+});
 
 app.get('/cursos', (req, res) => {
   try {
     const pricingData = JSON.parse(fs.readFileSync(path.join(__dirname, 'pricing.json'), 'utf-8'));
-    res.render('cursos', { pricing: pricingData });
+
+    // Determine the correct price based on user selection
+    let userPriceInfo;
+    if (req.session.mode === "private") {
+      const lessonsKey = req.session.selectedDays + '_lessons';
+      userPriceInfo = pricingData.privateLessons[lessonsKey];
+    } else if (req.session.mode === "semi-private") {
+      const lessonsKey = req.session.selectedIntensity + '_lessons';
+      userPriceInfo = pricingData.semiPrivateLessons[lessonsKey];
+    }
+
+    res.render('cursos', { pricing: pricingData, userPriceInfo });
   } catch (error) {
     console.error("Error reading pricing.json for cursos page:", error);
     res.status(500).send("Error loading cursos page");

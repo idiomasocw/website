@@ -4,6 +4,33 @@ const section1 = document.getElementById("section1");
 const section2 = document.getElementById("section2");
 const section4Empresas = document.getElementById("section4-empresas");
 
+// Function to display price in Section 4
+// Function to display price in Section 4
+async function displayPrice() {
+  const mode = sessionStorage.getItem("mode");
+  let pricingKey = '';
+  if (mode === 'private') {
+      const selectedDays = JSON.parse(sessionStorage.getItem("selectedDays"));
+      pricingKey = selectedDays.length + '_lessons';
+  } else if (mode === 'semi-private') {
+      const selectedIntensity = sessionStorage.getItem("selectedIntensity");
+      pricingKey = selectedIntensity === "twice" ? "2_lessons" : "3_lessons";
+  }
+
+  try {
+      const response = await fetch('/api/pricing');
+      const pricingData = await response.json();
+      const priceInfo = pricingData[mode === 'private' ? 'privateLessons' : 'semiPrivateLessons'][pricingKey];
+      const price = priceInfo.discountPrice || priceInfo.originalPrice;
+      priceElement.innerText = `$${price}`;
+      payButton.classList.remove("hidden");
+  } catch (error) {
+      console.error('Error fetching pricing data:', error);
+  }
+}
+
+  
+
 // Function to update the progress bar
 function updateProgressBar(sectionId) {
     // Reset all progress sections
@@ -683,41 +710,7 @@ const payButton = document.getElementById("pay-button");
 const back3Button = document.getElementById("back3");
 
 // Function to calculate and display price
-function calculatePrice() {
-    const mode = sessionStorage.getItem("mode");
-    let price = 0;
-    let paymentUrl = "";  // Initialize payment URL
-    
-    if (mode === "private") {
-      const selectedDays = JSON.parse(sessionStorage.getItem("selectedDays"));
-      if (selectedDays.length === 2) {
-        price = 280000;
-        paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48faa1018b605e48380dff";  // Set the URL for 2 days in private lessons
-      } else if (selectedDays.length === 3) {
-        price = 396000;
-        paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48fa5a018b605c40770db0";  // Set the URL for 3 days in private lessons
-      } else if (selectedDays.length === 5) {
-        price = 620000;
-        paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48fa5a018b605b01a20daf";  // Set the URL for 5 days in private lessons
-      }
-    } else if (mode === "semi-private") {
-      const selectedIntensity = sessionStorage.getItem("selectedIntensity");
-      if (selectedIntensity === "twice") {
-        price = 160000;
-        paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48faa1018b6060107b0e00";  // Set the URL for 2 days in semi-private lessons
-      } else if (selectedIntensity === "thrice") {
-        price = 238000;
-        paymentUrl = "https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=2c9380848b48fa3b018b605f45cb0d80";  // Set the URL for 3 days in semi-private lessons
-      }
-    }
-    
-    priceElement.innerText = `$${price}`;
-    if (price > 0) {
-      payButton.classList.remove("hidden");
-      payButton.href = paymentUrl;  // Update the URL of the "Pagar" button
-    }
-  }
-  
+
 
 // Event listener for the "Ir atrás" button in Section 4
 back3Button.addEventListener("click", function() {
@@ -736,14 +729,14 @@ back3Button.addEventListener("click", function() {
 
 // Event listeners to show Section 4 and calculate the price
 document.getElementById("next3-private").addEventListener("click", function() {
-  calculatePrice();  
+  displayPrice();   
   section3Private.classList.add("hidden");
   section4.classList.remove("hidden");
   updateProgressBar(4);
 });
 
 document.getElementById("next3-semi-private").addEventListener("click", function() {
-  calculatePrice();
+  displayPrice();  
   section3SemiPrivate.classList.add("hidden");
   section4.classList.remove("hidden");
   updateProgressBar(4);
