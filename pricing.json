@@ -3,29 +3,34 @@
     "2_lessons": {
       "originalPrice": 280000,
       "discountPrice": 224000,
-      "discountPercentage": 20
+      "discountPercentage": 20,
+      "friendlyName": "2 privadas/semana"
     },
     "3_lessons": {
       "originalPrice": 396000,
       "discountPrice": 316800,
-      "discountPercentage": 20
+      "discountPercentage": 20,
+      "friendlyName": "3 privadas/semana"
     },
     "5_lessons": {
       "originalPrice": 620000,
       "discountPrice": 496000,
-      "discountPercentage": 20
+      "discountPercentage": 20,
+      "friendlyName": "5 privadas/semana"
     }
   },
   "semiPrivateLessons": {
     "2_lessons": {
       "originalPrice": 165000,
       "discountPrice": 132000,
-      "discountPercentage": 20
+      "discountPercentage": 20,
+      "friendlyName": "2 Semi-privadas/semana"
     },
     "3_lessons": {
       "originalPrice": 240000,
       "discountPrice": 192000,
-      "discountPercentage": 20
+      "discountPercentage": 20,
+      "friendlyName": "3 Semi-privadas/semana"
     }
   }
 }

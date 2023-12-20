@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const session = require('express-session');
 const app = express();
+const subscriptionRoutes = require('./routes/subscriptionRoutes'); // Ensure this is set up
 const moodleAPI = require('./controllers/moodleAPI'); // Ensure this module is set up
 
 
@@ -48,6 +49,8 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
+app.use('/api/subscriptions', subscriptionRoutes);
+
 // Login Route
 app.get('/login', (req, res) => {
   res.render('login');
@@ -91,17 +94,19 @@ app.get('/cursos', (req, res) => {
   try {
     const pricingData = JSON.parse(fs.readFileSync(path.join(__dirname, 'pricing.json'), 'utf-8'));
 
-    // Determine the correct price based on user selection
     let userPriceInfo;
+    let serviceName = "";
     if (req.session.mode === "private") {
       const lessonsKey = req.session.selectedDays + '_lessons';
       userPriceInfo = pricingData.privateLessons[lessonsKey];
+      serviceName = userPriceInfo.friendlyName;
     } else if (req.session.mode === "semi-private") {
       const lessonsKey = req.session.selectedIntensity + '_lessons';
       userPriceInfo = pricingData.semiPrivateLessons[lessonsKey];
+      serviceName = userPriceInfo.friendlyName;
     }
 
-    res.render('cursos', { pricing: pricingData, userPriceInfo });
+    res.render('cursos', { pricing: pricingData, userPriceInfo, serviceName });
   } catch (error) {
     console.error("Error reading pricing.json for cursos page:", error);
     res.status(500).send("Error loading cursos page");
@@ -139,6 +144,11 @@ app.get('/priceDiscountManager', (req, res) => {
   } else {
     res.redirect('/login');
   }
+});
+
+// app.js
+app.get('/config', (req, res) => {
+  res.json({ publicKey: process.env.MERCADO_PAGO_PUBLIC_KEY });
 });
 
 app.post('/priceDiscountManager', express.urlencoded({ extended: true }), (req, res) => {
