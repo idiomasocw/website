@@ -1,0 +1,459 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e124d;
+    padding: 10px 50px 50px 50px;
+    color:#0e124d;
+}
+
+#results{
+    color:white;
+    margin-top:10px;
+    font-size: 1.7rem;
+}
+
+#results-heading{
+    color:#95ff74;
+}
+
+.returnbutton-wrap{
+    text-align: center;
+}
+.returnToMenu{
+    width: 12rem;
+    padding: 8px;
+    font-size: 16px;
+    background-color: #4e4caf;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    animation: scaleAnimation 1s infinite alternate;
+}
+
+
+.main-menu {text-align: center;}
+
+.test-button {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    background-size: cover;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+
+.test-button.disabled {
+    opacity: 0.3;
+    background-color: #ccc; /* or any color that indicates disabled state */
+    cursor: not-allowed;
+}
+
+.test-button.enabled {
+    background-color: #28a745; /* or any color that indicates enabled state */
+    cursor: pointer;
+}
+
+.button-overlay.disabled {
+    background-color: rgba(112, 8, 6, 0.8); /* or any color that indicates disabled state */
+    border-radius: 25px;
+}
+
+.button-overlay.enabled {
+    background-color: #0e124d91; /* or any color that indicates enabled state */
+    border-radius: 25px;
+}
+
+/* styles of the modal that collects user contact info*/
+/* Add these styles to your styles.css file */
+.user-info-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top, ensuring a higher index than other modals */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.user-info-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    text-align: center;
+}
+
+.user-info-form-group {
+    margin-bottom: 10px;
+}
+
+#user-info-form input[type="text"],
+#user-info-form input[type="email"] {
+    width: 48%; /* Making two inputs sit side by side (total 96% + some margin) */
+    padding: 10px;
+    margin: 5px 1%; /* Spacing between inputs */
+    display: inline-block; /* This makes it sit side by side */
+}
+
+.user-info-submit {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px; /* Some space from the inputs above */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    cursor: pointer;
+}
+
+.user-info-submit:hover {
+    opacity: 0.8;
+}
+
+
+@media screen and (max-width: 620px) {
+    body {
+        padding: 10px 10px 10px 10px;
+    }
+
+    .returnToMenu{
+        width: 12rem;
+        padding: 8px;
+        font-size: 16px;
+        background-color: #4e4caf;
+        color: white;
+        position: relative;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: transform 0.3s ease-in-out;
+        animation: scaleAnimation 1s infinite alternate;
+        z-index: 5;
+    }
+
+    .test-button {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+        height: 300px;
+        margin: 10px;
+        background-size: cover;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+  }
+.test-button:hover {
+    transform: scale(0.9);
+}
+
+.button-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1.5rem;
+    height: 0;
+    font-weight: bold;
+    background-color: #0e124d91;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 250px; /* Vertically center the text */
+    transition: height 0.3s ease;
+    overflow: hidden;
+}
+
+.test-button:hover .button-overlay {
+    height: 100%;
+}
+
+
+#use-of-english {
+    background-image: url('https://ocw-program.s3.amazonaws.com/Placement-test/Pics/grammar.jpg');
+    background-color: rgba(41, 47, 140, 0.3);
+}
+
+#listening {
+    background-image: url('https://ocw-program.s3.amazonaws.com/Placement-test/Pics/Listening.png');
+    background-color: rgba(41, 47, 140, 0.3);
+}
+
+#header-wrapper{display: flex;
+flex-direction: column;
+    align-self: center;
+}
+
+#main-menu-header{
+    color:white;
+    font-size: 1.2rem;
+}
+
+#main-menu-ocw{
+    color:white;
+    font-size: 2.5rem;
+}
+
+
+
+.container {
+    max-width: 600px;
+    border-radius: 4px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background: rgb(209,255,79);
+background: linear-gradient(36deg, rgba(209,255,79,1) 14%, rgba(31,255,188,1) 38%, rgba(209,255,79,1) 83%);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    padding: 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 5px 5px 2.5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 2.5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 2.5px 0px rgba(0, 0, 0, 0.75);
+  }
+}
+
+#logo{text-align: center;width: 60px;height: 60px;margin:auto}
+#logo-ocw{text-align: center;width: 60px;height: 60px;margin:auto}
+#white-logo{/* display: block; */
+    width: 5rem;  /* change this to whatever width you want */
+    height: auto;  /* this will keep the aspect ratio of your image intact */
+    margin: 0 auto; /* this will center your image */
+    }
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+
+.modal-content {
+    background-color: #fff;
+    padding: 45px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Add this new rule to your styles.css */
+.stopwatch {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgba(213, 255, 196, 0.219);
+    -webkit-box-shadow: 3px 3px 4px 0px rgba(49, 50, 75, 0.75);
+    -moz-box-shadow: 3px 3px 4px 0px rgba(49, 50, 75, 0.75);
+    box-shadow: 3px 3px 4px 0px rgba(49, 50, 75, 0.75);
+    color:#0e124d;
+}
+
+
+h1 {
+    text-align: center;
+    color:#0e124d;
+
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 30px;
+    color:#0e124d;
+}
+#answer {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #95ff74;
+    color: #0e124d;
+    font-weight: 560;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+button:hover {
+    background-color:#4e4caf;
+    color: #95ff74;
+}
+
+#question{text-align: center;margin-bottom: 1rem;
+    display: none;
+}
+
+.blank{width:80px;text-align:center;border:#45a049 solid 1px;border-radius: 5px;background-color: rgba(255, 255, 255, 0.705);}
+
+hr{opacity: 0;}
+
+audio#audio{opacity: 0.85;background-color: #45a049;border-radius: 22px;}
+
+#audioPlayButton:hover {
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+
+#audioPlayButton.disabled {
+    color: #ffffff!important;
+    opacity: .7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+.option-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    margin-bottom: 10px; 
+}
+
+.option-label .option {
+    margin-right: 10px;
+}
+
+
+.option-btn {
+    display: block;
+    margin: 0.5rem auto;
+    width: 20rem;
+}
+
+.option-btn.selected {
+    background-color: rgba(255, 254, 254, 0.586);
+    color:#0e124d
+}
+
+.option-btn.submitted {
+    background-color: rgb(152, 166, 244);
+    color:white;
+}
+
+
+.result {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.result h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.result p {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+}
+
+.radio-option {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+
+.radio-buttons {
+width: 100%;}
+
+
+#audio{
+    max-width:17rem;
+    height: 2.5rem;
+    margin: auto;
+}
+
+.listening-prompt{
+    margin-bottom: 10px;
+    background-color: rgba(225, 249, 228, 0.31);
+    border-radius: 10px;
+    padding: 2px;
+    border: #fff solid 1px;
+}
+
+.grammar-prompt{
+    margin-bottom: 10px;
+    background-color: rgba(225, 249, 228, 0.31);
+    border-radius: 10px;
+    padding: 2px;
+    border: #fff solid 1px;
+}
+  
+  @keyframes scaleAnimation {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+  
+  .returnToMenu.scaled {
+    animation: none;
+    transform: scale(1.2);
+  }
+
+  #walink{
+    color:white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+#walink-container {
+    position: fixed;
+    bottom: 3vh;
+    right: 0.8vw;
+    transition: transform 0.3s ease;
+}
+
+#walink-container:hover {
+    transform: scale(0.9);
+}
+

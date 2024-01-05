@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>English Test</title>
+    <link rel="stylesheet" href="/css/placement-test/styles.css">
+    <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
+    <meta name="google" content="notranslate">
+</head>
+<body class="notranslate">
+    <div class="main-menu">
+        <div id="header-wrapper">
+        <img src="https://ocw-program.s3.amazonaws.com/Placement-test/Pics/white-logo-borders.png" alt="Logo" id="white-logo">
+        <h1 id="main-menu-ocw">OneCulture World</h1>
+        </div>
+        <h2 id="main-menu-header">Placement Test</h2>
+        <button id="use-of-english" class="test-button" onclick="window.location.href='placement-test/use-of-english'">
+            <span class="button-overlay">Use of English</span>
+        </button>
+        <button id="listening" class="test-button" onclick="window.location.href='placement-test/listening'">
+            <span class="button-overlay">Listening</span>
+        </button>
+        <div id="results"></div>
+        <div id="walink-container"><a id="walink" href="https://wa.link/tldshy"><i class="fa-brands fa-whatsapp fa-2xl" style="color: #95ff74;"></i></a></div>
+    </div>
+
+<!-- Modal collecting user's personal information -->
+    <div id="user-info-modal" class="user-info-modal">
+        <div class="user-info-modal-content">
+            <h2>Welcome to OCW's Placement Test</h2>
+            <p>Please enter your details to proceed</p>
+            <form id="user-info-form">
+                <div class="user-info-form-group">
+                    <input type="text" id="user-info-first-name" placeholder="Nombres" required>
+                    <input type="text" id="user-info-last-name" placeholder="Apellidos" required>
+                </div>
+                <input type="email" id="user-info-email" placeholder="Email" required>
+                <button type="submit" class="user-info-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/js/placement-test/main.js"></script>
+</body>
+</html>
+

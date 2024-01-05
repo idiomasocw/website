@@ -716,11 +716,11 @@ justify-content: space-around;
   
 
     #section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
-      min-width: 340px;
+      min-width: 90vw;
       min-height: 250px;
     }
     #section1{
-      min-width:290px ;
+      min-width:90vw ;
     }
     .course-description-section{
       padding-top: 1rem;

@@ -164,6 +164,18 @@ app.get('/logout', (req, res) => {
   });
 });
 
+app.get('/placement-test', (req, res) => {
+  res.render('placement-test/index');  // Adjust path according to your directory structure
+});
+
+app.get('/placement-test/listening', (req, res) => {
+  res.render('placement-test/listening');
+});
+
+app.get('/placement-test/use-of-english', (req, res) => {
+  res.render('placement-test/use_of_english');
+});
+
 
 // Prefix routes with '/api'
 app.use('/api', mailchimpRoutes);

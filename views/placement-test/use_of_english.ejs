@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/placement-test/styles.css">
+    <title>Use of english</title>
+</head>
+<body>
+    <div class="returnbutton-wrap">
+    <button class="returnToMenu" onclick="window.location.href='/placement-test'">Go back to Menu</button></div>
+    <div class="container">
+        <div id="stopwatch" class="stopwatch">00:00:00</div>
+        <div id="logo"><img id="logo-ocw" src="https://ocw-program.s3.amazonaws.com/Placement-test/Pics/logo.png" alt="logo"></div>
+        <h1>Placement Test</h1>
+        <h3>Use of English</h3>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <p>This section of the test has a time limit of 20 minutes. Complete each space with <b>ONE WORD</b> only, or select the option that best completes the sentence. To start the 'Use of English' section of the test, click the button below.</p>
+                <button id="start-test">Start test</button>
+            </div>
+        </div>
+        <div id="question"></div>
+        <form id="answer-form">
+            <button type="submit" id="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="/js/placement-test/uoe-question-bank.js"></script>
+    <script src="/js/placement-test/use_of_english.js"></script>
+
+</body>
+</html>
+
