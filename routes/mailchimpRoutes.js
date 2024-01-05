@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const IntegrationManager = require('../services/integrationManager');
 
-router.post('/mailchimp/submit-form', async (req, res) => {
+router.post('/submit-form', async (req, res) => {
     try {
         const formData = req.body;
         const result = await IntegrationManager.handleMailchimpIntegration(formData);

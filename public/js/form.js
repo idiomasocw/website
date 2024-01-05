@@ -4,7 +4,7 @@ const section1 = document.getElementById("section1");
 const section2 = document.getElementById("section2");
 const section4Empresas = document.getElementById("section4-empresas");
 
-
+// Function to display price in Section 4
 // Function to display price in Section 4
 async function displayPrice() {
   const mode = sessionStorage.getItem("mode");
@@ -22,28 +22,14 @@ async function displayPrice() {
       const pricingData = await response.json();
       const priceInfo = pricingData[mode === 'private' ? 'privateLessons' : 'semiPrivateLessons'][pricingKey];
       const price = priceInfo.discountPrice || priceInfo.originalPrice;
-
-      // Update price in UI
       priceElement.innerText = `$${price}`;
-
-      // Store selected price in session storage
-      sessionStorage.setItem("transactionAmount", price);
-      console.log("Stored transaction amount:", price); // For debugging
-
-
-
-      // Update service name
-      const serviceNameElement = document.getElementById('serviceName');
-      if (serviceNameElement) {
-          serviceNameElement.innerText = priceInfo.friendlyName;
-           // Store service name in session storage
-          sessionStorage.setItem("serviceName", priceInfo.friendlyName);
-      }
+      payButton.classList.remove("hidden");
   } catch (error) {
       console.error('Error fetching pricing data:', error);
   }
 }
 
+  
 
 // Function to update the progress bar
 function updateProgressBar(sectionId) {
@@ -720,6 +706,7 @@ back2EmpresasButton.addEventListener("click", function() {
 
 const section4 = document.getElementById("section4");
 const priceElement = document.getElementById("price");
+const payButton = document.getElementById("pay-button");
 const back3Button = document.getElementById("back3");
 
 // Function to calculate and display price
@@ -769,47 +756,44 @@ back3EmpresasButton.addEventListener("click", function() {
 //Functionality that gathers all data from session storage and sends it to the server and then clears session storage
 
 document.getElementById('send-form-empresas').addEventListener('click', submitForm);
-document.getElementById('next3-private').addEventListener('click', submitForm);
-document.getElementById('next3-semi-private').addEventListener('click', submitForm);
+document.getElementById('pay-button').addEventListener('click', submitForm);
 
 async function submitForm(event) {
-  event.preventDefault();
-  // Retrieve all keys from session storage
-  let formData = {};
-  for (let i = 0; i < sessionStorage.length; i++) {
-      const key = sessionStorage.key(i);
-      formData[key] = sessionStorage.getItem(key);
-  }
-
-  // Send data to server
-  try {
-    const response = await fetch('/api/mailchimp/submit-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    });
-    
-    console.log('Full response:', response);
-    const responseText = await response.text();
-
-
-    if (response.ok) {
-      console.log('Form submission successful:', responseText);
-        /* alert(responseText); */ // Show success message
-        /* sessionStorage.clear(); */
-        /* resetFormUI(); */
-    } else {
-        console.error('Form submission failed:', responseText);
-        alert(responseText); // Show error message from server
+    event.preventDefault();
+    // Retrieve all keys from session storage
+    let formData = {};
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        formData[key] = sessionStorage.getItem(key);
     }
-} catch (error) {
-    console.error('Error in submitting form:', error);
-    alert('An error occurred. Please try again.');
+
+    // Send data to server
+    try {
+      const response = await fetch('/api/submit-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+      });
+      
+      console.log('Full response:', response);
+      const responseText = await response.text();
+
+  
+      if (response.ok) {
+        console.log('Form submission successful:', responseText);
+          alert(responseText); // Show success message
+          sessionStorage.clear();
+          resetFormUI();
+      } else {
+          console.error('Form submission failed:', responseText);
+          alert(responseText); // Show error message from server
+      }
+  } catch (error) {
+      console.error('Error in submitting form:', error);
+      alert('An error occurred. Please try again.');
+  }
+  
 }
-
-}
-
-
 
 // Function to reset the form UI for a new entry
 function resetFormUI() {

@@ -16,14 +16,12 @@
     <link rel="stylesheet" href="/css/main.css">
     <!-- <link rel="stylesheet" href="landing.css"> -->
     <link rel="stylesheet" href="/css/cursos.css">
-    <link rel="stylesheet" href="/css/subscription-form.css">
     <link rel="stylesheet" href="/build/css/intlTelInput.min.css">
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind&family=Montserrat:wght@800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 
 <body style="background-color: #f4f8f8;">
@@ -38,7 +36,7 @@
     </div>
     
     <div class="form-border">
-        <form id="subscription-form" action="/api/subscriptions/create" method="post">
+        <form id="registration-form" action="">
         <div class="progressBarContainer">
             <div style="height: 10px;" id="progress-bar">
                 <div class="progress-section" id="progress1"></div>
@@ -192,7 +190,7 @@
     <h3>Inglés para Empresas</h3>
     <div class="info-empresa">
         <label for="employee-count">¿Cuál es el nombre de la empresa?</label>
-        <input id="companyName" name="companyName" type="text" placeholder="Nombre de la Empresa">   
+        <input id="companyName" name="companyName" type="text" placeholder="Nombre de la Empresa" required>   
     <label for="employee-count">¿Cuántos empleados tiene tu empresa?</label>
     <select id="employee-count">
         <option value="sin-seleccionar" selected disabled>Selecciona el número de empleados</option>
@@ -210,9 +208,8 @@
 
 <!-- Section 4: Pricing -->
 <div id="section4" class="hidden">
-  <div class="service-pricing-heading">
-  <p id="serviceName"></p>
- <p id="price"></p></div>
+  <h3 id="form-final-price">Valor de la mensualidad</h3>
+  <p id="price"></p>
   <% if (userPriceInfo) { %>
       <% if (userPriceInfo.discountPrice) { %>
           <p class="price original-price" style="text-decoration: line-through; color: red;">
@@ -225,81 +222,8 @@
           <p class="price">$<%= userPriceInfo.originalPrice %></p>
       <% } %>
   <% } %>
-<hr class="payment-separator">
-<!-- payment form integration start -->
-<div class="datosTarjeta">
-  <h2 id="tarjetaHeading">Datos de tarjeta</h2>
-  <div class="rowTarjeta">
-      <div class="cardNumber">
-          <label for="cardNumber" class="label">Número de Tarjeta</label>
-          <div class="field-container">
-              <input type="tel" id="cardNumber" name="cardNumber" placeholder="Número de la tarjeta" />
-              <img id="credit-card-icon" src="pics/credit-card-icon.svg" alt="Credit Card Icon">
-          </div>
-      </div>
-      <div class="cardHolderContainer">
-          <label for="cardholderName" class="label">Nombre del Titular</label>
-          <div class="field-container">
-              <input type="text" id="cardholderName" name="cardholderName" placeholder="Nombre del Titular" required />
-          </div>
-      </div>
-  </div>
-  <div class="rowTarjeta">
-      <div class="cardSecurityInfo">
-          <label for="cardExpirationDate" class="label">Vencimiento</label>
-          <div class="field-container">
-              <input type="text" id="cardExpirationDate" name="cardExpirationDate" placeholder="(MM/YY)" required />
-          </div>
-      </div>
-      <div class="securityCodeContainer">
-          <label for="securityCode" class="label">Código de seguridad</label>
-          <div class="field-container">
-              <input type="text" id="securityCode" name="securityCode" placeholder="Código de seguridad" required />
-              <img id="ccv" src="pics/ccv.svg" alt="Security Code Icon">
-          </div>
-      </div>
-  </div>
-</div>
-<!-- Here you'll find the cardholder information -->
-<div class="datosTarjeta">
-  <h2 id="titularHeading">Datos del titular</h2>
-  <div class="rowTitular">
-      <div class="cardNumber">
-          <label for="docType" class="label">Tipo de documento</label>
-          <div class="field-container">
-              <select id="docType" name="docType" required>
-                  <option value="" disabled selected>Tipo de documento</option>
-                  <option value="CC">C.C.</option>
-                  <option value="CE">C.E.</option>
-                  <option value="NIT">NIT</option>
-                  <option value="Otro">Otro</option>
-              </select>
-          </div>
-      </div>
-      <div class="cardHolderContainer">
-          <label for="docNumber" class="label">Número de documento</label>
-          <div class="field-container">
-              <input type="text" id="docNumber" name="docNumber" placeholder="Documento de identidad" required />
-          </div>
-      </div>
-  </div>
-  <div class="emailContainer">
-      <label for="email" class="label">Email para notificación de pago</label>
-      <div class="field-container">
-          <input type="email" id="payerEmail" name="email" placeholder="Email para notificación de pago" required />
-      </div>
-  </div>
-</div>
-<button class="submit-button" type="submit">Subscribe</button>
-<!-- payment form integration end -->
-<div id="paymentModal" class="modal">
-  <div class="modal-content">
-      <img src="pics/loading-icon.svg" alt="Loading" class="loader">
-      <p id="paymentStatus">Processing your payment...</p>
-      <button id="modalOkButton" class="modal-ok-button">Okay</button>
-  </div>
-</div>
-  <!-- <a href="#" id="pay-button" class="hidden">Registrarse</a> -->
+
+  <a href="#" id="pay-button" class="hidden">Registrarse</a>
   <button class="button-back" type="button" id="back3"><i class="fa-solid fa-chevron-left"
       style="color: #17315e;"></i></button>
 </div>
@@ -470,9 +394,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-
-/* script for mercadopago integration */
-<script src="/js/subscription-form.js"></script>
 </body>
 
 </html>

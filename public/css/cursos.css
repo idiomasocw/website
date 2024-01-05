@@ -4,7 +4,6 @@
   --alternative-yellow:#d0ff4fd3;
   --alternative-blue:#4f7492dd;
   --alternative-blue2:#4f7492f7;
-  --light-color:#f1fcf2;
 }
 
 #menu-section2{
@@ -43,18 +42,18 @@
 
 /* CSS to change the placeholder color to white  */
 
-form input::placeholder {
+form input::placeholder, form select {
   color: #ccc;
   opacity: 1; /* Required for some browsers to ensure the color applies */
 }
 
 /* For Microsoft Edge */
-form input:-ms-input-placeholder {
+form input:-ms-input-placeholder, form select {
   color: #ccc;
 }
 
 /* For Internet Explorer 10+ */
-form input::-ms-input-placeholder {
+form input::-ms-input-placeholder, form select {
   color: #ccc;
 }
 
@@ -117,18 +116,13 @@ form input::-ms-input-placeholder {
   align-items: start;
 }
 
-#section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private{
+#section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
   background: linear-gradient(to right, rgba(208, 255, 79, 0.509),rgba(31, 255, 188, 0.542));
   min-width: 390px;
   padding: 1rem;
   max-width: 400px;
   text-align: center;
   border-radius: 8px;
-}
-
-#section4{
-  background: white;
-  padding: 1rem;
 }
 
 .selected-time{
@@ -215,7 +209,7 @@ form h3{
   width: 15px; /* Small circle size */
   height: 15px; /* Small circle size */
   border-radius: 50%; /* Makes it a circle */
-  background-color: var(--light-color); /* Gray color, change as needed */
+  background-color: var(--Bckpurple1); /* Gray color, change as needed */
   margin: 0 5px; /* Spacing between circles */
 }
 
@@ -272,7 +266,7 @@ form input, select{
   flex:3;
   width: 100%; /* Inputs and selects should fill the width of their grid area */
   height: 30px;
-  color: #f7f8fd;
+  color: #f7f8fd!important;
   padding: 5px;
 }
 
@@ -309,6 +303,11 @@ input::part(autofill) {
   text-decoration: none;
   display: inline-block;
   border-radius: 8px;
+}
+
+#price {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 
@@ -432,7 +431,6 @@ margin: 15% auto; /* 15% from the top and centered */
 padding: 20px;
 border: 1px solid #888;
 max-width: 400px; /* Could be more or less, depending on screen size */
-box-sizing: content-box;
 }
 
 .close {
