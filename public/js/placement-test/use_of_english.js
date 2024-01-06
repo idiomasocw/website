@@ -244,6 +244,11 @@ function endTest(testType) {  // Add testType argument to differentiate between 
     };
 
 localStorage.setItem(testType, JSON.stringify(testResult));
+
+    // Redirect the user to the listening test section after 1 second
+    setTimeout(() => {
+        window.location.href = '/placement-test/listening';
+    }, 900);  // Redirect after 1 second
 }
 
 

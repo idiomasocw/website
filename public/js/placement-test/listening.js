@@ -304,6 +304,10 @@ function endTest() {
     };
 
     localStorage.setItem('listening', JSON.stringify(testResult)); // Save the result in local storage
+    // Redirect the user to the menu and ensure results are sent
+    setTimeout(() => {
+        window.location.href = '/placement-test';
+    }, 1200);  // Redirect after 1.2 seconds to ensure user sees their results
 }
 
 

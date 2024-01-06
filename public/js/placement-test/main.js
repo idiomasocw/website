@@ -83,6 +83,10 @@ window.onload = function() {
             sessionStorage.removeItem('userInfoSubmitted');  // Clear the user info flag
             resultsDiv.innerHTML = 'You can retake the test now.';
             document.getElementById('user-info-modal').style.display = 'block';  // Show the user info modal again
+            const emailNotification = document.getElementById('emailNotification');
+        if(emailNotification) {
+            emailNotification.style.display = 'none';
+        }
         });
         // Append the button to the resultsDiv
         resultsDiv.appendChild(clearButton);
@@ -111,18 +115,18 @@ const dateTimeString = now.toISOString();  // ISO string ensures a unique value 
         <p style="color: #34babf;">Here are your placement test results:</p>
         <div style="display: flex; justify-content: space-between;gap:10px;flex-wrap: wrap;">
             <div style="flex: 1; padding: 10px;background:linear-gradient(217deg,#706da5,#6a3ad4);color:#d1ff4f;border-radius: 5px;box-shadow: 5px 5px 5px #0c0c1e;margin-right:5px;margin-left:5px;">
-                <h3 style="text-transform: uppercase;">Use of English</h3>
-                <p><strong>Points:</strong> ${useOfEnglishResults.points}</p>
-                <p><strong>Average Score:</strong> ${useOfEnglishResults.useOfEnglishAverageScore}%</p>
-                <p><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
-                <p><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
+                <h3 style="text-transform: uppercase;color:#d1ff4f;">Use of English</h3>
+                <p style="color:#d1ff4f;"><strong>Points:</strong> ${useOfEnglishResults.points}</p>
+                <p style="color:#d1ff4f;"><strong>Average Score:</strong> ${useOfEnglishResults.useOfEnglishAverageScore}%</p>
+                <p style="color:#d1ff4f;"><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
+                <p style="color:#d1ff4f;"><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
             </div>
             <div style="flex: 1; padding: 10px;background:linear-gradient(217deg,#706da5,#6a3ad4);color:#d1ff4f;border-radius: 5px;box-shadow: 5px 5px 5px #0c0c1e;margin-right:5px;margin-left:5px;">
-                <h3 style="text-transform: uppercase;">Listening</h3>
-                <p><strong>Points:</strong> ${listeningResults.points}</p>
-                <p><strong>Average Score:</strong> ${listeningResults.listeningAverageScore}%</p>
-                <p><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
-                <p><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
+                <h3 style="text-transform: uppercase;color:#d1ff4f;">Listening</h3>
+                <p style="color:#d1ff4f;"><strong>Points:</strong> ${listeningResults.points}</p>
+                <p style="color:#d1ff4f;"><strong>Average Score:</strong> ${listeningResults.listeningAverageScore}%</p>
+                <p style="color:#d1ff4f;"><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
+                <p style="color:#d1ff4f;"><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
             </div>
         </div>
             <p style="color: #34babf;">Best Regards,<br>OneCulture World Team</p>
@@ -145,6 +149,12 @@ const dateTimeString = now.toISOString();  // ISO string ensures a unique value 
         .then(data => {
             console.log('Success:', data);
             sessionStorage.setItem('emailSent', true);  // Set the flag that email has been sent
+
+            // Show the email notification message
+            const emailNotification = document.getElementById('emailNotification');
+            if(emailNotification) {
+                emailNotification.style.display = 'block';
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
