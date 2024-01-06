@@ -101,27 +101,33 @@ window.onload = function() {
         const useOfEnglishResults = JSON.parse(localStorage.getItem('use_of_english'));
         const listeningResults = JSON.parse(localStorage.getItem('listening'));
 
+        // First, generate the current date and time
+const now = new Date();
+const dateTimeString = now.toISOString();  // ISO string ensures a unique value for each email
+
         const resultsString = `
-        <div style="font-family: Arial, sans-serif; color: #333;">
-            <h1 style="font-size:18px;">Hello ${userInfo.firstName} ${userInfo.lastName},</h1>
-            <p>Here are your placement test results:</p>
-            <div style="display: flex; justify-content: space-between;">
-                <div style="flex: 1; padding: 10px;">
-                    <h3 style="text-transform: uppercase;">Use of English</h3>
-                    <p><strong>Points:</strong> ${useOfEnglishResults.points}</p>
-                    <p><strong>Average Score:</strong> ${useOfEnglishResults.useOfEnglishAverageScore}%</p>
-                    <p><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
-                    <p><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
-                </div>
-                <div style="flex: 1; padding: 10px;">
-                    <h3 style="text-transform: uppercase;">Listening</h3>
-                    <p><strong>Points:</strong> ${listeningResults.points}</p>
-                    <p><strong>Average Score:</strong> ${listeningResults.listeningAverageScore}%</p>
-                    <p><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
-                    <p><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
-                </div>
+        <div style="font-family: Arial, sans-serif; color: #34babf; background-color: #0e124d;padding: 10px;">
+        <h1 style="font-size:18px;color:#34babf">Hello ${userInfo.firstName} ${userInfo.lastName},</h1>
+        <p style="color: #34babf;">Here are your placement test results:</p>
+        <div style="display: flex; justify-content: space-between;gap:10px;flex-wrap: wrap;">
+            <div style="flex: 1; padding: 10px;background:linear-gradient(217deg,#706da5,#6a3ad4);color:#d1ff4f;border-radius: 5px;box-shadow: 5px 5px 5px #0c0c1e;margin-right:5px;margin-left:5px;">
+                <h3 style="text-transform: uppercase;">Use of English</h3>
+                <p><strong>Points:</strong> ${useOfEnglishResults.points}</p>
+                <p><strong>Average Score:</strong> ${useOfEnglishResults.useOfEnglishAverageScore}%</p>
+                <p><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
+                <p><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
             </div>
-            <p>Best Regards,<br>OneCulture World Team</p>
+            <div style="flex: 1; padding: 10px;background:linear-gradient(217deg,#706da5,#6a3ad4);color:#d1ff4f;border-radius: 5px;box-shadow: 5px 5px 5px #0c0c1e;margin-right:5px;margin-left:5px;">
+                <h3 style="text-transform: uppercase;">Listening</h3>
+                <p><strong>Points:</strong> ${listeningResults.points}</p>
+                <p><strong>Average Score:</strong> ${listeningResults.listeningAverageScore}%</p>
+                <p><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
+                <p><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
+            </div>
+        </div>
+            <p style="color: #34babf;">Best Regards,<br>OneCulture World Team</p>
+            <!-- Transparent span with the unique date-time string -->
+            <span style="opacity: 0;">${dateTimeString}</span>
         </div>`;
 
         fetch('/send-email', {

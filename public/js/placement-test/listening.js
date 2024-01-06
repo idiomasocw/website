@@ -1,23 +1,28 @@
 // Variables for stopwatch
 let timer;
-let timeLimit = 20 * 60; // 60 minutes in seconds
+let timeLimit = 20 * 60; // 20 minutes in seconds
 let timeElapsed = timeLimit;
 let totalIncorrectAnswers = 0;
 let consecutiveIncorrectAnswers = 0;
-let testInProgress = true;
+let testInProgress = false;
+let startTime; // Variable to store the start time of the test
 
-// Add this code at the beginning of your script.js
 document.addEventListener('DOMContentLoaded', () => {
     const startTestButton = document.getElementById('start-test');
     const modal = document.getElementById('modal');
     const question = document.getElementById('question');
 
     startTestButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-        question.style.display = 'block';
-        startTimer();
+        if(!testInProgress){
+            startTime = new Date(); // Set the start time at the beginning of the test
+            console.log("Test Started - startTime:", startTime);  // Log startTime
+            testInProgress = true; // Flag to indicate the test has started
+            modal.style.display = 'none';
+            question.style.display = 'block';
+            startTimer();
+        }
     });
-
+    
     window.addEventListener('beforeunload', (e) => {
         if (timeElapsed < timeLimit && testInProgress) {
             e.preventDefault();
@@ -253,16 +258,25 @@ function getNextAvailableLevel(currentLevel, step) {
 
 // Ends the test, displays the final score and hides the form
 function endTest() {
-    const returnButton = document.querySelector('.returnToMenu');
-    returnButton.classList.remove('scaled');
+    console.log("Listening test ending now");
     testInProgress = false;
-    clearInterval(timer);
-    let recommendedLevel = '';
-    let endTime = new Date();
-    let timeTaken = endTime - startTime;
-    let minutesTaken = Math.floor(timeTaken / 60000);
-    let secondsTaken = ((timeTaken % 60000) / 1000).toFixed(0);
+    clearInterval(timer); // Stop the timer
 
+    let endTime = new Date(); // Capture end time
+    console.log("Test Ended - endTime:", endTime);  // Log endTime
+    let timeTaken = endTime - startTime; // Calculate time taken in milliseconds
+    console.log("timeTaken (ms):", timeTaken);  // Log timeTaken in milliseconds
+    let minutesTaken = Math.floor(timeTaken / 60000); // Convert milliseconds to minutes
+    let secondsTaken = ((timeTaken % 60000) / 1000).toFixed(0); // Convert remainder to seconds, rounded to nearest second
+
+    // Add leading zeros if minutes or seconds are less than 10 and format time taken as mm:ss
+    minutesTaken = minutesTaken < 10 ? '0' + minutesTaken : minutesTaken;
+    secondsTaken = secondsTaken < 10 ? '0' + secondsTaken : secondsTaken;
+
+    console.log("Formatted Time Taken:", `${minutesTaken}:${secondsTaken}`);  // Log formatted time taken
+
+
+    let recommendedLevel = ''; // Calculate recommended level based on points
     if (points >= 0 && points <= 8) {
         recommendedLevel = 'A1';
     } else if (points >= 9 && points <= 29) {
@@ -275,30 +289,28 @@ function endTest() {
         recommendedLevel = 'C1';
     }
 
-    let listeningAverageScore = listeningQuestionsCount ? (listeningScore / listeningQuestionsCount).toFixed(2) : 0;
+    let listeningAverageScore = listeningQuestionsCount ? (listeningScore / listeningQuestionsCount).toFixed(2) : "0.00";
 
     questionElement.innerHTML = `The test is over. You scored <b>${points}</b> points. Your average Listening score is <b>${listeningAverageScore}%</b>. Based on your score, we recommend you enroll in the level <b>${recommendedLevel}</b> English course. Thank you for taking the test with us!`;
     answerForm.style.display = "none";
     messageElement.style.display = "none";
 
-    // Add leading zeros if minutes or seconds are less than 10
-    minutesTaken = minutesTaken < 10 ? '0' + minutesTaken : minutesTaken;
-    secondsTaken = secondsTaken < 10 ? '0' + secondsTaken : secondsTaken;
     let testResult = {
         testType: 'listening',
         points: points,
         listeningAverageScore: listeningAverageScore,
         recommendedLevel: recommendedLevel,
-        timeTaken: minutesTaken + ":" + secondsTaken // Add the time taken
+        timeTaken: `${minutesTaken}:${secondsTaken}` // Formatted time taken as mm:ss
     };
 
-    localStorage.setItem('listening', JSON.stringify(testResult));
+    localStorage.setItem('listening', JSON.stringify(testResult)); // Save the result in local storage
 }
 
-let startTime;
+
+
 // Starts the test by getting the next question and displaying it
 function startTest() {
-    startTime = new Date(); // Set the start time when the test starts
+    console.log("Listening test starting now");
     const returnButton = document.querySelector('.returnToMenu');
     returnButton.classList.add('scaled');
     const question = getNextQuestion(currentLevel);
@@ -360,14 +372,15 @@ function submitAnswer() {
 }
 
 
-answerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+document.getElementById('submitAnswerButton').addEventListener('click', (e) => {
+    e.preventDefault();  // Prevent the default form submit action
     submitAnswer();
 });
 
+// If you want to keep the keydown event listener for Enter, ensure it only triggers when appropriate
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        e.preventDefault();
+    if (e.key === 'Enter' && testInProgress) {
+        e.preventDefault();  // Prevent the default action
         submitAnswer();
     }
 });

@@ -210,7 +210,7 @@ app.post('/send-email', async (req, res) => {
   try {
       const { email, name, results } = req.body;
 
-      await sendEmail(email, 'onecultureworld@gmail.com', name, results);
+      await sendEmail(email, 'academico@onecultureworld.com', name, results);
       res.json({ message: "Email sent successfully!" });
   } catch (error) {
       console.error("Error sending email:", error);
