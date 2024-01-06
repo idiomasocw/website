@@ -38,13 +38,13 @@ window.onload = function() {
     let completedTests = [];
     let htmlContent = '';
     let message = '';
-        // Initial state
-        setTestButtonState();
+    // Initial state
+    setTestButtonState();
 
     tests.forEach((test) => {
         const result = localStorage.getItem(test);
         if (result) {
-            const { points, listeningAverageScore, useOfEnglishAverageScore, recommendedLevel,timeTaken } = JSON.parse(result);
+            const { points, listeningAverageScore, useOfEnglishAverageScore, recommendedLevel, timeTaken } = JSON.parse(result);
             let additionalContent = '';
 
             if (test === 'use_of_english') {
@@ -59,7 +59,7 @@ window.onload = function() {
                     <p>Points: ${points}</p>
                     ${additionalContent}
                     <p>Recommended Level: ${recommendedLevel}</p>
-                    <P>Time Taken: ${timeTaken}</P>
+                    <p>Time Taken: ${timeTaken}</p>
                 </div>
             `;
 
@@ -77,13 +77,13 @@ window.onload = function() {
         // Create a button to clear the test results from local storage
         const clearButton = document.createElement('button');
         clearButton.textContent = 'Take test again';
-        clearButton.addEventListener('click', () => {
-            tests.forEach((test) => {
-                localStorage.removeItem(test);
-            });
+        clearButton.addEventListener('click', function() {
+            tests.forEach(test => localStorage.removeItem(test));
+            sessionStorage.removeItem('emailSent');  // Clear the email sent flag
+            sessionStorage.removeItem('userInfoSubmitted');  // Clear the user info flag
             resultsDiv.innerHTML = 'You can retake the test now.';
+            document.getElementById('user-info-modal').style.display = 'block';  // Show the user info modal again
         });
-
         // Append the button to the resultsDiv
         resultsDiv.appendChild(clearButton);
     } else {
@@ -92,33 +92,78 @@ window.onload = function() {
 
     // Check if the user has already submitted their info
     if (!sessionStorage.getItem('userInfoSubmitted')) {
-        // If not, show the modal
         document.getElementById('user-info-modal').style.display = 'block';
     }
 
-    // Handle form submission
-    document.getElementById('user-info-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
+    // Check if both sections are completed and email has not been sent yet
+    if (localStorage.getItem('use_of_english') && localStorage.getItem('listening') && !sessionStorage.getItem('emailSent')) {
+        const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        const useOfEnglishResults = JSON.parse(localStorage.getItem('use_of_english'));
+        const listeningResults = JSON.parse(localStorage.getItem('listening'));
 
-        // Validate email format - simple validation
-        var email = document.getElementById('user-info-email').value;
-        if (!email.includes('@') || !email.includes('.')) {
-            alert("Please enter a valid email address.");
-            return false;
-        }
+        const resultsString = `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+            <h1 style="font-size:18px;">Hello ${userInfo.firstName} ${userInfo.lastName},</h1>
+            <p>Here are your placement test results:</p>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="flex: 1; padding: 10px;">
+                    <h3 style="text-transform: uppercase;">Use of English</h3>
+                    <p><strong>Points:</strong> ${useOfEnglishResults.points}</p>
+                    <p><strong>Average Score:</strong> ${useOfEnglishResults.useOfEnglishAverageScore}%</p>
+                    <p><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
+                    <p><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
+                </div>
+                <div style="flex: 1; padding: 10px;">
+                    <h3 style="text-transform: uppercase;">Listening</h3>
+                    <p><strong>Points:</strong> ${listeningResults.points}</p>
+                    <p><strong>Average Score:</strong> ${listeningResults.listeningAverageScore}%</p>
+                    <p><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
+                    <p><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
+                </div>
+            </div>
+            <p>Best Regards,<br>OneCulture World Team</p>
+        </div>`;
 
-        // Collect user info (further validation can be added as needed)
-        var userInfo = {
-            firstName: document.getElementById('user-info-first-name').value,
-            lastName: document.getElementById('user-info-last-name').value,
-            email: email
-        };
+        fetch('/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: userInfo.email,
+                name: `${userInfo.firstName} ${userInfo.lastName}`,
+                results: resultsString
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            sessionStorage.setItem('emailSent', true);  // Set the flag that email has been sent
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
 
-        // Store user info in session storage
-        sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-        sessionStorage.setItem('userInfoSubmitted', true);
+    // Handle user-info-form submission
+    const userInfoForm = document.getElementById('user-info-form');
+    if (userInfoForm) {
+        userInfoForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('user-info-email').value;
+            if (!email.includes('@') || !email.includes('.')) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
 
-        // Close the modal
-        document.getElementById('user-info-modal').style.display = 'none';
-    });
+            var userInfo = {
+                firstName: document.getElementById('user-info-first-name').value,
+                lastName: document.getElementById('user-info-last-name').value,
+                email: email
+            };
+            sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+            sessionStorage.setItem('userInfoSubmitted', true);
+            document.getElementById('user-info-modal').style.display = 'none';
+        });
+    }
 };

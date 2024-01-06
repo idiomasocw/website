@@ -5,7 +5,37 @@ const fs = require('fs');
 const session = require('express-session');
 const app = express();
 const moodleAPI = require('./controllers/moodleAPI'); // Ensure this module is set up
+const nodemailer = require('nodemailer');
 
+// Configure the SMTP transporter
+let transporter = nodemailer.createTransport({
+  host: "email-smtp.us-east-1.amazonaws.com", // or your specific AWS SES SMTP endpoint
+  port: 587, // Standard port for SMTP
+  secure: false, // true for 465, false for other ports
+  auth: {
+      user: process.env.AWS_SES_SMTP_USER, // Your SMTP user here
+      pass: process.env.AWS_SES_SMTP_PASSWORD, // Your SMTP password here
+  },
+});
+
+// Function to send email
+async function sendEmail(recipientEmail, adminEmail, userName, results) {
+  const mailOptions = {
+      from: 'noreply@onecultureworld.com', // Verify this email in SES
+      to: [recipientEmail],
+      bcc:[adminEmail], // Array of recipients
+      subject: "Placement Test Results",
+      html: results, // This will be the HTML formatted string
+
+  };
+
+  try {
+      let info = await transporter.sendMail(mailOptions);
+      console.log('Email sent: ' + info.response);
+  } catch (error) {
+      console.error("Error sending email: ", error);
+  }
+}
 
 // Set up EJS view engine
 app.set('view engine', 'ejs');
@@ -174,6 +204,18 @@ app.get('/placement-test/listening', (req, res) => {
 
 app.get('/placement-test/use-of-english', (req, res) => {
   res.render('placement-test/use_of_english');
+});
+
+app.post('/send-email', async (req, res) => {
+  try {
+      const { email, name, results } = req.body;
+
+      await sendEmail(email, 'onecultureworld@gmail.com', name, results);
+      res.json({ message: "Email sent successfully!" });
+  } catch (error) {
+      console.error("Error sending email:", error);
+      res.status(500).json({ error: "Failed to send email" });
+  }
 });
 
 

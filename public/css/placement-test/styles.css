@@ -61,7 +61,7 @@ body {
 }
 
 .button-overlay.disabled {
-    background-color: rgba(112, 8, 6, 0.8); /* or any color that indicates disabled state */
+    background-color: rgba(6, 52, 112, 0.8); /* or any color that indicates disabled state */
     border-radius: 25px;
 }
 
