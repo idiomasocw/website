@@ -21,7 +21,7 @@ let transporter = nodemailer.createTransport({
 // Function to send email
 async function sendEmail(recipientEmail, adminEmail, userName, results) {
   const mailOptions = {
-      from: 'noreply@onecultureworld.com', // Verify this email in SES
+    from: '"OneCulture World" <noreply@onecultureworld.com>', // This sets the name and the email
       to: [recipientEmail],
       bcc:[adminEmail], // Array of recipients
       subject: "Placement Test Results",
