@@ -479,8 +479,8 @@ gap: 10px; /* Space between buttons */
 
 /* Parallax section */
 .parallax {
-  /* background-image: url("./pics/cursos-parallax.png"); */
-  background-image: url("/pics/Descuento-min.png");
+  background-image: url("./pics/cursos-parallax.png");
+  /* background-image: url("/pics/Descuento-min.png"); */
   min-height: 580px; 
   background-attachment: fixed;
   background-position: center;
@@ -491,9 +491,9 @@ gap: 10px; /* Space between buttons */
 }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background-image: url("/pics/Descuento.webp")) {
+    @supports (background-image: url("/pics/cursos-parallax.webp")) {
       .parallax {
-        background-image: url("/pics/Descuento.webp");
+        background-image: url("/pics/cursos-parallax.webp");
       }
   }
 
@@ -700,15 +700,15 @@ justify-content: space-around;
 
   .parallax {
     /* The image used */
-    /* background-image: url("./pics/cursos-parallax-mobile.png"); */
-    background-image: url("/pics/Descuento-mobile-min.png");
+    background-image: url("/pics/cursos-parallax-mobile.png");
+    /* background-image: url("/pics/Descuento-mobile-min.png"); */
   }
 
       /* WebP Support for Mobile - Only Change the Background Image */
-      @supports (background-image: url("/pics/Descuento-mobile.webp")) {
+      @supports (background-image: url("/pics/cursos-parallax-mobile.webp")) {
         .parallax {
-          /* background-image: url("./pics/cursos-parallax-mobile.webp"); */
-          background-image: url("/pics/Descuento-mobile.webp");
+          background-image: url("/pics/cursos-parallax-mobile.webp");
+          /* background-image: url("/pics/Descuento-mobile.webp"); */
           background-size:cover;
           background-position: center;
         }
