@@ -16,7 +16,7 @@ var questions = [
        answer: ["I'm 20 years old"],
        level: 1,
        audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/A1/age.mp3",
-       options: ["I have 25 years", "I'm 20 years old", "I'm fine, thank you","Not bad"]
+       options: ["I'm a doctor", "I'm 20 years old", "I'm fine, thank you","Not bad"]
    },
    {
        text: "Listen and select the appropriate reply, like in a conversation.",
@@ -118,10 +118,10 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    text: "<em>Listen and select the appropriate reply, like in a conversation.</em>",
    id: 13,
    answerType: "single",
-   answer: ["Yes, there are several goods restaurants in the area"],
+   answer: ["Yes, there are several good restaurants in the area"],
    level: 4,
    audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/A1/good-places.mp3",
-   options: ["Yes, I eat lunch in my house", "Yes, there are several goods restaurants in the area", "No, I don't eat lunch in my house"]
+   options: ["Yes, I eat lunch in my house", "Yes, there are several good restaurants in the area", "No, I don't eat lunch in my house"]
 },
 
 {

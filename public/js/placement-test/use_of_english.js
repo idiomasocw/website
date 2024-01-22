@@ -54,6 +54,14 @@ function pad(number) {
     return number.toString().padStart(2, '0');
 }
 
+// Utility function to shuffle an array (Fisher-Yates shuffle algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 
 const questionElement = document.getElementById('question');
 const answerForm = document.getElementById('answer-form');
@@ -78,9 +86,9 @@ function getPointsForLevel(level) {
         return 3;
     } else if (level >= 8 && level <= 13) { //B1
         return 9; 
-    } else if (level >= 14 && level <= 19) { //B2
+    } else if (level >= 14 && level <= 20) { //B2
         return 27;
-    } else if (level >= 20 && level <= 25) { //C1
+    } else if (level >= 21 && level <= 25) { //C1
         return 81;
     } else {
         return 0;
@@ -103,33 +111,115 @@ function displayQuestion(question) {
     // Clear the previous question
     questionElement.innerHTML = '';
 
+    // Create a container for the question and image (if any)
+    const questionContainer = document.createElement('div');
+    questionContainer.className = 'question-container'; // Add a class to the question container for flex styling
+
     const grammarPromptContainer = document.createElement('div');
     grammarPromptContainer.className = 'grammar-prompt'; // Add a class to the grammar prompt container
 
-    const grammarPromptText = document.createElement('p');
-    grammarPromptText.innerHTML = question.text;
-    grammarPromptContainer.appendChild(grammarPromptText);
-    questionElement.appendChild(grammarPromptContainer);
+    // Check if the question has an image URL and create an img element if it does
+    if (question.url) {
+        const questionImage = document.createElement('img');
+        questionImage.src = question.url;
+        questionImage.className = 'questionPic'; // Add class for styling the image
+        grammarPromptContainer.appendChild(questionImage); // Append the image to the grammar prompt container
+    }
 
     if (question.options) {
+        // Append the grammar prompt to the grammar prompt container
+        const grammarPromptText = document.createElement('p');
+        grammarPromptText.innerHTML = question.text;
+        grammarPromptContainer.appendChild(grammarPromptText);
+
+        // Shuffle the options array for randomness
+        shuffleArray(question.options);
+
         question.options.forEach(option => {
             const optionContainer = document.createElement('div');
             optionContainer.className = 'radio-option'; // Add a class to the option container
+            
+            // Add event listener to the optionContainer for better UX
+            optionContainer.addEventListener('click', () => {
+                // Find the radio input inside this optionContainer and check it
+                const inputElement = optionContainer.querySelector('input[type="radio"]');
+                if (inputElement) {
+                    inputElement.checked = true;
+                }
+        
+                // Remove 'selected' class from all options
+                const allOptions = document.querySelectorAll('.radio-option');
+                allOptions.forEach(opt => opt.classList.remove('selected'));
+        
+                // Add 'selected' class to the clicked optionContainer
+                optionContainer.classList.add('selected');
+            });
+        
             const optionLabel = document.createElement('label');
             const optionElement = document.createElement('input');
             optionElement.type = 'radio';
             optionElement.name = 'option';
             optionElement.className = 'option'; // Add a class to the radio button
             optionElement.value = option;
+            
+            // Hide the default radio button visually but make it accessible
+            optionElement.style.opacity = 0;
+            optionElement.style.position = 'absolute';
+            optionElement.style.left = '-9999px';
+        
             optionLabel.appendChild(optionElement);
             const optionText = document.createTextNode(option);
             optionLabel.appendChild(optionText);
             optionContainer.appendChild(optionLabel);
-            questionElement.appendChild(optionContainer);
+            grammarPromptContainer.appendChild(optionContainer); // Append the option to the grammar prompt container
         });
-    } else {
-        questionElement.innerHTML = question.text.replace(/\*(.*?)\*/g, '<input type="text" class="blank">');
+
+        // Append the 'Omit this question' option at the end
+        const omitOptionContainer = document.createElement('div');
+        omitOptionContainer.className = 'radio-option';
+
+        // Add event listener to the omitOptionContainer for better UX
+omitOptionContainer.addEventListener('click', () => {
+    // Find the radio input inside this omitOptionContainer and check it
+    const inputElement = omitOptionContainer.querySelector('input[type="radio"]');
+    if (inputElement) {
+        inputElement.checked = true;
     }
+
+    // Remove 'selected' class from all options
+    const allOptions = document.querySelectorAll('.radio-option');
+    allOptions.forEach(opt => opt.classList.remove('selected'));
+
+    // Add 'selected' class to the clicked omitOptionContainer
+    omitOptionContainer.classList.add('selected');
+});
+        
+        const omitOptionLabel = document.createElement('label');
+        const omitOptionElement = document.createElement('input');
+        omitOptionElement.type = 'radio';
+        omitOptionElement.name = 'option';
+        omitOptionElement.className = 'option'; 
+        omitOptionElement.value = 'Omit this question. I don\'t know the answer';
+        
+        omitOptionElement.style.opacity = 0;
+        omitOptionElement.style.position = 'absolute';
+        omitOptionElement.style.left = '-9999px';
+        
+        omitOptionLabel.appendChild(omitOptionElement);
+        const omitOptionText = document.createTextNode('Omit this question. I don\'t know the answer');
+        omitOptionLabel.appendChild(omitOptionText);
+        omitOptionContainer.appendChild(omitOptionLabel);
+        grammarPromptContainer.appendChild(omitOptionContainer); // Append the 'Omit' option last
+    } else {
+        // For fill-in-the-gaps question type
+        grammarPromptContainer.innerHTML = question.text.replace(/\*(.*?)\*/g, '<input type="text" class="blank">');
+    }
+
+    // Append the grammar prompt container to the question container
+    questionContainer.appendChild(grammarPromptContainer);
+
+    // Append the question container to the main question element
+    questionElement.appendChild(questionContainer);
 
     // Focus the input field
     const inputField = document.querySelector('.blank');
@@ -210,15 +300,15 @@ function endTest(testType) {  // Add testType argument to differentiate between 
     let minutesTaken = Math.floor(timeTaken / 60000);
     let secondsTaken = ((timeTaken % 60000) / 1000).toFixed(0);
 
-    if (points >= 0 && points <= 15) {
+    if (points >= 0 && points <= 18) {
         recommendedLevel = 'A1';
-    } else if (points >= 16 && points <= 65) {
+    } else if (points >= 19 && points <= 45) {
         recommendedLevel = 'A2';
-    } else if (points >= 66 && points <= 115) {
+    } else if (points >= 46 && points <= 190) {
         recommendedLevel = 'B1';
-    } else if (points >= 116 && points <= 150) {
+    } else if (points >= 191 && points <= 333) {
         recommendedLevel = 'B2';
-    } else if (points >= 151) {
+    } else if (points >= 334) {
         recommendedLevel = 'C1';
     }
     // Calculate average scores for each category
@@ -290,7 +380,7 @@ function submitAnswer() {
     const correctAnswers = checkAnswer(question, answers);
 
     const percentageCorrect = (correctAnswers / question.answer.length) * 100;
-    const correct = percentageCorrect >= 69;
+    const correct = percentageCorrect >= 70;
 
     // Add points for each correct answer
     for (let i = 0; i < correctAnswers; i++) {

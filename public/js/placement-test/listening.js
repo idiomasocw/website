@@ -138,26 +138,94 @@ function displayQuestion(question) {
             optionsContainer.className = question.answerType === 'single' ? 'radio-buttons' : 'checkbox-buttons';
 
             question.options.forEach(option => {
+                const optionContainer = document.createElement('div');
+                optionContainer.className = 'radio-option'; // Add a class to the option container
+
+                // Add event listener to the optionContainer for better UX
+                optionContainer.addEventListener('click', () => {
+                    if (question.answerType === 'single') {
+                        // For single answer type, behave like radio buttons
+                        const inputElement = optionContainer.querySelector('input[type="radio"]');
+                        if (inputElement) {
+                            inputElement.checked = true;
+                        }
+
+                        // Remove 'selected' class from all options
+                        const allOptions = document.querySelectorAll('.radio-option');
+                        allOptions.forEach(opt => opt.classList.remove('selected'));
+
+                        // Add 'selected' class to the clicked optionContainer
+                        optionContainer.classList.add('selected');
+                    } else {
+                        // For multiple answers type, behave like checkboxes
+                        const inputElement = optionContainer.querySelector('input[type="checkbox"]');
+                        if (inputElement) {
+                            inputElement.checked = !inputElement.checked;
+                            optionContainer.classList.toggle('selected');
+                        }
+                    }
+                });
+
                 const optionLabel = document.createElement('label');
                 optionLabel.className = 'option-label'; // Add a class to the label
 
                 const optionElement = document.createElement('input');
                 optionElement.type = question.answerType === 'single' ? 'radio' : 'checkbox';
-                optionElement.name = 'option';
-                optionElement.className = 'option'; // Add a class to the radio button
+                optionElement.name = question.answerType === 'single' ? 'option' : 'options'; // Ensure correct name for single or multiple answers
+                optionElement.className = 'option'; // Add a class to the radio button or checkbox
                 optionElement.value = option;
+
+                // Hide the default radio button or checkbox visually but make it accessible
+                optionElement.style.opacity = 0;
+                optionElement.style.position = 'absolute';
+                optionElement.style.left = '-9999px';
 
                 const optionText = document.createTextNode(option);
 
                 optionLabel.appendChild(optionElement);
                 optionLabel.appendChild(optionText);
 
-                const optionContainer = document.createElement('div');
-                optionContainer.className = 'radio-option'; // Add a class to the option container
-
                 optionContainer.appendChild(optionLabel);
                 optionsContainer.appendChild(optionContainer);
             });
+
+            // Append the 'Omit this question' option only for single answer type
+            if (question.answerType === 'single') {
+                const omitOptionContainer = document.createElement('div');
+                omitOptionContainer.className = 'radio-option';
+
+                // Add event listener to the omitOptionContainer for better UX
+                omitOptionContainer.addEventListener('click', () => {
+                    const inputElement = omitOptionContainer.querySelector('input[type="radio"]');
+                    if (inputElement) {
+                        inputElement.checked = true;
+                    }
+
+                    // Remove 'selected' class from all options
+                    const allOptions = document.querySelectorAll('.radio-option');
+                    allOptions.forEach(opt => opt.classList.remove('selected'));
+
+                    // Add 'selected' class to the clicked omitOptionContainer
+                    omitOptionContainer.classList.add('selected');
+                });
+
+                const omitOptionLabel = document.createElement('label');
+                const omitOptionElement = document.createElement('input');
+                omitOptionElement.type = 'radio';
+                omitOptionElement.name = 'option';
+                omitOptionElement.className = 'option'; 
+                omitOptionElement.value = 'Omit this question. I don\'t know the answer';
+
+                omitOptionElement.style.opacity = 0;
+                omitOptionElement.style.position = 'absolute';
+                omitOptionElement.style.left = '-9999px';
+
+                omitOptionLabel.appendChild(omitOptionElement);
+                const omitOptionText = document.createTextNode('Omit this question. I don\'t know the answer');
+                omitOptionLabel.appendChild(omitOptionText);
+                omitOptionContainer.appendChild(omitOptionLabel);
+                optionsContainer.appendChild(omitOptionContainer); // Append the 'Omit' option last
+            }
 
             tempContainer.appendChild(optionsContainer);
         }
@@ -167,32 +235,39 @@ function displayQuestion(question) {
             questionElement.appendChild(tempContainer.firstChild);
         }
 
-// Add a listener to the Font Awesome play button to handle audio play
-const audioElement = document.getElementById('audio');
-const audioPlayButton = document.getElementById('audioPlayButton');
+        // Add a listener to the Font Awesome play button to handle audio play
+        const audioElement = document.getElementById('audio');
+        const audioPlayButton = document.getElementById('audioPlayButton');
 
-audioPlayButton.addEventListener('click', () => {
-    // If the playCount is under the limit, play the audio
-    if (playCount < 2) {
-        audioElement.play();
+        audioPlayButton.addEventListener('click', () => {
+            // If the playCount is under the limit, play the audio
+            if (playCount < 2) {
+                audioElement.play();
+            }
+
+            // If the playCount reaches the limit, alert the user, disable the play button and change its color
+            if (playCount == 2) {
+                alert('You can only play the recording twice.');
+                audioPlayButton.classList.add('disabled');
+            }
+        });
+
+        // Listen for the audio ending and increment the play count
+        audioElement.addEventListener('ended', () => {
+            playCount++;
+
+            if (playCount < 2) {
+                audioPlayButton.classList.remove('disabled');
+            }
+        });
     }
+}
 
-    // If the playCount reaches the limit, alert the user, disable the play button and change its color
-    if (playCount == 2) {
-        alert('You can only play the recording twice.');
-        audioPlayButton.classList.add('disabled');
-    }
-});
-
-// Listen for the audio ending and increment the play count
-audioElement.addEventListener('ended', () => {
-    playCount++;
-
-    if (playCount < 2) {
-        audioPlayButton.classList.remove('disabled');
-    }
-});
-
+// Ensure that the shuffleArray function is available in the scope of this code
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
