@@ -97,7 +97,7 @@ var questions = [
        options: ["do", "does", "is", "are"]
    },
    {
-    text: "<b>Samantha: </b>What are you *gonna* do after you graduate?<br><b>Paul: </b>I think I'll take some time to travel and explore a bit before I jump into a full-time job",
+    text: "<b>Samantha: </b>What are you _____ do after you graduate?<br><b>Paul: </b>I think I'll take some time to travel and explore a bit before I jump into a full-time job",
     id: 25,
     answer: ["gonna"],
     level: 7,
@@ -264,7 +264,7 @@ options: ["is going to be performed","is going to perform", "is performed", "is 
     options: ["will be completed", "will complete", "was submitted", "was complete"]
 },
    {
-       text: "When I first moved to New York, the loud city noise and the many people *were* very new to me. I grew up in a small town, so this was a big change for me. In fact, before moving to New York, I *had* never seen a building taller *than* three stories! But over time, I got used *to* the busy city life and its tall buildings. I think I *have* adapted myself very well. I went to college, got a good job and I recently got promoted to operations manager of a big company.",
+       text: "When I first moved to New York, the loud city noise and the many people *were|seemed* very new to me. I grew up in a small town, so this was a big change for me. In fact, before moving to New York, I *had* never seen a building taller *than* three stories! But over time, I got used *to* the busy city life and its tall buildings. I think I *have* adapted myself very well. I went to college, got a good job and I recently got promoted to operations manager of a big company.",
        id: 56,
        answer: ["were", "had", "than", "to", "have"],
        level: 16
