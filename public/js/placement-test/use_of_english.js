@@ -80,15 +80,15 @@ let useOfEnglishQuestionsCount = 0;  // Number of use of english questions attem
 
 // Returns points based on the question level
 function getPointsForLevel(level) {
-    if (level >= 1 && level <= 4) { //A1
+    if (level >= 1 && level <= 5) { //A1
         return 1;
-    } else if (level >= 5 && level <= 7) { //A2
+    } else if (level >= 6 && level <= 9) { //A2
         return 3;
-    } else if (level >= 8 && level <= 13) { //B1
+    } else if (level >= 10 && level <= 15) { //B1
         return 9; 
-    } else if (level >= 14 && level <= 20) { //B2
+    } else if (level >= 16 && level <= 21) { //B2
         return 27;
-    } else if (level >= 21 && level <= 25) { //C1
+    } else if (level >= 22 && level <= 26) { //C1
         return 81;
     } else {
         return 0;
@@ -300,15 +300,15 @@ function endTest(testType) {  // Add testType argument to differentiate between 
     let minutesTaken = Math.floor(timeTaken / 60000);
     let secondsTaken = ((timeTaken % 60000) / 1000).toFixed(0);
 
-    if (points >= 0 && points <= 18) {
+    if (points >= 0 && points <= 17) {
         recommendedLevel = 'A1';
-    } else if (points >= 19 && points <= 45) {
+    } else if (points >= 18 && points <= 45) {
         recommendedLevel = 'A2';
-    } else if (points >= 46 && points <= 190) {
+    } else if (points >= 46 && points <= 99) {
         recommendedLevel = 'B1';
-    } else if (points >= 191 && points <= 333) {
+    } else if (points >= 100 && points <= 368) {
         recommendedLevel = 'B2';
-    } else if (points >= 334) {
+    } else if (points >= 369) {
         recommendedLevel = 'C1';
     }
     // Calculate average scores for each category
