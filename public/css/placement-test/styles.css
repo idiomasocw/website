@@ -264,6 +264,24 @@ button {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+#submit{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #0e124d;
+    font-weight: 560;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#submit:hover {
+    background-color:#4e4caf;
+    color: #95ff74;
+    font-weight: bold;
+}
 
 button:hover {
     background-color:#4e4caf;

@@ -19,14 +19,16 @@ var questions = [
        id: 9,
        answer: ["who"],
        level: 3,
-       options: ["What", "When", "Who", "Where"]
+       options: ["What", "When", "Who", "Where"],
+       url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A1/man%20over%20there.png'
    },
    {
        text: "<b>Teacher: </b>Whose pencil ___ this? <br><b>Student: </b> I think it's Bob's",
        id: 10,
        answer: ["is"],
        level: 3,
-       options: ["are", "does", "do", "is"]
+       options: ["are", "does", "do", "is"],
+       url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A1/pencil.png'
    },
    {
        text: "George has two kids, but he doesn't live with ____. They live with their mother",
@@ -40,7 +42,8 @@ var questions = [
        id: 12,
        answer: ["him"],
        level: 4,
-       options: ["his", "he", "him", "she"]
+       options: ["his", "he", "him", "she"],
+       url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A1/Paul.png'
    },
    {text: "<b>Barbara: </b>What *was* your favorite TV program when you were a kid?", id:13, answer: ["was"], level: 4},
    {text: "<b>Jessica: </b>*Did* you go shopping yesterday?<br><b>Andrew: </b>No, I didn't. but I'll go shopping tonight.", id:14, answer: ["did"], level: 4},
@@ -59,18 +62,20 @@ var questions = [
     options: ["How often", "When", "Where", "What frequency"]
 },
 {
-    text: "<b>Dad: </b>Look, that could be our new house.</br><b>Daughter: </b>Wow dad! It's such a _______. I really like it.",
+    text: "<b>Dad: </b>Look, that will be our new house.</br><b>Daughter: </b>Wow dad! It's such a _______. I really like it.",
     id: 17,
     answer: ["beautiful house"],
     level: 5,
-    options: ["beautiful house", "house big", "yellow house", "house large"]
+    options: ["beautiful house", "house big", "yellow house", "house large"],
+    url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A1/new%20home.jpg'
 },
 {
     text: "<b>Sarah: </b>Hey, I made some cookies. Would you like one?</br><b>Bob: </b>No, thank you. I _______ right now.",
     id: 18,
     answer: ["am not hungry"],
     level: 5,
-    options: ["am not hungry", "am not thirsty", "don't have hungry", "don't have thirst"]
+    options: ["am not hungry", "am not thirsty", "don't have hungry", "don't have thirst"],
+    url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A1/cookies.jpg'
 },
 {
     text: "<b>Lisa: </b>My dad's sister is the funniest person in our family. She always makes us laugh at family gatherings.</br><b>Pete: </b>It's great that your _____ has such a good sense of humor.",
@@ -119,12 +124,12 @@ var questions = [
    },
    {text: "<b>Interviewer: </b>*Is* there anything you'd like to ask?<br><b>Interviewee: </b>Yes, how *much* is the pay for this job?<br><b>Interviewer: </b>This position pays $4,000 a month.", id:28, answer: ["is","much"], level: 8},
    {text: "<b>Mark: </b>How *many* people *are* there at the party now?<br><b>Paul: </b>Around nine or ten", id:29, answer: ["many","are"], level: 8},
-   {text: "<b>Graig: </b>Hey Sarah, what's a 'selfie'?<b><br>Sarah: </b>A selfie is just a picture of *yourself|oneself*. It's when you hold the camera with your hands and take a photo of *your|one's* own face.", id:30, answer: ["yourself","your"], level: 8},
+   {text: "<b>Graig: </b>Hey Sarah, what's a 'selfie'?<b><br>Sarah: </b>A selfie is just a picture of *yourself|oneself*. It's when you hold the camera with your hands and take a photo of *your|one's* own face.", id:30, answer: ["yourself","your"], level: 8,url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A2/selfie.jpg'},
    {text: "<b>Charles: </b>Hey Nancy, why are you buying all that food?<b><br>Nancy: </b>There *will* *be* a party in my house tomorrow. You should come.<br><b>Charles: </b>Sure, I will. Thank you.", id:31, answer: ["will","be"], level: 9},
    {text: "<b>Detective: </b>What *were* you doing yesterday at 2:00 p.m.?</br><b>Suspect: </b>I *was* taking a nap.", id:32, answer: ["were","was"], level: 9},
-   {text: "<b>Mom: </b>What *was* your brother doing when I called this morning?</br><b>Son: </b>He was right next to me. We *were* playing video games together when you called.", id:33, answer: ["was","were"], level: 9},
-   {text: "<b>Dad: </b>What *are* you doing with all those paint cans?</br><b>Emma: </b>I *am* redecorating my room. I wanna try some new colors.", id:34, answer: ["are","am"], level: 9},
-   {text: "<b>Carol: </b>Look. *It* *is* raining pretty heavily. You'll need an umbreall if you don't want to get soaked to the bone.</br><b>Wendy: </b>You're right.", id:35, answer: ["it","is"], level: 9},
+   {text: "<b>Mom: </b>What *was* your brother doing when I called this morning?</br><b>Son: </b>He was right next to me. We *were* playing video games together when you called.", id:33, answer: ["was","were"], level: 9,url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A2/boys-gaming.jpg'},
+   {text: "<b>Dad: </b>What *are* you doing with all those paint cans?</br><b>Emma: </b>I *am* redecorating my room. I wanna try some new colors.", id:34, answer: ["are","am"], level: 9,url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A2/redecorating.jpg'},
+   {text: "<b>Carol: </b>Look. *It* *is* raining pretty heavily. You'll need an umbreall if you don't want to get soaked to the bone.</br><b>Wendy: </b>You're right.", id:35, answer: ["it","is"], level: 9,url:'https://d37w1mprrue3dh.cloudfront.net/Pics/A2/raining.jpg'},
    {
        text: "<b>Kate: </b>What ____ tonight?</br> <b>Bob: </b>Nothing. I got no plans yet",
        id: 36,
@@ -137,14 +142,16 @@ var questions = [
        id: 37,
        answer: ["opposite"],
        level: 10,
-       options: ["in front", "opposite", "next", "among"]
+       options: ["in front", "opposite", "next", "among"],
+       url:'https://d37w1mprrue3dh.cloudfront.net/Pics/B1/Hospital%20and%20bank.png'
    },
    {
        text: "The books are ___ top of the shelf",
        id: 38,
        answer: ["on"],
        level: 10,
-       options: ["on", "in", "under", "between"]
+       options: ["on", "in", "under", "between"],
+       url:'https://d37w1mprrue3dh.cloudfront.net/Pics/B1/books.png'
    },
    {
        text: "<b>Linda: </b> You ___ buy shoes in a library.",

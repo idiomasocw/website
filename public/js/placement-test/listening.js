@@ -72,13 +72,13 @@ let listeningQuestionsCount = 0;
 
 // Returns points based on the question level
 function getPointsForLevel(level) {
-    if (level >= 1 && level <= 4) { //A1
+    if (level >= 1 && level <= 5) { //A1
         return 1;
-    } else if (level >= 5 && level <= 7) { //A2
+    } else if (level >= 6 && level <= 9) { //A2
         return 3;
-    } else if (level >= 8 && level <= 13) { //B1
+    } else if (level >= 10 && level <= 15) { //B1
         return 9;
-    } else if (level >= 14 && level <= 19) { //B2
+    } else if (level >= 16 && level <= 19) { //B2
         return 27;
     } else if (level >= 20 && level <= 25) { //C1
         return 81;
@@ -356,11 +356,11 @@ function endTest() {
         recommendedLevel = 'A1';
     } else if (points >= 9 && points <= 29) {
         recommendedLevel = 'A2';
-    } else if (points >= 30 && points <= 160) {
+    } else if (points >= 30 && points <= 80) {
         recommendedLevel = 'B1';
-    } else if (points >= 161 && points <= 320) {
+    } else if (points >= 81 && points <= 419) {
         recommendedLevel = 'B2';
-    } else if (points >= 321) {
+    } else if (points >= 420) {
         recommendedLevel = 'C1';
     }
 
