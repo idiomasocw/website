@@ -493,6 +493,18 @@ width: 100%;}
     transform: scale(0.9);
 }
 
+#clearResultsContainer{
+    position: fixed;
+    top: 3vh;
+    right: 0.8vw;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.fa-broom{
+    color: #95ff74;
+    cursor:pointer;
+}
 /* OLD STYLES */
 /* styles of the modal that collects user contact info*/
 /* Add these styles to your styles.css file */

@@ -67,32 +67,40 @@ window.onload = function() {
         }
     });
 
+    function clearTestResults() {
+        tests.forEach(test => localStorage.removeItem(test));
+        sessionStorage.removeItem('emailSent');
+        sessionStorage.removeItem('userInfoSubmitted');
+        sessionStorage.removeItem('userInfo');
+        resultsDiv.innerHTML = 'You can retake the test now.';
+        document.getElementById('user-info-modal').style.display = 'block';
+        const emailNotification = document.getElementById('emailNotification');
+        if (emailNotification) {
+            emailNotification.style.display = 'none';
+        }
+    }
+    
     if (completedTests.length > 0) {
         if (completedTests.length === 1 && completedTests[0] === 'use_of_english') {
             message = "<p>Please take the listening test now.</p>";
         }
-
+    
         resultsDiv.innerHTML = message + htmlContent;
-
+        const clearIcon = document.getElementById('clearResultsContainer');
         // Create a button to clear the test results from local storage
         const clearButton = document.createElement('button');
         clearButton.textContent = 'Take test again';
-        clearButton.addEventListener('click', function() {
-            tests.forEach(test => localStorage.removeItem(test));
-            sessionStorage.removeItem('emailSent');  // Clear the email sent flag
-            sessionStorage.removeItem('userInfoSubmitted');  // Clear the user info flag
-            resultsDiv.innerHTML = 'You can retake the test now.';
-            document.getElementById('user-info-modal').style.display = 'block';  // Show the user info modal again
-            const emailNotification = document.getElementById('emailNotification');
-        if(emailNotification) {
-            emailNotification.style.display = 'none';
-        }
-        });
+        
+        // Attach the clearTestResults function to both the clearIcon and clearButton
+        clearIcon.addEventListener('click', clearTestResults);
+        clearButton.addEventListener('click', clearTestResults);
+    
         // Append the button to the resultsDiv
         resultsDiv.appendChild(clearButton);
     } else {
         resultsDiv.innerHTML = 'You can now take the Use of English and the Listening tests.';
     }
+    
 
     // Check if the user has already submitted their info
     if (!sessionStorage.getItem('userInfoSubmitted')) {
