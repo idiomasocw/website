@@ -568,6 +568,71 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    options: ["Tomorrow, Next Monday", "Next Thursday","The meeting got cancelled","Next Wednesday"]
 },
 {
+   text: "Listen to John and Susan talk about their weekend. <b>Which statement is NOT TRUE in the recording</b>",
+   id: 61,
+   answerType: "single",
+   answer: ["Susan has been teaching John how to play the guitar"],
+   level: 16,
+   audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B2/sub-level17/music%20festival.mp3",
+   options: ["Susan didn't go hiking in the mountains with John", "John's never been to a music festival but he'd like to", "Susan has been learning to play a musical instrument", "Susan has been teaching John how to play the guitar", "John is interested in learning a musical instrument"]
+},
+{
+   text: "Listen to Pete and Abby talk about movies. <b>Which statement is NOT TRUE in the recording</b>",
+   id: 62,
+   answerType: "single",
+   answer: ["The latest movie was a little predictable"],
+   level: 16,
+   audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B2/sub-level17/film%20festival.mp3",
+   options: ["Abby hasn't watched the movie that came out","Pete recommends the latest movie to Abby", "The latest movie was a little predictable", "Pete thinks the latest movie was impressive","Abby suggests they can go to a movie festival together"]
+},
+{
+   text: "Listen to Alex and Craig. <b>Which statement is NOT TRUE in the recording</b>",
+   id: 63,
+   answerType: "single",
+   answer: ["The new restaurant is specialized in local dishes"],
+   level: 16,
+   audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B2/sub-level17/new%20restaurant.mp3",
+   options: ["Alex likes trying food from different countries", "The new restaurant is specialized in local dishes","Alex has tried cooking food from other countries at home","Craig has cooked international dishes at home"]
+},
+{
+   text: "You will hear a conversation between a mother and her son, Max, about his summer plans. <b>Which statement is NOT TRUE in the recording</b>",
+   id: 64,
+   answerType: "single",
+   answer: ["Max had a great time at the science camp last year"],
+   level: 17,
+   audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/B1/Science+camp.mp3",
+   options: ["Max has already made up his mind about what he wants to do this summer","The location of the science camp has changed this year","Max will be attending the science camp with more of his friends this year","Max had a great time at the science camp last year", "Max's mother wants him to start packing for the camp early"]
+}, 
+{
+   text: "You will hear a conversation between a teacher and a student named Alice about an upcoming project. <b>Which statement is NOT TRUE in the recording.</b>",
+   id: 65,
+   answerType: "single",
+   answer: ["Alice and Ben will be part of a bigger team"],
+   level: 17,
+   audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/B1/Science+project.mp3",
+   options: ["Alice and Ben will be part of a bigger team", "Alice's project will show how the sun, moon, and stars move and how gravity works", "The teacher likes Alice's project idea", "Ben likes learning about space too", "The teacher suggests that Alice and Ben should do an equal amount of work"]
+}, 
+
+{
+   text: "You will hear a conversation between two friends, Josh and Mia, about a concert. <b>Which statement is NOT TRUE in the recording.</b>",
+   id: 66,
+   answerType: "single",
+   answer: ["Josh is hoping to get the tickets for the concert"],
+   level: 17,
+   audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/B1/A+concert.mp3",
+   options: ["Mia already knew about the concert", "Josh is hoping to get the tickets for the concert", "Mia was concerned about the weather","The concert is not going to take place indoors", "Mia is looking forward to hearing a specific song at the concert"]
+}, 
+
+{
+   text: "You will hear a conversation between two colleagues, Mark and Laura, about a work project. <b>Which statement is NOT TRUE in the recording.</b>",
+   id: 67,
+   answerType: "single",
+   answer: ["Mark and Laura have already discussed the strategy for the Miller account"],
+   level: 17,
+   audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/B1/Project+report.mp3",
+   options: ["The Peterson report is still not finished yet", "The financial report for the Johnston account is completed","Mark and Laura have already discussed the strategy for the Miller account", "Laura reports to Mark", "Mark hasn't analyzed the Johnston's report yet"]
+},
+/* {
    text: "Listen to John and Susan talk about their weekend. <b>Check all the true statements.</b>",
    id: 61,
    answerType: "multiple",
@@ -631,5 +696,5 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    level: 17,
    audioUrl: "https://ocw-program.s3.amazonaws.com/Placement-test/Audio/B1/Project+report.mp3",
    options: ["Mark and Laura need to work on the Peterson account", "Laura is working on the Johnston account today", "The financial report for the Johnston account is completed","Mark and Laura have already discussed the strategy for the Miller account", "Laura doesn't agree on discussing the Miller account", "The Peterson report is already finished."]
-},
+}, */
 ];
