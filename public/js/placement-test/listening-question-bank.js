@@ -212,10 +212,10 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    text: "<em>Listen and select the appropriate reply, like in a conversation.</em>",
    id: 23,
    answerType: "single",
-   answer: ["Let's stay inside and drink hot chocolate"],
+   answer: ["Makes me want to stay in and have a warm cup of tea"],
    level: 6,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A2/sub-level6/frosty.mp3",
-   options: ["Let's stay inside and drink hot chocolate", "A good time for a swim, don't you think", "I love this kind of weather for sunbathing"]
+   options: ["Makes me want to stay in and have a warm cup of tea", "A good time for a swim, don't you think", "I love this kind of weather for sunbathing"]
 },
 {
    text: "<em>Listen and select the appropriate reply, like in a conversation.</em>",
