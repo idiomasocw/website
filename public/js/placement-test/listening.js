@@ -132,6 +132,8 @@ function displayQuestion(question) {
             listeningPromptContainer.appendChild(listeningPromptText);
 
             tempContainer.appendChild(listeningPromptContainer);
+            // Shuffle the options array for randomness
+            shuffleArray(question.options);
 
             // Create and display radio buttons for each option
             const optionsContainer = document.createElement('div');

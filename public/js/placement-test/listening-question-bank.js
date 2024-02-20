@@ -565,7 +565,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Next Wednesday"],
    level: 15,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level15/Reschedule%20meeting.mp3",
-   options: ["Tomorrow, Next Monday", "Next Thursday","The meeting got cancelled","Next Wednesday"]
+   options: ["Tomorrow", "Next Monday", "Next Thursday","The meeting got cancelled","Next Wednesday"]
 },
 {
    text: "Listen to John and Susan talk about their weekend. <b>Which statement is NOT TRUE in the recording</b>",
