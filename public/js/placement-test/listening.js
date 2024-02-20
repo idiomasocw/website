@@ -142,18 +142,18 @@ function displayQuestion(question) {
                 optionContainer.className = 'radio-option'; // Add a class to the option container
 
                 // Add event listener to the optionContainer for better UX
-                optionContainer.addEventListener('click', () => {
+                optionContainer.addEventListener('click', (event) => {
                     if (question.answerType === 'single') {
                         // For single answer type, behave like radio buttons
                         const inputElement = optionContainer.querySelector('input[type="radio"]');
                         if (inputElement) {
                             inputElement.checked = true;
                         }
-
+                
                         // Remove 'selected' class from all options
                         const allOptions = document.querySelectorAll('.radio-option');
                         allOptions.forEach(opt => opt.classList.remove('selected'));
-
+                
                         // Add 'selected' class to the clicked optionContainer
                         optionContainer.classList.add('selected');
                     } else {
@@ -164,7 +164,7 @@ function displayQuestion(question) {
                             optionContainer.classList.toggle('selected');
                         }
                     }
-                });
+                });               
 
                 const optionLabel = document.createElement('label');
                 optionLabel.className = 'option-label'; // Add a class to the label

@@ -176,7 +176,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Of course. They'll come with me"],
    level: 5,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A1/sub-level5/parents%20on%20vacation%20trip.mp3",
-   options: ["Of course. They'll come with me", "No, I don't wanna travel with my partner", "Yes, we did"]
+   options: ["No, I don't wanna travel with my partner", "Of course. They'll come with me","Yes, we did"]
 },
 {
    text: "<em>Listen and select the appropriate reply, like in a conversation.</em>",
@@ -195,7 +195,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["No, she's not. She already did"],
    level: 5,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A1/sub-level5/take%20the%20test%20tomorrow.mp3",
-   options: ["No, she's not. She already did", "Yes, she's going to participate in that contest tomorrow", "She'll come next Friday"]
+   options: ["Yes, she's going to participate in that contest tomorrow", "She'll come next Friday","No, she's not. She already did"]
 },
 
 {
@@ -302,7 +302,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Smoking is not allowed inside the restaurant"],
    level: 8,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A2/sub-level8/no%20smoking.mp3",
-   options: ["Smoking is not allowed inside the restaurant", "Smoking is allowed only for regular customers", "There's a special area for smoking inside the restaurant"]
+   options: ["Smoking is allowed only for regular customers", "Smoking is not allowed inside the restaurant","There's a special area for smoking inside the restaurant"]
 },
 {
    text: "<em>What's true in the recording</em>",
@@ -311,7 +311,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Expresso Express coffee is better than the coffee from Cafe Cozy"],
    level: 9,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A2/sub-level9/best%20coffee.mp3",
-   options: ["Expresso Express coffee is better than the coffee from Cafe Cozy", "Cafe Cozy has better coffee than Expresso Express", "Cafe Cozy has the best coffee and service in town"]
+   options: ["Cafe Cozy has better coffee than Expresso Express", "Cafe Cozy has the best coffee and service in town","Expresso Express coffee is better than the coffee from Cafe Cozy"]
 },
 {
    text: "<em>What's true in the recording</em>",
@@ -320,7 +320,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["The Johnsons' garden is smaller than the Smiths'"],
    level: 9,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A2/sub-level9/bigger%20garden.mp3",
-   options: ["The Johnsons' garden is smaller than the Smiths'", "The Smiths' garden is as big as the Johnsons'", "The Smiths' have the largest garden in the neighborhood"]
+   options: ["The Smiths' garden is as big as the Johnsons'", "The Johnsons' garden is smaller than the Smiths'","The Smiths' have the largest garden in the neighborhood"]
 },
 {
    text: "<em>What's true in the recording</em>",
@@ -329,7 +329,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Lisa is more creative than Mark"],
    level: 9,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A2/sub-level9/diligent%20and%20creative.mp3",
-   options: ["Lisa is more creative than Mark", "Mark is more creative than Lisa", "Lisa is as diligent as Mark"]
+   options: ["Mark is more creative than Lisa", "Lisa is more creative than Mark", "Lisa is as diligent as Mark"]
 },
 {
    text: "<em>What's true in the recording</em>",
@@ -338,7 +338,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["This exam was more difficult than the last one"],
    level: 9,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/A2/sub-level9/more%20challenging%20exam.mp3",
-   options: ["This exam was more difficult than the last one", "The questions in the previous exam were easier than the questions in this exam", "This exam allowed more time than the last one"]
+   options: ["The questions in the previous exam were easier than the questions in this exam", "This exam allowed more time than the last one","This exam was more difficult than the last one"]
 },
 {
    text: "<em>Select the option that best describes the situation.</em>",
@@ -463,7 +463,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["It has a good salary"],
    level: 13,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level13/high-paying%20job.mp3",
-   options: ["It has a good salary","It's not very demanding", "It requires a lot of time", "It'll allow her to spend more time with her family"]
+   options: ["It's not very demanding", "It has a good salary","It requires a lot of time", "It'll allow her to spend more time with her family"]
 },
 
 {
@@ -473,7 +473,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["It's more relaxed and collaborative"],
    level: 13,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level13/low-pressure.mp3",
-   options: ["It's more relaxed and collaborative","It's very stressful but people help each other", "It's become more competitive and people are more motivated", "It'll offer better advancement opportunities"]
+   options: ["It's very stressful but people help each other", "It's become more competitive and people are more motivated", "It's more relaxed and collaborative","It'll offer better advancement opportunities"]
 },
 
 {
@@ -483,7 +483,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["It allows him to balance work and studies"],
    level: 13,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level13/part-time%20job.mp3",
-   options: ["It allows him to balance work and studies","It takes up most of his time", "He works only on weekends", "It's low-pressure and well-paid"]
+   options: ["It takes up most of his time", "It allows him to balance work and studies","He works only on weekends", "It's low-pressure and well-paid"]
 },
 {
    text: "<em>Why does the teacher praise Sophia's children?</em>",
@@ -492,7 +492,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Because they have good behavior and are good role models"],
    level: 13,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level13/well-behaved.mp3",
-   options: ["Because they have good behavior and are good role models","Because they understand topics that are usually too difficult for kids their same age", "Because they help the other kids in their class", "Because they usually give their teacher pears"]
+   options: ["Because they understand topics that are usually too difficult for kids their same age", "Because they help the other kids in their class", "Because they have good behavior and are good role models","Because they usually give their teacher pears"]
 },
 {
    text: "<em>What is true about the town's festival?</em>",
@@ -501,7 +501,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["It's celebrated every year"],
    level: 14,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level14/annual%20festival.mp3",
-   options: ["It's celebrated every year","Bands from all over the region were invited to perform", "The authorities cloased many streets to make space for the parade", "there wasn't enough space for the parade"]
+   options: ["Bands from all over the region were invited to perform", "The authorities cloased many streets to make space for the parade", "there wasn't enough space for the parade","It's celebrated every year"]
 },
 {
    text: "<em>What is true about the project?</em>",
@@ -565,7 +565,7 @@ options: ["(321) 502-4567", "(321) 482-4567", "(321) 582-4537"]
    answer: ["Next Wednesday"],
    level: 15,
    audioUrl: "https://d37w1mprrue3dh.cloudfront.net/Audio/B1/sub-level15/Reschedule%20meeting.mp3",
-   options: ["Next Wednesday", "Tomorrow, Next Monday", "Next Thursday","The meeting got cancelled"]
+   options: ["Tomorrow, Next Monday", "Next Thursday","The meeting got cancelled","Next Wednesday"]
 },
 {
    text: "Listen to John and Susan talk about their weekend. <b>Check all the true statements.</b>",
