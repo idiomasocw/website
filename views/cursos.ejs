@@ -273,13 +273,13 @@
                   <span><%= plan.replace(/_/g, ' ') %></span>
                   <% if (priceInfo.discountPrice) { %>
                       <span class="price original-price" style="text-decoration: line-through; color: red;">
-                          $<%= priceInfo.originalPrice %>
+                          $<%= priceInfo.originalPrice.toLocaleString('es-CO') %> 
                       </span>
                       <span class="price discount-price">
-                          $<%= priceInfo.discountPrice %>
+                          $<%= priceInfo.discountPrice.toLocaleString('es-CO') %> / Mes
                       </span>
                   <% } else { %>
-                      <span class="price">$<%= priceInfo.originalPrice %></span>
+                      <span class="price">$<%= priceInfo.originalPrice.toLocaleString('es-CO') %> / Mes</span>
                   <% } %>
               </div>
           <% }); %>
@@ -319,13 +319,13 @@
                     <span><%= plan.replace(/_/g, ' ') %></span>
                     <% if (priceInfo.discountPrice) { %>
                         <span class="price original-price" style="text-decoration: line-through; color: red;">
-                            $<%= priceInfo.originalPrice %>
+                            $<%= priceInfo.originalPrice.toLocaleString('es-CO') %>
                         </span>
                         <span class="price discount-price">
-                            $<%= priceInfo.discountPrice %>
+                            $<%= priceInfo.discountPrice.toLocaleString('es-CO') %> / Mes
                         </span>
                     <% } else { %>
-                        <span class="price">$<%= priceInfo.originalPrice %></span>
+                        <span class="price">$<%= priceInfo.originalPrice.toLocaleString('es-CO') %> / Mes</span>
                     <% } %>
                 </div>
             <% }); %>
