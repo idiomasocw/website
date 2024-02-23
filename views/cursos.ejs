@@ -274,7 +274,7 @@
                   <% if (priceInfo.discountPrice) { %>
                       <span class="price original-price" style="text-decoration: line-through; color: red;">
                           $<%= priceInfo.originalPrice.toLocaleString('es-CO') %> 
-                      </span>
+                      </span><br>
                       <span class="price discount-price">
                           $<%= priceInfo.discountPrice.toLocaleString('es-CO') %> / Mes
                       </span>
@@ -320,7 +320,7 @@
                     <% if (priceInfo.discountPrice) { %>
                         <span class="price original-price" style="text-decoration: line-through; color: red;">
                             $<%= priceInfo.originalPrice.toLocaleString('es-CO') %>
-                        </span>
+                        </span><br>
                         <span class="price discount-price">
                             $<%= priceInfo.discountPrice.toLocaleString('es-CO') %> / Mes
                         </span>
