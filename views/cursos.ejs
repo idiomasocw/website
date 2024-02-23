@@ -270,7 +270,7 @@
               const priceInfo = pricing.privateLessons[plan];
           %>
               <div class="price-option">
-                  <span><%= plan.replace(/_/g, ' ') %></span>
+                  <span><%= plan.replace(/_/g, ' ') %> / Semana</span><br>
                   <% if (priceInfo.discountPrice) { %>
                       <span class="price original-price" style="text-decoration: line-through; color: red;">
                           $<%= priceInfo.originalPrice.toLocaleString('es-CO') %> 
@@ -316,7 +316,7 @@
                 const priceInfo = pricing.semiPrivateLessons[plan];
             %>
                 <div class="price-option">
-                    <span><%= plan.replace(/_/g, ' ') %></span>
+                    <span><%= plan.replace(/_/g, ' ') %> / Semana</span> <br>
                     <% if (priceInfo.discountPrice) { %>
                         <span class="price original-price" style="text-decoration: line-through; color: red;">
                             $<%= priceInfo.originalPrice.toLocaleString('es-CO') %>
