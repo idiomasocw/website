@@ -780,8 +780,8 @@ async function submitForm(event) {
 
   
       if (response.ok) {
-        console.log('Form submission successful:', responseText);
-          alert(responseText); // Show success message
+        console.log('Recibimos tu formulario exitosamente:', responseText);
+        alert(`🥳 Felicidades! ${responseText}`); // Show success message
           sessionStorage.clear();
           resetFormUI();
       } else {
