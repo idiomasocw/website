@@ -786,7 +786,7 @@ async function submitForm(event) {
           resetFormUI();
       } else {
           console.error('Form submission failed:', responseText);
-          alert(responseText); // Show error message from server
+          alert(`😞 Lo sentimos! ${responseText}`); // Show error message from server
       }
   } catch (error) {
       console.error('Error in submitting form:', error);

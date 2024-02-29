@@ -48,7 +48,7 @@ async function addOrUpdateContactToMailchimp(data) {
             }
         );
         console.log('Contact added/updated in Mailchimp', response);
-        return { success: true, message: 'Form submitted successfully' };
+        return { success: true, message: 'Recibimos tu formulario exitosamente' };
     } catch (error) {
         let errorMessage = 'Error adding contact to Mailchimp';
         let errorCode = 500;
