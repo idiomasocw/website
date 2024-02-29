@@ -3,11 +3,11 @@
   --Bckpurple2:#494f78ad;
   --alternative-yellow:#d0ff4fd3;
   --alternative-blue:#4f7492dd;
-  --alternative-blue2:#4f7492f7;
+  --alternative-blue2:rgba(79, 116, 146, 0.969);
   --primary-bg-color: #6f6fde;
-  --accent-color-1: #ffe081;
-  --secondary-text-color: #e0af7c;
-  --dark-text-color: #30303b;
+  --accent-color-1: rgb(255, 224, 129);
+  --secondary-text-color: rgb(224, 175, 124);
+  --dark-text-color: rgb(48, 48, 59);
 }
 
 #menu-section2{
@@ -39,7 +39,7 @@
 .form-container {
   padding: 1rem;
   width: 100%;
-  background: linear-gradient(to right, rgba(208, 255, 79, 0.6),rgba(31, 255, 188, 0.6));
+  background: linear-gradient(to right, var(--secondary-text-color),var(--accent-color-1));
   border-radius: 8px;
   max-width: 390px;
 }
@@ -62,11 +62,11 @@ form input::-ms-input-placeholder, form select {
 }
 
 .info-box .info-label{
-  color:#026c72;
+  color:var(--dark-text-color);
 }
 
 .asterisk{
-  color:#692ab4;
+  color:var(--dark-text-color);
 }
 
 #registrate-ya {
@@ -75,7 +75,7 @@ form input::-ms-input-placeholder, form select {
   margin: 1rem auto;
   font-size: 1rem;
   text-transform: uppercase;
-  color: #026c72;
+  color: var(--dark-text-color);
 }
 
 /* The .form-infoContainer is now a grid container */
@@ -121,7 +121,7 @@ form input::-ms-input-placeholder, form select {
 }
 
 #section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
-  background: linear-gradient(to right, rgba(208, 255, 79, 0.509),rgba(31, 255, 188, 0.542));
+  background: linear-gradient(to right, var(--secondary-text-color),var(--accent-color-1));
   min-width: 390px;
   padding: 1rem;
   max-width: 400px;
@@ -150,14 +150,14 @@ form button {
   background-color: transparent;
   border: 1px solid #026C72; 
   border-radius: 4px;
-  background-color: #857ebfbe;
+  background-color: var(--primary-bg-color);
 }
 
  form button:hover {
-    background-color: #b4f02b;
-    border-color: #b4f02b;
+    background-color: var(--accent-color-1);
+    border-color: var(--accent-color-1);
     cursor: pointer;
-  color:#0e124d }
+  color:var(--dark-text-color) }
 
 .modal-content h3{
   color:#026c72;
@@ -186,7 +186,7 @@ form h3{
 }
 
 .content h2, p{
-  color:#0e124d;
+  color:var(--dark-text-color);
 }
 
 
@@ -213,13 +213,13 @@ form h3{
   width: 15px; /* Small circle size */
   height: 15px; /* Small circle size */
   border-radius: 50%; /* Makes it a circle */
-  background-color: var(--Bckpurple1); /* Gray color, change as needed */
+  background-color: var(--dark-text-color); /* Gray color, change as needed */
   margin: 0 5px; /* Spacing between circles */
 }
 
 /* Add classes or modify these when the section is active or completed */
 .progress-section.active, .progress-section.completed {
-  background-color: #b4f02b; /* Example active/completed color */
+  background-color: var(--accent-color-1); /* Example active/completed color */
 }
 
 .button-next{
@@ -253,7 +253,7 @@ form h3{
 }
 
 .button-next.enabled, #next3-empresas.enabled {
-  background-color: #b4f02b;
+  background-color: var(--accent-color-1);
   cursor: pointer;
   border: none;
   padding-top:5px;
@@ -263,7 +263,7 @@ form h3{
 
 
 form input, select{
-  background: rgba(132, 125, 191, 0.7);
+  background: var(--primary-bg-color);
   outline: none;
   border: 2px solid rgb(255, 255, 255,0.8);
   border-radius: 12px;
@@ -275,7 +275,7 @@ form input, select{
 }
 
 #section1 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px #026c72 inset; /* Adjust the color as needed */
+  -webkit-box-shadow: 0 0 0 30px var(--primary-bg-color) inset; /* Adjust the color as needed */
   -webkit-text-fill-color: #fff !important; 
 }
 
@@ -393,7 +393,7 @@ form{
 }
 
 .mode-option:hover{
-  background: #026c72;
+  background-color: var(--primary-bg-color);
   transition: all 0.6s;
   border: 1px solid #026c72;
   color: #fff;
@@ -401,7 +401,7 @@ form{
 
 .mode-option.selected {
   border-color: #ffffff;
-  background-color: #026c72;
+  background-color: var(--primary-bg-color);
   width: fit-content;
 }
 
@@ -483,7 +483,11 @@ gap: 10px; /* Space between buttons */
 
 /* Parallax section */
 .parallax {
-  background-image: url("./pics/cursos-parallax.png");
+  background: linear-gradient(
+    to bottom, 
+    rgba(48, 48, 59, 0.9), 
+    rgba(111, 111, 222, 0.9)
+),  url("./pics/cursos-parallax.png");
   /* background-image: url("/pics/Descuento-min.png"); */
   min-height: 580px; 
   background-attachment: fixed;
@@ -495,9 +499,21 @@ gap: 10px; /* Space between buttons */
 }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background-image: url("/pics/cursos-parallax.webp")) {
+    @supports (background:linear-gradient(
+      to bottom, 
+      rgba(48, 48, 59, 0.98), 
+      rgba(111, 111, 222, 0.8)
+  ), url("/pics/cursos-parallax.webp")) {
       .parallax {
-        background-image: url("/pics/cursos-parallax.webp");
+        background:linear-gradient(
+    to bottom, 
+    rgba(48, 48, 59, 0.98), 
+    rgba(111, 111, 222, 0.8)
+), url("/pics/cursos-parallax.webp");
+background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
       }
   }
 
@@ -533,23 +549,29 @@ gap: 10px; /* Space between buttons */
 }
 
 #semi-personalized{
-  background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url("/pics/semi-privadas-discount-min.png");
+  background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
+  rgba(224, 175, 124, 0.9)),url("/pics/semi-privadas-discount-min.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  color:#f4f8f8;
+  color:var(--dark-text-color);
   position: relative;
   z-index: -2;
 }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url("/pics/semi-privadas-discount.webp")) {
+    @supports (background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
+    rgba(224, 175, 124, 0.9)),url("/pics/semi-privadas-discount.webp")) {
       #semi-personalized {
-        background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue2)40%,var(--alternative-blue)100%),url("/pics/semi-privadas-discount.webp");
+        background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
+        rgba(224, 175, 124, 0.9)),url("/pics/semi-privadas-discount.webp");
         background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
   }
+
 
 .course-description-section1{
   padding-bottom: 2rem;
@@ -604,14 +626,14 @@ gap: 10px; /* Space between buttons */
   padding: 4rem;
   border-radius: 0 8px 8px 8px; /* Optional for rounded corners */
   background-color:#f4f8f8;
-  color:#0e124d;
+  color:var(--dark-text-color);
   position: relative;
 }
 
 
 .course-description-card h2 {
   text-align: left;
-  color: #0e124d; /* Adjust the color to match your design */
+  color: var(--dark-text-color); /* Adjust the color to match your design */
   text-transform: uppercase;
   font-size: 3rem;
   margin: 0;
@@ -644,10 +666,10 @@ justify-content: space-around;
 }
 
 .price-option {
-  background-color: #D1FF4F; 
+  background-color: var(--accent-color-1); 
   padding: 1em;
   text-align: center;
-  color:#0e124d;
+  color:var(--dark-text-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -705,6 +727,7 @@ justify-content: space-around;
   .parallax {
     /* The image used */
     background-image: url("/pics/cursos-parallax-mobile.png");
+    background-repeat: no-repeat;
     /* background-image: url("/pics/Descuento-mobile-min.png"); */
   }
 
@@ -715,6 +738,7 @@ justify-content: space-around;
           /* background-image: url("/pics/Descuento-mobile.webp"); */
           background-size:cover;
           background-position: center;
+          background-repeat: no-repeat;
         }
     }
   
@@ -761,19 +785,26 @@ justify-content: space-around;
 
 #semi-personalized{
 /*   background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.png);*/  
-  background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue)40%, var(--alternative-blue2)100%),url("/pics/semi-personalized-mobile-min.png");
+background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
+rgba(224, 175, 124, 0.9)),
+  url("/pics/semi-personalized-mobile-min.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+    
 }
 
       /* WebP Support for Mobile - Only Change the Background Image */
-      @supports (background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue)40%, var(--alternative-blue2)100%),url("/pics/semi-personalized-mobile.webp")) {
+      @supports ( background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
+      rgba(224, 175, 124, 0.9)),url("/pics/semi-personalized-mobile.webp")) {
         #semi-personalized {
           /* background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-personalized-mobile.png); */
-          background: linear-gradient(135deg, var(--alternative-yellow)0%, var(--alternative-blue)40%, var(--alternative-blue2)100%),url("/pics/semi-personalized-mobile.webp");
+          background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
+          rgba(224, 175, 124, 0.9)),url("/pics/semi-personalized-mobile.webp");
           background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
     }
 
