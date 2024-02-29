@@ -24,6 +24,14 @@
 </head>
 
 <style>
+    :root {
+    --primary-bg-color: rgb(111, 111, 222);
+    --accent-color-1: #ffe081;
+    --secondary-text-color: #e0af7c;
+    --dark-text-color: rgb(48, 48, 59);
+    --complement-bg-color:rgb(96, 96, 192);
+}
+
     /* Section 1: Academy Info - Common Styles */
     .section-academy-info::before {
     content: '';
@@ -32,12 +40,12 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(to bottom, #857ebf, #494f78);
+    background: linear-gradient(to bottom, var(--dark-text-color),var(--primary-bg-color));
     z-index: -1; /* Place the gradient behind the content */
   }
 
     .section-academy-info {
-        color: #0e124d;
+        color: var(--dark-text-color);
         padding: 98px 0 68px 0;
         text-align: center;
         position: relative;
@@ -47,18 +55,18 @@
         background-attachment: fixed;
         background-position: center;
         /* Fallback PNG image for desktop */
-        background-image: url("./pics/landing-parallax.png");
+        background-image: url("./pics/new-landing-parallax.png");
     }
 
     /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background-image: url("./pics/landing-parallax.webp")) {
+     @supports (background-image: url("./pics/new-landing-parallax.webp")) {
         .section-academy-info {
-            background-image: url("./pics/landing-parallax.webp");
+            background-image: url("./pics/new-landing-parallax.webp");
         }
-    }
+    } 
 
     .study-english{
-    background-image: url("./pics/studentocw.png");
+    background-image: url("./pics/studentocw2.png");
     height: 60vh; 
     background-size: contain;
     background-repeat: no-repeat;
@@ -66,27 +74,42 @@
 }
 
 /* WebP Support for Desktop - Only Change the Background Image */
-@supports (background-image: url("./pics/studentocw.webp")) {
+@supports (background-image: url("./pics/studentocw2.webp")) {
     .study-english{
-    background-image: url("./pics/studentocw.webp");
+    background-image: url("./pics/studentocw2.webp");
         }
     }
 
     /* Styles for Mobile Devices */
     @media (max-width: 600px) {
         .section-academy-info {
-            /* Fallback PNG image for mobile */
-            background-image: url("./pics/landing-parallax-mobile.png");
-            height: 34vh;
-        margin-bottom: 7.5em;
-        }
+    /* Fallback PNG image for mobile */
+    background: linear-gradient(
+        to bottom, 
+        rgba(48, 48, 59, 0.7), 
+        rgba(111, 111, 222, 0.7)
+    ), 
+    url("./pics/landing-parallax-mobile.png");
+    background-size: cover;
+    background-position: center;
+    height: 34vh;
+    margin-bottom: 7.5em;
+}
 
-        /* WebP Support for Mobile */
-        @supports (background-image: url("./pics/landing-parallax-mobile.webp")) {
-            .section-academy-info {
-                background-image: url("./pics/landing-parallax-mobile.webp");
-            }
-        }
+/* WebP Support for Mobile */
+@supports (background-image: url("./pics/landing-parallax-mobile.webp")) {
+    .section-academy-info {
+        background: linear-gradient(
+            to bottom, 
+            rgba(48, 48, 59, 0.8), 
+            rgba(111, 111, 222, 0.8)
+        ), 
+        url("./pics/landing-parallax-mobile.webp");
+        background-size: cover;
+        background-position: center;      
+    }
+}
+
 
         .study-english {
             min-width: 100%; /* stack on top of each other */
@@ -123,7 +146,7 @@
             <a class="matriculate-button-mobile" href="/cursos">Matricúlate ya</a>
 
         <svg class="wave-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 0 Q 50 100 100 0 L 100 100 L 0 100" fill="#f4f8f8"></path>
+            <path d="M0 0 Q 50 100 100 0 L 100 100 L 0 100" fill='#ffffff'></path>
         </svg>
     </section>
 
@@ -176,14 +199,14 @@
                 </div>
             </div>
         </div>
-        <svg class="second-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-            <path d="M0 0 C350 100 500 0 1000 100 L1000 100 L0 100 Z" fill="#f4f8f8" />
-        </svg>
+<!--         <svg class="second-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+            <path d="M0 0 C350 100 500 0 1000 100 L1000 100 L0 100 Z" fill="#fff" />
+        </svg> -->
     </section>
 
 <!-- Section 3: Lesson Modalities -->
 <section class="section-services">    
-    <h2 class="item-headline">Nuestros servicios</h2>
+    <h2 class="item-headline services-headline">Nuestros servicios</h2>
     <div class="service-container">  <!--Service-container for all service-items -->
         <div class="service-item">
             <div class="imgbox">
@@ -228,7 +251,7 @@
         
 </div>
 <div class="allEnglishLevels">
-<h2 class="item-headline">Nuestros Niveles</h2>
+<h2 class="item-headline levels-headline">Nuestros Niveles</h2>
 </div> <!-- Close the single service-container div -->
         <!--Icon Levels-->
         <div class="levels">
@@ -245,10 +268,10 @@
 
     <!-- Section 4: FAW -->
     <section class="section-faq">
-        <svg class="third-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+<!--         <svg class="third-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
             <path d="M0 0 C350 100 500 0 1000 100 L1000 100 L0 100 Z" fill="#ffffff" />
-        </svg>
-        <hr style="opacity: 0;"><hr style="opacity: 0;">
+        </svg> -->
+        <!-- <hr style="opacity: 0;"><hr style="opacity: 0;"> -->
         <h2 class="item-headline">Preguntas frecuentes</h2>
         <div class="faq-container">
 

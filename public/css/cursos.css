@@ -4,6 +4,10 @@
   --alternative-yellow:#d0ff4fd3;
   --alternative-blue:#4f7492dd;
   --alternative-blue2:#4f7492f7;
+  --primary-bg-color: #6f6fde;
+  --accent-color-1: #ffe081;
+  --secondary-text-color: #e0af7c;
+  --dark-text-color: #30303b;
 }
 
 #menu-section2{
@@ -505,7 +509,7 @@ gap: 10px; /* Space between buttons */
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to bottom, #857ebf, #494f78);
+  background: linear-gradient(to bottom, var(--dark-text-color), var(--primary-bg-color));
   z-index: -1; /* Place the gradient behind the content */
 }
 

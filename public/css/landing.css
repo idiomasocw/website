@@ -9,8 +9,14 @@ font-family: 'Montserrat', sans-serif;
 /* HEADER SECTION AND MENU */
 
 :root{
-    --light:#f4f8f8;
+    --light:#ffffff;
     --dark:#0e124d;
+    --primary-bg-color: #6f6fde;
+    --accent-color-1: #ffe081;
+    --secondary-text-color: #e0af7c;
+    --dark-text-color: #30303b;
+    --primary-bg-complement:#6060bf;
+    --primary-bg-complement2:#7271dd;
 }
 
 #menu-section{
@@ -24,13 +30,13 @@ font-family: 'Montserrat', sans-serif;
 
 
   .matriculate-button a:visited {
-    color: #0e124d !important;
+    color: var(--accent-color-1) !important;
     font-weight: bolder;
     font-family: 'Oswald', sans-serif;
   }
   .matriculate-button a {
-    background-color: #D1FF4F;
-    color: #0e124d;
+    background-color: var(--secondary-text-color);
+    color: var(--accent-color-1) !important;
     padding: 15px 5px 15px 25px;
     position: absolute;
     left: 85%;
@@ -68,8 +74,8 @@ font-family: 'Montserrat', sans-serif;
 
 .matriculate-button-mobile{
     display: none;
-    background-color:#d1ff4f;
-    color:var(--dark);
+    background-color:var(--secondary-text-color);
+    color:var(--accent-color-1);
     font-weight: bold;
     box-sizing: border-box;
     text-transform: uppercase;
@@ -84,9 +90,9 @@ font-family: 'Montserrat', sans-serif;
 .menu-section-sticky {
     position: fixed;
     top: 0;
-    background-color: #F4F8F8;
+    background-color: var(--primary-bg-color);
     transition: background-color 0.3s ease;
-    box-shadow: 0px 0px 15px #697974;
+    box-shadow: 0px 0px 5px var(--dark-text-color);
   }
   
   .menu-section-sticky .matriculate-button {
@@ -101,7 +107,8 @@ font-family: 'Montserrat', sans-serif;
     padding: 0 1rem;  
     height: calc(100% - 2px);
     line-height: normal;
-    color: #0e124d !important;
+    color: var(--primary-bg-color) !important;
+    background-color: var(--accent-color-1);
     transition: top 0.5s ease-out;  
     margin-top: 0;
     display: flex;
@@ -128,6 +135,7 @@ font-family: 'Montserrat', sans-serif;
 
 .sub-heading, .cta-button {
     font-family: 'Public Sans', sans-serif;
+    color:var(--accent-color-1)
 }
 
 /* CSS for Ripple Effect */
@@ -141,7 +149,7 @@ font-family: 'Montserrat', sans-serif;
   }
   
   .color-changing {
-    background: linear-gradient(45deg, #1fffbc,#d1ff4f, #0e124d);
+    background: var(--secondary-text-color);
     -webkit-background-clip: text;
     background-size: 200% 200%;
     background-clip: text;
@@ -200,7 +208,7 @@ font-family: 'Montserrat', sans-serif;
     margin: 0 7%;
     text-align: center;
     display: flex;
-    background-color: #f4f8f8;
+    background-color: var(--light);
     place-items: center;
     justify-content: center;
     padding: 10px 0 100px 0;
@@ -220,7 +228,7 @@ font-family: 'Montserrat', sans-serif;
     position:relative;
     width: 290px;
     height: 320px;
-    background: var(--light);
+    background: var(--secondary-text-color);
     transition: all 0.5s ease-in-out; 
     margin: 0 auto;
 }
@@ -230,7 +238,7 @@ font-family: 'Montserrat', sans-serif;
     position:relative;
     width: 290px;
     height: 320px;
-    background: var(--light);
+    background: var(--secondary-text-color);
     transition: all 0.5s ease-in-out;
 }
 
@@ -249,8 +257,8 @@ font-family: 'Montserrat', sans-serif;
 .face1{
     padding: 20px;
     text-align: center;
-    color: #0e124d;
-    background-color: #abaaea;
+    color: var(--dark-text-color);
+    background-color: var(--secondary-text-color);
     align-items: center;
 }
 
@@ -272,7 +280,7 @@ font-family: 'Montserrat', sans-serif;
 
 .face2{
     padding: 20px;
-    background-color: #f7f8fd;
+    background-color: var(--accent-color-1);
     transition: 0.5s;
 }
 
@@ -298,16 +306,18 @@ font-family: 'Montserrat', sans-serif;
     height: 4.2em;
     width: 4.2em;
     border-radius: 50%;
-    top:1.25em;
+    top:0.25em;
     left:50%;
     transform: translateX(-50%);
     background-color: var(--light);
-    border: 2px solid #0e124d;
+    border: 2px solid var(--dark-text-color);
     transition: all 0.4s ease-in-out;
 }
 
 .card:hover .face1{
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-5%);
+    transition: transform 500ms ease-in-out;
 }
 
 .card:hover .face .face2 h2{
@@ -322,16 +332,16 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .content h2, p {
-    color: var(--light);
+    color: var(--dark-text-color);
     padding: 0 1em;
    }
 
 .item-headline{
     text-align: center;
     text-transform: uppercase;
-    color: #0e124d;
+    color: var(--dark-text-color);
     font-family: 'Oswald', sans-serif;
-    margin:0 auto;
+    margin:2rem auto;
     font-size: 1.5rem;
     padding:12px 0 12px 0;
 
@@ -342,7 +352,7 @@ font-family: 'Montserrat', sans-serif;
     bottom:0;
     left:0;
     z-index: 0;
-    background: linear-gradient(180deg, #857ebf 0%,#857ebf 50%,#857ebff2 60%,rgba(120, 113, 180, 0.85)95%,#f4f8f8 99%);
+    background: linear-gradient(180deg, #fff);
     transform: rotate(180deg);
 }
 
@@ -358,13 +368,20 @@ font-family: 'Montserrat', sans-serif;
 
 /* Section 3: Lesson Modalities */
 .section-services {
-    background-color: #d1ff4f;
-    color: #0e124d;
+    color: var(--accent-color-1);
     padding: 20px 0 60px 0;
     text-align: center;
-    background:linear-gradient(to bottom, #857ebf, #494f78);  
+    background:linear-gradient(to bottom, var(--primary-bg-complement), var(--primary-bg-complement2));  
     margin-top:-2px;
     overflow: hidden;
+}
+
+.services-headline{
+    color:var(--accent-color-1);
+}
+
+.levels-headline{
+    color:var(--accent-color-1);
 }
 
 .third-separator{
@@ -412,12 +429,13 @@ font-family: 'Montserrat', sans-serif;
     bottom:0px;
     width: 80%;
     height: 20%;
-    background-color:rgb(135, 207, 204,0.96);
+    background-color:var(--primary-bg-color);
     Left:10%;
     text-align: center;
     transition: all 0.5s ease;
     overflow: hidden;
-    border-radius: 0 15px 0 15px;
+    border-radius: 15px 15px 0 0px;
+    border: var(--accent-color-1) solid 1px;
 }
 
 .service-item:hover .content-services{
@@ -444,7 +462,7 @@ font-family: 'Montserrat', sans-serif;
     margin: 10px auto;
     font-size: 1rem;
     transition: 0.5s;
-    color: #0e124d;
+    color: var(--accent-color-1);
 } 
 
 .headline-services{
@@ -458,11 +476,17 @@ font-family: 'Montserrat', sans-serif;
     margin: 0 7%;
     justify-content: center;
     gap:1.5rem;
+    background: linear-gradient(to bottom, var(--secondary-text-color), var(--accent-color-1));
+    padding: 1em;
+    width: fit-content;
+    border-radius: 5px;
+    margin: auto;
 }
 
 .allEnglishLevels{
     padding: 2% 0;
     margin: auto;
+    
 }
 
 .levels img{
@@ -475,7 +499,7 @@ font-family: 'Montserrat', sans-serif;
 
         .section-faq{
             background-color: #ffffff;
-            padding: 6rem 0 3rem 0;
+            padding: 3rem 0 3rem 0;
             position: relative;
             margin-top: -1px;
         }
@@ -507,7 +531,7 @@ font-family: 'Montserrat', sans-serif;
         .accordion.active{
             box-shadow: 0 -2px 5px rgba(132, 125, 191, 0.2), /* top shadow */
                         0 2px 5px rgba(132, 125, 191, 0.2);  /* bottom shadow */
-            background:rgba(132, 125, 191, 0.5) ;
+            background:var(--secondary-text-color) ;
             transition: all 1s ease;
         }
         
@@ -520,13 +544,13 @@ font-family: 'Montserrat', sans-serif;
     top: 50%;
     transform: translateY(-50%);
     font-weight:bolder;
-    color:#0e124d;
+    color:var(--dark-text-color);
 }
 
 /* Add an up arrow when the accordion is active */
 .accordion.active::after {
     content: '⌃'; /* This is an upward arrow symbol */
-    color:#d1ff4f;
+    color:var(--accent-color-1);
 }
 
         .panel {
@@ -534,11 +558,11 @@ font-family: 'Montserrat', sans-serif;
             overflow: hidden;
             transition: max-height 0.4s ease-out;
             padding-left: 1em;
-            color: #0e124d;
+            color: var(--dark-text-color);
         }
 
         .panel p {
-            color:#0e124d;
+            color:var(--dark-text-color);
             font-family: 'Roboto Condensed', sans-serif;
         }
 
@@ -550,7 +574,7 @@ font-family: 'Montserrat', sans-serif;
 
         .faq-container .accordion {
             font-family: 'Public Sans', sans-serif;
-            color:#0e124d;
+            color:var(--dark-text-color);
             font-weight:500;
         }
 
@@ -622,6 +646,12 @@ font-family: 'Montserrat', sans-serif;
         padding:1rem 0.8rem 1rem 0.8rem;
     }
 
+    .matriculate-button-mobile:hover{
+background-color: var(--accent-color-1);
+color: var(--primary-bg-color);
+transition: all 400ms ease-in-out;
+    }
+
     .main-heading {
         font-size: 3.1rem!important;
         margin: 0;
@@ -645,20 +675,20 @@ font-family: 'Montserrat', sans-serif;
     }
 
     .section-benefits{
-        background-color: #abaaea;
+        background-color: var(--light);
         padding-top: 20px;
         margin-top: 190px;
     }
 
     .face2{
-        background-color: #abaaea !important;
+        background-color: var(--accent-color-1) !important;
     }
     .cards-row{
-        background-color: #abaaea !important;
+        background-color: var(--light) !important;
     }
 
     .face1{
-        background-color: #f7f8fd;
+        background-color: var(--secondary-text-color);
     }
 
     #beneficios{
@@ -668,11 +698,18 @@ font-family: 'Montserrat', sans-serif;
     .card.hover-effect, .card:hover {
         width: 250px;
         height: 350px;
+    }
 
+    .card.hover-effect .face2, .card:hover .face2{
+        height: 4em;
+        width: 4em;
+        border-radius: 50%;
+        top:2.25em;
+        transition: all 0.4s ease-in-out;
     }
 
     .content h2, p {
-        color: #0e124d;
+        color: var(--dark-text-color);
         padding: 0 15px;
        }
 
@@ -701,22 +738,27 @@ font-family: 'Montserrat', sans-serif;
         
         max-width: 250px;
     }
+
+    .card:hover .face1{
+        box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3); 
+        transform: translateY(0%);
+    }
     
 
   .color-changing {
-    background: linear-gradient(45deg, #0e124d,#A697E6,#7b86e8);
+    background: var(--dark-text-color);
     -webkit-background-clip: text;
     background-clip: text;
   color: transparent;
   }
 
   .section-services {
-    background-color: #d1ff4f;
+    background: linear-gradient(to bottom, var(--primary-bg-complement), var(--primary-bg-complement2));
     color: #0e124d;
     padding: 20px 0 60px 0;
     text-align: center;
     /* background:linear-gradient(to bottom, #857ebf, #494f78);  */ 
-    background: #ffffff;
+    /* background: #ffffff; */
     margin-top:-2px;
     overflow: hidden;
 }
@@ -735,7 +777,7 @@ background: #ffffff;
 }
 
 .levels{
-    background:linear-gradient(to bottom, #857ebf, #494f78);
+    background:linear-gradient(to bottom, var(--secondary-text-color),var(--accent-color-1));
     padding: 1em;
     border-radius: 8px;
 }

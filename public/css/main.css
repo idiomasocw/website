@@ -12,12 +12,16 @@ html {
 }
 
 :root{
-    --light:#f4f8f8;
+    --light:#ffffff;
     --dark:#0e124d;
+    --primary-bg-color: #6f6fde;
+    --accent-color-1: #ffe081;
+    --secondary-text-color: #e0af7c;
+    --dark-text-color: #30303b;
 }
 
 body{
-    background: var(--light);
+    background: #ffffff;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -32,7 +36,7 @@ p {
 
 a {
     font-family: 'Roboto Condensed', sans-serif; 
-    color: var(--dark);
+    color: var(--dark-text-color);
    
 }
 
@@ -42,7 +46,7 @@ span{
 
 /*REUSABLE CSS RULES*/
 #dark-header{
-    background-color: #0e124d;
+    background-color: var(--dark-text-color);
     color: white;
     text-align: center;
     font-size: 1rem;
@@ -63,7 +67,7 @@ span{
 }
 
 .menu ul li a, .menu ul li a:visited {
-    color: #0e124d !important;  
+    color: var(--accent-color-1) !important;  
     text-decoration: none;  
     font-size: 18px;
 }
@@ -97,12 +101,12 @@ span{
 }
 
 .word-of-the-day-link:hover{
-    border: #D1FF4F 1px solid;
+    border: var(--accent-color-1) 1px solid;
     border-radius: 5px;
 }
 
 #footer{
-    background-color: #0e124d;
+    background-color: var(--dark-text-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -164,7 +168,7 @@ span{
   }
 
   .menu-item-link:hover{
-    background-color: #D1FF4F;
+    background-color: var(--secondary-text-color);
   }
 
   .menu-item-link:hover:after{
@@ -323,8 +327,8 @@ nav a:visited, nav a:visited .fas {
     .menu{
         width:0%;
         display: none;
-        background-color:#f4f8f8;
-        box-shadow: 0px 3px 8px -4px #494f78;
+        background-color:var(--primary-bg-color);
+        box-shadow: 0px 3px 8px -4px var(--dark-text-color);
     }
 
     .menu.active{
@@ -355,19 +359,23 @@ nav a:visited, nav a:visited .fas {
     }
 
     .menu-button:hover{
-        background-color: #d1ff4f;
+        background-color: var(--accent-color-1);
         transition: all 0.3 ease;
     }
 
     .menu-item-link:hover{
         background-color: transparent;
-        color: #0e124d !important;
+        color: var(--primary-bg-color) !important;
       }
 
       .word-of-the-day-link{
         padding:0.1rem;
         font-size: 0.6rem;
         transform: translate(-0%, 0%);
+    }
+    .menu ul li a:hover, .menu ul li a:visited {
+        color: var(--dark-text-color) !important;  
+        text-decoration: none;  
     }
 
 }
