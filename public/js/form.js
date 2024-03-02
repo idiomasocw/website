@@ -11,10 +11,10 @@ async function displayPrice() {
   let pricingKey = '';
   if (mode === 'private') {
       const selectedDays = JSON.parse(sessionStorage.getItem("selectedDays"));
-      pricingKey = selectedDays.length + '_lessons';
+      pricingKey = selectedDays.length + '_lecciones';
   } else if (mode === 'semi-private') {
       const selectedIntensity = sessionStorage.getItem("selectedIntensity");
-      pricingKey = selectedIntensity === "twice" ? "2_lessons" : "3_lessons";
+      pricingKey = selectedIntensity === "twice" ? "2_lecciones" : "3_lecciones";
   }
 
   try {
