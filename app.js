@@ -3,30 +3,30 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const session = require('express-session');
-const app = express();
-const moodleAPI = require('./controllers/moodleAPI'); // Ensure this module is set up
+const AWS = require('aws-sdk');
 const nodemailer = require('nodemailer');
+const app = express();
+const moodleAPI = require('./controllers/moodleAPI');
 
 // Configure the SMTP transporter
 let transporter = nodemailer.createTransport({
-  host: "email-smtp.us-east-1.amazonaws.com", // or your specific AWS SES SMTP endpoint
-  port: 587, // Standard port for SMTP
-  secure: false, // true for 465, false for other ports
+  host: "email-smtp.us-east-1.amazonaws.com",
+  port: 587,
+  secure: false,
   auth: {
-      user: process.env.AWS_SES_SMTP_USER, // Your SMTP user here
-      pass: process.env.AWS_SES_SMTP_PASSWORD, // Your SMTP password here
+      user: process.env.AWS_SES_SMTP_USER,
+      pass: process.env.AWS_SES_SMTP_PASSWORD,
   },
 });
 
 // Function to send email
 async function sendEmail(recipientEmail, adminEmail, userName, results) {
   const mailOptions = {
-    from: '"OneCulture World" <noreply@onecultureworld.com>', // This sets the name and the email
-      to: [recipientEmail],
-      bcc:[adminEmail], // Array of recipients
-      subject: "Placement Test Results",
-      html: results, // This will be the HTML formatted string
-
+    from: '"OneCulture World" <noreply@onecultureworld.com>',
+    to: [recipientEmail],
+    bcc:[adminEmail],
+    subject: "Placement Test Results",
+    html: results,
   };
 
   try {
@@ -36,6 +36,10 @@ async function sendEmail(recipientEmail, adminEmail, userName, results) {
       console.error("Error sending email: ", error);
   }
 }
+
+// Configure AWS SDK
+AWS.config.update({ region: 'us-east-1' });
+const sns = new AWS.SNS();
 
 // Set up EJS view engine
 app.set('view engine', 'ejs');
@@ -78,13 +82,32 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-// Login Route
+// New route for SMS webhook
+app.post('/sms-webhook', (req, res) => {
+  const { from, to, message } = req.body;
+  console.log(`Received SMS from ${from} to ${to}: ${message}`);
+
+  const params = {
+    Message: `Received SMS from ${from} to ${to}: ${message}`,
+    TopicArn: 'arn:aws:sns:us-east-1:924231986837:UsNotification' // Replace with your SNS Topic ARN
+  };
+
+  sns.publish(params, (err, data) => {
+    if (err) {
+      console.error(err, err.stack);
+      res.status(500).send('Error publishing to SNS');
+    } else {
+      console.log(`Message sent to topic: ${data}`);
+      res.sendStatus(200); // Respond with 200 OK
+    }
+  });
+});
+
+// Existing routes for your website
 app.get('/login', (req, res) => {
   res.render('login');
 });
 
-// Handle Login Post Request
-// Handle Login Post Request
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -101,12 +124,10 @@ app.post('/login', async (req, res) => {
   }
 });
 
-
-// Routes for EJS templates
 app.get('/', (req, res) => {
   res.render('index');
 });
-//New API endpoint to send pricing data
+
 app.get('/api/pricing', (req, res) => {
   fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
       if (err) {
@@ -121,7 +142,6 @@ app.get('/cursos', (req, res) => {
   try {
     const pricingData = JSON.parse(fs.readFileSync(path.join(__dirname, 'pricing.json'), 'utf-8'));
 
-    // Determine the correct price based on user selection
     let userPriceInfo;
     if (req.session.mode === "private") {
       const lessonsKey = req.session.selectedDays + '_lessons';
@@ -155,7 +175,6 @@ app.get('/word-of-the-day', (req, res) => {
   res.render('wordOfTheDay', { word: wordData });
 });
 
-// Pricing manager route with session check
 app.get('/priceDiscountManager', (req, res) => {
   if (req.session.isAdmin) {
     fs.readFile(path.join(__dirname, 'pricing.json'), 'utf8', (err, data) => {
@@ -183,7 +202,6 @@ app.post('/priceDiscountManager', express.urlencoded({ extended: true }), (req, 
   }
 });
 
-// Logout Route
 app.get('/logout', (req, res) => {
   req.session.destroy(err => {
       if(err) {
@@ -218,23 +236,18 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-
-// Prefix routes with '/api'
 app.use('/api', mailchimpRoutes);
 
-// 404 Error Handling
 app.use((req, res, next) => { 
   console.log("404 Error - Page not found: ", req.originalUrl);
   res.status(404).render('404'); 
 });
 
-// General Error Handling
 app.use((error, req, res, next) => {
   console.error("General error:", error.stack);
   res.status(500).send('Internal Server Error');
 });
 
-// Server setup
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
