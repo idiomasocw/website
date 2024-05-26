@@ -89,15 +89,21 @@ app.post('/sms-webhook', (req, res) => {
 
   const params = {
     Message: `Received SMS from ${from} to ${to}: ${message}`,
-    TopicArn: 'arn:aws:sns:us-east-1:924231986837:UsNotification' // Replace with your SNS Topic ARN
+    PhoneNumber: process.env.MY_CELLPHONE_NUMBER, // Use environment variable for your cellphone number
+    MessageAttributes: {
+      'AWS.SNS.SMS.SMSType': {
+        DataType: 'String',
+        StringValue: 'Transactional'
+      }
+    }
   };
 
   sns.publish(params, (err, data) => {
     if (err) {
-      console.error(err, err.stack);
+      console.error('Error publishing to SNS:', err, err.stack);
       res.status(500).send('Error publishing to SNS');
     } else {
-      console.log(`Message sent to topic: ${data}`);
+      console.log(`Message sent to phone: ${data}`);
       res.sendStatus(200); // Respond with 200 OK
     }
   });
