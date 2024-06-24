@@ -7,6 +7,10 @@ const cognito = new AWS.CognitoIdentityServiceProvider({
   region: process.env.AWS_REGION
 });
 
+const dynamoDb = new AWS.DynamoDB.DocumentClient({
+  region: process.env.AWS_REGION
+});
+
 const sendLoginCode = async (req, res) => {
   const email = req.body.email;
 
@@ -62,6 +66,15 @@ const verifyLoginCode = async (req, res) => {
       };
       const userGroups = await cognito.adminListGroupsForUser(groupsParams).promise();
 
+      // Determine role based on group membership
+      const userRole = userGroups.Groups.length > 0 ? userGroups.Groups[0].GroupName : 'students'; // Default to 'students' if no group
+
+      req.session.role = userRole;  // Store role in session
+
+      // Log the stored email and role for verification
+      console.log(`verifyLoginCode - Email stored in session: ${req.session.email}`);
+      console.log(`verifyLoginCode - Role stored in session: ${req.session.role}`);
+
       // Check group membership and redirect accordingly
       const isAdmin = userGroups.Groups.some(group => group.GroupName === 'admins');
       if (isAdmin) {
@@ -85,6 +98,32 @@ const verifyLoginCode = async (req, res) => {
   }
 };
 
+const fetchUserData = async (email, role) => {
+  console.log(`fetchUserData - Fetching user data for email: ${email}, role: ${role}`);
+  const params = {
+    TableName: 'users',
+    Key: {
+      email: email,
+      role: role
+    }
+  };
+
+  try {
+    const data = await dynamoDb.get(params).promise();
+    console.log('fetchUserData - DynamoDB get response:', data);
+    if (data.Item) {
+      console.log(`User data for ${email}:`, data.Item);
+      return data.Item;
+    } else {
+      console.log(`No user found for email: ${email}`);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching user data from DynamoDB:', error);
+    return null;
+  }
+};
+
 const showDashboard = async (req, res) => {
   const accessToken = req.cookies.accessToken;
 
@@ -102,7 +141,12 @@ const showDashboard = async (req, res) => {
     const familyName = userData.UserAttributes.find(attr => attr.Name === 'family_name').Value;
     const fullName = `${givenName} ${familyName}`;
 
-    res.render('studentDashboard', { fullName });
+    const email = req.session.email;
+    const role = req.session.role;
+
+    const userDetails = await fetchUserData(email, role);
+
+    res.render('studentDashboard', { fullName, userDetails });
   } catch (error) {
     console.error('Error fetching user data:', error);
     res.redirect('/login');

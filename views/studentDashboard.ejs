@@ -9,6 +9,25 @@
   <div>
     <h1>Welcome, <%= fullName %>!</h1>
     <p>Welcome to your dashboard!</p>
+    <% if (userDetails) { %>
+      <h2>Your Details:</h2>
+      <p><strong>Email:</strong> <%= userDetails.email %></p>
+      <p><strong>Role:</strong> <%= userDetails.role %></p>
+      <p><strong>First Name:</strong> <%= userDetails.firstName || "You don't have any first name" %></p>
+      <p><strong>Last Name:</strong> <%= userDetails.lastName || "You don't have any last name" %></p>
+      <p><strong>ID Number:</strong> <%= userDetails.idNumber || "You don't have any ID number" %></p>
+      <p><strong>Payment Link:</strong> 
+        <% if (userDetails.paymentLink) { %>
+          <a href="<%= userDetails.paymentLink %>" target="_blank"><%= userDetails.paymentLink %></a>
+        <% } else { %>
+          You don't have any payment link
+        <% } %>
+      </p>
+      <p><strong>Discount:</strong> <%= userDetails.discount !== undefined ? userDetails.discount : "You don't have any discount" %></p>
+      <p><strong>Certificates:</strong> <%= userDetails.certificates && userDetails.certificates.length > 0 ? userDetails.certificates.join(", ") : "You don't have any certificates" %></p>
+    <% } else { %>
+      <p>No user details found.</p>
+    <% } %>
     <a href="/logout">Logout</a>
   </div>
 </body>
