@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { sendLoginCode, verifyLoginCode, showDashboard, logout } = require('../controllers/userController');
+const { sendLoginCode, verifyLoginCode, showDashboard, generatePresignedUrl, logout } = require('../controllers/userController');
 const { getPricingData, getPriceDiscountManager } = require('../controllers/pricingController');
 
 // Routes
@@ -28,6 +28,8 @@ router.get('/verify-code', (req, res) => {
 router.post('/verify-login-code', verifyLoginCode);
 
 router.get('/studentDashboard', showDashboard);
+
+router.get('/generatePresignedUrl', generatePresignedUrl); // Add the route for presigned URL generation
 
 router.get('/priceManager', getPriceDiscountManager); // Use existing controller function to fetch and render pricing data
 

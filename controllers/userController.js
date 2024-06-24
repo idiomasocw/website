@@ -11,6 +11,10 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient({
   region: process.env.AWS_REGION
 });
 
+const s3 = new AWS.S3({
+  region: process.env.AWS_REGION
+});
+
 const sendLoginCode = async (req, res) => {
   const email = req.body.email;
 
@@ -27,7 +31,7 @@ const sendLoginCode = async (req, res) => {
     req.session.challengeName = authResponse.ChallengeName;
     req.session.session = authResponse.Session;
     req.session.email = email;
-    req.session.message = "We have sent a One-Time Password to your email.";
+    req.session.message = "We have sent a One-Time Password to your email. Check your email 'spam' or 'junk' folder if necessary.";
     res.redirect(`/verify-code?email=${encodeURIComponent(email)}`);
   } catch (error) {
     console.error('Error sending login code:', error);
@@ -153,15 +157,33 @@ const showDashboard = async (req, res) => {
   }
 };
 
+const generatePresignedUrl = async (req, res) => {
+  const { key } = req.query;
+  const params = {
+    Bucket: process.env.S3_BUCKET_NAME, // Ensure this is set in your .env
+    Key: key,
+    Expires: 5 * 60 // URL expiry time in seconds (5 minutes)
+  };
+
+  try {
+    const url = s3.getSignedUrl('getObject', params);
+    res.json({ url });
+  } catch (error) {
+    console.error('Error generating presigned URL:', error);
+    res.status(500).json({ error: 'Error generating presigned URL' });
+  }
+};
+
 const logout = (req, res) => {
   res.clearCookie('idToken');
   res.clearCookie('accessToken');
-  res.redirect('/login');
+  res.redirect('/');
 };
 
 module.exports = {
   sendLoginCode,
   verifyLoginCode,
   showDashboard,
+  generatePresignedUrl,
   logout
 };

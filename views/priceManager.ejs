@@ -4,14 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Manager</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/priceManager.css">
+
+    <style>
+
+.dashboard-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 2% 3%;
+        background-color: #031017;
+        color: #ffffff;
+    }
+    a.logout{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        transition: transform 0.2s ease-in-out; /* Smooth transition over 0.2 seconds */
+    }
+
+    a.logout:hover{
+transform: scale(1.2);
+    }
+    </style>
 </head>
 <body>
-    <header>
-        <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    <div class="dashboard-header">
         <h1>Welcome, <%= fullName %>!</h1>
-    </header>
+        <a class="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+  <div class="main-container">
     <div class="container">
         <div class="toggle-switch">
             <span>Edit Mode: </span>
@@ -28,8 +52,9 @@
                 </div>
             <% } %>
         <% } %>
+        
     </div>
-
+    <%- include('partials/footer') %>
     <script>
         const editModeToggle = document.getElementById('editModeToggle');
         const toggleIcon = document.getElementById('toggleIcon');

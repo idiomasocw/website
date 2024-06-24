@@ -4,31 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 17px;
+    }
+
+h1,h2, h3, h4{
+    
+    font-family: 'Oswald', sans-serif;
+}
+
+    p{
+        color: #031017;
+    }
+
+    a{
+        color: #031017;
+        text-decoration: none;
+    }
+
+    .main-container{
+        margin: 2% 3%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    }
+
+    .dashboard-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 2% 3%;
+        background-color: #031017;
+        color: #ffffff;
+    }
+
+    .certificate-download{
+        background-color:#00d5dd;
+        padding: 1rem 2rem;
+        color:#ffffff;
+        font-weight: bold;
+        border: none;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .platform-redirection-button{
+        background-color:#00d5dd;
+        padding: 1rem;
+        color:#ffffff;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    a.logout{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        transition: transform 0.2s ease-in-out; /* Smooth transition over 0.2 seconds */
+    }
+
+    a.logout:hover{
+transform: scale(1.2);
+    }
+
+    .fa-right-from-bracket{
+        margin: 0 10px;
+    }
+
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    margin: 1.5rem 0rem;
+}
+
+/* Media query for phone devices (adjust the breakpoint as needed) */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+}
+
+  </style>
+
+   <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
+
+  <script>
+    async function generatePresignedUrl(key) {
+      try {
+        const response = await fetch(`/generatePresignedUrl?key=${encodeURIComponent(key)}`);
+        const data = await response.json();
+        if (data.url) {
+          window.open(data.url, '_blank');
+        } else {
+          alert('Failed to generate presigned URL');
+        }
+      } catch (error) {
+        console.error('Error generating presigned URL:', error);
+        alert('Error generating presigned URL');
+      }
+    }
+  </script>
 </head>
 <body>
-  <div>
-    <h1>Welcome, <%= fullName %>!</h1>
-    <p>Welcome to your dashboard!</p>
+    <div class="dashboard-header">
+        <h1>Welcome, <%= fullName %>!</h1>
+        <a class="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+  <div class="main-container">
+    
     <% if (userDetails) { %>
-      <h2>Your Details:</h2>
-      <p><strong>Email:</strong> <%= userDetails.email %></p>
-      <p><strong>Role:</strong> <%= userDetails.role %></p>
-      <p><strong>First Name:</strong> <%= userDetails.firstName || "You don't have any first name" %></p>
-      <p><strong>Last Name:</strong> <%= userDetails.lastName || "You don't have any last name" %></p>
-      <p><strong>ID Number:</strong> <%= userDetails.idNumber || "You don't have any ID number" %></p>
-      <p><strong>Payment Link:</strong> 
+      <!-- <p><strong>Email:</strong> <%= userDetails.email %></p> -->
+            <p><strong>My payment Link:</strong> 
         <% if (userDetails.paymentLink) { %>
           <a href="<%= userDetails.paymentLink %>" target="_blank"><%= userDetails.paymentLink %></a>
         <% } else { %>
-          You don't have any payment link
+            You're subscribed to automatic payments. Your payments happen on the 2nd day of each month.
         <% } %>
       </p>
-      <p><strong>Discount:</strong> <%= userDetails.discount !== undefined ? userDetails.discount : "You don't have any discount" %></p>
-      <p><strong>Certificates:</strong> <%= userDetails.certificates && userDetails.certificates.length > 0 ? userDetails.certificates.join(", ") : "You don't have any certificates" %></p>
+      <!-- <p><strong>Discount:</strong> <%= userDetails.discount !== undefined ? userDetails.discount : "You don't have any discount" %></p> -->
+      <p><strong>Certificates:</strong></p>
+      <% if (userDetails.certificates && userDetails.certificates.length > 0) { %>
+        <ul>
+          <% userDetails.certificates.forEach(certificate => { %>
+            <li>
+              <button class="certificate-download" onclick="generatePresignedUrl('<%= certificate %>')">Download your certificate</button>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>You don't have any certificates yet</p>
+      <% } %>
     <% } else { %>
       <p>No user details found.</p>
     <% } %>
-    <a href="/logout">Logout</a>
+    <a href="https://idiomas.onecultureworld.com/login" target="_blank" class="platform-redirection-button">Take me to the educational platform</a>
   </div>
+  <%- include('partials/footer') %>
 </body>
 </html>
