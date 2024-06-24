@@ -3,15 +3,16 @@ const router = express.Router();
 const { sendEmail } = require('../controllers/emailController');
 const { smsWebhook } = require('../controllers/smsController');
 const { getPricing, getCursos, getPriceDiscountManager, postPriceDiscountManager } = require('../controllers/pricingController');
-const { loginUser, logoutUser } = require('../controllers/userController');
 const mailchimpRoutes = require('./mailchimpRoutes');
 const getWordOfTheDay = require('../wordOfTheDay');
+const userRoutes = require('./userRoutes'); // Ensure this is imported correctly
 
 // Main routes
+router.use('/', userRoutes); // Route for user-related actions
+
 router.get('/', (req, res) => res.render('index'));
-router.get('/login', (req, res) => res.render('login'));
-router.post('/login', loginUser);
-router.get('/logout', logoutUser);
+router.get('/login', (req, res) => res.redirect('/user/login')); // Redirect to user login route
+router.get('/logout', (req, res) => res.redirect('/user/logout')); // Redirect to user logout route
 router.get('/api/pricing', getPricing);
 router.get('/cursos', getCursos);
 router.post('/send-email', async (req, res) => {

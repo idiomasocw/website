@@ -4,7 +4,11 @@ const path = require('path');
 const session = require('express-session');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = express();
+
+// Importing routes
 const indexRoutes = require('./routes/index');
 const placementTestRoutes = require('./routes/placementTestRoutes');
 const priceDiscountManagerRoutes = require('./routes/priceDiscountManagerRoutes');
@@ -17,10 +21,10 @@ app.set('trust proxy', 1);
 
 // Session Configuration
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'default-secret-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: 'auto' }
+  cookie: { secure: false }
 }));
 
 // Security enhancements with Helmet
@@ -28,7 +32,7 @@ app.use(helmet({ contentSecurityPolicy: false }));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
+  windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100,
   standardHeaders: true,
   legacyHeaders: false,
@@ -37,6 +41,10 @@ app.use('/api', limiter);
 
 // Serve static files
 app.use(express.static('public'));
+
+// Middleware setup
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
@@ -48,12 +56,12 @@ app.use(express.json());
 app.use('/', indexRoutes);
 app.use('/', placementTestRoutes);
 app.use('/', priceDiscountManagerRoutes);
-app.use('/', userRoutes);
+app.use('/', userRoutes); // Ensure user routes are prefixed correctly
 
 // Error handling middleware
-app.use((req, res, next) => { 
+app.use((req, res, next) => {
   console.log("404 Error - Page not found: ", req.originalUrl);
-  res.status(404).render('404'); 
+  res.status(404).render('404');
 });
 
 app.use((error, req, res, next) => {

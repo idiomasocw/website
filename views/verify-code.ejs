@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Code</title>
+  <style>
+
+    body{
+        display: flex;
+        height: 100vh;
+        background-color: #031017;
+    }
+
+    .verificationContainer{
+        width: 25rem;
+        background-color: #ffffff;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .code-input {
+      width: 5%;
+      padding: 0.5em;
+      margin: 0.2em;
+      font-size: 1.5em;
+      text-align: center;
+    }
+    #countdown {
+      font-size: 1em;
+      color: grey;
+    }
+    #resend-button:disabled {
+      color: grey;
+      cursor: not-allowed;
+    }
+
+    .enabled-verify-button {
+      padding: 0.5rem 2rem;
+      background-color: #00D5DD;
+      color: #031017;
+      margin: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #verify-button {
+      padding: 0.5rem 2rem;
+      margin: 1rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="verificationContainer">
+    <h1>Verify the code to log in</h1>
+    <% if (message) { %>
+        <p style="color: green;"><%= message %></p>
+    <% } %>
+    <% if (error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form id="verify-form" action="/verify-login-code" method="post">
+      <input type="hidden" name="email" value="<%= email %>">
+      <label for="code">Enter your OTP:</label>
+      <div id="code-inputs">
+        <input class="code-input" type="text" maxlength="1" required>
+        <input class="code-input" type="text" maxlength="1" required>
+        <input class="code-input" type="text" maxlength="1" required>
+        <input class="code-input" type="text" maxlength="1" required>
+        <input class="code-input" type="text" maxlength="1" required>
+        <input class="code-input" type="text" maxlength="1" required>
+      </div>
+      <input type="hidden" id="code" name="code">
+      <button id="verify-button" type="submit" disabled>Verify Code</button>
+    </form>
+    <p id="countdown"></p>
+    <button id="resend-button" disabled onclick="resendCode()">Wanna request a new code?</button>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const inputs = document.querySelectorAll('.code-input');
+      const verifyButton = document.getElementById('verify-button');
+      const hiddenCodeInput = document.getElementById('code');
+      const countdownElement = document.getElementById('countdown');
+      const resendButton = document.getElementById('resend-button');
+
+      let countdown = 20;
+      const startCountdown = () => {
+        const countdownInterval = setInterval(() => {
+          countdown -= 1;
+          countdownElement.textContent = `You can request a new code in ${countdown} seconds`;
+          if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            countdownElement.textContent = '';
+            resendButton.disabled = false;
+          }
+        }, 1000);
+      };
+
+      startCountdown();
+
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+          if (input.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+
+          // Combine the values of all inputs into the hidden input field
+          hiddenCodeInput.value = Array.from(inputs).map(i => i.value).join('');
+
+          // Enable the verify button if all inputs are filled
+          if (hiddenCodeInput.value.length === 6) {
+            verifyButton.disabled = false;
+            verifyButton.classList.add('enabled-verify-button');
+
+          } else {
+            verifyButton.disabled = true;
+            verifyButton.classList.remove('enabled-verify-button');
+          }
+        });
+
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Backspace' && input.value.length === 0 && index > 0) {
+            inputs[index - 1].focus();
+          }
+        });
+      });
+    });
+
+    function resendCode() {
+      window.location.href = `/send-login-code?email=<%= email %>`;
+    }
+  </script>
+</body>
+</html>

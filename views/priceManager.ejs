@@ -6,12 +6,11 @@
     <title>Price Manager</title>
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/priceManager.css">
-   
 </head>
 <body>
     <header>
-        <!-- Add this where you want the logout icon to appear -->
-<a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <h1>Welcome, <%= fullName %>!</h1>
     </header>
     <div class="container">
         <div class="toggle-switch">
@@ -29,31 +28,30 @@
                 </div>
             <% } %>
         <% } %>
-        
     </div>
 
     <script>
         const editModeToggle = document.getElementById('editModeToggle');
         const toggleIcon = document.getElementById('toggleIcon');
         const priceRows = document.querySelectorAll('.price-row');
-    
+
         function calculateAndDisplayDiscount() {
             priceRows.forEach(row => {
                 const originalPriceInput = row.querySelector('.price-input');
                 const discountInput = row.querySelector('.discount-input');
                 const discountedPriceSpan = row.querySelector('.discounted-price');
-    
+
                 const originalPrice = parseInt(originalPriceInput.value);
                 const discountPercentage = parseInt(discountInput.value);
                 const discountedPrice = discountPercentage ? originalPrice - (originalPrice * discountPercentage / 100) : null;
-    
+
                 discountedPriceSpan.textContent = discountedPrice ? `Discounted: $${discountedPrice}` : '';
             });
         }
-    
+
         // Initial calculation and display of discounts
         calculateAndDisplayDiscount();
-    
+
         editModeToggle.addEventListener('change', function() {
             if (this.checked) {
                 toggleIcon.classList.replace('fa-toggle-off', 'fa-toggle-on');
@@ -67,12 +65,12 @@
                 priceRows.forEach(row => {
                     row.classList.replace('edit-mode', 'disabled');
                     row.querySelector('.price-input').disabled = true;
-                    row.querySelector('.discount-input').disabled = true;
+                    row.querySelector('.discount-input').disabled = true);
                 });
                 updatePricing();
             }
         });
-    
+
         function updatePricing() {
             const updatedPricing = {};
             priceRows.forEach(row => {
@@ -81,7 +79,7 @@
                 const originalPrice = parseInt(row.querySelector('.price-input').value);
                 const discountPercentage = parseInt(row.querySelector('.discount-input').value);
                 const discountedPrice = discountPercentage ? originalPrice - (originalPrice * discountPercentage / 100) : null;
-    
+
                 if (!updatedPricing[courseId]) {
                     updatedPricing[courseId] = {};
                 }
@@ -91,7 +89,7 @@
                     discountPercentage: discountPercentage
                 };
             });
-    
+
             fetch('/priceDiscountManager', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -103,41 +101,39 @@
                 }
             });
         }
-    
+
         priceRows.forEach(row => {
             row.querySelector('.discount-input').addEventListener('input', function() {
                 calculateAndDisplayDiscount();
             });
         });
 
-/* Automatic logout after 22 minutes of inactivity */
-let logoutTimer, warningTimer;
-const INACTIVITY_TIME = 20 * 60 * 1000; // 20 minutes
-const WARNING_TIME = 2 * 60 * 1000; // 2 minutes
+        /* Automatic logout after 22 minutes of inactivity */
+        let logoutTimer, warningTimer;
+        const INACTIVITY_TIME = 20 * 60 * 1000; // 20 minutes
+        const WARNING_TIME = 2 * 60 * 1000; // 2 minutes
 
-function resetLogoutTimer() {
-    clearTimeout(logoutTimer);
-    clearTimeout(warningTimer);
-    logoutTimer = setTimeout(() => {
-        warningTimer = setTimeout(() => {
-            window.location.href = '/logout'; // Redirect to logout
-        }, WARNING_TIME);
-
-        // Show warning and redirect if user clicks "OK"
-        const userAcknowledged = confirm("Hemos notado que posiblemente no estás acá, así que procederemos a cerrar sesión en 2 minutos.");
-        if (userAcknowledged) {
+        function resetLogoutTimer() {
+            clearTimeout(logoutTimer);
             clearTimeout(warningTimer);
-            window.location.href = '/logout'; // Redirect to logout
+            logoutTimer = setTimeout(() => {
+                warningTimer = setTimeout(() => {
+                    window.location.href = '/logout'; // Redirect to logout
+                }, WARNING_TIME);
+
+                // Show warning and redirect if user clicks "OK"
+                const userAcknowledged = confirm("Hemos notado que posiblemente no estás acá, así que procederemos a cerrar sesión en 2 minutos.");
+                if (userAcknowledged) {
+                    clearTimeout(warningTimer);
+                    window.location.href = '/logout'; // Redirect to logout
+                }
+            }, INACTIVITY_TIME - WARNING_TIME);
         }
-    }, INACTIVITY_TIME - WARNING_TIME);
-}
 
-// Reset the timer on user activity
-window.onload = resetLogoutTimer;
-document.onmousemove = resetLogoutTimer;
-document.onkeypress = resetLogoutTimer;
-
+        // Reset the timer on user activity
+        window.onload = resetLogoutTimer;
+        document.onmousemove = resetLogoutTimer;
+        document.onkeypress = resetLogoutTimer;
     </script>
-    
 </body>
 </html>
