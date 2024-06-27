@@ -24,7 +24,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'default-secret-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // 24 hours
 }));
 
 // Security enhancements with Helmet
