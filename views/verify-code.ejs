@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verify Code</title>
+  <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
   <style>
-
-    body{
-        display: flex;
-        height: 100vh;
-        background-color: #031017;
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #031017;
     }
 
-    .verificationContainer{
-        width: 25rem;
-        background-color: #ffffff;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        padding: 2rem;
-        align-items: center;
-        text-align: center;
+    .verificationContainer {
+      width: 25rem;
+      background-color: #ffffff;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      align-items: center;
+      text-align: center;
     }
 
     .code-input {
@@ -30,10 +30,12 @@
       font-size: 1.2em;
       text-align: center;
     }
+
     #countdown {
       font-size: 1em;
       color: grey;
     }
+
     #resend-button:disabled {
       color: grey;
       cursor: not-allowed;
@@ -47,6 +49,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     #verify-button {
       padding: 0.5rem 2rem;
       margin: 1rem;
@@ -103,29 +106,35 @@
 
       startCountdown();
 
+      const updateHiddenInput = () => {
+        hiddenCodeInput.value = Array.from(inputs).map(i => i.value).join('');
+        verifyButton.disabled = hiddenCodeInput.value.length !== 6;
+        verifyButton.classList.toggle('enabled-verify-button', hiddenCodeInput.value.length === 6);
+      };
+
       inputs.forEach((input, index) => {
         input.addEventListener('input', () => {
           if (input.value.length === 1 && index < inputs.length - 1) {
             inputs[index + 1].focus();
           }
-
-          // Combine the values of all inputs into the hidden input field
-          hiddenCodeInput.value = Array.from(inputs).map(i => i.value).join('');
-
-          // Enable the verify button if all inputs are filled
-          if (hiddenCodeInput.value.length === 6) {
-            verifyButton.disabled = false;
-            verifyButton.classList.add('enabled-verify-button');
-
-          } else {
-            verifyButton.disabled = true;
-            verifyButton.classList.remove('enabled-verify-button');
-          }
+          updateHiddenInput();
         });
 
         input.addEventListener('keydown', (event) => {
           if (event.key === 'Backspace' && input.value.length === 0 && index > 0) {
             inputs[index - 1].focus();
+          }
+        });
+
+        input.addEventListener('paste', (event) => {
+          const paste = event.clipboardData.getData('text');
+          if (paste.length === inputs.length) {
+            inputs.forEach((input, i) => {
+              input.value = paste[i] || '';
+            });
+            updateHiddenInput();
+            inputs[inputs.length - 1].focus();
+            event.preventDefault();
           }
         });
       });
