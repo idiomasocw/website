@@ -42,7 +42,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         height: 60vh;
       }
 
@@ -56,18 +56,25 @@
 
       .certificate-download {
         background-color: #00d5dd;
-        padding: 1rem 2rem;
+        padding: 1rem;
         color: #ffffff;
         font-weight: bold;
         border: none;
-        font-size: 1.5rem;
         text-transform: uppercase;
         cursor: pointer;
         margin: 0;
       }
 
+      .certificate-download > img {
+        transition: transform 0.3s ease;
+        width: 200px;
+      }
+
+      .certificate-download > img:hover {
+        transform: scale(1.1);
+      }
+
       .platform-redirection-button {
-        background-color: #00d5dd;
         padding: 1rem;
         color: #ffffff;
         font-weight: bold;
@@ -75,6 +82,15 @@
         cursor: pointer;
         text-transform: uppercase;
         margin: 0;
+      }
+
+      .platform-redirection-button > img {
+        width: 200px;
+        transition: transform 0.3s ease;
+      }
+
+      .platform-redirection-button > img:hover {
+        transform: scale(1.1);
       }
 
       a.logout {
@@ -105,7 +121,7 @@
 
       .pagar-mensualidad {
         width: 200px;
-        margin: 1.2rem;
+        margin: 1rem;
         transition: transform 0.3s ease;
       }
 
@@ -117,6 +133,13 @@
       @media screen and (max-width: 600px) {
         h1 {
           font-size: 1.2rem;
+        }
+
+        .main-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
       }
     </style>
@@ -164,7 +187,7 @@
       happen on the 2nd day of each month. <% } %>
 
       <!-- <p><strong>Discount:</strong> <%= userDetails.discount !== undefined ? userDetails.discount : "You don't have any discount" %></p> -->
-      <p><strong>Certificates:</strong></p>
+      <!-- <p><strong>Certificates:</strong></p> -->
       <% if (userDetails.certificates && userDetails.certificates.length > 0) {
       %>
       <ul>
@@ -174,7 +197,7 @@
             class="certificate-download"
             onclick="generatePresignedUrl('<%= certificate %>')"
           >
-            Download your certificate
+            <img src="/svg/certificado.svg" alt="Certificado" />
           </button>
         </li>
         <% }) %>
@@ -188,8 +211,11 @@
         href="https://idiomas.onecultureworld.com/login"
         target="_blank"
         class="platform-redirection-button"
-        >Take me to the educational platform</a
-      >
+        ><img
+          class="platform-icon"
+          src="/svg/plataforma.svg"
+          alt="Plataforma_educativa"
+      /></a>
     </div>
     <%- include('partials/footer') %>
   </body>
