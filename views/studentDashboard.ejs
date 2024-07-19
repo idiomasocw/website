@@ -63,6 +63,7 @@
         text-transform: uppercase;
         cursor: pointer;
         margin: 0;
+        border: #ffffff solid 1px;
       }
 
       .certificate-download > img {
@@ -71,17 +72,18 @@
       }
 
       .certificate-download > img:hover {
-        transform: scale(1.1);
+        transform: scale(0.9);
       }
 
       .platform-redirection-button {
         padding: 1rem;
         color: #ffffff;
         font-weight: bold;
-        border: none;
         cursor: pointer;
         text-transform: uppercase;
         margin: 0;
+        border: 1px solid #ffffff;
+        transition: border-color 0.3s, border-width 0.3s;
       }
 
       .platform-redirection-button > img {
@@ -90,7 +92,13 @@
       }
 
       .platform-redirection-button > img:hover {
-        transform: scale(1.1);
+        transform: scale(0.9);
+      }
+
+      .platform-redirection-button:hover {
+        border-color: #00d5dd;
+        border-width: 1px;
+        box-shadow: #031017 0px 0px 6px;
       }
 
       a.logout {
@@ -119,6 +127,16 @@
         margin: 1.5rem 0rem;
       }
 
+      .pay-button {
+        border: #ffffff 1px solid;
+      }
+
+      .pay-button:hover {
+        border-color: #00d5dd;
+        border-width: 1px;
+        box-shadow: #031017 0px 0px 6px;
+      }
+
       .pagar-mensualidad {
         width: 200px;
         margin: 1rem;
@@ -126,7 +144,17 @@
       }
 
       .pagar-mensualidad:hover {
-        transform: scale(1.1);
+        transform: scale(0.9);
+      }
+
+      .no-certificate-btn {
+        padding: 1rem;
+        border: none;
+        cursor: not-allowed;
+      }
+
+      .sin-certificado {
+        width: 200px;
       }
 
       /* Media query for phone devices (adjust the breakpoint as needed) */
@@ -180,7 +208,10 @@
       <!-- <p><strong>Email:</strong> <%= userDetails.email %></p> -->
 
       <% if (userDetails.paymentLink) { %>
-      <a href="<%= userDetails.paymentLink %>" target="_blank"
+      <a
+        class="pay-button"
+        href="<%= userDetails.paymentLink %>"
+        target="_blank"
         ><img class="pagar-mensualidad" src="/svg/pay-button.svg" alt=""
       /></a>
       <% } else { %> You're subscribed to automatic payments. Your payments
@@ -203,7 +234,14 @@
         <% }) %>
       </ul>
       <% } else { %>
-      <p>You don't have any certificates yet</p>
+      <button class="no-certificate-btn" disabled>
+        <img
+          class="sin-certificado"
+          src="/svg/sin-certificado.svg"
+          alt="No_tienes_certificados"
+        />
+      </button>
+      <!-- <p>You don't have any certificates yet</p> -->
       <% } %> <% } else { %>
       <p>No user details found.</p>
       <% } %>
