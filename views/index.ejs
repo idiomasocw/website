@@ -15,301 +15,481 @@
 
     <title>OneCulture World</title>
     <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/build/css/intlTelInput.min.css">
+    <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/landing.css">
+    
+    
+    <!-- <link rel="stylesheet" href="/css/landing.css"> -->
     <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 
-<style>
-    :root {
-    --primary-bg-color: rgb(111, 111, 222);
-    --accent-color-1: #ffe081;
-    --secondary-text-color: #e0af7c;
-    --dark-text-color: rgb(48, 48, 59);
-    --complement-bg-color:rgb(96, 96, 192);
-}
-
-    /* Section 1: Academy Info - Common Styles */
-    .section-academy-info::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to bottom, var(--dark-text-color),var(--primary-bg-color));
-    z-index: -1; /* Place the gradient behind the content */
-  }
-
-    .section-academy-info {
-        color: var(--dark-text-color);
-        padding: 98px 0 68px 0;
-        text-align: center;
-        position: relative;
-        height: 61vh;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        /* Fallback PNG image for desktop */
-        background-image: url("./pics/new-landing-parallax.png");
-    }
-
-    /* WebP Support for Desktop - Only Change the Background Image */
-     @supports (background-image: url("./pics/new-landing-parallax.webp")) {
-        .section-academy-info {
-            background-image: url("./pics/new-landing-parallax.webp");
-        }
-    } 
-
-    .study-english{
-    background-image: url("./pics/studentocw2.png");
-    height: 60vh; 
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center bottom; 
-}
-
-/* WebP Support for Desktop - Only Change the Background Image */
-@supports (background-image: url("./pics/studentocw2.webp")) {
-    .study-english{
-    background-image: url("./pics/studentocw2.webp");
-        }
-    }
-
-    /* Styles for Mobile Devices */
-    @media (max-width: 600px) {
-        .section-academy-info {
-    /* Fallback PNG image for mobile */
-    background: linear-gradient(
-        to bottom, 
-        rgba(48, 48, 59, 0.7), 
-        rgba(111, 111, 222, 0.7)
-    ), 
-    url("./pics/landing-parallax-mobile.png");
-    background-size: cover;
-    background-position: center;
-    height: 34vh;
-    margin-bottom: 7.5em;
-}
-
-/* WebP Support for Mobile */
-@supports (background-image: url("./pics/landing-parallax-mobile.webp")) {
-    .section-academy-info {
-        background: linear-gradient(
-            to bottom, 
-            rgba(48, 48, 59, 0.8), 
-            rgba(111, 111, 222, 0.8)
-        ), 
-        url("./pics/landing-parallax-mobile.webp");
-        background-size: cover;
-        background-position: center;      
-    }
-}
-
-
-        .study-english {
-            min-width: 100%; /* stack on top of each other */
-            height: 38vh; 
-            background-image: url("./pics/woman-pointing-down.png");
-        }
-
-        /* WebP Support for .study-english */
-        @supports (background-image: url("./pics/woman-pointing-down.webp")) {
-            .study-english {
-                background-image: url("./pics/woman-pointing-down.webp");
-            }
-        }
-    }
-</style>
-
-<body>
-
-<%- include('partials/header') %>
 <%- include('partials/menu') %>
 
-    <!-- Section 1: Academy Info -->
-    <section class="section-academy-info">
-        <div class="intro-container">
-            <div class="study-english"></div>
-            <div class="study-english-info">
-                <h2 class="sub-heading">Aprende inglés <span class="color-changing">c<span class="o">o</span><span class="n">n</span><span class="v">v</span><span class="e">e</span><span class="r">r</span><span class="s">s</span><span class="a">a</span><span class="c">c</span><span class="i">i</span><span class="o">o</span><span class="n">n</span><span class="a">a</span><span class="l">l</span></span> en</h2>
-
-
-                <h1 class="main-heading">OneCulture World</h1>
+<section class="section1">
+    <div class="section-academy-info">
+      <div class="left-container">
+        <h1>Aprende Inglés Conversacional</h1>
+        <h2>OneCulture World</h2>
+      </div>
+      <!-- beginning of form -->
+      <div class="right-container">
+        <div class="form-border">
+          <form id="registration-form" action="">
+            <div class="progressBarContainer">
+              <div style="height: 10px" id="progress-bar">
+                <div class="progress-section" id="progress1"></div>
+                <div class="progress-section" id="progress2"></div>
+                <div class="progress-section" id="progress3"></div>
+                <div class="progress-section" id="progress4"></div>
+              </div>
             </div>
-        </div>
-        
-            <a class="matriculate-button-mobile" href="/cursos">Matricúlate ya</a>
-
-        <svg class="wave-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 0 Q 50 100 100 0 L 100 100 L 0 100" fill='#ffffff'></path>
-        </svg>
-    </section>
-
-    <!-- Section 2: Beneficios -->
-    <section class="section-benefits">
-        <h2 id="estudia-con-nosotros" class="item-headline">¿Por qué estudiar con nosotros?</h2>
-        <div class="cards-row">
-            <div class="card-container">
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <h3>Lecciones online en vivo</h3>
-                            <p>Recibirás lecciones online en vivo de 55 minutos con un docente experto que acompañará tu
-                                proceso, y tendrás acceso a actividades interactivas en nuestra plataforma educativa para mejorar tu pronunciación, escucha y habla a tu propio ritmo.</p>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <object class="svg-icon" data="/svg/online-lessons.svg" type="image/svg+xml" title="Icono de lecciones online en vivo"></object>
-                    </div>
+            <!-- Section 1: Personal Information -->
+            <div id="section1" class="form-container">
+              <h6 class="headline" id="registrate-ya">
+                Registrate y Reserva tu cupo
+              </h6>
+              <div class="form-infoContainer">
+                <!-- Name input -->
+                <div class="info-box">
+                  <label class="info-label st"
+                    >Nombre<span class="asterisk">*</span></label
+                  >
+                  <div class="input-container">
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      placeholder="Nombre"
+                      required
+                    />
+                  </div>
                 </div>
-
-                <!-- SEECOND CARD -->
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <h3>Lecciones <span class="semipersonalizadas">privadas y semi-privadas</span></h3>
-                            <p>Podrás elegir entre clases privadas o clases semi-personalizadas para mejorar tus habilidades conversacionales en
-                                menos tiempo con un seguimiento dedicado y cercano a tu proceso.</p>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <object class="svg-icon" data="/svg/users-silhouette.svg"
-                            type="image/svg+xml" title="Icono de lecciones semi-personalizadas"></object>
-                    </div>
+                <!-- Last Name input -->
+                <div class="info-box">
+                  <label class="info-label"
+                    >Apellidos<span class="asterisk">*</span></label
+                  >
+                  <div class="input-container">
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      placeholder="Apellidos"
+                      required
+                    />
+                  </div>
                 </div>
-
-                <!-- THIRD CARD -->
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <h3>Metodologia conversacional</h3>
-                            <p>Con nuestra metodología conversacional desarrollarás tus habilidades de habla y escucha
-                                de forma natural y rápida. Podrás desenvolverte con confianza en un rango amplio de situaciones.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <object class="svg-icon" data="/svg/chat.svg" type="image/svg+xml" title="Icono de metodología conversacional"></object>
-                    </div>
+                <!-- Email input -->
+                <div class="info-box">
+                  <label class="info-label"
+                    >Email<span class="asterisk">*</span></label
+                  >
+                  <div class="input-container">
+                    <input
+                      id="email"
+                      name="email"
+                      type="text"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
                 </div>
+                <!-- Phone Number input -->
+                <div class="info-box">
+                  <label class="info-label"
+                    >Teléfono<span class="asterisk">*</span></label
+                  >
+                  <div class="input-container">
+                    <input
+                      id="phone"
+                      name="phoneNumber"
+                      type="tel"
+                      placeholder="Whatsapp"
+                      required
+                    />
+                  </div>
+                </div>
+                <!-- Age Select -->
+                <div class="info-box">
+                  <label class="info-label"
+                    >Edad<span class="asterisk">*</span></label
+                  >
+                  <div class="input-container ageBox">
+                    <select id="edad" name="edad" required>
+                      <option value="Menor de 16" selected>
+                        Selecciona tu rango de edad
+                      </option>
+                      <option value="16-25">Entre 16 y 25 años</option>
+                      <option value="26-35">Entre 26 y 35 años</option>
+                      <option value="35-45">Entre 35 y 45 años</option>
+                      <option value="45-70">Más de 45 años</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="button-next" id="next1">
+                <i
+                  class="fa-solid fa-chevron-right"
+                  style="color: #17315e"
+                ></i>
+              </button>
             </div>
+
+            <!-- Section 2: Mode Selection -->
+            <div id="section2" class="hidden">
+              <div class="navigation-buttons">
+                <button class="button-back" type="button" id="back1">
+                  <i
+                    class="fa-solid fa-chevron-left"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+                <button class="button-next" type="button" id="next2">
+                  <i
+                    class="fa-solid fa-chevron-right"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+              </div>
+              <h3>Modalidades</h3>
+              <div id="mode-options">
+                <div class="mode-option" id="private">
+                  <img src="/pics/private.png" alt="Private Class" />
+                  <h3 class="nombre-modalidad">Clases privadas</h3>
+                </div>
+                <div class="mode-option" id="semi-private">
+                  <img
+                    src="/pics/semi-private.png"
+                    alt="Semi-Private Class"
+                  />
+                  <h3 class="nombre-modalidad">Clases semi-privadas</h3>
+                </div>
+                <div class="mode-option" id="empresas">
+                  <img src="/pics/business.png" alt="empresas" />
+                  <h3 class="nombre-modalidad">Inglés para empresas</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3 for Private Classes -->
+            <div id="section3-private" class="hidden">
+              <h3>Clases Privadas</h3>
+              <p>Elige 2, 3 o 5 dias de clase</p>
+              <div class="navigation-buttons">
+                <button class="button-back" type="button" id="back2-private">
+                  <i
+                    class="fa-solid fa-chevron-left"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+                <button class="button-next" type="button" id="next3-private">
+                  <i
+                    class="fa-solid fa-chevron-right"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+              </div>
+              <!-- Modal Structure -->
+              <div id="modal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <div id="modal-time-options" class="modal-time-options">
+                    <!-- Time slots will be injected here -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="schedule-selection">
+                <div class="time-wrapper">
+                  <button type="button" class="weekday" id="Mon">
+                    Lunes
+                  </button>
+                  <div id="time-Mon"></div>
+                </div>
+                <div class="time-wrapper">
+                  <button type="button" class="weekday" id="Tue">
+                    Martes
+                  </button>
+                  <div id="time-Tue"></div>
+                </div>
+                <div class="time-wrapper">
+                  <button type="button" class="weekday" id="Wed">
+                    Miércoles
+                  </button>
+                  <div id="time-Wed"></div>
+                </div>
+                <div class="time-wrapper">
+                  <button type="button" class="weekday" id="Thu">
+                    Jueves
+                  </button>
+                  <div id="time-Thu"></div>
+                </div>
+                <div class="time-wrapper">
+                  <button type="button" class="weekday" id="Fri">
+                    Viernes
+                  </button>
+                  <div id="time-Fri"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3 for Semi-Private Classes -->
+            <div id="section3-semi-private" class="hidden">
+              <h3>Clases Semi-Personalizadas</h3>
+              <p>Elige intensidad y horario</p>
+              <div class="navigation-buttons">
+                <button
+                  class="button-back"
+                  type="button"
+                  id="back2-semi-private"
+                >
+                  <i
+                    class="fa-solid fa-chevron-left"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+                <button
+                  class="button-next"
+                  type="button"
+                  id="next3-semi-private"
+                >
+                  <i
+                    class="fa-solid fa-chevron-right"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+              </div>
+              <div
+                style="margin: auto; display: flex; justify-content: center"
+                class="intensidad-semi-private"
+              >
+                <button type="button" class="intensity" id="twice">
+                  2 clases semanales
+                </button>
+                <button type="button" class="intensity" id="thrice">
+                  3 clases semanales
+                </button>
+              </div>
+
+              <div id="time-semi-private"></div>
+            </div>
+
+            <!-- Section 3 for Empresas -->
+            <div id="section3-empresas" class="hidden">
+              <h3>Inglés para Empresas</h3>
+              <div class="info-empresa">
+                <label for="employee-count"
+                  >¿Cuál es el nombre de la empresa?</label
+                >
+                <input
+                  id="companyName"
+                  name="companyName"
+                  type="text"
+                  placeholder="Nombre de la Empresa"
+                  required
+                />
+                <label for="employee-count"
+                  >¿Cuántos empleados tiene tu empresa?</label
+                >
+                <select id="employee-count">
+                  <option value="sin-seleccionar" selected disabled>
+                    Selecciona el número de empleados
+                  </option>
+                  <option value="less-15">Menos de 15 personas</option>
+                  <option value="15-50">Entre 15 y 50 personas</option>
+                  <option value="51-200">Entre 50 y 200 personas</option>
+                  <option value="200-500">Entre 200 y 500 personas</option>
+                  <option value="more-500">Más de 500 personas</option>
+                </select>
+              </div>
+              <div class="navigation-buttons">
+                <button class="button-back" type="button" id="back2-empresas">
+                  <i
+                    class="fa-solid fa-chevron-left"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+                <button class="button-next" type="button" id="next3-empresas">
+                  <i
+                    class="fa-solid fa-chevron-right"
+                    style="color: #17315e"
+                  ></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Section 4: Pricing -->
+            <div id="section4" class="hidden">
+              <h3 id="form-final-price">Valor de la mensualidad</h3>
+              <p id="price"></p>
+              
+              <p
+                class="price original-price"
+                style="text-decoration: line-through; color: red"
+              >
+                
+              </p>
+              <p class="price discount-price">
+                
+              </p>
+              
+              <p class="price"></p>
+              
+
+              <a href="#" id="pay-button" class="hidden">Registrarse</a>
+              <button class="button-back" type="button" id="back3">
+                <i
+                  class="fa-solid fa-chevron-left"
+                  style="color: #17315e"
+                ></i>
+              </button>
+            </div>
+
+            <!-- Section 4 for Empresas -->
+            <div id="section4-empresas" class="hidden">
+              <div class="enviar-solicitud-empresa">
+                <h3>Solicita tu descuento</h3>
+                <p>
+                  Una vez envíes este formulario, nos pondremos en contacto
+                  contigo para brindarte información sobre el descuento
+                  especial que tenemos.
+                </p>
+                <button type="button" id="send-form-empresas">Enviar</button>
+              </div>
+              <button class="button-back" type="button" id="back3-empresas">
+                <i
+                  class="fa-solid fa-chevron-left"
+                  style="color: #17315e"
+                ></i>
+              </button>
+            </div>
+          </form>
         </div>
-<!--         <svg class="second-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-            <path d="M0 0 C350 100 500 0 1000 100 L1000 100 L0 100 Z" fill="#fff" />
-        </svg> -->
-    </section>
+      </div>
+    </div>
+  </section>
 
-<!-- Section 3: Lesson Modalities -->
-<section class="section-services">    
-    <h2 class="item-headline services-headline">Nuestros servicios</h2>
-    <div class="service-container">  <!--Service-container for all service-items -->
-        <div class="service-item">
-            <div class="imgbox">
-                <!-- <img class="img-item" src="./pics/one-on-one-lessons.webp" alt="" loading="lazy"> -->
-                <object class="svg-icon" data="/svg/private.svg" type="image/svg+xml" title="clases privadas"></object>
-            </div>
-            <div class="content-services">
-                <a class="services-link" href="cursos#private-lessons">
-                <h3 class="headline-services">Clases Privadas</h3>
-                <p>Aprende a tu propio ritmo recibiendo clases de 55 min de Lunes a Viernes con un docente dedicado para ti. Tu docente conocerá tu proceso y te ayudará a alcanzar la fluidez en menos tiempo con nuestra metodología conversacional.</p><br>
-                <a class="read-more"href="cursos#private-lessons" aria-label="Lee más sobre nuestras lecciones privadas">Leer más</a>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Second service-item -->
-        <div class="service-item">
-            <div class="imgbox">
-                <!-- <img class="img-item" src="./pics/group-lessons.webp" alt="" loading="lazy"> -->
-                <object class="svg-icon" data="/svg/group.svg" type="image/svg+xml" title="clases semi-privadas"></object>
-            </div>
-            <div class="content-services">
-                <a class="services-link" href="cursos#semi-personalized">
-                <h3 class="headline-services">Semi-personalizadas</h3>
-                <p>En nuestras clases semi-personalizadas recibirás clase con 2 o 3 personas lo cuál te dará la oportunidad de recibir un acompañamiento más personal. Podrás elegir entre tomar 2 o tomar 3 clases de 55 minutos a la semana.</p><br>
-                <a class="read-more" href="cursos#semi-personalized" aria-label="Lee más sobre nuestras lecciones semi-personalizadas">Leer más</a>
-                </a>
-            </div>
-        </div>
+  <section class="section2">
+    <h2>¿Qué ofrecemos?</h2>
+    <div class="ofrecemos">
+      <div class="cards">
+        <img src="/pics/live_lessons.png" alt="Lecciones en vivo" />
+        <h3>Lecciones online en vivo</h3>
+        <span
+          >Recibirás lecciones online en vivo de 55 minutos con un docente
+          experto que acompañará tu proceso, y tendrás acceso a actividades
+          interactivas en nuestra plataforma educativa para mejorar tu
+          pronunciación, escucha y habla a tu propio ritmo.</span
+        >
+      </div>
+      <div class="cards">
+        <img src="/pics/grupos_pequeños.png" alt="Grupos pequeños" />
+        <h3>Lecciones privadas y semi-privadas</h3>
+        <span
+          >Podrás elegir entre clases privadas o clases semi-personalizadas
+          para mejorar tus habilidades conversacionales en menos tiempo con un
+          seguimiento dedicado y cercano a tu proceso</span
+        >
+      </div>
+      <div class="cards">
+        <img src="/pics/chats.png" alt="Medologogía conversacional" />
+        <h3>Metodología conversacional</h3>
+        <span>
+          Con nuestra metodología conversacional desarrollarás tus habilidades
+          de habla y escucha de forma natural y rápida. Podrás desenvolverte
+          con confianza en un rango amplio de situaciones
+        </span>
+      </div>
+    </div>
+  </section>
 
-        <!-- Third service-item -->
-        <div class="service-item">
-            <div class="imgbox">
-                <!-- <img class="img-item" src="./pics/business-english.webp" alt="" loading="lazy"> -->
-                <object class="svg-icon" data="/svg/business.svg" type="image/svg+xml" title="clases para empresas"></object>
-            </div>
-            <div class="content-services">
-                <a class="services-link" href="cursos#english-for-business">
-                <h3 class="headline-services">Inglés para empresas</h3>
-                <p>Evaluaremos sin costo el nivel de inglés de tus colaboradores y te ofreceremos un descuento especial para quienes deseen tomar clases de inglés grupales. Escríbenos y recibe una oferta de a cuerdo a las necesidades de tu empresa.</p><br>
-                <a class="read-more" href="cursos#english-for-business" aria-label="Lee más nuestras clases de inglés para empresas">Leer más</a>
-                </a>
-            </div>
-        </div>
-        
-</div>
-<div class="allEnglishLevels">
-<h2 class="item-headline levels-headline">Nuestros Niveles</h2>
-</div> <!-- Close the single service-container div -->
-        <!--Icon Levels-->
-        <div class="levels">
-            <img loading="lazy" src="/svg/A1.svg" alt="">
-            <img loading="lazy" src="/svg/A2.svg" alt="">
-            <img loading="lazy" src="/svg/B1.svg" alt="">
-            <img loading="lazy" src="/svg/B2.svg" alt="">
-            <img loading="lazy" src="/svg/C1.svg" alt="">
-        </div> </div>
-            <!--Icon Levels end-->
-</section> <!-- Close the section -->
+  <section class="section3">
+    <h2>¿Preguntas frecuentes?</h2>
+    <div class="faq-container">
+      <button class="accordion">
+        ¿Cuántos estudiantes hay en una clase semi-personalizadas?
+      </button>
+      <div class="panel">
+        <p>
+          Podrás compartir clase con un promedio de 3 estudiantes en tus
+          lecciones semi-personalizadas.
+        </p>
+      </div>
 
+      <button class="accordion">
+        ¿Cuál es la edad mínima para estudiar en
+        <strong>OneCulture World?</strong>
+      </button>
+      <div class="panel">
+        <p>
+          Si eres mayor de 15 años podrás iniciar tu curso conversacional en
+          OneCulture World.
+        </p>
+      </div>
 
+      <button class="accordion">
+        ¿Cuantas lecciones en vivo podré tomar a la semana?
+      </button>
+      <div class="panel">
+        <p>
+          En nuestro programa de lecciones privadas, podrás tomar una clase
+          diaria de Lunes a viernes, y en la modalidad semi-personalizada
+          podrás elegir entre dos opciones. Podrás tomar clase 3 veces a la
+          semana (Lunes, Miercoles y Viernes), o tomar 2 clases a la semana
+          (Martes y Jueves).
+        </p>
+      </div>
 
-    <!-- Section 4: FAW -->
-    <section class="section-faq">
-<!--         <svg class="third-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-            <path d="M0 0 C350 100 500 0 1000 100 L1000 100 L0 100 Z" fill="#ffffff" />
-        </svg> -->
-        <!-- <hr style="opacity: 0;"><hr style="opacity: 0;"> -->
-        <h2 class="item-headline">Preguntas frecuentes</h2>
-        <div class="faq-container">
+      <button class="accordion">¿Tienen claúsula de permanencia?</button>
+      <div class="panel">
+        <p>No tenemos ningún tipo de clausulas de permanencia.</p>
+      </div>
 
-            <button class="accordion">¿Cuántos estudiantes hay en una clase semi-personalizadas?</button>
-            <div class="panel">
-                <p>Podrás compartir clase con un promedio de 3 estudiantes en tus lecciones semi-personalizadas.</p>
-            </div>
+      <button class="accordion">
+        ¿Qué encontraré en la plataforma educativa OCW?
+      </button>
+      <div class="panel">
+        <p>
+          En nuestra plataforma educativa, encontrarás tus lecciones en vivo y
+          también actividades interactivas de auto-estudio con las cuales
+          podrás afianzar tu comprensión auditiva, tu comprensión de lectura y
+          tu pronunciación.
+        </p>
+      </div>
+    </div>
+  </section>
 
-            <button class="accordion">¿Cuál es la edad mínima para estudiar en <strong>OneCulture World?</strong></button>
-            <div class="panel">
-                <p>Si eres mayor de 15 años podrás iniciar tu curso conversacional en OneCulture World.</p>
-            </div>
-
-            <button class="accordion">¿Cuantas lecciones en vivo podré tomar a la semana?</button>
-            <div class="panel">
-                <p>En nuestro programa de lecciones privadas, podrás tomar una clase diaria de Lunes a viernes, y en la modalidad semi-personalizada podrás elegir entre dos opciones. Podrás tomar clase 3 veces a la semana (Lunes, Miercoles y Viernes), o tomar 2 clases a la semana (Martes y Jueves).</p>
-            </div>
-
-            <button class="accordion">¿Tienen claúsula de permanencia?</button>
-            <div class="panel">
-                <p>No tenemos ningún tipo de clausulas de permanencia.</p>
-            </div>
-
-            <button class="accordion">¿Qué encontraré en la plataforma educativa OCW?</button>
-            <div class="panel">
-                <p>En nuestra plataforma educativa, encontrarás tus lecciones en vivo y también actividades interactivas de auto-estudio con las cuales podrás afianzar tu comprensión auditiva, tu comprensión de lectura y tu pronunciación.</p>
-            </div>
-        </div>
-    </section>
   
     <%- include('partials/footer') %>
     
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
-    <script src="/js/appearance.js"></script>
+    <!-- <script src="/js/appearance.js"></script> -->
     <script src="/js/main.js"></script>
+
+    <script src="/js/form.js"></script>
+    <script src="./build/js/intlTelInput.min.js"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            initialCountry: "co"
+        });
+    </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the URL contains a hash
+    if(window.location.hash) {
+        // Scroll to the element with the ID from the URL hash
+        const section = document.querySelector(window.location.hash);
+        if(section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+</script>
 </body>
 
 </html>

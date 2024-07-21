@@ -1,608 +1,93 @@
-:root{
-  --Bckpurple1:#857ebfbe;
-  --Bckpurple2:#494f78ad;
-  --alternative-yellow:#d0ff4fd3;
-  --alternative-blue:#4f7492dd;
-  --alternative-blue2:rgba(79, 116, 146, 0.969);
-  --primary-bg-color: #6f6fde;
-  --accent-color-1: rgb(255, 224, 129);
-  --secondary-text-color: rgb(224, 175, 124);
-  --dark-text-color: rgb(48, 48, 59);
-}
-
-#menu-section2{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-/*CSS STYLES FOR THE FORM*/
-.form-border {
-  width: fit-content;
-  margin: 0 auto;
-  position: absolute;
-  /* top: 30%; */
-  left: 7%;
-  top:10rem;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 3;
-}
-
-*{
-  /* box-sizing: border-box; */
-  box-sizing:border-box;
-  -moz-box-sizing: border-box;
-}
-.form-container {
-  padding: 1rem;
-  width: 100%;
-  background: linear-gradient(to right, var(--secondary-text-color),var(--accent-color-1));
-  border-radius: 8px;
-  max-width: 390px;
-}
-
-/* CSS to change the placeholder color to white  */
-
-form input::placeholder, form select {
-  color: #ccc;
-  opacity: 1; /* Required for some browsers to ensure the color applies */
-}
-
-/* For Microsoft Edge */
-form input:-ms-input-placeholder, form select {
-  color: #ccc;
-}
-
-/* For Internet Explorer 10+ */
-form input::-ms-input-placeholder, form select {
-  color: #ccc;
-}
-
-.info-box .info-label{
-  color:var(--dark-text-color);
-}
-
-.asterisk{
-  color:var(--dark-text-color);
-}
-
-#registrate-ya {
-  width: fit-content;
-  text-align: center;
-  margin: 1rem auto;
-  font-size: 1rem;
-  text-transform: uppercase;
-  color: var(--dark-text-color);
-}
-
-/* The .form-infoContainer is now a grid container */
-.form-infoContainer {
-  display: grid;
-  gap: 5px;
-  grid-template-columns: auto auto; 
-  justify-content: center;
-  max-width: 360px;
-}
-
-.info-box{
-  margin: 0;
-  padding: 0;
-}
-
-/* First name and last name each take up one column */
-.info-box:nth-child(1),
-.info-box:nth-child(2) {
-  grid-column: span 1; /* Each takes one column */
-}
-
-/* Email input takes up two columns' space, which is now twice the first and last name */
-.info-box:nth-child(3) {
-  grid-column: 1 / -1; /* Spans both columns */
-}
-
-/* Country code and phone number each take up half of the width on a new row, just like first and last name */
-.info-box:nth-child(4),
-.info-box:nth-child(5) {
-  grid-column: span 1; /* Each takes one column */
-}
-
-/* Age input also takes up the full width on its own row */
-.info-box:nth-child(6) {
-  grid-column: 1 / -1; /* Spans both columns */
-}
-
-.ageBox{
-  display: flex;
-  justify-content: start;
-  align-items: start;
-}
-
-#section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
-  background: linear-gradient(to right, var(--secondary-text-color),var(--accent-color-1));
-  min-width: 390px;
-  padding: 1rem;
-  max-width: 400px;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.selected-time{
-  font-size:0.7rem;
-  min-width:75px;
-  text-align: center;
-  padding: 3px;
-  border: #ccc solid 1px;
-  border-radius: 5px;
-  font-weight: bold;
-  background: rgb(255, 255, 255,0.8);
-}
-
-
-.iti__hide {
-  display: none; }
-
-
-form button {
-  color: #f4f8f8;
-  background-color: transparent;
-  border: 1px solid #026C72; 
-  border-radius: 4px;
-  background-color: var(--primary-bg-color);
-}
-
- form button:hover {
-    background-color: var(--accent-color-1);
-    border-color: var(--accent-color-1);
-    cursor: pointer;
-  color:var(--dark-text-color) }
-
-.modal-content h3{
-  color:#026c72;
-}
-
-.fa-trash{
-  color:#026C72;
-  cursor: pointer;
-  padding: 5px 0;
-}
-
-.fa-trash:hover{
-color: #4caf50;
-}
-
-/*Form styles*/
-form h3{
-  text-transform: uppercase;
-  text-align: center;
-  margin-block-start:0.4rem;
-  margin-block-end:0.4rem;
-}
-
-.hidden {
-  display: none;
-}
-
-.content h2, p{
-  color:var(--dark-text-color);
-}
-
-
-#section1 label {
-  flex: 1;
-  margin-right: 5px;
-  text-align: left;
-  font-size: 14px;
-}
-
- .progressBarContainer {
-  text-align: center; /* Center the progress bar */
-  padding: 10px 0; /* Add some spacing */
-  width: fit-content;
-  margin:auto;    
-}
-
-#progress-bar {
-  display: flex;
-  justify-content: center; /* Align the circles in the center */
-}
-
-.progress-section {
-  width: 15px; /* Small circle size */
-  height: 15px; /* Small circle size */
-  border-radius: 50%; /* Makes it a circle */
-  background-color: var(--dark-text-color); /* Gray color, change as needed */
-  margin: 0 5px; /* Spacing between circles */
-}
-
-/* Add classes or modify these when the section is active or completed */
-.progress-section.active, .progress-section.completed {
-  background-color: var(--accent-color-1); /* Example active/completed color */
-}
-
-.button-next{
-  position: absolute;
-  top: 0;
-  right: 0px;
-  border: none;
-  padding-top:5px;
-  padding-bottom: 3px;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-
-.button-back{
-  position: absolute;
-  top: 0;
-  left: 0px;
-  background-color: transparent;
-  border: none;
-  padding-top:5px;
-  padding-bottom: 3px;
-  border-radius: 5px 0 0 5px;
-  cursor: pointer;
-}
-
-.button-next.disabled, #next3-empresas.disabled {
-  background-color: transparent;
-  border: none;
-  padding-top:5px;
-  padding-bottom: 3px;
-}
-
-.button-next.enabled, #next3-empresas.enabled {
-  background-color: var(--accent-color-1);
-  cursor: pointer;
-  border: none;
-  padding-top:5px;
-  padding-bottom: 3px;
-  border-radius: 0 5px 5px 0;
-}
-
-
-form input, select{
-  background: var(--primary-bg-color);
-  outline: none;
-  border: 2px solid rgb(255, 255, 255,0.8);
-  border-radius: 12px;
-  flex:3;
-  width: 100%; /* Inputs and selects should fill the width of their grid area */
-  height: 30px;
-  color: #f7f8fd!important;
-  padding: 5px;
-}
-
-#section1 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px var(--primary-bg-color) inset; /* Adjust the color as needed */
-  -webkit-text-fill-color: #fff !important; 
-}
-
-input::part(autofill) {
-  background: #026c72 !important; /* Adjust the color as needed */
-}
-
-/* Basic CSS Styles */
-
-.weekday, .intensity {
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #026c72;
-  cursor: pointer;
-  box-shadow: rgb(14,18,77,0.4) 1px 3px 8px;
-}
-
-.selected {
-  background-color: #464d75;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-#pay-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #464d75;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 8px;
-}
-
-#price {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-
-.time-button {
-  padding: 3px;
-  border:1px solid #026c72;
-  cursor: pointer;
-  border-radius: 4px;
-  flex: 1 0 calc(33.333% - 10px); /* three columns */
-  margin: 3px;
-}
-
-.time-button.selected {
-  background-color: #464d75;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.time-wrapper{
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.schedule-selection{
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns */
-  grid-auto-rows: minmax(50px, auto); 
-}
-
-.mode-option img{
-  max-height:3.75em;
-  max-width: 6.87em;
-  min-width: 6.4em;
-}
-
-/* Use nth-child to position each .time-wrapper in the grid */
-.schedule-selection .time-wrapper:nth-child(1) { grid-column: 1; grid-row: 1; } /* Lunes */
-.schedule-selection .time-wrapper:nth-child(2) { grid-column: 1; grid-row: 2; } /* Martes */
-.schedule-selection .time-wrapper:nth-child(3) { grid-column: 1; grid-row: 3; } /* Miércoles */
-.schedule-selection .time-wrapper:nth-child(4) { grid-column: 2; grid-row: 1; } /* Jueves */
-.schedule-selection .time-wrapper:nth-child(5) { grid-column: 2; grid-row: 2; } /* Viernes */
-
-
-#time-semi-private {
-  display: flex;
-  flex-wrap: wrap;
-  width: 360px;
-  margin: auto;
-}
-
-
-.navigation-buttons{
-  display: flex;
-  flex-direction: row;
-}
-
-form{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;    
-}
-
-/* Add this to your existing CSS file */
-.mode-option {
-  width: fit-content;
-  text-align: center;
-  border: 1px solid #ffffff;
-  padding: 0.625em;
-  cursor: pointer;
-  margin: 0.312em;
-  box-shadow: 5px 5px 5px rgba(88, 88, 88, 0.567);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mode-option:hover{
-  background-color: var(--primary-bg-color);
-  transition: all 0.6s;
-  border: 1px solid #026c72;
-  color: #fff;
-}
-
-.mode-option.selected {
-  border-color: #ffffff;
-  background-color: var(--primary-bg-color);
-  width: fit-content;
-}
-
-#mode-options {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  border-radius: 8px;
-}
-
-#form-final-price{
-  padding: 1rem;
-}
-
-/* modal styles */
-.modal {
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 1; /* Sit on top */
-left: 0;
-top: 0;
-min-width: 100%; /* Full width */
-min-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-
-}
-
-.modal-content {
-background-color: #fefefe;
-margin: 15% auto; /* 15% from the top and centered */
-padding: 20px;
-border: 1px solid #888;
-max-width: 400px; /* Could be more or less, depending on screen size */
-}
-
-.close {
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-color: rgb(238, 32, 32);
-text-decoration: none;
-cursor: pointer;
-}
-
-
-.time-options-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
-grid-template-rows: repeat(5, 1fr); /* Creates 5 rows */
-gap: 10px; /* Space between buttons */
-}
-
-/*END CSS STYLES FOR THE FORM*/
-
-.nombre-modalidad{
-  font-size: 0.8rem;
-  max-width: 110px;
-}
-
-.info-empresa{
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  gap:10px;
-}
-
-.enviar-solicitud-empresa{
-  max-width: 390px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+:root {
+  --light: #ffffff;
+  --dark: #031017;
+  --green: #00d5dd;
+  --blue: #23598b;
+  --accent-color-1: #00d5dd;
 }
 
 /* Parallax section */
-.parallax {
-  background: linear-gradient(
-    to bottom, 
-    rgba(48, 48, 59, 0.9), 
-    rgba(111, 111, 222, 0.9)
-),  url("./pics/cursos-parallax.png");
-  /* background-image: url("/pics/Descuento-min.png"); */
-  min-height: 580px; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  overflow: hidden;
-}
 
-    /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background:linear-gradient(
-      to bottom, 
-      rgba(48, 48, 59, 0.98), 
-      rgba(111, 111, 222, 0.8)
-  ), url("/pics/cursos-parallax.webp")) {
-      .parallax {
-        background:linear-gradient(
-    to bottom, 
-    rgba(48, 48, 59, 0.98), 
-    rgba(111, 111, 222, 0.8)
-), url("/pics/cursos-parallax.webp");
-background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-      }
+/* WebP Support for Desktop - Only Change the Background Image */
+@supports (
+  background:
+    linear-gradient(to bottom, rgba(48, 48, 59, 0.98), rgba(111, 111, 222, 0.8)),
+  url("/pics/cursos-parallax.webp")
+) {
+  .parallax {
+    background: linear-gradient(
+        to bottom,
+        rgba(48, 48, 59, 0.98),
+        rgba(111, 111, 222, 0.8)
+      ),
+      url("/pics/cursos-parallax.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
+}
 
 /* Pseudo-element for gradient background */
-.parallax::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(to bottom, var(--dark-text-color), var(--primary-bg-color));
-  z-index: -1; /* Place the gradient behind the content */
-}
 
-
-.divider-parallax{
+.divider-parallax {
   position: absolute;
   bottom: 0;
   display: block;
   margin: 0;
   padding: 0;
   border: none;
-  overflow: hidden; 
+  overflow: hidden;
   width: 100%;
   box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
-
 }
 
+/* WebP Support for Desktop - Only Change the Background Image */
 
-.section-cards-cursos{
-  padding: 2% 7%;
-}
-
-#semi-personalized{
-  background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
-  rgba(224, 175, 124, 0.9)),url("/pics/semi-privadas-discount-min.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+#semi-personalized {
+  background: linear-gradient(to bottom, var(--dark), var(--blue));
   background-attachment: fixed;
-  color:var(--dark-text-color);
-  position: relative;
-  z-index: -2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--green);
 }
 
-    /* WebP Support for Desktop - Only Change the Background Image */
-    @supports (background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
-    rgba(224, 175, 124, 0.9)),url("/pics/semi-privadas-discount.webp")) {
-      #semi-personalized {
-        background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
-        rgba(224, 175, 124, 0.9)),url("/pics/semi-privadas-discount.webp");
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-  }
+.course-description-card .course-pricing {
+  color: var(--dark);
+}
 
-
-.course-description-section1{
-  padding-bottom: 2rem;
-  position: relative;
+.course-description-section1 {
+  display: flex;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: auto;
 }
 
 .wave-separator {
   position: absolute;
-  bottom: 0;  
+  bottom: 0;
   left: 0;
-  width: 100%; 
-  height: 14%;   
-  fill: #ffffff; 
-  z-index: 1;   
+  width: 100%;
+  height: 14%;
+  fill: #ffffff;
+  z-index: 1;
   margin-bottom: -4px;
 }
 
 .wave-separator-cursos {
   position: absolute;
-  bottom: 0;  
+  bottom: 0;
   left: 0;
-  width: 100%; 
-  height: 4%;   
-  fill: #ffffff; 
-  z-index: 1;   
+  width: 100%;
+  height: 4%;
+  fill: #ffffff;
+  z-index: 1;
   margin-bottom: -3px;
 }
 /* End of parallax section */
 
 /* new css styles for the course description */
-.course-description-section{
+.course-description-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -610,7 +95,7 @@ background-attachment: fixed;
   height: 100vh;
 }
 
-.course-description-container{
+.course-description-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -624,12 +109,10 @@ background-attachment: fixed;
   grid-template-columns: 4fr 1fr;
   grid-gap: 10px;
   padding: 4rem;
-  border-radius: 0 8px 8px 8px; /* Optional for rounded corners */
-  background-color:#f4f8f8;
-  color:var(--dark-text-color);
-  position: relative;
+  box-shadow: 0 0 5px var(--dark);
+  background-color: #f4f8f8;
+  color: var(--dark);
 }
-
 
 .course-description-card h2 {
   text-align: left;
@@ -638,10 +121,10 @@ background-attachment: fixed;
   font-size: 3rem;
   margin: 0;
   padding: 2% 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-.course-description-items{
+.course-description-items {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -659,31 +142,36 @@ background-attachment: fixed;
 }
 
 .course-pricing {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-justify-content: space-around;
+  justify-content: space-around;
 }
 
 .price-option {
-  background-color: var(--accent-color-1); 
+  background-color: var(--green);
   padding: 1em;
   text-align: center;
-  color:var(--dark-text-color);
+  color: var(--dark);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
-.price-option .price{
+.price-option a {
+  color: var(--dark);
+}
+
+.price-option .price {
   font-weight: bold;
   font-size: 1.5rem;
 }
 
-.program-name{
+.program-name {
   padding: 0 0px 0 6%;
 }
 
-@media only screen and (max-width: 600px) { /* Adjusts for devices with a width of 600px or less */
+@media only screen and (max-width: 768px) {
+  /* Adjusts for devices with a width of 600px or less */
   .form-infoContainer {
     grid-template-columns: 1fr; /* Makes all .info-box elements take full width and stack vertically */
     max-width: 100%; /* Allows the container to fit the screen's width */
@@ -699,113 +187,47 @@ justify-content: space-around;
     grid-column: auto; /* Resets any specific column spanning */
   }
 
-  form input,
-  form select {
-    width: 100%; /* Continue to have inputs fill their containers */
-    height: auto; /* Resets height if needed */
-  }
-
-  #mode-options{
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-  }
-
-  .mode-option{
-    max-height: 6.875em;
-  }
-
-  .form-border {
-    position: relative;
-    margin: auto;
-    left: 0;
-    top:1rem;
-    margin-bottom: -58%;
-    transform: translateY(-76%);
-  }
-
-  .parallax {
-    /* The image used */
-    background-image: url("/pics/cursos-parallax-mobile.png");
-    background-repeat: no-repeat;
-    /* background-image: url("/pics/Descuento-mobile-min.png"); */
-  }
-
-      /* WebP Support for Mobile - Only Change the Background Image */
-      @supports (background-image: url("/pics/cursos-parallax-mobile.webp")) {
-        .parallax {
-          background-image: url("/pics/cursos-parallax-mobile.webp");
-          /* background-image: url("/pics/Descuento-mobile.webp"); */
-          background-size:cover;
-          background-position: center;
-          background-repeat: no-repeat;
-        }
+  /* WebP Support for Mobile - Only Change the Background Image */
+  @supports (background-image: url("/pics/cursos-parallax-mobile.webp")) {
+    .parallax {
+      background-image: url("/pics/cursos-parallax-mobile.webp");
+      /* background-image: url("/pics/Descuento-mobile.webp"); */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
-  
-
-    #section2,#section3-empresas,#section4-empresas,#section3-private,#section3-semi-private,#section4{
-      min-width: 90vw;
-      min-height: 250px;
-    }
-    #section1{
-      min-width:90vw ;
-    }
-    .course-description-section{
-      padding-top: 1rem;
   }
-  .course-description-card{
+
+  .course-description-section {
+    padding-top: 1rem;
+  }
+  .course-description-card {
     grid-template-columns: 1fr;
     place-items: center;
     padding: 2rem;
-}
+  }
 
-.course-description-card h2{
-  text-align: center;
-  font-size: 2.5rem;
-}
-.course-pricing {
-  gap:5px;
-  justify-content: center;
-  height: fit-content;
-  min-width: 13rem;
-}
+  .course-description-card h2 {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  .course-pricing {
+    gap: 5px;
+    justify-content: center;
+    height: fit-content;
+    min-width: 13rem;
+  }
 
-.price-option{
-  display: flex;
-  flex-direction: column;
-}
+  .price-option {
+    display: flex;
+    flex-direction: column;
+  }
 
-.course-price-name{  
-  width: 100%;
-/*     display: flex;
+  .course-price-name {
+    width: 100%;
+    /*     display: flex;
   flex-direction: row; */
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-#semi-personalized{
-/*   background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-privadas-parallax-mobile.png);*/  
-background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
-rgba(224, 175, 124, 0.9)),
-  url("/pics/semi-personalized-mobile-min.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-    
-}
-
-      /* WebP Support for Mobile - Only Change the Background Image */
-      @supports ( background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
-      rgba(224, 175, 124, 0.9)),url("/pics/semi-personalized-mobile.webp")) {
-        #semi-personalized {
-          /* background: linear-gradient(to bottom, #857ebfbe, #494f78ad),url(./pics/semi-personalized-mobile.png); */
-          background: linear-gradient(to bottom, rgba(255, 224, 129, 0.9), 
-          rgba(224, 175, 124, 0.9)),url("/pics/semi-personalized-mobile.webp");
-          background-attachment: fixed;
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-    }
-
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }

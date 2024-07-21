@@ -1,0 +1,507 @@
+:root {
+  --Bckpurple1: #031017;
+  --Bckpurple2: #031017;
+  --alternative-yellow: #00d5dd;
+  --alternative-blue: #23598b;
+  --alternative-blue2: #23598b;
+  --primary-bg-color: #23598b;
+  --accent-color-1: #00d5dd;
+  --secondary-text-color: #00d5dd;
+  --dark-text-color: #031017;
+}
+
+/*CSS STYLES FOR THE FORM*/
+.form-border {
+  margin: 0 auto;
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    var(--Bckpurple1),
+    var(--alternative-blue)
+  );
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+* {
+  /* box-sizing: border-box; */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#registration-form {
+  padding: 30px 15px;
+}
+.form-container {
+  margin: 0; /* Remove any margin */
+  padding: 0 1rem 1rem 1rem; /* Maintain padding if necessary */
+}
+
+/* CSS to change the placeholder color to white  */
+
+form input::placeholder,
+form select {
+  color: #ccc;
+  opacity: 1; /* Required for some browsers to ensure the color applies */
+}
+
+/* For Microsoft Edge */
+form input:-ms-input-placeholder,
+form select {
+  color: #ccc;
+}
+
+/* For Internet Explorer 10+ */
+form input::-ms-input-placeholder,
+form select {
+  color: #ccc;
+}
+
+.info-box .info-label {
+  color: var(--accent-color-1);
+}
+
+.asterisk {
+  color: var(--accent-color-1);
+}
+
+#registrate-ya {
+  width: 80%;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: "Oswald";
+  color: var(--accent-color-1);
+}
+
+/* The .form-infoContainer is now a grid container */
+.form-infoContainer {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  max-width: 360px;
+}
+
+.info-box {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* First name and last name each take up one column */
+.info-box:nth-child(1),
+.info-box:nth-child(2) {
+  grid-column: span 1; /* Each takes one column */
+}
+
+/* Email input takes up two columns' space, which is now twice the first and last name */
+.info-box:nth-child(3) {
+  grid-column: 1 / -1; /* Spans both columns */
+}
+
+/* Country code and phone number each take up half of the width on a new row, just like first and last name */
+.info-box:nth-child(4),
+.info-box:nth-child(5) {
+  grid-column: span 1; /* Each takes one column */
+}
+
+/* Age input also takes up the full width on its own row */
+.info-box:nth-child(6) {
+  grid-column: 1 / -1; /* Spans both columns */
+}
+
+.ageBox {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+#section2,
+#section3-empresas,
+#section4-empresas,
+#section3-private,
+#section3-semi-private,
+#section4 {
+  background: transparent;
+  min-width: 390px;
+  padding: 1rem;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.selected-time {
+  font-size: 0.7rem;
+  min-width: 75px;
+  text-align: center;
+  padding: 3px;
+  border: #ccc solid 1px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: rgb(255, 255, 255, 0.8);
+}
+
+.iti__hide {
+  display: none;
+}
+
+form button {
+  color: #f4f8f8;
+  background-color: #ccc;
+  border: 1px solid #026c72;
+  border-radius: 4px;
+  background-color: var(--primary-bg-color);
+}
+
+form button:hover {
+  background-color: var(--accent-color-1);
+  border-color: var(--accent-color-1);
+  cursor: pointer;
+  color: var(--dark-text-color);
+}
+
+.modal-content h3 {
+  color: #026c72;
+}
+
+.fa-trash {
+  color: #026c72;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.fa-trash:hover {
+  color: #4caf50;
+}
+
+/*Form styles*/
+form h3 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-block-start: 0.4rem;
+  margin-block-end: 0.4rem;
+  color: var(--accent-color-1);
+}
+
+form p {
+  color: var(--accent-color-1);
+}
+
+.hidden {
+  display: none;
+}
+
+.content h2,
+p {
+  color: var(--dark-text-color);
+}
+
+#section1 label {
+  flex: 1;
+  margin-right: 5px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.progressBarContainer {
+  text-align: center; /* Center the progress bar */
+  padding: 10px 0; /* Add some spacing */
+  width: fit-content;
+  margin: auto;
+}
+
+#progress-bar {
+  display: flex;
+  justify-content: center; /* Align the circles in the center */
+}
+
+.progress-section {
+  width: 15px; /* Small circle size */
+  height: 15px; /* Small circle size */
+  border-radius: 50%; /* Makes it a circle */
+  background-color: #ccc; /* Gray color, change as needed */
+  margin: 0 5px; /* Spacing between circles */
+}
+
+/* Add classes or modify these when the section is active or completed */
+.progress-section.active,
+.progress-section.completed {
+  background-color: var(--accent-color-1); /* Example active/completed color */
+}
+
+.button-next {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  border-radius: 0 5px 0 0;
+  cursor: pointer;
+}
+
+.button-back {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background-color: #ccc;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  border-radius: 5px 0 0 0;
+  cursor: pointer;
+}
+
+.button-next.disabled,
+#next3-empresas.disabled {
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 3px;
+}
+
+.button-next.enabled,
+#next3-empresas.enabled {
+  background-color: var(--accent-color-1);
+  cursor: pointer;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  border-radius: 0 5px 0 0;
+}
+
+form input,
+select {
+  background: #ffffff;
+  outline: none;
+  border: 2px solid rgb(255, 255, 255, 0.8);
+  border-radius: 5px;
+  flex: 3;
+  width: 100%; /* Inputs and selects should fill the width of their grid area */
+  height: 35px;
+  color: var(--Bckpurple1) !important;
+  padding: 5px;
+}
+
+#section1 input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--primary-bg-color) inset; /* Adjust the color as needed */
+  -webkit-text-fill-color: #fff !important;
+}
+
+input::part(autofill) {
+  background: #026c72 !important; /* Adjust the color as needed */
+}
+
+/* Basic CSS Styles */
+
+.weekday,
+.intensity {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #026c72;
+  cursor: pointer;
+  box-shadow: rgb(14, 18, 77, 0.4) 1px 3px 8px;
+}
+
+.selected {
+  background-color: var(--Bckpurple1);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#pay-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--Bckpurple1);
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+#price {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.time-button {
+  padding: 3px;
+  border: 1px solid #026c72;
+  cursor: pointer;
+  border-radius: 4px;
+  flex: 1 0 calc(33.333% - 10px); /* three columns */
+  margin: 3px;
+}
+
+.time-button.selected {
+  background-color: var(--Bckpurple1);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.time-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.schedule-selection {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-auto-rows: minmax(50px, auto);
+}
+
+.mode-option img {
+  max-height: 3.75em;
+  max-width: 6.87em;
+}
+
+/* Use nth-child to position each .time-wrapper in the grid */
+.schedule-selection .time-wrapper:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+} /* Lunes */
+.schedule-selection .time-wrapper:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+} /* Martes */
+.schedule-selection .time-wrapper:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+} /* Miércoles */
+.schedule-selection .time-wrapper:nth-child(4) {
+  grid-column: 2;
+  grid-row: 1;
+} /* Jueves */
+.schedule-selection .time-wrapper:nth-child(5) {
+  grid-column: 2;
+  grid-row: 2;
+} /* Viernes */
+
+#time-semi-private {
+  display: flex;
+  flex-wrap: wrap;
+  width: 360px;
+  margin: auto;
+}
+
+.navigation-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+form {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/* Add this to your existing CSS file */
+.mode-option {
+  width: fit-content;
+  text-align: center;
+  border: 1px solid #ffffff;
+  padding: 0.625em;
+  cursor: pointer;
+  margin: 0.312em;
+  box-shadow: 5px 5px 5px rgba(88, 88, 88, 0.567);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mode-option:hover {
+  background-color: var(--primary-bg-color);
+  transition: all 0.6s;
+  border: 1px solid #026c72;
+  color: #fff;
+}
+
+.mode-option.selected {
+  border-color: #ffffff;
+  background-color: var(--primary-bg-color);
+  width: fit-content;
+}
+
+#mode-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 8px;
+}
+
+#form-final-price {
+  padding: 1rem;
+}
+
+/* modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  min-width: 100%; /* Full width */
+  min-height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 400px; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(238, 32, 32);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.time-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+  grid-template-rows: repeat(5, 1fr); /* Creates 5 rows */
+  gap: 10px; /* Space between buttons */
+}
+
+/*END CSS STYLES FOR THE FORM*/
+
+.nombre-modalidad {
+  font-size: 0.8rem;
+  max-width: 110px;
+}
+
+.info-empresa {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 10px;
+}
+
+.enviar-solicitud-empresa {
+  max-width: 390px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

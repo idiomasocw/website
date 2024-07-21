@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
+    <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #031017;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .formContainer {
-            width: 25rem;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            padding: 2rem;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-        }
-        #email {
-            height: 2rem;
-            width: 100%;
-        }
-        label { color: #000000; }
-        h1 {
-            color: #333;
-            font-size: 2rem;
-        }
-        button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            color: white;
-            background-color: #00D5DD;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #031017;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      #header-section {
+        background-color: #23598b;
+      }
+      .formContainer {
+        width: 25rem;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 2rem;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+      }
+      #email {
+        height: 2rem;
+        width: 100%;
+      }
+      label {
+        color: #000000;
+      }
+      h1 {
+        color: #333;
+        font-size: 2rem;
+      }
+      button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        color: white;
+        background-color: #00d5dd;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <%- include('partials/menu') %>
     <div class="formContainer">
-        <h1>Login</h1>
-        <% if (error) { %>
-            <p style="color: red;"><%= error %></p>
-        <% } %>
-        <form action="/send-login-code" method="post">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Send Login Code</button>
-        </form>
+      <h1>Login</h1>
+      <% if (error) { %>
+      <p style="color: red"><%= error %></p>
+      <% } %>
+      <form action="/send-login-code" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <button type="submit">Send Login Code</button>
+      </form>
     </div>
-</body>
+
+    <script src="/js/main.js"></script>
+  </body>
 </html>
