@@ -22,7 +22,8 @@
         background-color: #23598b;
       }
       .formContainer {
-        width: 25rem;
+        width: 90%;
+        max-width: 20rem;
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
@@ -36,7 +37,7 @@
       }
       #email {
         height: 2rem;
-        width: 100%;
+        width: 98%;
       }
       label {
         color: #000000;
@@ -60,6 +61,13 @@
       }
       button:hover {
         background-color: #0056b3;
+      }
+
+      @media (max-width: 390px) {
+        .formContainer {
+          width: 16rem;
+          padding: 1.2rem;
+        }
       }
     </style>
   </head>
