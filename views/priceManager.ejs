@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/priceManager.css">
 
     <style>
@@ -18,6 +21,11 @@
         padding: 2% 3%;
         background-color: #031017;
         color: #ffffff;
+    }
+
+    .main-container{
+        display: flex;
+        flex-direction: column;
     }
     a.logout{
         text-decoration: none;
@@ -30,6 +38,21 @@
     a.logout:hover{
 transform: scale(1.2);
     }
+
+    #syncUsers{
+        padding: 1rem;
+        background-color: #00d5dd;
+        margin: auto;
+        border: none;
+        box-shadow: 0 0 6px #031017;
+        cursor: pointer;
+        font-family: "Oswald", sans-serif;
+        transition: transform 0.3s ease;
+    }
+
+    #syncUsers:hover{
+        transform: scale(1.1);
+    }
     </style>
 </head>
 <body>
@@ -37,12 +60,14 @@ transform: scale(1.2);
         <h1>Welcome, <%= fullName %>!</h1>
         <a class="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
   <div class="main-container">
+    <button id="syncUsers">Sincronizar Estudiantes</button>
     <div class="container">
         <div class="toggle-switch">
             <span>Edit Mode: </span>
             <input type="checkbox" id="editModeToggle">
             <label for="editModeToggle"><i class="fas fa-toggle-off" id="toggleIcon"></i></label>
         </div>
+
         <% for (let course in pricing) { %>
             <% for (let plan in pricing[course]) { %>
                 <div class="price-row disabled" id="<%= course + '-' + plan %>">
@@ -155,6 +180,21 @@ transform: scale(1.2);
                 }
             }, INACTIVITY_TIME - WARNING_TIME);
         }
+/* lambda trigger */
+        document.getElementById('trigger-lambda-button').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/trigger-lambda', { method: 'POST' });
+        const result = await response.json();
+        if (result.success) {
+          alert('Lambda function triggered successfully');
+        } else {
+          alert('Failed to trigger Lambda function');
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+/* End of lambda trigger */
 
         // Reset the timer on user activity
         window.onload = resetLogoutTimer;
