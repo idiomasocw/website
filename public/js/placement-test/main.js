@@ -1,61 +1,73 @@
 function setTestButtonState() {
-    const useOfEnglishCompleted = localStorage.getItem('use_of_english');
-    
-    const listeningButton = document.getElementById('listening');
-    
-    // Clear any existing click event listeners to avoid duplications
-    listeningButton.onclick = null;
+  const useOfEnglishCompleted = localStorage.getItem("use_of_english");
 
-    if(useOfEnglishCompleted) {
-        // If the Use of English test is completed, enable the listening button
-        listeningButton.classList.remove('disabled');
-        listeningButton.classList.add('enabled');
-        listeningButton.querySelector('.button-overlay').classList.remove('disabled');
-        listeningButton.querySelector('.button-overlay').classList.add('enabled');
+  const listeningButton = document.getElementById("listening");
 
-        // Add click event to redirect to the 'listening' test
-        listeningButton.onclick = function() {
-            window.location.href = '/placement-test/listening';
-        };
-    } else {
-        // Ensure the listening button is disabled if Use of English hasn't been completed
-        listeningButton.classList.add('disabled');
-        listeningButton.classList.remove('enabled');
-        listeningButton.querySelector('.button-overlay').classList.add('disabled');
-        listeningButton.querySelector('.button-overlay').classList.remove('enabled');
+  // Clear any existing click event listeners to avoid duplications
+  listeningButton.onclick = null;
 
-        // Prevent click action when the button is disabled
-        listeningButton.onclick = function(event) {
-            event.preventDefault();
-            alert("Please complete the Use of English section first.");
-        };
-    }
+  if (useOfEnglishCompleted) {
+    // If the Use of English test is completed, enable the listening button
+    listeningButton.classList.remove("disabled");
+    listeningButton.classList.add("enabled");
+    listeningButton
+      .querySelector(".button-overlay")
+      .classList.remove("disabled");
+    listeningButton.querySelector(".button-overlay").classList.add("enabled");
+
+    // Add click event to redirect to the 'listening' test
+    listeningButton.onclick = function () {
+      window.location.href = "/placement-test/listening";
+    };
+  } else {
+    // Ensure the listening button is disabled if Use of English hasn't been completed
+    listeningButton.classList.add("disabled");
+    listeningButton.classList.remove("enabled");
+    listeningButton.querySelector(".button-overlay").classList.add("disabled");
+    listeningButton
+      .querySelector(".button-overlay")
+      .classList.remove("enabled");
+
+    // Prevent click action when the button is disabled
+    listeningButton.onclick = function (event) {
+      event.preventDefault();
+      alert("Please complete the Use of English section first.");
+    };
+  }
 }
 
-window.onload = function() {
-    const resultsDiv = document.getElementById('results');
-    const tests = ['use_of_english', 'listening'];
-    let completedTests = [];
-    let htmlContent = '';
-    let message = '';
-    // Initial state
-    setTestButtonState();
+window.onload = function () {
+  const resultsDiv = document.getElementById("results");
+  const tests = ["use_of_english", "listening"];
+  let completedTests = [];
+  let htmlContent = "";
+  let message = "";
+  // Initial state
+  setTestButtonState();
 
-    tests.forEach((test) => {
-        const result = localStorage.getItem(test);
-        if (result) {
-            const { points, listeningAverageScore, useOfEnglishAverageScore, recommendedLevel, timeTaken } = JSON.parse(result);
-            let additionalContent = '';
+  tests.forEach((test) => {
+    const result = localStorage.getItem(test);
+    if (result) {
+      const {
+        points,
+        listeningAverageScore,
+        useOfEnglishAverageScore,
+        recommendedLevel,
+        timeTaken,
+      } = JSON.parse(result);
+      let additionalContent = "";
 
-            if (test === 'use_of_english') {
-                additionalContent = `<p>Use of English Average Score: ${useOfEnglishAverageScore}</p>`;
-            } else if (test === 'listening') {
-                additionalContent = `<p>Listening Average Score: ${listeningAverageScore}</p>`;
-            }
+      if (test === "use_of_english") {
+        additionalContent = `<p>Use of English Average Score: ${useOfEnglishAverageScore}</p>`;
+      } else if (test === "listening") {
+        additionalContent = `<p>Listening Average Score: ${listeningAverageScore}</p>`;
+      }
 
-            htmlContent += `
+      htmlContent += `
                 <div class="result">
-                    <h2 id=results-heading>${test.replace(/_/g, ' ').toUpperCase()} Results</h2>
+                    <h2 id=results-heading>${test
+                      .replace(/_/g, " ")
+                      .toUpperCase()} Results</h2>
                     <p>Points: ${points}</p>
                     ${additionalContent}
                     <p>Recommended Level: ${recommendedLevel}</p>
@@ -63,61 +75,67 @@ window.onload = function() {
                 </div>
             `;
 
-            completedTests.push(test);
-        }
-    });
-
-    function clearTestResults() {
-        tests.forEach(test => localStorage.removeItem(test));
-        sessionStorage.removeItem('emailSent');
-        sessionStorage.removeItem('userInfoSubmitted');
-        sessionStorage.removeItem('userInfo');
-        resultsDiv.innerHTML = 'You can retake the test now.';
-        document.getElementById('user-info-modal').style.display = 'block';
-        const emailNotification = document.getElementById('emailNotification');
-        if (emailNotification) {
-            emailNotification.style.display = 'none';
-        }
+      completedTests.push(test);
     }
-    
-    if (completedTests.length > 0) {
-        if (completedTests.length === 1 && completedTests[0] === 'use_of_english') {
-            message = "<p>Please take the listening test now.</p>";
-        }
-    
-        resultsDiv.innerHTML = message + htmlContent;
-        const clearIcon = document.getElementById('clearResultsContainer');
-        // Create a button to clear the test results from local storage
-        const clearButton = document.createElement('button');
-        clearButton.textContent = 'Take test again';
-        
-        // Attach the clearTestResults function to both the clearIcon and clearButton
-        clearIcon.addEventListener('click', clearTestResults);
-        clearButton.addEventListener('click', clearTestResults);
-    
-        // Append the button to the resultsDiv
-        resultsDiv.appendChild(clearButton);
-    } else {
-        resultsDiv.innerHTML = 'You can now take the Use of English and the Listening tests.';
-    }
-    
+  });
 
-    // Check if the user has already submitted their info
-    if (!sessionStorage.getItem('userInfoSubmitted')) {
-        document.getElementById('user-info-modal').style.display = 'block';
+  function clearTestResults() {
+    tests.forEach((test) => localStorage.removeItem(test));
+    sessionStorage.removeItem("emailSent");
+    sessionStorage.removeItem("userInfoSubmitted");
+    sessionStorage.removeItem("userInfo");
+    resultsDiv.innerHTML = "You can retake the test now.";
+    document.getElementById("user-info-modal").style.display = "block";
+    const emailNotification = document.getElementById("emailNotification");
+    if (emailNotification) {
+      emailNotification.style.display = "none";
+    }
+  }
+
+  if (completedTests.length > 0) {
+    if (completedTests.length === 1 && completedTests[0] === "use_of_english") {
+      message = "<p>Please take the listening test now.</p>";
     }
 
-    // Check if both sections are completed and email has not been sent yet
-    if (localStorage.getItem('use_of_english') && localStorage.getItem('listening') && !sessionStorage.getItem('emailSent')) {
-        const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        const useOfEnglishResults = JSON.parse(localStorage.getItem('use_of_english'));
-        const listeningResults = JSON.parse(localStorage.getItem('listening'));
+    resultsDiv.innerHTML = message + htmlContent;
+    const clearIcon = document.getElementById("clearResultsContainer");
+    // Create a button to clear the test results from local storage
+    const clearButton = document.createElement("button");
+    clearButton.textContent = "Take test again";
 
-        // First, generate the current date and time
-const now = new Date();
-const dateTimeString = now.toISOString();  // ISO string ensures a unique value for each email
+    // Attach the clearTestResults function to both the clearIcon and clearButton
+    clearIcon.addEventListener("click", clearTestResults);
+    clearButton.addEventListener("click", clearTestResults);
 
-        const resultsString = `
+    // Append the button to the resultsDiv
+    resultsDiv.appendChild(clearButton);
+  } else {
+    resultsDiv.innerHTML =
+      "You can now take the Use of English and the Listening tests.";
+  }
+
+  // Check if the user has already submitted their info
+  if (!sessionStorage.getItem("userInfoSubmitted")) {
+    document.getElementById("user-info-modal").style.display = "flex";
+  }
+
+  // Check if both sections are completed and email has not been sent yet
+  if (
+    localStorage.getItem("use_of_english") &&
+    localStorage.getItem("listening") &&
+    !sessionStorage.getItem("emailSent")
+  ) {
+    const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    const useOfEnglishResults = JSON.parse(
+      localStorage.getItem("use_of_english")
+    );
+    const listeningResults = JSON.parse(localStorage.getItem("listening"));
+
+    // First, generate the current date and time
+    const now = new Date();
+    const dateTimeString = now.toISOString(); // ISO string ensures a unique value for each email
+
+    const resultsString = `
         <div style="font-family: Arial, sans-serif; color: #34babf; background-color: #0e124d;padding: 10px;">
         <h1 style="font-size:18px;color:#34babf">Hello ${userInfo.firstName} ${userInfo.lastName},</h1>
         <p style="color: #34babf;">Here are your placement test results:</p>
@@ -136,58 +154,62 @@ const dateTimeString = now.toISOString();  // ISO string ensures a unique value 
                 <p style="color:#d1ff4f;"><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
                 <p style="color:#d1ff4f;"><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
             </div>
+
         </div>
+                <a style="color: #d1ff4f;margin-top:5px;margin-bottom:5px;" id="walink" href="https://wa.link/tldshy"
+          >Click here to get more info about our course</a>
+          <hr/>
             <p style="color: #34babf;">Best Regards,<br>OneCulture World Team</p>
             <!-- Transparent span with the unique date-time string -->
             <span style="opacity: 0;">${dateTimeString}</span>
         </div>`;
 
-        fetch('/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: userInfo.email,
-                name: `${userInfo.firstName} ${userInfo.lastName}`,
-                results: resultsString
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            sessionStorage.setItem('emailSent', true);  // Set the flag that email has been sent
+    fetch("/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: userInfo.email,
+        name: `${userInfo.firstName} ${userInfo.lastName}`,
+        results: resultsString,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        sessionStorage.setItem("emailSent", true); // Set the flag that email has been sent
 
-            // Show the email notification message
-            const emailNotification = document.getElementById('emailNotification');
-            if(emailNotification) {
-                emailNotification.style.display = 'block';
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
+        // Show the email notification message
+        const emailNotification = document.getElementById("emailNotification");
+        if (emailNotification) {
+          emailNotification.style.display = "block";
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 
-    // Handle user-info-form submission
-    const userInfoForm = document.getElementById('user-info-form');
-    if (userInfoForm) {
-        userInfoForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            var email = document.getElementById('user-info-email').value;
-            if (!email.includes('@') || !email.includes('.')) {
-                alert("Please enter a valid email address.");
-                return false;
-            }
+  // Handle user-info-form submission
+  const userInfoForm = document.getElementById("user-info-form");
+  if (userInfoForm) {
+    userInfoForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var email = document.getElementById("user-info-email").value;
+      if (!email.includes("@") || !email.includes(".")) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
 
-            var userInfo = {
-                firstName: document.getElementById('user-info-first-name').value,
-                lastName: document.getElementById('user-info-last-name').value,
-                email: email
-            };
-            sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-            sessionStorage.setItem('userInfoSubmitted', true);
-            document.getElementById('user-info-modal').style.display = 'none';
-        });
-    }
+      var userInfo = {
+        firstName: document.getElementById("user-info-first-name").value,
+        lastName: document.getElementById("user-info-last-name").value,
+        email: email,
+      };
+      sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
+      sessionStorage.setItem("userInfoSubmitted", true);
+      document.getElementById("user-info-modal").style.display = "none";
+    });
+  }
 };
