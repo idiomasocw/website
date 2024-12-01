@@ -2,34 +2,36 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- Meta Description -->
-    <meta name="description"
-        content="Desarrolla tu fluidez en inglés con la metodología conversacional de OneCulture World. Aprende inglés de forma definitiva!">
+  <meta charset="UTF-8">
+  <!-- Meta Description -->
+  <meta name="description"
+    content="Desarrolla tu fluidez en inglés con la metodología conversacional de OneCulture World. Aprende inglés de forma definitiva!">
 
-    <!-- Other Meta Tags -->
-    <meta name="keywords"
-        content="aprende ingles facil y rapido, clases de ingles, aprende ingles, curso de ingles online, ingles basico, hablar en inglés, desarrolla la fluidez en inglés, estudiar ingles, curso de inglés,idiomas ocw, one culture world, OneCulture World, examen de inglés gratis">
-    <meta name="author" content="Idiomas OCW">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Other Meta Tags -->
+  <meta name="keywords"
+    content="aprende ingles facil y rapido, clases de ingles, aprende ingles, curso de ingles online, ingles basico, hablar en inglés, desarrolla la fluidez en inglés, estudiar ingles, curso de inglés,idiomas ocw, one culture world, OneCulture World, examen de inglés gratis">
+  <meta name="author" content="Idiomas OCW">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OneCulture World</title>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/build/css/intlTelInput.min.css">
-    <link rel="stylesheet" href="/css/form.css">
-    <link rel="stylesheet" href="/css/main.css">
-    
-    
-    <!-- <link rel="stylesheet" href="/css/landing.css"> -->
-    <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <title>OneCulture World</title>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/build/css/intlTelInput.min.css">
+  <link rel="stylesheet" href="/css/form.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+
+  <!-- <link rel="stylesheet" href="/css/landing.css"> -->
+  <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Public+Sans:wght@600&family=Roboto+Condensed&display=swap"
+    rel="stylesheet">
 </head>
 
 <%- include('partials/menu') %>
 
-<section class="section1">
+  <section class="section1">
     <div class="section-academy-info">
       <div class="left-container">
         <h1>Aprende Inglés Conversacional</h1>
@@ -55,73 +57,39 @@
               <div class="form-infoContainer">
                 <!-- Name input -->
                 <div class="info-box">
-                  <label class="info-label st"
-                    >Nombre<span class="asterisk">*</span></label
-                  >
+                  <label class="info-label st">Nombre<span class="asterisk">*</span></label>
                   <div class="input-container">
-                    <input
-                      id="firstName"
-                      name="firstName"
-                      type="text"
-                      placeholder="Nombre"
-                      required
-                    />
+                    <input id="firstName" name="firstName" type="text" placeholder="Nombre" required />
                   </div>
                 </div>
                 <!-- Last Name input -->
                 <div class="info-box">
-                  <label class="info-label"
-                    >Apellidos<span class="asterisk">*</span></label
-                  >
+                  <label class="info-label">Apellidos<span class="asterisk">*</span></label>
                   <div class="input-container">
-                    <input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      placeholder="Apellidos"
-                      required
-                    />
+                    <input id="lastName" name="lastName" type="text" placeholder="Apellidos" required />
                   </div>
                 </div>
                 <!-- Email input -->
                 <div class="info-box">
-                  <label class="info-label"
-                    >Email<span class="asterisk">*</span></label
-                  >
+                  <label class="info-label">Email<span class="asterisk">*</span></label>
                   <div class="input-container">
-                    <input
-                      id="email"
-                      name="email"
-                      type="text"
-                      placeholder="Email"
-                      required
-                    />
+                    <input id="email" name="email" type="text" placeholder="Email" required />
                   </div>
                 </div>
                 <!-- Phone Number input -->
                 <div class="info-box">
-                  <label class="info-label"
-                    >Teléfono<span class="asterisk">*</span></label
-                  >
+                  <label class="info-label">Teléfono<span class="asterisk">*</span></label>
                   <div class="input-container">
-                    <input
-                      id="phone"
-                      name="phoneNumber"
-                      type="tel"
-                      placeholder="Whatsapp"
-                      required
-                    />
+                    <input id="phone" name="phoneNumber" type="tel" placeholder="Whatsapp" required />
                   </div>
                 </div>
                 <!-- Age Select -->
                 <div class="info-box">
-                  <label class="info-label"
-                    >Edad<span class="asterisk">*</span></label
-                  >
+                  <label class="info-label">Edad<span class="asterisk">*</span></label>
                   <div class="input-container ageBox">
                     <select id="edad" name="edad" required>
                       <option value="Menor de 16" selected>
-                        Selecciona tu rango de edad
+                        Rango de edad
                       </option>
                       <option value="16-25">Entre 16 y 25 años</option>
                       <option value="26-35">Entre 26 y 35 años</option>
@@ -132,10 +100,7 @@
                 </div>
               </div>
               <button type="button" class="button-next" id="next1">
-                <i
-                  class="fa-solid fa-chevron-right"
-                  style="color: #17315e"
-                ></i>
+                <i class="fa-solid fa-chevron-right" style="color: #17315e"></i>
               </button>
             </div>
 
@@ -143,16 +108,10 @@
             <div id="section2" class="hidden">
               <div class="navigation-buttons">
                 <button class="button-back" type="button" id="back1">
-                  <i
-                    class="fa-solid fa-chevron-left"
-                    style="color: #17315e"
-                  ></i>
+                  <i class="fa-solid fa-chevron-left" style="color: #17315e"></i>
                 </button>
                 <button class="button-next" type="button" id="next2">
-                  <i
-                    class="fa-solid fa-chevron-right"
-                    style="color: #17315e"
-                  ></i>
+                  <i class="fa-solid fa-chevron-right" style="color: #17315e"></i>
                 </button>
               </div>
               <h3>Modalidades</h3>
@@ -162,10 +121,7 @@
                   <h3 class="nombre-modalidad">Clases privadas</h3>
                 </div>
                 <div class="mode-option" id="semi-private">
-                  <img
-                    src="/pics/semi-private.png"
-                    alt="Semi-Private Class"
-                  />
+                  <img src="/pics/semi-private.png" alt="Semi-Private Class" />
                   <h3 class="nombre-modalidad">Clases semi-privadas</h3>
                 </div>
                 <div class="mode-option" id="empresas">
@@ -181,16 +137,10 @@
               <p>Elige 2, 3 o 5 dias de clase</p>
               <div class="navigation-buttons">
                 <button class="button-back" type="button" id="back2-private">
-                  <i
-                    class="fa-solid fa-chevron-left"
-                    style="color: #17315e"
-                  ></i>
+                  <i class="fa-solid fa-chevron-left" style="color: #17315e"></i>
                 </button>
                 <button class="button-next" type="button" id="next3-private">
-                  <i
-                    class="fa-solid fa-chevron-right"
-                    style="color: #17315e"
-                  ></i>
+                  <i class="fa-solid fa-chevron-right" style="color: #17315e"></i>
                 </button>
               </div>
               <!-- Modal Structure -->
@@ -242,31 +192,14 @@
               <h3>Clases Semi-Personalizadas</h3>
               <p>Elige intensidad y horario</p>
               <div class="navigation-buttons">
-                <button
-                  class="button-back"
-                  type="button"
-                  id="back2-semi-private"
-                >
-                  <i
-                    class="fa-solid fa-chevron-left"
-                    style="color: #17315e"
-                  ></i>
+                <button class="button-back" type="button" id="back2-semi-private">
+                  <i class="fa-solid fa-chevron-left" style="color: #17315e"></i>
                 </button>
-                <button
-                  class="button-next"
-                  type="button"
-                  id="next3-semi-private"
-                >
-                  <i
-                    class="fa-solid fa-chevron-right"
-                    style="color: #17315e"
-                  ></i>
+                <button class="button-next" type="button" id="next3-semi-private">
+                  <i class="fa-solid fa-chevron-right" style="color: #17315e"></i>
                 </button>
               </div>
-              <div
-                style="margin: auto; display: flex; justify-content: center"
-                class="intensidad-semi-private"
-              >
+              <div style="margin: auto; display: flex; justify-content: center" class="intensidad-semi-private">
                 <button type="button" class="intensity" id="twice">
                   2 clases semanales
                 </button>
@@ -282,19 +215,9 @@
             <div id="section3-empresas" class="hidden">
               <h3>Inglés para Empresas</h3>
               <div class="info-empresa">
-                <label for="employee-count"
-                  >¿Cuál es el nombre de la empresa?</label
-                >
-                <input
-                  id="companyName"
-                  name="companyName"
-                  type="text"
-                  placeholder="Nombre de la Empresa"
-                  required
-                />
-                <label for="employee-count"
-                  >¿Cuántos empleados tiene tu empresa?</label
-                >
+                <label for="employee-count">¿Cuál es el nombre de la empresa?</label>
+                <input id="companyName" name="companyName" type="text" placeholder="Nombre de la Empresa" required />
+                <label for="employee-count">¿Cuántos empleados tiene tu empresa?</label>
                 <select id="employee-count">
                   <option value="sin-seleccionar" selected disabled>
                     Selecciona el número de empleados
@@ -308,16 +231,10 @@
               </div>
               <div class="navigation-buttons">
                 <button class="button-back" type="button" id="back2-empresas">
-                  <i
-                    class="fa-solid fa-chevron-left"
-                    style="color: #17315e"
-                  ></i>
+                  <i class="fa-solid fa-chevron-left" style="color: #17315e"></i>
                 </button>
                 <button class="button-next" type="button" id="next3-empresas">
-                  <i
-                    class="fa-solid fa-chevron-right"
-                    style="color: #17315e"
-                  ></i>
+                  <i class="fa-solid fa-chevron-right" style="color: #17315e"></i>
                 </button>
               </div>
             </div>
@@ -326,26 +243,20 @@
             <div id="section4" class="hidden">
               <h3 id="form-final-price">Valor de la mensualidad</h3>
               <p id="price"></p>
-              
-              <p
-                class="price original-price"
-                style="text-decoration: line-through; color: red"
-              >
-                
+
+              <p class="price original-price" style="text-decoration: line-through; color: red">
+
               </p>
               <p class="price discount-price">
-                
+
               </p>
-              
+
               <p class="price"></p>
-              
+
 
               <a href="#" id="pay-button" class="hidden">Registrarse</a>
               <button class="button-back" type="button" id="back3">
-                <i
-                  class="fa-solid fa-chevron-left"
-                  style="color: #17315e"
-                ></i>
+                <i class="fa-solid fa-chevron-left" style="color: #17315e"></i>
               </button>
             </div>
 
@@ -361,10 +272,7 @@
                 <button type="button" id="send-form-empresas">Enviar</button>
               </div>
               <button class="button-back" type="button" id="back3-empresas">
-                <i
-                  class="fa-solid fa-chevron-left"
-                  style="color: #17315e"
-                ></i>
+                <i class="fa-solid fa-chevron-left" style="color: #17315e"></i>
               </button>
             </div>
           </form>
@@ -379,21 +287,17 @@
       <div class="cards">
         <img src="/pics/live_lessons.png" alt="Lecciones en vivo" />
         <h3>Lecciones online en vivo</h3>
-        <span
-          >Recibirás lecciones online en vivo de 55 minutos con un docente
+        <span>Recibirás lecciones online en vivo de 55 minutos con un docente
           experto que acompañará tu proceso, y tendrás acceso a actividades
           interactivas en nuestra plataforma educativa para mejorar tu
-          pronunciación, escucha y habla a tu propio ritmo.</span
-        >
+          pronunciación, escucha y habla a tu propio ritmo.</span>
       </div>
       <div class="cards">
         <img src="/pics/grupos_pequeños.png" alt="Grupos pequeños" />
         <h3>Lecciones privadas y semi-privadas</h3>
-        <span
-          >Podrás elegir entre clases privadas o clases semi-personalizadas
+        <span>Podrás elegir entre clases privadas o clases semi-personalizadas
           para mejorar tus habilidades conversacionales en menos tiempo con un
-          seguimiento dedicado y cercano a tu proceso</span
-        >
+          seguimiento dedicado y cercano a tu proceso</span>
       </div>
       <div class="cards">
         <img src="/pics/chats.png" alt="Medologogía conversacional" />
@@ -463,9 +367,9 @@
     </div>
   </section>
 
-  
-    <%- include('partials/footer') %>
-    
+
+  <%- include('partials/footer') %>
+
     <script src="https://kit.fontawesome.com/c14517e724.js" crossorigin="anonymous"></script>
     <!-- <script src="/js/appearance.js"></script> -->
     <script src="/js/main.js"></script>
@@ -473,23 +377,23 @@
     <script src="/js/form.js"></script>
     <script src="./build/js/intlTelInput.min.js"></script>
     <script>
-        var input = document.querySelector("#phone");
-        window.intlTelInput(input, {
-            initialCountry: "co"
-        });
+      var input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+        initialCountry: "co"
+      });
     </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if the URL contains a hash
-    if(window.location.hash) {
-        // Scroll to the element with the ID from the URL hash
-        const section = document.querySelector(window.location.hash);
-        if(section) {
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Check if the URL contains a hash
+        if (window.location.hash) {
+          // Scroll to the element with the ID from the URL hash
+          const section = document.querySelector(window.location.hash);
+          if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
+          }
         }
-    }
-});
-</script>
-</body>
+      });
+    </script>
+    </body>
 
 </html>

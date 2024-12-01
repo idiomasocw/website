@@ -177,7 +177,6 @@ window.onload = function () {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
         sessionStorage.setItem("emailSent", true); // Set the flag that email has been sent
 
         // Show the email notification message

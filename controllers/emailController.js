@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 let transporter = nodemailer.createTransport({
   host: "email-smtp.us-east-1.amazonaws.com",
@@ -8,20 +8,29 @@ let transporter = nodemailer.createTransport({
     user: process.env.AWS_SES_SMTP_USER,
     pass: process.env.AWS_SES_SMTP_PASSWORD,
   },
+  tls: {
+    rejectUnauthorized: true,
+  },
 });
 
-async function sendEmail(recipientEmail, adminEmail, userName, results) {
+async function sendEmail(
+  recipientEmail,
+  adminEmail,
+  userName,
+  results,
+  subject = "Placement Test Results"
+) {
   const mailOptions = {
     from: '"OneCulture World" <noreply@onecultureworld.com>',
     to: [recipientEmail],
     bcc: [adminEmail],
-    subject: "Placement Test Results",
+    subject: subject,
     html: results,
   };
 
   try {
     let info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: ' + info.response);
+    console.log("Email sent: " + info.response);
   } catch (error) {
     console.error("Error sending email: ", error);
   }
