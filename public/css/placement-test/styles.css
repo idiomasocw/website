@@ -38,13 +38,13 @@ p {
 }
 
 #results {
-  color: white;
+  /* color: white; */
   margin-top: 2rem;
   font-size: 1.7rem;
 }
 
 #results-heading {
-  color: #95ff74;
+  color: #23598b;
 }
 
 .returnbutton-wrap {
@@ -54,23 +54,23 @@ p {
 }
 
 .returnToMenu {
-  width: fit-content;
-  padding: 0.7rem;
-  font-size: 16px;
-  background: #95ff74;
-  color: white;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  animation: scaleAnimation 1s infinite alternate;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: #00d5dd;
+  /* Highlight button color */
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .returnToMenu:hover {
-  background: #031116;
+  color: #ffffff;
+  /* Hover state for button */
+  transform: scale(1.1);
+  /* Subtle hover effect */
 }
 
 .exitToMenuIcon {
@@ -176,20 +176,20 @@ p {
 
 .container {
   max-width: 520px;
-  border-radius: 4px;
+  border-radius: 8px;
+  /* Increased for smoother corners */
   margin: 0 auto;
-  background-color: white;
+  background-color: #ffffff;
+  /* Brand primary background color */
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* background: linear-gradient(36deg, #23598b 14%, #00d5dd 38%, #23598b 83%); */
+  /* Subtle gradient with brand colors */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  /* Softer shadow for a modern look */
+  color: #ffffff;
+  /* Text color to contrast against dark background */
+  font-family: Arial, sans-serif;
   position: relative;
-  background: rgb(209, 255, 79);
-  background: linear-gradient(36deg,
-      rgba(209, 255, 79, 1) 14%,
-      rgba(31, 255, 188, 1) 38%,
-      rgba(209, 255, 79, 1) 83%);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 #logo,
@@ -224,26 +224,47 @@ p {
 }
 
 .modal-content {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 4px;
+  background-color: #031116;
+  /* Dark modal background */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgb(255, 255, 255);
+  max-width: 400px;
+  color: #ffffff;
+  height: 100%;
   text-align: center;
 }
 
+.modal-content h2 {
+  color: #00d5dd;
+  text-align: center;
+  /* Modal heading color */
+}
+
+.modal-content p {
+  line-height: 1.3em;
+  margin: 20px 0px;
+}
+
+.modal-content button {
+  background-color: #00d5dd;
+  color: #031116;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
 /* Add this new rule to your styles.css */
-.stopwatch {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+#stopwatch {
+  text-align: center;
   font-size: 18px;
   font-weight: bold;
-  padding: 10px;
-  border-radius: 6px;
-  background-color: rgba(213, 255, 196, 0.219);
-  -webkit-box-shadow: 3px 3px 4px 0px rgba(49, 50, 75, 0.75);
-  -moz-box-shadow: 3px 3px 4px 0px rgba(49, 50, 75, 0.75);
-  box-shadow: 3px 3px 4px 0px rgba(49, 50, 75, 0.75);
-  color: #0e124d;
+  color: #00d5dd;
+  /* Vibrant text color for visibility */
+  margin: 10px 0;
 }
 
 h1 {
@@ -319,7 +340,6 @@ button {
 button:hover {
   background-color: #225889;
   color: #00d5dd;
-  font-weight: bold;
 }
 
 #question {
@@ -390,6 +410,7 @@ audio#audio {
   border: 1px solid #ddd;
   padding: 10px;
   margin-bottom: 20px;
+  background-color: #ffffff;
 }
 
 .result h2 {
@@ -409,9 +430,9 @@ audio#audio {
 }
 
 .grammar-prompt p {
-  min-height: 150px;
+  min-height: 100px;
   border-radius: 5px;
-  color: white;
+  /* color: white; */
   max-width: fit-content;
 }
 
@@ -423,7 +444,9 @@ audio#audio {
   word-wrap: break-word;
   padding: 0.7rem;
   border: #a9a9a9 1px solid;
+  /* color: #031116; */
   border-radius: 5px;
+  background-color: #006db5;
 }
 
 .radio-option.selected {
@@ -441,7 +464,7 @@ audio#audio {
 
 .radio-option:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.083);
+  background-color: #4b77a1;
 }
 
 label {
@@ -571,8 +594,8 @@ label {
   /* display: none; */
 }
 
-.user-info-form-group {
-  margin-bottom: 10px;
+.user-info-modal-content h2 {
+  text-transform: uppercase;
 }
 
 #user-info-form input[type="text"],

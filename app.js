@@ -52,6 +52,8 @@ app.use(
           "'sha256-bxJC7ESg7kXmCO9nlT3pVMLBcHOoaGC93bo9bxNLytk='", // Hash of inline script
           "'sha256-GMIo8LZugaFkVWyFuvqNP5lysS9n798Rx54/zmHb5rU='", // Additional inline script hash
           "'sha256-fg0DzA5/LflLAxY7Tb0VFBSEqZ/Tdg+hpbTjWC4QXWg='", // Another inline script hash
+          "'sha256-yY00+MtQc0+o8GiaAnpQVj/ufqWO+gmKAhS4RWV1R/g='",
+          "'sha256-OQOWj7ThayvltiopBoZEQmEo3YJkGyO/e7XWZ8zwCbI='",
           "https://kit.fontawesome.com", // Allow FontAwesome scripts
           (req, res) => `'nonce-${res.locals.nonce}'`, // Allow inline scripts with nonce
         ],
@@ -74,6 +76,7 @@ app.use(
         mediaSrc: [
           "'self'",
           "https://d37w1mprrue3dh.cloudfront.net", // Allow media from CloudFront
+          "https://ocw-program.s3.amazonaws.com",
         ],
 
         connectSrc: [

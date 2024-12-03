@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.699.0",
+    "@aws-sdk/lib-dynamodb": "^3.699.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "aws-sdk": "^2.1646.0",
     "axios": "^1.7.2",

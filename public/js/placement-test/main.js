@@ -1,3 +1,5 @@
+// js/placement-test/main.js
+
 function setTestButtonState() {
   const useOfEnglishCompleted = localStorage.getItem("use_of_english");
 
@@ -64,16 +66,16 @@ window.onload = function () {
       }
 
       htmlContent += `
-                <div class="result">
-                    <h2 id=results-heading>${test
-                      .replace(/_/g, " ")
-                      .toUpperCase()} Results</h2>
-                    <p>Points: ${points}</p>
-                    ${additionalContent}
-                    <p>Recommended Level: ${recommendedLevel}</p>
-                    <p>Time Taken: ${timeTaken}</p>
-                </div>
-            `;
+                  <div class="result">
+                      <h2 id=results-heading>${test
+                        .replace(/_/g, " ")
+                        .toUpperCase()} Results</h2>
+                      <p>Points: ${points}</p>
+                      ${additionalContent}
+                      <p>Recommended Level: ${recommendedLevel}</p>
+                      <p>Time Taken: ${timeTaken}</p>
+                  </div>
+              `;
 
       completedTests.push(test);
     }
@@ -84,6 +86,9 @@ window.onload = function () {
     sessionStorage.removeItem("emailSent");
     sessionStorage.removeItem("userInfoSubmitted");
     sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("resultsSent");
+    sessionStorage.removeItem("useOfEnglishErrors");
+    sessionStorage.removeItem("listeningErrors");
     resultsDiv.innerHTML = "You can retake the test now.";
     document.getElementById("user-info-modal").style.display = "block";
     const emailNotification = document.getElementById("emailNotification");
@@ -123,6 +128,7 @@ window.onload = function () {
   if (
     localStorage.getItem("use_of_english") &&
     localStorage.getItem("listening") &&
+    sessionStorage.getItem("userInfo") &&
     !sessionStorage.getItem("emailSent")
   ) {
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -130,63 +136,118 @@ window.onload = function () {
       localStorage.getItem("use_of_english")
     );
     const listeningResults = JSON.parse(localStorage.getItem("listening"));
+    const useOfEnglishErrors =
+      JSON.parse(sessionStorage.getItem("useOfEnglishErrors")) || [];
+    const listeningErrors =
+      JSON.parse(sessionStorage.getItem("listeningErrors")) || [];
 
     // First, generate the current date and time
     const now = new Date();
     const dateTimeString = now.toISOString(); // ISO string ensures a unique value for each email
 
-    const resultsString = `
-        <div style="font-family: Arial, sans-serif; color: #34babf; background-color: #0e124d;padding: 10px;">
-        <h1 style="font-size:18px;color:#34babf">Hello ${userInfo.firstName} ${userInfo.lastName},</h1>
-        <p style="color: #34babf;">Here are your placement test results:</p>
-        <div style="display: flex; justify-content: space-between;gap:10px;flex-wrap: wrap;">
-            <div style="flex: 1; padding: 10px;background:linear-gradient(217deg,#706da5,#6a3ad4);color:#d1ff4f;border-radius: 5px;box-shadow: 5px 5px 5px #0c0c1e;margin-right:5px;margin-left:5px;">
-                <h3 style="text-transform: uppercase;color:#d1ff4f;">Use of English</h3>
-                <p style="color:#d1ff4f;"><strong>Points:</strong> ${useOfEnglishResults.points}</p>
-                <p style="color:#d1ff4f;"><strong>Average Score:</strong> ${useOfEnglishResults.useOfEnglishAverageScore}%</p>
-                <p style="color:#d1ff4f;"><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
-                <p style="color:#d1ff4f;"><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
-            </div>
-            <div style="flex: 1; padding: 10px;background:linear-gradient(217deg,#706da5,#6a3ad4);color:#d1ff4f;border-radius: 5px;box-shadow: 5px 5px 5px #0c0c1e;margin-right:5px;margin-left:5px;">
-                <h3 style="text-transform: uppercase;color:#d1ff4f;">Listening</h3>
-                <p style="color:#d1ff4f;"><strong>Points:</strong> ${listeningResults.points}</p>
-                <p style="color:#d1ff4f;"><strong>Average Score:</strong> ${listeningResults.listeningAverageScore}%</p>
-                <p style="color:#d1ff4f;"><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
-                <p style="color:#d1ff4f;"><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
-            </div>
+    // Prepare the data to send to the backend
+    const testResults = {
+      email: userInfo.email,
+      full_name: `${userInfo.firstName} ${userInfo.lastName}`,
+      useOfEnglish: {
+        points: useOfEnglishResults.points,
+        recommendedLevel: useOfEnglishResults.recommendedLevel,
+        timeTaken: useOfEnglishResults.timeTaken,
+        errors: useOfEnglishErrors,
+      },
+      listening: {
+        points: listeningResults.points,
+        recommendedLevel: listeningResults.recommendedLevel,
+        timeTaken: listeningResults.timeTaken,
+        errors: listeningErrors,
+      },
+      timestamp: Date.now(),
+    };
 
-        </div>
-                <a style="color: #d1ff4f;margin-top:5px;margin-bottom:5px;" id="walink" href="https://wa.link/tldshy"
-          >Click here to get more info about our course</a>
-          <hr/>
-            <p style="color: #34babf;">Best Regards,<br>OneCulture World Team</p>
-            <!-- Transparent span with the unique date-time string -->
-            <span style="opacity: 0;">${dateTimeString}</span>
-        </div>`;
-
-    fetch("/send-email", {
+    // Send the data to the backend
+    fetch("/api/save-test-results", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email: userInfo.email,
-        name: `${userInfo.firstName} ${userInfo.lastName}`,
-        results: resultsString,
-      }),
+      body: JSON.stringify(testResults),
     })
       .then((response) => response.json())
       .then((data) => {
-        sessionStorage.setItem("emailSent", true); // Set the flag that email has been sent
+        sessionStorage.setItem("resultsSent", true); // Set the flag that results have been sent
 
-        // Show the email notification message
-        const emailNotification = document.getElementById("emailNotification");
-        if (emailNotification) {
-          emailNotification.style.display = "block";
-        }
+        // Clear errors from session storage
+        sessionStorage.removeItem("useOfEnglishErrors");
+        sessionStorage.removeItem("listeningErrors");
+
+        // Now send the email after saving test results
+        const resultsString = `<div style="font-family: Arial, sans-serif; background-color: #031116; color: #ffffff; padding: 20px; line-height: 1.6;">
+  <div style="max-width: 600px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <header style="background-color: #23598b; padding: 15px; text-align: center;">
+      <h1 style="font-size: 24px; color: #ffffff; margin: 0;">Hello, ${userInfo.firstName} ${userInfo.lastName}</h1>
+    </header>
+
+    <main style="padding: 20px; background-color: #031116;">
+      <p style="font-size: 18px; margin-bottom: 20px; color: #00d5dd; text-align: center; font-weight: bold;">Here are your placement test results:</p>
+
+      <table style="width: 100%; table-layout: fixed; text-align: center; border-spacing: 15px;">
+        <tr>
+          <!-- Use of English Section -->
+          <td style="vertical-align: middle; width: 50%; padding: 15px; background: linear-gradient(217deg, #23598b, #00d5dd); border-radius: 8px; color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+            <h3 style="margin-bottom: 10px; font-size: 18px; text-transform: uppercase; color: #ffffff;">Use of English</h3>
+            <p style="margin: 5px 0; color: #ffffff;"><strong>Points:</strong> ${useOfEnglishResults.points}</p>
+            <p style="margin: 5px 0; color: #ffffff;"><strong>Recommended Level:</strong> ${useOfEnglishResults.recommendedLevel}</p>
+            <p style="margin: 5px 0; color: #ffffff;"><strong>Time Taken:</strong> ${useOfEnglishResults.timeTaken}</p>
+          </td>
+
+          <!-- Listening Section -->
+          <td style="vertical-align: middle; width: 50%; padding: 15px; background: linear-gradient(217deg, #23598b, #00d5dd); border-radius: 8px; color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+            <h3 style="margin-bottom: 10px; font-size: 18px; text-transform: uppercase; color: #ffffff;">Listening</h3>
+            <p style="margin: 5px 0; color: #ffffff;"><strong>Points:</strong> ${listeningResults.points}</p>
+            <p style="margin: 5px 0; color: #ffffff;"><strong>Recommended Level:</strong> ${listeningResults.recommendedLevel}</p>
+            <p style="margin: 5px 0; color: #ffffff;"><strong>Time Taken:</strong> ${listeningResults.timeTaken}</p>
+          </td>
+        </tr>
+      </table>
+    </main>
+
+    <footer style="padding: 20px; background-color: #031116; text-align: center;">
+      <a href="https://wa.link/tldshy" style="display: inline-block; margin: 15px 0; padding: 10px 20px; color: #031116; background-color: #00d5dd; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold;">Click here to get more info about our courses</a>
+      <p style="font-size: 14px; color: #ffffff; margin-top: 20px;">Best Regards,<br>OneCulture World Team</p>
+      <hr style="border: none; border-top: 1px solid #23598b; margin: 20px 0;" />
+      <span style="opacity: 0;">${dateTimeString}</span>
+    </footer>
+  </div>
+</div>`;
+
+        fetch("/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userInfo.email,
+            name: `${userInfo.firstName} ${userInfo.lastName}`,
+            results: resultsString,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            sessionStorage.setItem("emailSent", true); // Set the flag that email has been sent
+
+            // Show the email notification message
+            const emailNotification =
+              document.getElementById("emailNotification");
+            if (emailNotification) {
+              emailNotification.style.display = "block";
+            }
+          })
+          .catch((error) => {
+            console.error("Error sending email:", error);
+          });
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Error saving test results:", error);
       });
   }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,26 @@
     <link rel="shortcut icon" href="/pics/favicon2.png  " type="image/x-icon">
     <title>Use of english</title>
 </head>
-<body>
+
+<body data-quiz-category="uoe">
     <div class="container">
-        <button class="returnToMenu" onclick="window.location.href='/placement-test'"><svg class="exitToMenuIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
-        </svg>
+        <button class="returnToMenu" onclick="window.location.href='/placement-test'"><svg class="exitToMenuIcon"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
+            </svg>
         </button>
         <div id="stopwatch" class="stopwatch">00:00:00</div>
-        <div id="logo"><img id="logo-ocw" src="https://ocw-program.s3.amazonaws.com/Placement-test/Pics/logo.png" alt="logo"></div>
+        <div id="logo"><img id="logo-ocw" src="https://ocw-program.s3.amazonaws.com/Placement-test/Pics/logo.png"
+                alt="logo"></div>
         <h1>Placement Test</h1>
         <h3>Use of English</h3>
         <div id="modal" class="modal">
             <div class="modal-content">
                 <h2 style="font-weight: bold;text-transform: uppercase;">Use of English Section</h2>
-                <p>This section of the test has a time limit of 20 minutes. Complete each space with <b>ONE WORD</b> only, or select the option that best completes the sentence. To start the 'Use of English' section of the test, click the button below.</p>
+                <p>This section of the test has a time limit of 20 minutes. Complete each space with <b>ONE WORD</b>
+                    only, or select the option that best completes the sentence. To start the 'Use of English' section
+                    of the test, click the button below.</p>
                 <button id="start-test">Start test</button>
             </div>
         </div>
@@ -30,9 +37,7 @@
         </form>
         <p id="message"></p>
     </div>
-    <script src="/js/placement-test/uoe-question-bank.js"></script>
-    <script src="/js/placement-test/use_of_english.js"></script>
-
+    <script src="/js/placement-test/placement-test.js"></script>
 </body>
-</html>
 
+</html>
